@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+OpenIDE-Module: jscl.editor
+OpenIDE-Module-Layer: jscl/editor/layer.xml
+OpenIDE-Module-Localizing-Bundle: jscl/editor/Bundle.properties
+OpenIDE-Module-Requires: org.openide.windows.WindowManager
+OpenIDE-Module-Specification-Version: 1.0
+
