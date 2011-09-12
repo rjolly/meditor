@@ -6,7 +6,7 @@
         <servlet-class>jscl.html.Processor</servlet-class>
         <init-param>
             <param-name>target</param-name>
-            <param-value>http://meditor.kenai.com/docs</param-value>
+            <param-value>http://meditor.java.net/docs</param-value>
         </init-param>
         <init-param>
             <param-name>source</param-name>

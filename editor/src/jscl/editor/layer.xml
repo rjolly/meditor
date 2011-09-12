@@ -139,7 +139,7 @@
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="jscl.editor.Bundle"/>
                 <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/jscl/editor/meditor.png"/>
 
-                <attr name="url" stringvalue="http://meditor.kenai.com/uc/catalog.xml"/>
+                <attr name="url" stringvalue="http://meditor.java.net/uc/catalog.xml"/>
                 <attr name="category" stringvalue="COMMUNITY"/>
                 <attr name="enabled" boolvalue="true"/>
                 <attr name="instanceOf" stringvalue="org.netbeans.spi.autoupdate.UpdateProvider"/>
