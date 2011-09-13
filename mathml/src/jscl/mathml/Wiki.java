@@ -10,9 +10,7 @@ public class Wiki {
 
 	public static String copyToWiki(String document) throws Exception {
 		String s = MathML.tex(document);
-		s = s.substring(3,s.length()-2);
-		s = s.replaceAll("\u00a0"," ");
-		return math(s);
+		return math(s.substring(3,s.length()-1));
 	}
 
 	public static String pasteFromWiki(String str) throws Exception {
