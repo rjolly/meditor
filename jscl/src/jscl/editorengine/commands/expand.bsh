@@ -1,5 +1,5 @@
-import jscl.math.Expression;
+import jscl.math.Generic;
 
-Object expand(String expr) {
-	return Expression.valueOf(expr).expand();
+Generic expand(Generic a) {
+	return a.expand();
 }

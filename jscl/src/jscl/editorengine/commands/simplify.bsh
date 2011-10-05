@@ -1,5 +1,5 @@
-import jscl.math.Expression;
+import jscl.math.Generic;
 
-Object simplify(String expr) {
-	return Expression.valueOf(expr).simplify();
+Generic simplify(Generic a) {
+	return a.simplify();
 }

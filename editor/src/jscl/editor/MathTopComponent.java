@@ -511,16 +511,12 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 			plot.setVisible(true);
 			return SVG.print(comp);
 		}
-		if(MathManager.getDefault().isRendering()) {
-			Method m = null;
-			try {
-				m = obj.getClass().getMethod("toMathML", new Class[]{});
-			} catch (NoSuchMethodException ex) {
-			}
-			return m == null ? obj.toString() : (String) m.invoke(obj, new Object[]{});
-		} else {
-			return obj.toString();
+		Method m = null;
+		try {
+			m = obj.getClass().getMethod(MathManager.getDefault().isRendering() ? "toMathML" : "toJava", new Class[]{});
+		} catch (NoSuchMethodException ex) {
 		}
+		return m == null ? obj.toString() : (String) m.invoke(obj, new Object[]{});
 	}
 
 	void unselect() {
