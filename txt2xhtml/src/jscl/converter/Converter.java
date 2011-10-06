@@ -29,7 +29,7 @@ public class Converter {
 		StringBuffer b=new StringBuffer(XML);
 		if (stylesheet != null) b.append("<?xml-stylesheet href=\"").append(stylesheet).append("\" type=\"text/xsl\"?>");
 		b.append("<html xmlns=\"http://www.w3.org/1999/xhtml\">\n");
-		if (title != null) b.append("<head>").append("<title>").append(title).append("</title>").append("</head>");
+		if (title != null) b.append("<head>").append("<title>").append(title).append("</title>").append("</head>\n");
 		b.append("<body>\n");
 		b.append("<tt>\n");
 		int n=0;
@@ -42,14 +42,14 @@ public class Converter {
 		}
 		b.append(xhtmltext(str.substring(n)));
 		b.append("</tt>\n");
-		if (url != null) b.append("<hr width=\"100%\"/>").append("<a href=\"" + url + "\">source</a>");
+		if (url != null) b.append("<hr width=\"100%\"/>").append("<a href=\"" + url + "\">source</a>\n");
 		b.append("</body>\n");
 		b.append("</html>\n");
 		return b.toString();
 	}
 
 	static String xhtmltext(String str) {
-		return newlines(links(spaces(str).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\"","&quot;")));
+		return links(spaces(str).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\"","&quot;"));
 	}
 
 	static String spaces(String line) {
@@ -74,11 +74,11 @@ public class Converter {
 		while(pm.find()) {
 			int m=pm.start();
 			String s=pm.group();
-			buffer.append(line.substring(n,m));
+			buffer.append(newlines(line.substring(n,m)));
 			buffer.append("<a href=\"" + s + "\">" + s + "</a>");
 			n=pm.end();
 		}
-		buffer.append(line.substring(n));
+		buffer.append(newlines(line.substring(n)));
 		return buffer.toString();
 	}
 
@@ -89,8 +89,8 @@ public class Converter {
 		while(pm.find()) {
 			int m=pm.start();
 			String s=pm.group();
-			buffer.append(line.substring(n,m));
-			buffer.append("<br/>\n");
+			String t = line.substring(n,m);
+			buffer.append(t.matches("-+")?"<hr/>":(m == 0?" ":t) + "<br/>").append("\n");
 			n=pm.end();
 		}
 		buffer.append(line.substring(n));

@@ -24,6 +24,10 @@
 </fo:block>
 </xsl:template>
 
+<xsl:template match="xhtml:hr">
+<fo:block break-before="odd-page"/>
+</xsl:template>
+
 <xsl:template match="mathml:math">
 <fo:instream-foreign-object>
 <xsl:copy-of select="."/>

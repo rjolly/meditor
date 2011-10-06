@@ -43,16 +43,16 @@ public class MathML {
 		Reader r=new StringReader(str);
 		ByteArrayOutputStream out=new ByteArrayOutputStream();
 		Fop fop = FopFactory.newInstance().newFop(MimeConstants.MIME_PDF, out);
-		transformer("/xhtmlfo.xsl").transform(new StreamSource(r), new SAXResult(fop.getDefaultHandler()));
+		transformer("/jscl/mathml/xhtmlfo.xsl").transform(new StreamSource(r), new SAXResult(fop.getDefaultHandler()));
 		return out.toByteArray();
 	}
 
 	static String tex(String document) throws TransformerException {
-		return transform(Converter.convert(document), "/xsltml/mmltex.xsl").replaceAll("\u00a0"," ");
+		return transform(Converter.convert(document), "/jscl/mathml/xsltml/mmltex.xsl").replaceAll("\u00a0"," ");
 	}
 
 	static String c2p(String document) throws TransformerException {
-		return transform(document, "/mathmlc2p.xsl");
+		return transform(document, "/jscl/mathml/mathmlc2p.xsl");
 	}
 
 	static String transform(String document, String stylesheet) throws TransformerException {
