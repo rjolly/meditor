@@ -35,7 +35,7 @@ public class MathML {
 	static final Map<String, Transformer> cache = new HashMap<String, Transformer>();
 
 	public static String code(String document, String stylesheet) throws Exception {
-		return stylesheet.length() > 0?transform(Converter.convert(document), stylesheet).replaceAll("\u00a0"," "):document;
+		return transform(Converter.convert(document), stylesheet).replaceAll("\u00a0"," ");
 	}
 
 	public static byte[] exportToPDF(String document) throws Exception {

@@ -500,7 +500,8 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 	}
 
 	private static String code(final String str) throws Exception {
-		return MathML.code(str, MathManager.getDefault().getStylesheet());
+		String s = MathManager.getDefault().getStylesheet();
+		return "".equals(s)?str:MathML.code(str, s);
 	}
 
 	private String render(Object obj) throws Exception {
