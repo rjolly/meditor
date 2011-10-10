@@ -1,5 +1,0 @@
-import jscl.math.Generic;
-
-Generic factorize(Generic a) {
-	return a.factorize();
-}

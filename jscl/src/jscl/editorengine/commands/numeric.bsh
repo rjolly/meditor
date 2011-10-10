@@ -1,5 +1,0 @@
-import jscl.math.Generic;
-
-Generic numeric(Generic a) {
-	return a.numeric();
-}

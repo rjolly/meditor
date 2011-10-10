@@ -1,5 +1,0 @@
-import jscl.math.Generic;
-
-Generic expand(Generic a) {
-	return a.expand();
-}
