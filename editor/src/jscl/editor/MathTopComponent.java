@@ -14,7 +14,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Method;
 import java.util.Collection;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
@@ -24,6 +23,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.EditorKit;
 import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.CannotUndoException;
+import jscl.mathml.Code;
 import jscl.mathml.MathML;
 import jscl.mathml.SVG;
 import jscl.mathml.Wiki;
@@ -429,20 +429,24 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 		@Override
 		public void evaluate() throws Exception {
 			final String data = mathTextPane1.getSelectedText();
-			final Object result = eval(data);
-			if(result != null) {
-				String str = render(result);
+			final int n = data.length() - 1;
+			if (n < 0 || "\n".equals(data.substring(n))) {
+				exec(data);
+				unselect();
+			} else {
+				final Object result = eval(data);
+				final String str = render(result);
 				mathTextPane1.replaceSelection(str);
 			}
-			else unselect();
 		}
 
 		@Override
 		public void copyToWiki() throws Exception {
-			int n1 = mathTextPane1.getSelectionStart();
-			int n2 = mathTextPane1.getSelectionEnd();
-			if (n1 != n2) {
-				String srcData = Wiki.copyToWiki(doc.getText(n1, n2 - n1));
+			final String data = mathTextPane1.getSelectedText();
+			final int n = data.length() - 1;
+			if (n < 0);
+			else {
+				String srcData = Wiki.copyToWiki(data);
 				StringSelection contents = new StringSelection(srcData);
 				getClipboard().setContents(contents, null);
 			}
@@ -452,6 +456,18 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 		public void pasteFromWiki() throws Exception {
 			String srcData = (String)getClipboard().getContents(null).getTransferData(DataFlavor.stringFlavor);
 			mathTextPane1.replaceSelection(Wiki.pasteFromWiki(srcData));
+		}
+
+		@Override
+		public void copyToCode() throws Exception {
+			final String data = mathTextPane1.getSelectedText();
+			final int n = data.length() - 1;
+			if (n < 0);
+			else {
+				String srcData = code(data);
+				StringSelection contents = new StringSelection(srcData);
+				getClipboard().setContents(contents, null);
+			}
 		}
 
 		@Override
@@ -490,34 +506,28 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 	}
 
 	private static Object eval(final String str) throws Exception {
-		final int n = str.length() - 1;
-		if (n < 0 || "\n".equals(str.substring(n))) {
-			exec(str);
-			return null;
-		} else {
-			return MathManager.getDefault().getEngine().eval(code(str));
-		}
+		return MathManager.getDefault().getEngine().eval(code(str));
 	}
 
 	private static String code(final String str) throws Exception {
 		String s = MathManager.getDefault().getStylesheet();
-		return "".equals(s)?str:MathML.code(str, s);
+		return "".equals(s)?str:Code.get(str, s);
 	}
 
 	private String render(Object obj) throws Exception {
-		if(obj instanceof Component) {
+		if(obj == null) return "null";
+		else if(obj instanceof Component) {
 			Component comp = (Component)obj;
 			plot.getContentPane().removeAll();
 			plot.getContentPane().add(comp);
 			plot.setVisible(true);
 			return SVG.print(comp);
 		}
-		Method m = null;
 		try {
-			m = obj.getClass().getMethod(MathManager.getDefault().isRendering() ? "toMathML" : "toJava", new Class[]{});
-		} catch (NoSuchMethodException ex) {
-		}
-		return m == null ? obj.toString() : (String) m.invoke(obj, new Object[]{});
+			if (MathManager.getDefault().isRendering()) return "<math>" + obj.getClass().getMethod("toMathML", new Class[]{}).invoke(obj, new Object[]{}) + "</math>";
+			return obj.getClass().getMethod("toJava", new Class[]{}).invoke(obj, new Object[]{}).toString();
+		} catch (NoSuchMethodException ex) {}
+		return obj.toString();
 	}
 
 	void unselect() {

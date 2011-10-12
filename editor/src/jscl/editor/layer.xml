@@ -47,12 +47,23 @@
             <file name="C-P.shadow">
                 <attr name="originalFile" stringvalue="Actions/Math/jscl-editor-PasteFromWiki.instance"/>
             </file>
+            <file name="C-J.shadow">
+                <attr name="originalFile" stringvalue="Actions/Math/jscl-editor-CopyToCode.instance"/>
+            </file>
         </folder>
     </folder>
     <folder name="Loaders">
         <folder name="text">
             <folder name="plain">
                 <folder name="Actions">
+                    <file name="org-openide-actions-OpenAction.shadow">
+                        <attr name="originalFile" stringvalue="Actions/System/org-openide-actions-OpenAction.instance"/>
+                        <attr name="position" intvalue="100"/>
+                    </file>
+                    <file name="sep-1.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="200"/>
+                    </file>
                     <file name="org-openide-actions-CutAction.shadow">
                         <attr name="originalFile" stringvalue="Actions/Edit/org-openide-actions-CutAction.instance"/>
                         <attr name="position" intvalue="300"/>
@@ -131,6 +142,10 @@
                 <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
                 <attr name="position" intvalue="900"/>
             </file>
+            <file name="sep-10.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="1100"/>
+            </file>
         </folder>
     </folder>
     <folder name="Services">
@@ -149,6 +164,14 @@
         <folder name="MIMEResolver">
             <file name="MathResolver.xml" url="MathResolver.xml">
                 <attr name="displayName" bundlevalue="jscl.editor.Bundle#Services/MIMEResolver/MathResolver.xml"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Templates">
+        <folder name="Other">
+            <file name="MathTemplate.txt" url="MathTemplate.txt">
+                <attr name="displayName" bundlevalue="jscl.editor.Bundle#Templates/Other/MathTemplate.txt"/>
+                <attr name="template" boolvalue="true"/>
             </file>
         </folder>
     </folder>

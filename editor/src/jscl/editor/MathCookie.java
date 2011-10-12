@@ -10,5 +10,6 @@ public interface MathCookie extends Node.Cookie {
 	public void evaluate() throws Exception;
 	public void copyToWiki() throws Exception;
 	public void pasteFromWiki() throws Exception;
+	public void copyToCode() throws Exception;
 	public void export() throws IOException;
 }

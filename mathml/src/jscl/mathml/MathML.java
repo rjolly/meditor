@@ -34,10 +34,6 @@ import org.w3c.dom.Node;
 public class MathML {
 	static final Map<String, Transformer> cache = new HashMap<String, Transformer>();
 
-	public static String code(String document, String stylesheet) throws Exception {
-		return transform(Converter.convert(document), stylesheet).replaceAll("\u00a0"," ");
-	}
-
 	public static byte[] exportToPDF(String document) throws Exception {
 		String str = c2p(Converter.convert(document));
 		Reader r=new StringReader(str);
@@ -47,12 +43,16 @@ public class MathML {
 		return out.toByteArray();
 	}
 
+	static String code(String document, String stylesheet) throws Exception {
+		return transform(Converter.convert(document), stylesheet).replaceAll("\u00a0"," ");
+	}
+
 	static String tex(String document) throws TransformerException {
 		return transform(Converter.convert(document), "/jscl/mathml/xsltml/mmltex.xsl").replaceAll("\u00a0"," ");
 	}
 
 	static String c2p(String document) throws TransformerException {
-		return transform(document, "/jscl/mathml/mathmlc2p.xsl");
+		return transform(document, "/jscl/mathml/mathmlc2p.xsl").replaceAll("\u2148","i");
 	}
 
 	static String transform(String document, String stylesheet) throws TransformerException {
@@ -63,7 +63,7 @@ public class MathML {
 	}
 
 	static Transformer transformer(String stylesheet) throws TransformerException {
-		if(!cache.containsKey(stylesheet)) cache.put(stylesheet,TransformerFactory.newInstance().newTransformer(new StreamSource(MathML.class.getResource(stylesheet).toString())));
+		if(!cache.containsKey(stylesheet)) cache.put(stylesheet,TransformerFactory.newInstance().newTransformer(new StreamSource(Thread.currentThread().getContextClassLoader().getResource(stylesheet.startsWith("/")?stylesheet.substring(1):stylesheet).toString())));
 		return cache.get(stylesheet);
 	}
 

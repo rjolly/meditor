@@ -25,7 +25,7 @@
 </xsl:template>
 
 <xsl:template match="xhtml:hr">
-<fo:block break-before="odd-page"/>
+<fo:block break-before="page"/>
 </xsl:template>
 
 <xsl:template match="mathml:math">

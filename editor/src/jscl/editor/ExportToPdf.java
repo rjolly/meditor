@@ -19,7 +19,7 @@ import org.openide.util.NbBundle.Messages;
 id = "jscl.editor.ExportToPdf")
 @ActionRegistration(displayName = "#CTL_ExportToPdf")
 @ActionReferences({
-	@ActionReference(path = "Menu/Math", position = 1000)
+	@ActionReference(path = "Menu/Math", position = 1200)
 })
 @Messages("CTL_ExportToPdf=Export to PDF...")
 public final class ExportToPdf implements ActionListener {

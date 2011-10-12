@@ -15,23 +15,23 @@ import org.openide.util.Exceptions;
 import org.openide.util.NbBundle.Messages;
 
 @ActionID(category = "Math",
-id = "jscl.editor.CopyToWiki")
-@ActionRegistration(displayName = "#CTL_CopyToWiki")
+id = "jscl.editor.CopyToCode")
+@ActionRegistration(displayName = "#CTL_CopyToCode")
 @ActionReferences({
-	@ActionReference(path = "Menu/Math", position = 700)
+	@ActionReference(path = "Menu/Math", position = 1000)
 })
-@Messages("CTL_CopyToWiki=Copy to wiki")
-public final class CopyToWiki implements ActionListener {
+@Messages("CTL_CopyToCode=Copy to code")
+public final class CopyToCode implements ActionListener {
 
 	private final MathCookie context;
 
-	public CopyToWiki(MathCookie context) {
+	public CopyToCode(MathCookie context) {
 		this.context = context;
 	}
 
 	public void actionPerformed(ActionEvent ev) {
 		try {
-			context.copyToWiki();
+			context.copyToCode();
 		} catch (Exception ex) {
 			Exceptions.printStackTrace(ex);
 		}

@@ -20,7 +20,7 @@ id = "jscl.editor.PasteFromWiki")
 @ActionReferences({
 	@ActionReference(path = "Menu/Math", position = 800)
 })
-@Messages("CTL_PasteFromWiki=Paste from Wiki")
+@Messages("CTL_PasteFromWiki=Paste from wiki")
 public final class PasteFromWiki implements ActionListener {
 
 	private final MathCookie context;

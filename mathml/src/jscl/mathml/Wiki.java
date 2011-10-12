@@ -5,12 +5,12 @@ import java.util.regex.Matcher;
 import jscl.converter.Converter;
 
 public class Wiki {
-	static Pattern pattern=Pattern.compile("([$][ ].*?[$]\n?)|(\n\\\\\\[\n\t.*?\n\\\\\\]\n?)");
+	static Pattern pattern=Pattern.compile("([$][ ].*?[$])|(\n\\\\\\[\n\t.*?\n\\\\\\]\n)");
 	static Pattern math=Pattern.compile("(<math>.*?</math>)");
 
 	public static String copyToWiki(String document) throws Exception {
 		String s = MathML.tex(document);
-		return math(s.substring(3,s.length()-1));
+		return math(s.substring(3,s.length()-2).replaceAll(" \n", "\n"));
 	}
 
 	public static String pasteFromWiki(String str) throws Exception {
