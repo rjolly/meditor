@@ -28,6 +28,7 @@ import jscl.mathml.MathML;
 import jscl.mathml.SVG;
 import jscl.mathml.Wiki;
 import jscl.textpane.MathDocument;
+import org.openide.filesystems.FileEvent;
 import org.openide.filesystems.FileStateInvalidException;
 import org.openide.util.NbBundle;
 import org.openide.windows.TopComponent;
@@ -39,6 +40,7 @@ import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.UndoRedo;
 import org.openide.cookies.SaveCookie;
+import org.openide.filesystems.FileChangeAdapter;
 import org.openide.filesystems.FileObject;
 import org.openide.util.Exceptions;
 import org.openide.util.Lookup;
@@ -100,6 +102,13 @@ public final class MathTopComponent extends TopComponent implements LookupListen
 	private final SaveCookie impl;
 	private final Lookup lookup;
 	private final EditorKit kit = new MathEditorKit();
+	private FileChangeAdapter fca = new FileChangeAdapter() {
+
+		@Override
+		public void fileChanged(FileEvent fe) {
+			MathTopComponent.this.fileChanged(fe);
+		}
+	};
 
 	public MathTopComponent() {
 		initComponents();
@@ -292,13 +301,10 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 	public void componentOpened() {
 		result = WindowManager.getDefault().findTopComponent("favorites").getLookup().lookupResult(FileObject.class);
 		result.addLookupListener(this);
-		resultChanged(new LookupEvent(result));
 	}
 
 	@Override
 	public void componentClosed() {
-		if (modified) save();
-		fire(false);
 		result.removeLookupListener(this);
 		result = null;
 	}
@@ -313,20 +319,27 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 		Lookup.Result r = (Lookup.Result) ev.getSource();
 		Collection<FileObject> coll = r.allInstances();
 		if (coll.isEmpty()) return;
-		for (FileObject obj : coll) {
-			if (file == obj) return;
-		}
-		if (modified) if(!save()) return;
+		FileObject file = this.file;
+		if (file != null) file.removeFileChangeListener(fca);
 		for (FileObject obj : coll) {
 			file = obj;
+			if (this.file == file) return;
 		}
-		if (file.isFolder()) {
-			FileObject f = file.getFileObject("/index.txt");
-			if (f != null) {
-				file = f;
-			}
-		}
-		if (!"text/plain".equals(file.getMIMEType())) return;
+		if (file.isFolder()) file = file.getFileObject("/index.txt");
+		if (file == null || !"text/plain".equals(file.getMIMEType())) return;
+		if (modified) if(!proceed()) return;
+		file.addFileChangeListener(fca);
+		this.file = file;
+		load();
+	}
+
+	public void fileChanged(FileEvent fe) {
+		if (file != fe.getFile()) return;
+		if (modified) if(!reload()) return;
+		load();
+	}
+
+	void load() {
 		setName(file.getNameExt());
 		try {
 			editable = !file.getFileSystem().isReadOnly();
@@ -335,16 +348,14 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 		}
 		doc = (MathDocument)kit.createDefaultDocument();
 		mathTextPane1.setMathDocument(doc);
-		if (file.isData()) {
-			try {
-				InputStream in = file.getInputStream();
-				kit.read(in, doc, 0);
-				in.close();
-			} catch (IOException ex) {
-				Exceptions.printStackTrace(ex);
-			} catch (BadLocationException ex) {
-				Exceptions.printStackTrace(ex);
-			}
+		try {
+			InputStream in = file.getInputStream();
+			kit.read(in, doc, 0);
+			in.close();
+		} catch (IOException ex) {
+			Exceptions.printStackTrace(ex);
+		} catch (BadLocationException ex) {
+			Exceptions.printStackTrace(ex);
 		}
 		mathTextPane1.setEditable(editable);
 		manager.discardAllEdits();
@@ -363,8 +374,14 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 		}
 	}
 
-	public boolean save() {
+	public boolean proceed() {
 		Confirmation message = new NotifyDescriptor.Confirmation("Changes to \"" + file.getNameExt() + "\" not saved. Proceed ?", NotifyDescriptor.YES_NO_OPTION, NotifyDescriptor.QUESTION_MESSAGE);
+		Object result = DialogDisplayer.getDefault().notify(message);
+		return NotifyDescriptor.YES_OPTION.equals(result);
+	}
+
+	public boolean reload() {
+		Confirmation message = new NotifyDescriptor.Confirmation("\"" + file.getNameExt() + "\" was modified externally. Reload ?", NotifyDescriptor.YES_NO_OPTION, NotifyDescriptor.QUESTION_MESSAGE);
 		Object result = DialogDisplayer.getDefault().notify(message);
 		return NotifyDescriptor.YES_OPTION.equals(result);
 	}
@@ -379,7 +396,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 		@Override
 		public void save() throws IOException {
-
+			file.removeFileChangeListener(fca);
 			try {
 				OutputStream out = file.isData()?file.getOutputStream():file.createAndOpen("index.txt");
 				kit.write(out, doc, 0, doc.getLength());
@@ -387,6 +404,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 			} catch (BadLocationException ex) {
 				Exceptions.printStackTrace(ex);
 			}
+			file.addFileChangeListener(fca);
 			count = 0;
 			branch = false;
 			fire(false);
@@ -477,26 +495,25 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 			chooser.addChoosableFileFilter(new MathFileFilter("pdf"));
 			chooser.setSelectedFile(new File(file == null?"":file.getName()));
 			if(chooser.showSaveDialog(MathTopComponent.this) != JFileChooser.APPROVE_OPTION) return;
-			final File f=putExtension(chooser.getSelectedFile(),"pdf");
-			if(f.exists()?overwrite():true) {
-				try {
-					SwingUtilities.invokeLater(new Runnable() {
+			final File f = putExtension(chooser.getSelectedFile(),"pdf");
+			if(f.exists()) if (!overwrite()) return;
+			try {
+				SwingUtilities.invokeLater(new Runnable() {
 
-						@Override
-						public void run() {
-							try {
-								byte b[] = MathML.exportToPDF(doc.getText());
-								OutputStream out = new FileOutputStream(f);
-								out.write(b);
-								out.close();
-							} catch (Exception ex) {
-								Exceptions.printStackTrace(ex);
-							}
+					@Override
+					public void run() {
+						try {
+							byte b[] = MathML.exportToPDF(doc.getText());
+							OutputStream out = new FileOutputStream(f);
+							out.write(b);
+							out.close();
+						} catch (Exception ex) {
+							Exceptions.printStackTrace(ex);
 						}
-					});
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
+					}
+				});
+			} catch (Exception ex) {
+				ex.printStackTrace();
 			}
 		}
 	}
