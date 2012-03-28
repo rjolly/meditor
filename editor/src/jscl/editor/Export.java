@@ -16,17 +16,17 @@ import org.openide.util.Exceptions;
 import org.openide.util.NbBundle.Messages;
 
 @ActionID(category = "Math",
-id = "jscl.editor.ExportToPdf")
-@ActionRegistration(displayName = "#CTL_ExportToPdf")
+id = "jscl.editor.Export")
+@ActionRegistration(displayName = "#CTL_Export")
 @ActionReferences({
 	@ActionReference(path = "Menu/Math", position = 1200)
 })
-@Messages("CTL_ExportToPdf=Export to PDF...")
-public final class ExportToPdf implements ActionListener {
+@Messages("CTL_Export=Export...")
+public final class Export implements ActionListener {
 
 	private final MathCookie context;
 
-	public ExportToPdf(MathCookie context) {
+	public Export(MathCookie context) {
 		this.context = context;
 	}
 

@@ -21,7 +21,15 @@
 /beanshell/
 /jython/
 /jruby/
-/scala/
+/scala/build/
+/scala/nbproject/private/
+/scala/release/
 /sympy/
 /jscl/
 /jas/
+/scas/build/
+/scas/nbproject/private/
+/scas/release/
+/jlinalg/
+/viewer/
+/twitter/

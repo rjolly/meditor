@@ -24,15 +24,21 @@ import org.openide.util.NbPreferences;
 public class MathManager {
 	private static final MathManager manager = new MathManager();
 	private final Preferences pref = NbPreferences.forModule(MathManager.class);
+	private String name;
 	private ScriptEngine engine;
+	private String engineStylesheet;
+	private boolean rendering;
 	private URL location;
 	private String stylesheet;
-	private boolean rendering;
+	private String feed;
+	private String icon;
 
 	public MathManager() {
 		setEngine(pref.get("engine", ""));
 		setLocation(pref.get("location", ""));
-		setRendering(pref.get("rendering", ""));
+		setStylesheet(pref.get("stylesheet", ""));
+		setFeed(pref.get("feed", ""));
+		setIcon(pref.get("icon", ""));
 
 		pref.addPreferenceChangeListener(new PreferenceChangeListener() {
 			public void preferenceChange(PreferenceChangeEvent evt) {
@@ -40,14 +46,18 @@ public class MathManager {
 					setEngine(evt.getNewValue());
 				} else if (evt.getKey().equals("location")) {
 					setLocation(evt.getNewValue());
-				} else if (evt.getKey().equals("rendering")) {
-					setRendering(evt.getNewValue());
+				} else if (evt.getKey().equals("stylesheet")) {
+					setStylesheet(evt.getNewValue());
+				} else if (evt.getKey().equals("feed")) {
+					setFeed(evt.getNewValue());
+				} else if (evt.getKey().equals("icon")) {
+					setIcon(evt.getNewValue());
 				}
 			}
 		});
 	}
 
-	static ScriptEngineFactory getEngineFactory(String name) {
+	public static ScriptEngineFactory getEngineFactory(String name) {
 		ServiceLoader<ScriptEngineFactory> sefLoader = ServiceLoader.load(ScriptEngineFactory.class);
 		for (ScriptEngineFactory sef : sefLoader) {
 			if(name.equals(sef.getEngineName())) return sef;
@@ -55,24 +65,23 @@ public class MathManager {
 		return sefLoader.iterator().next();
 	}
 
-	static String getName(String str) {
-		return getEngineFactory(str).getNames().get(0);
-	}
-
 	public void reset() {
 		setEngine(pref.get("engine", ""));
 	}
 
-	public String getStylesheet() {
-		return stylesheet;
+	public boolean isRendering() {
+		return pref.getBoolean(name + ".rendering", false);
+	}
+
+	public String getEngineStylesheet() {
+		return pref.get(name + ".stylesheet", "");
 	}
 
 	public void setEngine(String str) {
-		ScriptEngineFactory sef = getEngineFactory(str);
-		String name = sef.getNames().get(0);
-		String init = pref.get(name + ".init", "");
-		stylesheet = pref.get(name + ".stylesheet", "");
+		final ScriptEngineFactory sef = getEngineFactory(str);
+		name = sef.getNames().get(0);
 		engine = sef.getScriptEngine();
+		final String init = pref.get(name + ".init", "");
 		if(init.trim().length() > 0) try {
 			engine.eval(init);
 		} catch (ScriptException ex) {
@@ -96,12 +105,28 @@ public class MathManager {
 		return location;
 	}
 
-	public void setRendering(String str) {
-		rendering = Boolean.valueOf(str);
+	public void setStylesheet(String str) {
+		stylesheet = str;
 	}
 
-	public boolean isRendering() {
-		return rendering;
+	public String getStylesheet() {
+		return stylesheet;
+	}
+
+	public void setFeed(String str) {
+		feed = str;
+	}
+
+	public String getFeed() {
+		return feed;
+	}
+
+	public void setIcon(String str) {
+		icon = str;
+	}
+
+	public String getIcon() {
+		return icon;
 	}
 
 	public static MathManager getDefault() {

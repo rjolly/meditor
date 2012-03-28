@@ -11,12 +11,13 @@ import org.netbeans.spi.options.OptionsPanelController;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 
-@OptionsPanelController.TopLevelRegistration(categoryName = "#OptionsCategory_Name_Math",
-iconBase = "jscl/editor/meditor32.png",
-keywords = "#OptionsCategory_Keywords_Math",
-keywordsCategory = "Math")
-public final class MathOptionsPanelController extends OptionsPanelController {
-	private MathPanel panel;
+@OptionsPanelController.SubRegistration(location = "Math",
+displayName = "#AdvancedOption_DisplayName_Engine",
+keywords = "#AdvancedOption_Keywords_Engine",
+keywordsCategory = "Math/Engine")
+@org.openide.util.NbBundle.Messages({"AdvancedOption_DisplayName_Engine=Engine", "AdvancedOption_Keywords_Engine=engine"})
+public final class EngineOptionsPanelController extends OptionsPanelController {
+	private EnginePanel panel;
 	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	private boolean changed;
 
@@ -58,9 +59,9 @@ public final class MathOptionsPanelController extends OptionsPanelController {
 		pcs.removePropertyChangeListener(l);
 	}
 
-	private MathPanel getPanel() {
+	private EnginePanel getPanel() {
 		if (panel == null) {
-			panel = new MathPanel(this);
+			panel = new EnginePanel(this);
 		}
 		return panel;
 	}

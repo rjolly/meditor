@@ -28,8 +28,8 @@ public class Processor extends HttpServlet {
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-	 * @param request servlet request
-	 * @param response servlet response
+	 * @param req servlet request
+	 * @param resp servlet response
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException if an I/O error occurs
 	 */
@@ -51,7 +51,7 @@ public class Processor extends HttpServlet {
 			Writer w = new StringWriter();
 			pipe(reader, w);
 			w.close();
-			String str = Converter.convert(w.toString(), "/mathmlc2p.xsl", title, source ? url.toString() : null);
+			String str = Converter.convert(w.toString(), "/mathmlc2p.xsl", title, null, null, source ? url.toString() : null, false);
 			Reader r = new StringReader(str);
 			pipe(r, writer);
 			r.close();

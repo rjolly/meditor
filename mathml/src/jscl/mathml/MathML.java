@@ -43,6 +43,10 @@ public class MathML {
 		return out.toByteArray();
 	}
 
+	public static String exportToXHTML(String document, String stylesheet, String title, String feed, String icon) {
+		return Converter.convert(document, stylesheet, title, feed, icon, null, true);
+	}
+
 	static String code(String document, String stylesheet) throws Exception {
 		return transform(Converter.convert(document), stylesheet).replaceAll("\u00a0"," ");
 	}
