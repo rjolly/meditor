@@ -14,9 +14,9 @@ import java.util.regex.Pattern;
 public class Converter {
 	public static Pattern pattern=Pattern.compile("(?s:<math.*?/math\n?>)|(?s:<svg.*?/svg\n?>)");
 	public static String XML="<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>";
-	static Pattern links=Pattern.compile("(https?://[\\w_\\-\\./~\\?=]*)|([\\w_\\-\\./]*\\.txt)");
+	static Pattern links=Pattern.compile("(https?://[\\w_\\-\\.:/~\\?=&#]*)|([\\w_\\-\\./]*\\.txt)");
 	static Pattern newlines=Pattern.compile("\n");
-	static Pattern spaces=Pattern.compile("( {2,}|\\t)");
+	static Pattern spaces=Pattern.compile("(?m:^ +)|(  +)|(\\t)");
 	static String mml=" xmlns=\"http://www.w3.org/1998/Math/MathML\"";
 	static String svg=" xmlns=\"http://www.w3.org/2000/svg\"";
 
@@ -40,11 +40,11 @@ public class Converter {
 		while(pm.find()) {
 			int m=pm.start();
 			String s=pm.group();
-			b.append(xhtmltext(str.substring(n,m), extension));
+			b.append(links(str.substring(n,m), extension));
 			b.append(insertNameSpace(s));
 			n=pm.end();
 		}
-		b.append(xhtmltext(str.substring(n), extension));
+		b.append(links(str.substring(n), extension));
 		b.append("</tt>\n");
 		if (url != null) b.append("<hr width=\"100%\"/>").append("<a href=\"" + url + "\">source</a>\n");
 		b.append("</body>\n");
@@ -52,58 +52,58 @@ public class Converter {
 		return b.toString();
 	}
 
-	static String xhtmltext(String str, boolean extension) {
-		return links(spaces(str).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\"","&quot;"), extension);
-	}
-
-	static String spaces(String line) {
+	static String links(String str, boolean extension) {
 		StringBuffer buffer = new StringBuffer();
-		Matcher pm=spaces.matcher(line);
+		Matcher pm=links.matcher(str);
 		int n=0;
 		while(pm.find()) {
 			int m=pm.start();
 			String s=pm.group();
-			buffer.append(line.substring(n,m));
-			for(int i = 0; i < s.length(); i++) buffer.append(s.charAt(i) == '\t'?"\u00a0\u00a0":"\u00a0");
-			n=pm.end();
-		}
-		buffer.append(line.substring(n));
-		return buffer.toString();
-	}
-
-	static String links(String line, boolean extension) {
-		StringBuffer buffer = new StringBuffer();
-		Matcher pm=links.matcher(line);
-		int n=0;
-		while(pm.find()) {
-			int m=pm.start();
-			String s=pm.group();
-			buffer.append(newlines(line.substring(n,m)));
+			buffer.append(newlines(str.substring(n,m)));
 			if(s.endsWith(".txt")) {
 				String ss = s.substring(0, s.length() - 4);
 				buffer.append("<a href=\"" + ss + (extension?".xhtml":".txt") + "\">" + ss + "</a>");
 			} else {
-				buffer.append("<a href=\"" + s + "\">" + s + "</a>");
+				buffer.append("<a href=\"" + special(s) + "\">" + special(s) + "</a>");
 			}
 			n=pm.end();
 		}
-		buffer.append(newlines(line.substring(n)));
+		buffer.append(newlines(str.substring(n)));
 		return buffer.toString();
 	}
 
-	static String newlines(String line) {
+	static String newlines(String str) {
 		StringBuffer buffer = new StringBuffer();
-		Matcher pm=newlines.matcher(line);
+		Matcher pm=newlines.matcher(str);
 		int n=0;
 		while(pm.find()) {
 			int m=pm.start();
 			String s=pm.group();
-			String t = line.substring(n,m);
+			String t = spaces(str.substring(n,m));
 			buffer.append(t.matches("-+")?"<hr/>":(m == 0?" ":t) + "<br/>").append("\n");
 			n=pm.end();
 		}
-		buffer.append(line.substring(n));
+		buffer.append(spaces(str.substring(n)));
 		return buffer.toString();
+	}
+
+	static String spaces(String str) {
+		StringBuffer buffer = new StringBuffer();
+		Matcher pm=spaces.matcher(str);
+		int n=0;
+		while(pm.find()) {
+			int m=pm.start();
+			String s=pm.group();
+			buffer.append(special(str.substring(n,m)));
+			for(int i = 0; i < s.length(); i++) buffer.append(s.charAt(i) == '\t'?"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0":"\u00a0");
+			n=pm.end();
+		}
+		buffer.append(special(str.substring(n)));
+		return buffer.toString();
+	}
+
+	static String special(String str) {
+		return str.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\"","&quot;");
 	}
 
 	public static String insertNameSpace(String str) {

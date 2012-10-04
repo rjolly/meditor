@@ -12,13 +12,13 @@ import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 
 @OptionsPanelController.SubRegistration(location = "Math",
-displayName = "#AdvancedOption_DisplayName_Publishing",
-keywords = "#AdvancedOption_Keywords_Publishing",
-keywordsCategory = "Math/Publishing")
-@org.openide.util.NbBundle.Messages({"AdvancedOption_DisplayName_Publishing=Publishing", "AdvancedOption_Keywords_Publishing=publishing"})
-public final class PublishingOptionsPanelController extends OptionsPanelController {
+displayName = "#AdvancedOption_DisplayName_WebFolder",
+keywords = "#AdvancedOption_Keywords_WebFolder",
+keywordsCategory = "Math/WebFolder")
+@org.openide.util.NbBundle.Messages({"AdvancedOption_DisplayName_WebFolder=Web Folder", "AdvancedOption_Keywords_WebFolder=web folder"})
+public final class WebFolderOptionsPanelController extends OptionsPanelController {
 
-	private PublishingPanel panel;
+	private WebFolderPanel panel;
 	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	private boolean changed;
 
@@ -60,9 +60,9 @@ public final class PublishingOptionsPanelController extends OptionsPanelControll
 		pcs.removePropertyChangeListener(l);
 	}
 
-	private PublishingPanel getPanel() {
+	private WebFolderPanel getPanel() {
 		if (panel == null) {
-			panel = new PublishingPanel(this);
+			panel = new WebFolderPanel(this);
 		}
 		return panel;
 	}

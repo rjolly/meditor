@@ -104,6 +104,7 @@ public final class MathTopComponent extends TopComponent implements LookupListen
 	private final InstanceContent content;
 	private final SaveCookie impl;
 	private final Lookup lookup;
+	private final Insets insets;
 	private final EditorKit kit = new MathEditorKit();
 	private final JFileChooser chooser = new JFileChooser();
 	private FileChangeAdapter fca = new FileChangeAdapter() {
@@ -121,7 +122,9 @@ public final class MathTopComponent extends TopComponent implements LookupListen
 
 		jDialog1.pack();
 		jDialog1.setLocationRelativeTo(this);
+
 		plot.pack();
+		insets = plot.getInsets();
 		plot.setLocationRelativeTo(this);
 
 		doc = (MathDocument)kit.createDefaultDocument();
@@ -496,6 +499,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 		@Override
 		public void export() throws IOException {
 			final MathManager manager = MathManager.getDefault();
+			final String formattingStylesheet = manager.getFormattingStylesheet();
 			final String stylesheet = manager.getStylesheet();
 			final String feed = manager.getFeed();
 			final String icon = manager.getIcon();
@@ -512,7 +516,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 					public void run() {
 						try {
 							if("pdf".equals(extension)) {
-								byte b[] = MathML.exportToPDF(doc.getText());
+								byte b[] = MathML.exportToPDF(doc.getText(), orNull(formattingStylesheet));
 								OutputStream out = new FileOutputStream(f);
 								out.write(b);
 								out.close();
@@ -557,7 +561,6 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 			Component comp = (Component)obj;
 			int width = comp.getWidth();
 			int height = comp.getHeight();
-			Insets insets = plot.getInsets();
 			plot.getContentPane().removeAll();
 			plot.getContentPane().add(comp);
 			plot.setSize(width + (insets.left + insets.right), height + (insets.top + insets.bottom));

@@ -34,12 +34,12 @@ import org.w3c.dom.Node;
 public class MathML {
 	static final Map<String, Transformer> cache = new HashMap<String, Transformer>();
 
-	public static byte[] exportToPDF(String document) throws Exception {
+	public static byte[] exportToPDF(String document, String stylesheet) throws Exception {
 		String str = c2p(Converter.convert(document));
 		Reader r=new StringReader(str);
 		ByteArrayOutputStream out=new ByteArrayOutputStream();
 		Fop fop = FopFactory.newInstance().newFop(MimeConstants.MIME_PDF, out);
-		transformer("/jscl/mathml/xhtmlfo.xsl").transform(new StreamSource(r), new SAXResult(fop.getDefaultHandler()));
+		transformer(stylesheet).transform(new StreamSource(r), new SAXResult(fop.getDefaultHandler()));
 		return out.toByteArray();
 	}
 

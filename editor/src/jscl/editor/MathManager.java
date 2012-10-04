@@ -29,6 +29,7 @@ public class MathManager {
 	private String engineStylesheet;
 	private boolean rendering;
 	private URL location;
+	private String formattingStylesheet;
 	private String stylesheet;
 	private String feed;
 	private String icon;
@@ -36,6 +37,7 @@ public class MathManager {
 	public MathManager() {
 		setEngine(pref.get("engine", ""));
 		setLocation(pref.get("location", ""));
+		setFormattingStylesheet(pref.get("stylesheet.formatting", ""));
 		setStylesheet(pref.get("stylesheet", ""));
 		setFeed(pref.get("feed", ""));
 		setIcon(pref.get("icon", ""));
@@ -46,6 +48,8 @@ public class MathManager {
 					setEngine(evt.getNewValue());
 				} else if (evt.getKey().equals("location")) {
 					setLocation(evt.getNewValue());
+				} else if (evt.getKey().equals("stylesheet.formatting")) {
+					setFormattingStylesheet(evt.getNewValue());
 				} else if (evt.getKey().equals("stylesheet")) {
 					setStylesheet(evt.getNewValue());
 				} else if (evt.getKey().equals("feed")) {
@@ -103,6 +107,14 @@ public class MathManager {
 
 	public URL getLocation() {
 		return location;
+	}
+
+	public void setFormattingStylesheet(String str) {
+		formattingStylesheet = str;
+	}
+
+	public String getFormattingStylesheet() {
+		return formattingStylesheet;
 	}
 
 	public void setStylesheet(String str) {
