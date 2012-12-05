@@ -7,9 +7,7 @@
 package jscl.textpane;
 
 import java.awt.Dimension;
-import java.awt.Image;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
@@ -17,14 +15,9 @@ import javax.swing.JTextPane;
 import javax.swing.plaf.basic.BasicEditorPaneUI;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
-import jscl.converter.Converter;
 import jscl.mathml.MathML;
-import jscl.mathml.SVG;
-import jscl.mathml.TeX;
 
 public class MathTextPane extends JTextPane {
-	static final Pattern pattern = Converter.pattern;
-	static final String XML = Converter.XML;
 	int width;
 
 	public MathTextPane() {
@@ -53,7 +46,7 @@ public class MathTextPane extends JTextPane {
 	}
 
 	void replaceMathSelection(String str) {
-		Matcher pm=pattern.matcher(str);
+		Matcher pm=MathML.pattern.matcher(str);
 		int n=0;
 		while(pm.find()) {
 			int m=pm.start();
@@ -67,18 +60,9 @@ public class MathTextPane extends JTextPane {
 
 	static ImageIcon createImageIcon(String text) {
 		try {
-			return new ImageIcon(createImage(text),text);
+			return new ImageIcon(MathML.createImage(text),text);
 		} catch (Exception ex) {
 			return new ImageIcon(MathTextPane.class.getResource("/toolbarButtonGraphics/general/Bookmarks16.gif"),text);
-		}
-	}
-
-	public static Image createImage(String text) throws Exception {
-		String t = Converter.insertNameSpace(text);
-		if (Converter.isSvg(text)) return SVG.createImage(XML + t);
-		else {
-			Image c = MathML.createImage(XML + t);
-			return c == null?TeX.createImage(text):c;
 		}
 	}
 
@@ -97,9 +81,13 @@ public class MathTextPane extends JTextPane {
 
 	@Override
 	public String getText() {
+		return getText(true);
+	}
+
+	public String getText(boolean expand) {
 		MathDocument doc = getMathDocument();
 		try {
-			return doc.getText(false);
+			return doc.getText(expand);
 		} catch (BadLocationException e) {
 			return null;
 		}
@@ -107,7 +95,7 @@ public class MathTextPane extends JTextPane {
 
 	public boolean findNext(String dstData, boolean wrap) {
 		MathDocument doc = getMathDocument();
-		String t=getText();
+		String t=getText(false);
 		boolean b=dstData.equals(" ");
 		int n=t.indexOf(dstData,getSelectionEnd());
 		if(b) while(n!=-1 && doc.getIcon(n)!=null) n=t.indexOf(dstData,n+1);
@@ -120,7 +108,7 @@ public class MathTextPane extends JTextPane {
 
 	public boolean findFirst(String dstData) {
 		MathDocument doc = getMathDocument();
-		String t=getText();
+		String t=getText(false);
 		boolean b=dstData.equals(" ");
 		int n=t.indexOf(dstData);
 		if(b) while(n!=-1 && doc.getIcon(n)!=null) n=t.indexOf(dstData,n+1);

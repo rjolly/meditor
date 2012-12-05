@@ -27,6 +27,7 @@ public class MathManager {
 	private String name;
 	private ScriptEngine engine;
 	private String engineStylesheet;
+	private boolean initialized;
 	private boolean rendering;
 	private URL location;
 	private String formattingStylesheet;
@@ -61,12 +62,15 @@ public class MathManager {
 		});
 	}
 
-	public static ScriptEngineFactory getEngineFactory(String name) {
-		ServiceLoader<ScriptEngineFactory> sefLoader = ServiceLoader.load(ScriptEngineFactory.class);
-		for (ScriptEngineFactory sef : sefLoader) {
-			if(name.equals(sef.getEngineName())) return sef;
-		}
-		return sefLoader.iterator().next();
+	public Object eval(String str) throws ScriptException {
+		if (!initialized) init();
+		return engine.eval(str);
+	}
+
+	void init() throws ScriptException {
+		final String init = pref.get(name + ".init", "").trim();
+		if(init.length() > 0) engine.eval(init);
+		initialized = true;
 	}
 
 	public void reset() {
@@ -81,16 +85,11 @@ public class MathManager {
 		return pref.get(name + ".stylesheet", "");
 	}
 
-	public void setEngine(String str) {
+	void setEngine(String str) {
 		final ScriptEngineFactory sef = getEngineFactory(str);
 		name = sef.getNames().get(0);
 		engine = sef.getScriptEngine();
-		final String init = pref.get(name + ".init", "");
-		if(init.trim().length() > 0) try {
-			engine.eval(init);
-		} catch (ScriptException ex) {
-			Exceptions.printStackTrace(ex);
-		}
+		initialized = false;
 	}
 
 	public ScriptEngine getEngine() {
@@ -139,6 +138,14 @@ public class MathManager {
 
 	public String getIcon() {
 		return icon;
+	}
+
+	static ScriptEngineFactory getEngineFactory(String name) {
+		ServiceLoader<ScriptEngineFactory> sefLoader = ServiceLoader.load(ScriptEngineFactory.class);
+		for (ScriptEngineFactory sef : sefLoader) {
+			if(name.equals(sef.getEngineName())) return sef;
+		}
+		return sefLoader.iterator().next();
 	}
 
 	public static MathManager getDefault() {

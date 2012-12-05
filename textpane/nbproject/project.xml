@@ -19,10 +19,6 @@
                 <package>jscl.textpane</package>
             </public-packages>
             <class-path-extension>
-                <runtime-relative-path>ext/txt2xhtml.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/txt2xhtml.jar</binary-origin>
-            </class-path-extension>
-            <class-path-extension>
                 <runtime-relative-path>ext/jlfgr-1_0.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/jlfgr-1_0.jar</binary-origin>
             </class-path-extension>

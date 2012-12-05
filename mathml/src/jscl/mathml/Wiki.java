@@ -9,8 +9,7 @@ public class Wiki {
 	static Pattern math=Pattern.compile("(<math>.*?</math>)");
 
 	public static String copyToWiki(String document) throws Exception {
-		String s = MathML.tex(document);
-		return math(s.substring(3,s.length()-2).replaceAll(" \n", "\n"));
+		return math(MathML.tex(document));
 	}
 
 	public static String pasteFromWiki(String str) throws Exception {
@@ -22,7 +21,7 @@ public class Wiki {
 			String s=pm.group();
 			String t=Converter.insertNameSpace(s);
 			try {
-				if(MathML.createImage(Converter.XML+t)==null) t=TeX.mml(s);
+				if(MathML.createMathImage(Converter.XML+t)==null) t=TeX.mml(s);
 			} catch (Throwable ex) {}
 			b.append(str.substring(n,m));
 			b.append(Converter.stripNameSpace(t));

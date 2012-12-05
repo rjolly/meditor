@@ -62,7 +62,12 @@ public class Converter {
 			buffer.append(newlines(str.substring(n,m)));
 			if(s.endsWith(".txt")) {
 				String ss = s.substring(0, s.length() - 4);
-				buffer.append("<a href=\"" + ss + (extension?".xhtml":".txt") + "\">" + ss + "</a>");
+				if(ss.endsWith("/index")) {
+					String sss = ss.substring(0, ss.length() - 6);
+					buffer.append("<a href=\"" + (extension?ss + ".xhtml":sss + "/") + "\">" + sss + "</a>");
+				} else {
+					buffer.append("<a href=\"" + ss + (extension?".xhtml":".txt") + "\">" + ss + "</a>");
+				}
 			} else {
 				buffer.append("<a href=\"" + special(s) + "\">" + special(s) + "</a>");
 			}

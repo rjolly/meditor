@@ -26,7 +26,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.EditorKit;
 import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.CannotUndoException;
-import jscl.mathml.Code;
+import javax.script.ScriptEngine;
 import jscl.mathml.MathML;
 import jscl.mathml.SVG;
 import jscl.mathml.Wiki;
@@ -448,19 +448,18 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 		public void run() throws Exception {
 			final String selected = mathTextPane1.getSelectedText();
 			final String data = selected == null?mathTextPane1.getText():selected;
-			exec(data);
+			MathManager.getDefault().eval(code(data));
 			unselect();
 		}
 
 		@Override
 		public void evaluate() throws Exception {
 			final String data = mathTextPane1.getSelectedText();
+			final Object result = MathManager.getDefault().eval(code(data));
 			final int n = data.length() - 1;
 			if (n < 0 || "\n".equals(data.substring(n))) {
-				exec(data);
 				unselect();
 			} else {
-				final Object result = eval(data);
 				final String str = render(result);
 				mathTextPane1.replaceSelection(str);
 			}
@@ -542,17 +541,9 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 		return "".equals(str)?null:str;
 	}
 
-	private static void exec(final String str) throws Exception {
-		MathManager.getDefault().getEngine().eval(code(str));
-	}
-
-	private static Object eval(final String str) throws Exception {
-		return MathManager.getDefault().getEngine().eval(code(str));
-	}
-
 	private static String code(final String str) throws Exception {
 		final String stylesheet = MathManager.getDefault().getEngineStylesheet();
-		return "".equals(stylesheet)?str:Code.get(str, stylesheet);
+		return "".equals(stylesheet)?str:MathML.code(str, stylesheet);
 	}
 
 	private String render(Object obj) throws Exception {

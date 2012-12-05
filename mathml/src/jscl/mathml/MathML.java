@@ -12,6 +12,7 @@ import java.io.StringWriter;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -32,6 +33,7 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 
 public class MathML {
+	public static final Pattern pattern = Converter.pattern;
 	static final Map<String, Transformer> cache = new HashMap<String, Transformer>();
 
 	public static byte[] exportToPDF(String document, String stylesheet) throws Exception {
@@ -47,12 +49,12 @@ public class MathML {
 		return Converter.convert(document, stylesheet, title, feed, icon, null, true);
 	}
 
-	static String code(String document, String stylesheet) throws Exception {
-		return transform(Converter.convert(document), stylesheet).replaceAll("\u00a0"," ");
+	public static String code(String document, String stylesheet) throws Exception {
+		return transform(Converter.convert(document), stylesheet).replaceAll("\u00a0"," ").trim().replaceAll(" \n", "\n");
 	}
 
 	static String tex(String document) throws TransformerException {
-		return transform(Converter.convert(document), "/jscl/mathml/xsltml/mmltex.xsl").replaceAll("\u00a0"," ");
+		return transform(Converter.convert(document), "/jscl/mathml/xsltml/mmltex.xsl").replaceAll("\u00a0"," ").trim().replaceAll(" \n", "\n");
 	}
 
 	static String c2p(String document) throws TransformerException {
@@ -71,8 +73,18 @@ public class MathML {
 		return cache.get(stylesheet);
 	}
 
-	public static Image createImage(String document) throws Exception {
-		Node node = MathMLParserSupport.parseString(c2p(document));
+	public static Image createImage(String text) throws Exception {
+		String t = Converter.insertNameSpace(text);
+		if (Converter.isSvg(text)) return SVG.createImage(Converter.XML + t);
+		else {
+			Image c = createMathImage(Converter.XML + t);
+			return c == null?TeX.createImage(text):c;
+		}
+	}
+
+	static Image createMathImage(String document) throws Exception {
+		String str = c2p(document);
+		Node node = MathMLParserSupport.parseString(str);
 		NodeList t=node.getFirstChild().getChildNodes();
 		if(t.getLength()==1 && t.item(0).getNodeName().equals("#text")) return null;
 		return createImage(node);

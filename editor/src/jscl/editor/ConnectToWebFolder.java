@@ -118,6 +118,6 @@ public final class ConnectToWebFolder extends SystemAction {
 
 	@Override
 	public HelpCtx getHelpCtx() {
-		return new HelpCtx(ConnectToWebFolder.class);
+		return new HelpCtx(ConnectToWebFolder.class.getName());
 	}
 }
