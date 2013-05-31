@@ -30,10 +30,10 @@
                 <attr name="originalFile" stringvalue="Actions/System/org-openide-actions-CloseAction.instance"/>
             </file>
             <file name="C-F.shadow">
-                <attr name="originalFile" stringvalue="Actions/Edit/org-openide-actions-FindAction.instance"/>
+                <attr name="originalFile" stringvalue="Actions/Edit/jscl-editor-FindAction.instance"/>
             </file>
             <file name="C-H.shadow">
-                <attr name="originalFile" stringvalue="Actions/Edit/org-openide-actions-ReplaceAction.instance"/>
+                <attr name="originalFile" stringvalue="Actions/Edit/jscl-editor-ReplaceAction.instance"/>
             </file>
             <file name="C-Q.shadow">
                 <attr name="originalFile" stringvalue="Actions/Math/jscl-editor-RunAction.instance"/>
@@ -125,6 +125,10 @@
         </folder>
     </folder>
     <folder name="Menu">
+        <folder name="Edit">
+            <file name="org-openide-actions-FindAction.shadow_hidden"/>
+            <file name="org-openide-actions-ReplaceAction.shadow_hidden"/>
+        </folder>
         <folder name="Math">
             <file name="sep-6.instance">
                 <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>

@@ -20,6 +20,7 @@ public class SVG {
 		g.stream(w);
 
 		String s = w.toString();
+		s = s.replaceAll("\r", "");
 		for(int i=0;i<3;i++) s = s.substring(s.indexOf('\n')+1);
 		return s.substring(0, s.lastIndexOf('\n'));
 	}

@@ -41,13 +41,10 @@
                 <package>scala.util.continuations</package>
                 <package>scala.util.control</package>
                 <package>scala.util.hashing</package>
-                <package>scala.util.logging</package>
                 <package>scala.util.matching</package>
-                <package>scala.util.parsing.ast</package>
                 <package>scala.util.parsing.combinator</package>
                 <package>scala.util.parsing.combinator.lexical</package>
                 <package>scala.util.parsing.combinator.syntactical</package>
-                <package>scala.util.parsing.combinator.testing</package>
                 <package>scala.util.parsing.combinator.token</package>
                 <package>scala.util.parsing.input</package>
                 <package>scala.util.parsing.json</package>
@@ -63,12 +60,20 @@
                 <package>scala.xml.transform</package>
             </public-packages>
             <class-path-extension>
+                <runtime-relative-path>ext/scala-parser-combinators.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/scala-parser-combinators.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
                 <runtime-relative-path>ext/scala-reflect.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/scala-reflect.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
                 <runtime-relative-path>ext/scala-compiler.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/scala-compiler.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/scala-xml.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/scala-xml.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
                 <runtime-relative-path>ext/scala-library.jar</runtime-relative-path>

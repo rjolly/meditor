@@ -50,11 +50,11 @@ public class MathML {
 	}
 
 	public static String code(String document, String stylesheet) throws Exception {
-		return transform(Converter.convert(document), stylesheet).replaceAll("\u00a0"," ").trim().replaceAll(" \n", "\n");
+		return transform(Converter.convert(document), stylesheet).replaceAll("\r", "").replaceAll("\u00a0{8}","\t").replaceAll("\u00a0"," ").replaceAll(" +\n", "\n").trim();
 	}
 
 	static String tex(String document) throws TransformerException {
-		return transform(Converter.convert(document), "/jscl/mathml/xsltml/mmltex.xsl").replaceAll("\u00a0"," ").trim().replaceAll(" \n", "\n");
+		return transform(Converter.convert(document), "/jscl/mathml/xsltml/mmltex.xsl").replaceAll("\r", "").replaceAll("\u00a0{8}","\t").replaceAll("\u00a0"," ").replaceAll(" +\n", "\n").trim();
 	}
 
 	static String c2p(String document) throws TransformerException {

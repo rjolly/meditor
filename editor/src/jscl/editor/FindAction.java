@@ -14,8 +14,9 @@ import org.openide.awt.ActionID;
 import org.openide.util.NbBundle.Messages;
 
 @ActionID(category = "Edit",
-id = "org.openide.actions.FindAction")
-@ActionRegistration(displayName = "#CTL_FindAction")
+id = "jscl.editor.FindAction")
+@ActionRegistration(iconBase = "jscl/editor/find.gif",
+displayName = "#CTL_FindAction")
 @ActionReferences({
 	@ActionReference(path = "Menu/Edit", position = 2100)
 })

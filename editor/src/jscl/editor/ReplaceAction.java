@@ -14,7 +14,7 @@ import org.openide.awt.ActionID;
 import org.openide.util.NbBundle.Messages;
 
 @ActionID(category = "Edit",
-id = "org.openide.actions.ReplaceAction")
+id = "jscl.editor.ReplaceAction")
 @ActionRegistration(displayName = "#CTL_ReplaceAction")
 @ActionReferences({
 	@ActionReference(path = "Menu/Edit", position = 2200)
