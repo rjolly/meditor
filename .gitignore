@@ -1,15 +1,3 @@
 dist/
 build/
 private/
-/matheclipse/
-/beanshell/
-/jython/
-/jruby/
-/scala/release/
-/sympy/
-/jscl/
-/jas/
-/scas/release/
-/jlinalg/
-/viewer/
-/twitter/
