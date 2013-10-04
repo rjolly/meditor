@@ -4,24 +4,73 @@
  */
 package jscl.converter;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 
 /**
  *
  * @author raphael
  */
 public class Converter {
-	public static Pattern pattern=Pattern.compile("(?s:<math.*?/math\n?>)|(?s:<svg.*?/svg\n?>)");
-	public static String XML="<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>";
-	static Pattern links=Pattern.compile("(https?://[\\w_\\-\\.:/~\\?=&#]*)|([\\w_\\-\\./]*\\.txt)");
-	static Pattern newlines=Pattern.compile("\n");
-	static Pattern spaces=Pattern.compile("(?m:^ +)|(  +)|(\\t)");
-	static String mml=" xmlns=\"http://www.w3.org/1998/Math/MathML\"";
-	static String svg=" xmlns=\"http://www.w3.org/2000/svg\"";
+	public static final Pattern pattern=Pattern.compile("(?s:<math.*?/math\n?>)|(?s:<svg.*?/svg\n?>)");
+	public static final String XML="<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>";
+	static final Pattern links=Pattern.compile("(https?://[\\w_\\-\\.:/~\\?=&#]*)|([\\w_\\-\\./]*\\.txt)");
+	static final Pattern newlines=Pattern.compile("\n");
+	static final Pattern spaces=Pattern.compile("(?m:^ +)|(  +)|(\\t)");
+	static final String mml=" xmlns=\"http://www.w3.org/1998/Math/MathML\"";
+	static final String svg=" xmlns=\"http://www.w3.org/2000/svg\"";
+	static final Map<String, Transformer> cache = new HashMap<String, Transformer>();
+	final Transformer transformer;
+
+	public Converter(String stylesheet) {
+		try {
+			transformer = transformer(stylesheet);
+		} catch (TransformerException ex) {
+			throw new RuntimeException(ex);
+		}
+	}
+
+	public static Transformer transformer(String stylesheet) throws TransformerException {
+		if(!cache.containsKey(stylesheet)) cache.put(stylesheet, TransformerFactory.newInstance().newTransformer(new StreamSource(Thread.currentThread().getContextClassLoader().getResource(stylesheet.startsWith("/")?stylesheet.substring(1):stylesheet).toString())));
+ 		return cache.get(stylesheet);
+ 	}
+
+	public String apply(Reader reader) throws Exception {
+		Writer w = new StringWriter();
+		pipe(reader, w);
+		w.close();
+		return apply(w.toString());
+	}
+
+	public String apply(String str) throws TransformerException {
+		String s = convert(str);
+		Reader r=new StringReader(s);
+		Writer w=new StringWriter();
+		transformer.transform(new StreamSource(r), new StreamResult(w));
+		return w.toString().replaceAll("\r", "").replaceAll("\u00a0{8}", "\t").replaceAll("\u00a0", " ").replaceAll(" +\n", "\n").trim();
+	}
 
 	public static String convert(String str) {
 		return convert(str, null, null, null, null, null, false);
+	}
+
+	public static String convert(Reader reader, String stylesheet, String title, String feed, String icon, String url, boolean extension) throws IOException {
+		Writer w = new StringWriter();
+		pipe(reader, w);
+		w.close();
+		return convert(w.toString(), stylesheet, title, feed, icon, url, extension);
 	}
 
 	public static String convert(String str, String stylesheet, String title, String feed, String icon, String url, boolean extension) {
@@ -121,5 +170,13 @@ public class Converter {
 
 	public static boolean isSvg(String str) {
 		return str.substring(1,4).compareTo("svg")==0;
+	}
+
+	public static void pipe(Reader in, Writer out) throws IOException {
+		int c = in.read();
+		while(c != -1) {
+			out.write(c);
+			c = in.read();
+		}
 	}
 }

@@ -8,10 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.Reader;
 import java.io.StringReader;
-import java.io.StringWriter;
-import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.servlet.ServletException;
@@ -48,25 +45,10 @@ public class Processor extends HttpServlet {
 			resp.setContentType("text/xml; charset=utf-8");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
 			PrintWriter writer = resp.getWriter();
-			Writer w = new StringWriter();
-			pipe(reader, w);
-			w.close();
-			String str = Converter.convert(w.toString(), "/mathmlc2p.xsl", title, null, null, source ? url.toString() : null, false);
-			Reader r = new StringReader(str);
-			pipe(r, writer);
-			r.close();
+			String str = Converter.convert(reader, "/mathmlc2p.xsl", title, null, null, source ? url.toString() : null, false);
+			Converter.pipe(new StringReader(str), writer);
 			reader.close();
 			writer.close();
-		}
-	}
-
-	static void pipe(Reader in, Writer out) throws IOException {
-		while (true) {
-			int c = in.read();
-			if (c == -1) {
-				break;
-			}
-			out.write(c);
 		}
 	}
 

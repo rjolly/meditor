@@ -10,12 +10,7 @@ import java.io.Writer;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.ByteArrayOutputStream;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.regex.Pattern;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
@@ -33,15 +28,12 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 
 public class MathML {
-	public static final Pattern pattern = Converter.pattern;
-	static final Map<String, Transformer> cache = new HashMap<String, Transformer>();
-
 	public static byte[] exportToPDF(String document, String stylesheet) throws Exception {
 		String str = c2p(Converter.convert(document));
 		Reader r=new StringReader(str);
 		ByteArrayOutputStream out=new ByteArrayOutputStream();
 		Fop fop = FopFactory.newInstance().newFop(MimeConstants.MIME_PDF, out);
-		transformer(stylesheet).transform(new StreamSource(r), new SAXResult(fop.getDefaultHandler()));
+		Converter.transformer(stylesheet).transform(new StreamSource(r), new SAXResult(fop.getDefaultHandler()));
 		return out.toByteArray();
 	}
 
@@ -49,28 +41,15 @@ public class MathML {
 		return Converter.convert(document, stylesheet, title, feed, icon, null, true);
 	}
 
-	public static String code(String document, String stylesheet) throws Exception {
-		return transform(Converter.convert(document), stylesheet).replaceAll("\r", "").replaceAll("\u00a0{8}","\t").replaceAll("\u00a0"," ").replaceAll(" +\n", "\n").trim();
-	}
-
-	static String tex(String document) throws TransformerException {
-		return transform(Converter.convert(document), "/jscl/mathml/xsltml/mmltex.xsl").replaceAll("\r", "").replaceAll("\u00a0{8}","\t").replaceAll("\u00a0"," ").replaceAll(" +\n", "\n").trim();
+	public static String code(String document, String stylesheet) throws TransformerException {
+		return new Converter(stylesheet).apply(document);
 	}
 
 	static String c2p(String document) throws TransformerException {
-		return transform(document, "/jscl/mathml/mathmlc2p.xsl").replaceAll("\u2148","i");
-	}
-
-	static String transform(String document, String stylesheet) throws TransformerException {
 		Reader r=new StringReader(document);
 		Writer w=new StringWriter();
-		transformer(stylesheet).transform(new StreamSource(r), new StreamResult(w));
-		return w.toString();
-	}
-
-	static Transformer transformer(String stylesheet) throws TransformerException {
-		if(!cache.containsKey(stylesheet)) cache.put(stylesheet,TransformerFactory.newInstance().newTransformer(new StreamSource(Thread.currentThread().getContextClassLoader().getResource(stylesheet.startsWith("/")?stylesheet.substring(1):stylesheet).toString())));
-		return cache.get(stylesheet);
+		Converter.transformer("/jscl/mathml/mathmlc2p.xsl").transform(new StreamSource(r), new StreamResult(w));
+		return w.toString().replaceAll("\u2148", "i");
 	}
 
 	public static Image createImage(String text) throws Exception {

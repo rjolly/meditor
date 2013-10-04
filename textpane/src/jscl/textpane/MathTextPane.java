@@ -15,6 +15,7 @@ import javax.swing.JTextPane;
 import javax.swing.plaf.basic.BasicEditorPaneUI;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
+import jscl.converter.Converter;
 import jscl.mathml.MathML;
 
 public class MathTextPane extends JTextPane {
@@ -46,7 +47,7 @@ public class MathTextPane extends JTextPane {
 	}
 
 	void replaceMathSelection(String str) {
-		Matcher pm=MathML.pattern.matcher(str);
+		Matcher pm=Converter.pattern.matcher(str);
 		int n=0;
 		while(pm.find()) {
 			int m=pm.start();
