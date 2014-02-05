@@ -16,6 +16,7 @@ import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledEditorKit;
+import javax.swing.text.ViewFactory;
 import jscl.textpane.MathDocument;
 import jscl.textpane.MathTextPane;
 import org.openide.util.Exceptions;
@@ -30,6 +31,11 @@ public class MathEditorKit extends StyledEditorKit {
 	@Override
 	public Document createDefaultDocument() {
 		return new MathDocument();
+	}
+
+	@Override
+	public ViewFactory getViewFactory() {
+		return new MathViewFactory();
 	}
 
 	@Override
