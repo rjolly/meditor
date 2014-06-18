@@ -19,7 +19,7 @@
   <resources os="Mac OS X">
       <property name="netbeans.user" value="${user.home}/Library/Application Support/${app.name}"/>
   </resources>
-  <application-desc>
+  <application-desc main-class="org.netbeans.modules.apisupport.jnlplauncher.Main">
     <argument>--branding</argument>
     <argument>${branding.token}</argument>
   </application-desc>
