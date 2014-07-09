@@ -10,7 +10,6 @@ import java.io.Writer;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.ByteArrayOutputStream;
-import javax.xml.transform.TransformerException;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
@@ -29,26 +28,26 @@ import org.w3c.dom.Node;
 
 public class MathML {
 	public static byte[] exportToPDF(String document, String stylesheet) throws Exception {
-		String str = c2p(Converter.convert(document));
+		String str = c2p(Converter.apply(document, stylesheet));
 		Reader r=new StringReader(str);
 		ByteArrayOutputStream out=new ByteArrayOutputStream();
 		Fop fop = FopFactory.newInstance().newFop(MimeConstants.MIME_PDF, out);
-		Converter.transformer(stylesheet).transform(new StreamSource(r), new SAXResult(fop.getDefaultHandler()));
+		Converter.instance(stylesheet).transformer.transform(new StreamSource(r), new SAXResult(fop.getDefaultHandler()));
 		return out.toByteArray();
 	}
 
 	public static String exportToXHTML(String document, String stylesheet, String title, String feed, String icon) {
-		return Converter.convert(document, stylesheet, title, feed, icon, null, true);
+		return Converter.apply(document, stylesheet, title, feed, icon, null, true);
 	}
 
-	public static String code(String document, String stylesheet) throws TransformerException {
-		return new Converter(stylesheet).apply(document);
+	public static String code(String document, String stylesheet) throws Exception {
+		return Converter.instance(stylesheet).apply(document);
 	}
 
-	static String c2p(String document) throws TransformerException {
+	static String c2p(String document) throws Exception {
 		Reader r=new StringReader(document);
 		Writer w=new StringWriter();
-		Converter.transformer("/jscl/mathml/mathmlc2p.xsl").transform(new StreamSource(r), new StreamResult(w));
+		Converter.instance("/jscl/mathml/mathmlc2p.xsl").transformer.transform(new StreamSource(r), new StreamResult(w));
 		return w.toString().replaceAll("\u2148", "i");
 	}
 

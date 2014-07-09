@@ -45,8 +45,7 @@ public class Processor extends HttpServlet {
 			resp.setContentType("text/xml; charset=utf-8");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
 			PrintWriter writer = resp.getWriter();
-			String str = Converter.convert(reader, "/mathmlc2p.xsl", title, null, null, source ? url.toString() : null, false);
-			Converter.pipe(new StringReader(str), writer);
+			Converter.write(Converter.apply(Converter.read(reader), "/mathmlc2p.xsl", title, null, null, source ? url.toString() : null, false), writer);
 			reader.close();
 			writer.close();
 		}

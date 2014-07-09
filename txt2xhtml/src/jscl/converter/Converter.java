@@ -9,6 +9,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.net.URL;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -31,49 +32,51 @@ public class Converter {
 	static final Pattern spaces=Pattern.compile("(?m:^ +)|(  +)|(\\t)");
 	static final String mml=" xmlns=\"http://www.w3.org/1998/Math/MathML\"";
 	static final String svg=" xmlns=\"http://www.w3.org/2000/svg\"";
-	static final Map<String, Transformer> cache = new HashMap<String, Transformer>();
-	final Transformer transformer;
+	static final Map<String, Converter> cache = new HashMap<String, Converter>();
+	public final Transformer transformer;
 
-	public Converter(String stylesheet) {
-		try {
-			transformer = transformer(stylesheet);
-		} catch (TransformerException ex) {
-			throw new RuntimeException(ex);
-		}
+	private Converter(final Transformer transformer) {
+		this.transformer = transformer;
 	}
 
-	public static Transformer transformer(String stylesheet) throws TransformerException {
-		if(!cache.containsKey(stylesheet)) cache.put(stylesheet, TransformerFactory.newInstance().newTransformer(new StreamSource(Thread.currentThread().getContextClassLoader().getResource(stylesheet.startsWith("/")?stylesheet.substring(1):stylesheet).toString())));
+	public static Converter instance(String stylesheet) throws Exception {
+		if(stylesheet.startsWith("/")) stylesheet = stylesheet.substring(1);
+		if(!cache.containsKey(stylesheet)) {
+			URL resource = Thread.currentThread().getContextClassLoader().getResource(stylesheet);
+			if (resource == null) throw new Exception("Stylesheet not found: \"" + stylesheet + "\"");
+			cache.put(stylesheet, new Converter(TransformerFactory.newInstance().newTransformer(new StreamSource(resource.toString()))));
+		}
  		return cache.get(stylesheet);
  	}
 
-	public String apply(Reader reader) throws Exception {
+	public static String read(Reader reader) throws IOException {
 		Writer w = new StringWriter();
 		pipe(reader, w);
 		w.close();
-		return apply(w.toString());
+		return w.toString();
+	}
+
+	public static void write(String str, Writer writer) throws IOException {
+		pipe(new StringReader(str), writer);
+	}
+
+	public String apply(Reader reader) throws Exception {
+		return apply(read(reader));
 	}
 
 	public String apply(String str) throws TransformerException {
-		String s = convert(str);
+		String s = apply(str, null);
 		Reader r=new StringReader(s);
 		Writer w=new StringWriter();
 		transformer.transform(new StreamSource(r), new StreamResult(w));
 		return w.toString().replaceAll("\r", "").replaceAll("\u00a0{8}", "\t").replaceAll("\u00a0", " ").replaceAll(" +\n", "\n").trim();
 	}
 
-	public static String convert(String str) {
-		return convert(str, null, null, null, null, null, false);
+	public static String apply(String str, String stylesheet) {
+		return apply(str, stylesheet, null, null, null, null, false);
 	}
 
-	public static String convert(Reader reader, String stylesheet, String title, String feed, String icon, String url, boolean extension) throws IOException {
-		Writer w = new StringWriter();
-		pipe(reader, w);
-		w.close();
-		return convert(w.toString(), stylesheet, title, feed, icon, url, extension);
-	}
-
-	public static String convert(String str, String stylesheet, String title, String feed, String icon, String url, boolean extension) {
+	public static String apply(String str, String stylesheet, String title, String feed, String icon, String url, boolean extension) {
 		Matcher pm=pattern.matcher(str);
 		StringBuffer b=new StringBuffer(XML);
 		if (stylesheet != null) b.append("<?xml-stylesheet href=\"").append(stylesheet).append("\" type=\"text/xsl\"?>");
@@ -172,7 +175,7 @@ public class Converter {
 		return str.substring(1,4).compareTo("svg")==0;
 	}
 
-	public static void pipe(Reader in, Writer out) throws IOException {
+	private static void pipe(Reader in, Writer out) throws IOException {
 		int c = in.read();
 		while(c != -1) {
 			out.write(c);

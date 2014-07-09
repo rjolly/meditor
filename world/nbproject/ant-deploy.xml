@@ -2,7 +2,7 @@
 <project default="-deploy-ant" basedir=".">
 
     <!-- Google App Engine Properties -->
-    <property name="appengine.location" value="/home/raphael/appengine-java-sdk"/>
+    <property name="appengine.location" value="${user.home}/appengine-java-sdk"/>
     <property name="appengine.http.port" value="8080"/>
     <property name="appengine.debug.port" value="8765"/>
     <property name="jvmargs" value=""/>

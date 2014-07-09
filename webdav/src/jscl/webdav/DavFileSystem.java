@@ -1,9 +1,9 @@
 package jscl.webdav;
 
-import com.googlecode.sardine.DavResource;
-import com.googlecode.sardine.Sardine;
-import com.googlecode.sardine.SardineFactory;
-import com.googlecode.sardine.impl.SardineImpl;
+import com.github.sardine.DavResource;
+import com.github.sardine.Sardine;
+import com.github.sardine.SardineFactory;
+import com.github.sardine.impl.SardineImpl;
 import java.beans.PropertyVetoException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
