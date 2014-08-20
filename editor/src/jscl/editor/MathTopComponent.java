@@ -131,6 +131,9 @@ public final class MathTopComponent extends TopComponent implements LookupListen
 		plot.pack();
 		plot.setLocationRelativeTo(this);
 
+		working.pack();
+		working.setLocationRelativeTo(this);
+
 		doc = (MathDocument)kit.createDefaultDocument();
 
 		mathTextPane1.setEditorKit(kit);
@@ -147,7 +150,7 @@ public final class MathTopComponent extends TopComponent implements LookupListen
 		content.add(new MathEditorCapability());
 
 		System.setOut(new PrintStream(new BufferedOutputStream(getOutputStream(io.getOut()), 128), true));
-        }
+	}
 
 	public OutputStream getOutputStream(final Writer writer) {
 		return new OutputStream() {
@@ -187,6 +190,8 @@ public final class MathTopComponent extends TopComponent implements LookupListen
 		jButton3 = new javax.swing.JButton();
 		jButton4 = new javax.swing.JButton();
 		plot = new javax.swing.JDialog();
+		working = new javax.swing.JDialog();
+		jLabel3 = new javax.swing.JLabel();
 		jScrollPane1 = new javax.swing.JScrollPane();
 		mathTextPane1 = new jscl.textpane.MathTextPane();
 
@@ -270,6 +275,29 @@ public final class MathTopComponent extends TopComponent implements LookupListen
 		plot.setModal(true);
 		plot.setPreferredSize(new java.awt.Dimension(400, 400));
 
+		working.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+		working.setModal(true);
+		working.setResizable(false);
+
+		org.openide.awt.Mnemonics.setLocalizedText(jLabel3, org.openide.util.NbBundle.getMessage(MathTopComponent.class, "MathTopComponent.jLabel3.text")); // NOI18N
+
+		javax.swing.GroupLayout workingLayout = new javax.swing.GroupLayout(working.getContentPane());
+		working.getContentPane().setLayout(workingLayout);
+		workingLayout.setHorizontalGroup(
+			workingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			.addGroup(workingLayout.createSequentialGroup()
+				.addContainerGap()
+				.addComponent(jLabel3)
+				.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		workingLayout.setVerticalGroup(
+			workingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			.addGroup(workingLayout.createSequentialGroup()
+				.addContainerGap()
+				.addComponent(jLabel3)
+				.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+
 		mathTextPane1.setEditable(false);
 		mathTextPane1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
 		jScrollPane1.setViewportView(mathTextPane1);
@@ -300,6 +328,7 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 	jDialog1.setVisible(false);
+	mathTextPane1.requestFocus();
 }//GEN-LAST:event_jButton1ActionPerformed
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
@@ -310,11 +339,13 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 	private javax.swing.JDialog jDialog1;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
+	private javax.swing.JLabel jLabel3;
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JTextField jTextField1;
 	private javax.swing.JTextField jTextField2;
 	private jscl.textpane.MathTextPane mathTextPane1;
 	private javax.swing.JDialog plot;
+	private javax.swing.JDialog working;
 	// End of variables declaration//GEN-END:variables
 	@Override
 	public void componentOpened() {
@@ -456,25 +487,110 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 		}
 
 		@Override
-		public void run() throws Exception {
+		public void run() {
 			final String selected = mathTextPane1.getSelectedText();
 			final String data = selected == null?mathTextPane1.getText():selected;
-			MathManager.getDefault().eval(code(data));
+			(new Thread() {
+
+				@Override
+				public void run() {
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+			working.setVisible(true);
+				}
+			});
+			try {
+				MathManager.getDefault().eval(code(data));
+			} catch (Exception e) {
+				SwingUtilities.invokeLater(new Runnable() {
+
+					@Override
+					public void run() {
+				working.setVisible(false);
+					}
+				});
+				throw new RuntimeException(e);
+			}
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+			working.setVisible(false);
 			unselect();
+				}
+			});
+				}
+			}).start();
 		}
 
+		Object result;
+		String rendered;
+
 		@Override
-		public void evaluate() throws Exception {
+		public void evaluate() {
 			final String selected = mathTextPane1.getSelectedText();
 			final String data = selected == null?"":selected;
-			final Object result = MathManager.getDefault().eval(code(data));
+			(new Thread() {
+
+				@Override
+				public void run() {
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+			working.setVisible(true);
+;
+				}
+			});
+			try {
+				result = MathManager.getDefault().eval(code(data));
+			} catch (Exception e) {
+				SwingUtilities.invokeLater(new Runnable() {
+
+					@Override
+					public void run() {
+				working.setVisible(false);
+					}
+				});
+				throw new RuntimeException(e);
+			}
 			final int n = data.length() - 1;
 			if (n < 0 || "\n".equals(data.substring(n))) {
+				SwingUtilities.invokeLater(new Runnable() {
+
+					@Override
+					public void run() {
+				working.setVisible(false);
 				unselect();
+					}
+				});
 			} else {
-				final String str = render(result);
-				mathTextPane1.replaceSelection(str);
+				try {
+					rendered = render(result);
+				} catch (Exception e) {
+					SwingUtilities.invokeLater(new Runnable() {
+
+						@Override
+						public void run() {
+					working.setVisible(false);
+						}
+					});
+					throw new RuntimeException(e);
+				}
+				SwingUtilities.invokeLater(new Runnable() {
+
+					@Override
+					public void run() {
+				working.setVisible(false);
+				mathTextPane1.replaceSelection(rendered);
+				mathTextPane1.requestFocus();
+					}
+				});
 			}
+				}
+			}).start();
 		}
 
 		@Override
@@ -510,7 +626,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 		}
 
 		@Override
-		public void export() throws IOException {
+		public void export() {
 			final MathManager manager = MathManager.getDefault();
 			final String formattingStylesheet = manager.getFormattingStylesheet();
 			final String stylesheet = manager.getStylesheet();
@@ -522,32 +638,50 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 			final String extension = ((MathFileFilter)chooser.getFileFilter()).extension;
 			final File f = putExtension(chooser.getSelectedFile(), extension);
 			if(f.exists()) if (!overwrite()) return;
+			(new Thread() {
+
+				@Override
+				public void run() {
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+			working.setVisible(true);
+;
+				}
+			});
 			try {
+				if("pdf".equals(extension)) {
+					byte b[] = MathML.exportToPDF(doc.getText(), orNull(formattingStylesheet));
+					OutputStream out = new FileOutputStream(f);
+					out.write(b);
+					out.close();
+				} else {
+					String s=MathML.exportToXHTML(doc.getText(), orNull(stylesheet), orNull(name), orNull(feed), orNull(icon));
+					Writer out=new FileWriter(f);
+					out.write(s);
+					out.close();
+				}
+			} catch (Exception e) {
 				SwingUtilities.invokeLater(new Runnable() {
 
 					@Override
 					public void run() {
-						try {
-							if("pdf".equals(extension)) {
-								byte b[] = MathML.exportToPDF(doc.getText(), orNull(formattingStylesheet));
-								OutputStream out = new FileOutputStream(f);
-								out.write(b);
-								out.close();
-							} else {
-								String s=MathML.exportToXHTML(doc.getText(), orNull(stylesheet), orNull(name), orNull(feed), orNull(icon));
-								Writer out=new FileWriter(f);
-								out.write(s);
-								out.close();
-
-							}
-						} catch (Exception ex) {
-							Exceptions.printStackTrace(ex);
-						}
+				working.setVisible(false);
 					}
 				});
-			} catch (Exception ex) {
-				ex.printStackTrace();
+				throw new RuntimeException(e);
 			}
+			SwingUtilities.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+			working.setVisible(false);
+			mathTextPane1.requestFocus();
+				}
+			});
+				}
+			}).start();
 		}
 	}
 
@@ -587,6 +721,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 		int n = mathTextPane1.getCaretPosition();
 		mathTextPane1.setSelectionStart(n);
 		mathTextPane1.setSelectionEnd(n);
+		mathTextPane1.requestFocus();
 	}
 
 	private static Clipboard getClipboard() {
