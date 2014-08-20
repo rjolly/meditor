@@ -9,6 +9,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,6 +17,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Writer;
 import java.io.FileWriter;
+import java.io.PrintStream;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 import java.util.Collection;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
@@ -50,6 +54,8 @@ import org.openide.util.LookupListener;
 import org.openide.util.lookup.AbstractLookup;
 import org.openide.util.lookup.InstanceContent;
 import org.openide.util.lookup.ProxyLookup;
+import org.openide.windows.IOProvider;
+import org.openide.windows.InputOutput;
 import org.openide.windows.WindowManager;
 
 /**
@@ -111,6 +117,8 @@ public final class MathTopComponent extends TopComponent implements LookupListen
 			MathTopComponent.this.fileChanged(fe);
 		}
 	};
+	private final Charset cs = Charset.defaultCharset();
+	private InputOutput io = IOProvider.getDefault().getIO("Standard output", false);
 
 	public MathTopComponent() {
 		initComponents();
@@ -137,6 +145,23 @@ public final class MathTopComponent extends TopComponent implements LookupListen
 		content = new InstanceContent();
 		lookup = new AbstractLookup(content);
 		content.add(new MathEditorCapability());
+
+		System.setOut(new PrintStream(new BufferedOutputStream(getOutputStream(io.getOut()), 128), true));
+        }
+
+	public OutputStream getOutputStream(final Writer writer) {
+		return new OutputStream() {
+
+			@Override
+			public void write(int b) throws IOException {
+				write(new byte[] {(byte)b});
+			}
+
+			@Override
+			public void write(byte[] b, int off, int len) throws IOException {
+				writer.write(cs.decode(ByteBuffer.wrap(b, off, len)).array());
+			}
+		};
 	}
 
 	@Override
