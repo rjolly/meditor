@@ -503,7 +503,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 			});
 			try {
 				MathManager.getDefault().eval(code(data));
-			} catch (Exception e) {
+			} catch (Throwable e) {
 				SwingUtilities.invokeLater(new Runnable() {
 
 					@Override
@@ -546,7 +546,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 			});
 			try {
 				result = MathManager.getDefault().eval(code(data));
-			} catch (Exception e) {
+			} catch (Throwable e) {
 				SwingUtilities.invokeLater(new Runnable() {
 
 					@Override
@@ -569,7 +569,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 			} else {
 				try {
 					rendered = render(result);
-				} catch (Exception e) {
+				} catch (Throwable e) {
 					SwingUtilities.invokeLater(new Runnable() {
 
 						@Override
@@ -662,7 +662,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 					out.write(s);
 					out.close();
 				}
-			} catch (Exception e) {
+			} catch (Throwable e) {
 				SwingUtilities.invokeLater(new Runnable() {
 
 					@Override
