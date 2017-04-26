@@ -1,0 +1,45 @@
+
+Q1. When I want to do a calculation, the palm displays this error message : jscl/text/ParseException.
+
+A1. The auto-select has been disabled in v0.11 and subsequents because expressions can contain newlines so there isn't any reliable means to guess the end of selections. Select the expression with the stylus.
+
+
+Q2. Do I need MathLib ?
+
+A2. No.
+
+
+Q3. How do I run the bsh examples ?
+
+A3. Add the meditor bin directory to the path, give bin/jscl execution privilege (unix), then type : jscl [example.bsh]
+
+
+Q4. My limit input is returned unchanged. What am I doing wrong ?
+
+A4. Nothing. The limit operation isn't implemented. It is kept because of its MathML rendering usefulness.
+
+
+Q5. Factoring the expression [insert mildly complex expression] takes forever. Is there an endless loop ?
+
+A5. The factorization algorithm is an attempt to re-invent polynomial factorization from scratch, with a non-modular approach. But it is inefficient. I need to implement a classical Berlekamp + Hensel lifting algorithm.
+
+
+Q6. Is there a tutorial ?
+
+A6. Yes, see presentation.txt (desktop version) or the presentation memo item (palm version).
+
+
+Q7. What is the action of the buttons of the palm interface ?
+
+A7. It is described in the buttons memo item.
+
+
+Q8. Could we put the computed expression on a new line and preserve the original input line ? It's nice in CAS systems to see a progression of input lines and output lines so you can follow each math step that was taken.
+
+A8. It was possible in former versions, by terminating the input expression with "=", and was removed when the parser was made to accept equations. As the software is meant to be a typesetting system rather than a calculator, this is likely to remain, despite the overhead of copy/pasting.
+
+
+Q9. When will there be v2.0 for palm ?
+
+A9. There already is. It is included in the desktop plateform package. The other handheld versions however are discontinued.
+

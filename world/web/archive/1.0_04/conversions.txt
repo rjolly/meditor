@@ -1,0 +1,40 @@
+operations: + - * / =
+types: integer expression rational double complex vector matrix
+composite: vector matrix
+scalar: all but composite
+numeric: double complex
+
+arithmetic:
++-*/=  |integer	expr	ratio	numeric	compos
+-------+--------------------------------------
+integer|integer	expr	ratio	numeric	compos
+expr   |	expr	n/a	n/a	compos
+ratio  |		ratio	numeric	compos
+numeric|			numeric	compos
+compos |				(*)
+
+numeric:
++-*/=  |double	complex	compos
+-------+----------------------
+double 	double	complex	compos
+complex|	complex	compos
+compos |		(*)
+
+(*)
++-=    |scalar	vector	matrix
+-------+----------------------
+scalar |scalar	vector	matrix
+vector |	vector	n/a
+matrix |		matrix
+
+*      |scalar	vector	matrix
+-------+----------------------
+scalar |scalar	vector	matrix
+vector |	scalar	vector
+matrix |		matrix
+
+/      |scalar	vector	matrix
+-------+----------------------
+scalar |scalar	n/a	matrix
+vector |vector	n/a	vector
+matrix |matrix	n/a	matrix

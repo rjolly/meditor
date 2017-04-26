@@ -1,0 +1,7 @@
+index
+
+changes.txt
+faq.txt
+gpl.txt
+readme.txt
+release_notes.txt

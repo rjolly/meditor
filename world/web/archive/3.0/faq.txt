@@ -1,0 +1,5 @@
+
+Q10. There are source code and API docs for jscl in version 2.3. These are missing in version 3.0. Are you discontinuing meditor as a java cas library ?
+
+A10. Yes and no. The version of the jscl library used in meditor3.0 is 2.3_05, which means that the sources and API docs there are still relevant. Version 3.0's big change is that it accepts several engines beside jscl (like jas, yacas etc.) but jscl itself has not changed. That said, I will now devote most of my time to the new ScAS engine, with only minimum maintenance of jscl.
+

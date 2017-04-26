@@ -1,0 +1,276 @@
+<math>
+<mrow>
+ <mi>cos</mi>
+ <mfenced>
+  <mrow>
+   <mi>a</mi>
+   <mo>+</mo>
+   <mi>b</mi>
+  </mrow>
+ </mfenced>
+</mrow>
+<mo>=</mo>
+<mrow>
+ <mi>cos</mi>
+ <mfenced>
+  <mrow>
+   <mi>a</mi>
+  </mrow>
+ </mfenced>
+ <mi>cos</mi>
+ <mfenced>
+  <mrow>
+   <mi>b</mi>
+  </mrow>
+ </mfenced>
+ <mo>-</mo>
+ <mi>sin</mi>
+ <mfenced>
+  <mrow>
+   <mi>a</mi>
+  </mrow>
+ </mfenced>
+ <mi>sin</mi>
+ <mfenced>
+  <mrow>
+   <mi>b</mi>
+  </mrow>
+ </mfenced>
+</mrow>
+</math>
+<math>
+<mrow>
+ <mi>sin</mi>
+ <mfenced>
+  <mrow>
+   <mi>a</mi>
+   <mo>+</mo>
+   <mi>b</mi>
+  </mrow>
+ </mfenced>
+</mrow>
+<mo>=</mo>
+<mrow>
+ <mi>cos</mi>
+ <mfenced>
+  <mrow>
+   <mi>b</mi>
+  </mrow>
+ </mfenced>
+ <mi>sin</mi>
+ <mfenced>
+  <mrow>
+   <mi>a</mi>
+  </mrow>
+ </mfenced>
+ <mo>+</mo>
+ <mi>cos</mi>
+ <mfenced>
+  <mrow>
+   <mi>a</mi>
+  </mrow>
+ </mfenced>
+ <mi>sin</mi>
+ <mfenced>
+  <mrow>
+   <mi>b</mi>
+  </mrow>
+ </mfenced>
+</mrow>
+</math>
+<math>
+<mrow>
+ <mi>tan</mi>
+ <mfenced>
+  <mrow>
+   <mi>a</mi>
+   <mo>+</mo>
+   <mi>b</mi>
+  </mrow>
+ </mfenced>
+</mrow>
+<mo>=</mo>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mi>tan</mi>
+   <mfenced>
+    <mrow>
+     <mi>a</mi>
+    </mrow>
+   </mfenced>
+   <mo>+</mo>
+   <mi>tan</mi>
+   <mfenced>
+    <mrow>
+     <mi>b</mi>
+    </mrow>
+   </mfenced>
+  </mrow>
+  <mrow>
+   <mn>1</mn>
+   <mo>-</mo>
+   <mi>tan</mi>
+   <mfenced>
+    <mrow>
+     <mi>a</mi>
+    </mrow>
+   </mfenced>
+   <mi>tan</mi>
+   <mfenced>
+    <mrow>
+     <mi>b</mi>
+    </mrow>
+   </mfenced>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>
+<math>
+<mrow>
+ <mi>cos</mi>
+ <mfenced>
+  <mrow>
+   <mn>2</mn>
+   <mi>x</mi>
+  </mrow>
+ </mfenced>
+</mrow>
+<mo>=</mo>
+<mrow>
+ <mo>-</mo>
+ <mn>1</mn>
+ <mo>+</mo>
+ <mn>2</mn>
+ <msup>
+  <mi>cos</mi>
+  <mn>2</mn>
+ </msup>
+ <mfenced>
+  <mrow>
+   <mi>x</mi>
+  </mrow>
+ </mfenced>
+</mrow>
+</math>
+<math>
+<mrow>
+ <mi>tan</mi>
+ <mfenced>
+  <mrow>
+   <mn>2</mn>
+   <mi>x</mi>
+  </mrow>
+ </mfenced>
+</mrow>
+<mo>=</mo>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mn>2</mn>
+   <mi>tan</mi>
+   <mfenced>
+    <mrow>
+     <mi>x</mi>
+    </mrow>
+   </mfenced>
+  </mrow>
+  <mrow>
+   <mn>1</mn>
+   <mo>-</mo>
+   <msup>
+    <mi>tan</mi>
+    <mn>2</mn>
+   </msup>
+   <mfenced>
+    <mrow>
+     <mi>x</mi>
+    </mrow>
+   </mfenced>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>
+<math>
+<mrow>
+ <mi>cos</mi>
+ <mfenced>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mi>x</mi>
+    </mrow>
+    <mn>2</mn>
+   </mfrac>
+  </mrow>
+ </mfenced>
+</mrow>
+<mo>=</mo>
+<mrow>
+ <msqrt>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mn>1</mn>
+     <mo>+</mo>
+     <mi>cos</mi>
+     <mfenced>
+      <mrow>
+       <mi>x</mi>
+      </mrow>
+     </mfenced>
+    </mrow>
+    <mn>2</mn>
+   </mfrac>
+  </mrow>
+ </msqrt>
+</mrow>
+</math>
+<math>
+<mrow>
+ <mi>tan</mi>
+ <mfenced>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mi>x</mi>
+    </mrow>
+    <mn>2</mn>
+   </mfrac>
+  </mrow>
+ </mfenced>
+</mrow>
+<mo>=</mo>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mo>-</mo>
+   <mn>1</mn>
+   <mo>+</mo>
+   <msqrt>
+    <mrow>
+     <mn>1</mn>
+     <mo>+</mo>
+     <msup>
+      <mi>tan</mi>
+      <mn>2</mn>
+     </msup>
+     <mfenced>
+      <mrow>
+       <mi>x</mi>
+      </mrow>
+     </mfenced>
+    </mrow>
+   </msqrt>
+  </mrow>
+  <mrow>
+   <mi>tan</mi>
+   <mfenced>
+    <mrow>
+     <mi>x</mi>
+    </mrow>
+   </mfenced>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>

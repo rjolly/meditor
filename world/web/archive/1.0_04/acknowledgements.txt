@@ -1,0 +1,52 @@
+
+Yves Noyer
+  pointed out several bugs
+
+Jeffry Madura
+  tested meditor on Zaurus
+
+Eric Smith
+  tested meditor on Jornada 820 and 690
+
+Sergio Melas
+  found a bug in the integral
+
+Andrea Boright
+  found a bug in the factorization
+
+Ross Green
+  advised to use the java Map interface
+
+Nicolas Rosillo
+  drew my attention to Fabrizio Mancini's page
+
+Marten van Wezel
+  made me realize that the factorization can be recursive ; requested a matrix inverse
+
+Toyin Akin
+  pointed out a limitation of antiderivative() with respect to integral+expand() ; suggested to implement the rules of trigonometrical identities
+
+Philippe d'Oreye
+  asked for div and mod
+
+Sione Palu
+  suggested to provide tex code generation
+
+Michael Braginsky
+  advised to use the Memo Pad Archive (*.mpa) format for meditor-palm docs
+
+Mike Thomas
+  advised to implement the geometric algebra product
+
+David Schneider
+  suggested to implement some number-theoretic functions
+
+Oleg Volkov
+  pointed out an issue with building meditor-palm under j2sdk1.4
+
+Markus Hohenwarter
+  asked for the possibility to integrate functions like "sin(x-3)"
+
+Dimitri Pissarenko
+  wrote the Export to XHTML function
+

@@ -1,0 +1,124 @@
+			meditor
+
+
+  meditor is a text editor with symbolic computation capabilities. In the first place, it is intended to solve algebraic equation systems of any degree, with several indeterminates, by computing the Groebner bases of polynomial ideals.
+
+For example, let this system for the indeterminates x, y:
+
+x^2 + y^2 = 4
+x*y = 1
+
+We put:
+
+groebner({x^2 + y^2 - 4, x*y - 1}, {x, y})
+
+By selecting the text bloc above and by doing "Math->Expand" in the menu bar (Ctrl+E), we get:
+
+{1-4*x^2+x^4, 4*x-x^3-y}
+
+which allows to find x, then y from x. This operation doesn't calculate the roots, it just writes the equation. For example, it wouldn't give "a = 4/5" but "5*a-4" ("= 0" implied).
+
+Groebner basis computation is explained in more details in the file math_background.txt.
+
+
+  meditor allows vector and matrix expressions processing. Vectors are noted as {a,b,c} and matrices as {{a,b},{c,d}}.
+
+To illustrate their use, let's put a simple system of linear equations. We write:
+
+matrix(
+{{a[0][0], a[0][1]},
+{a[1][0], a[1][1]}},{x[0],
+                     x[1]})-{b[0],
+                             b[1]}
+
+("= 0" implied ; as meditor can't deal with non-commutative operations, it is mandatory to use "matrix(A,B)" instead of "A*B"). By selecting the expression above and by doing "Expand", we get:
+
+{-b[0]+a[0][0]*x[0]+a[0][1]*x[1], -b[1]+a[1][0]*x[0]+a[1][1]*x[1]}
+
+, which allows to write the following input that can be used to solve the linear system:
+
+groebner({-b[0]+a[0][0]*x[0]+a[0][1]*x[1],
+-b[1]+a[1][0]*x[0]+a[1][1]*x[1]},
+{a[0][0], a[0][1], a[1][0], a[1][1], b[0], b[1], x[0], x[1]})
+
+Other vector and matrix operations are listed in quickref.txt, along with all the functions and operations available in meditor.
+
+
+  meditor allows polynomial solving:
+
+solve(c+b*x+a*x^2,x)
+=
+root[0](c, b, a)
+
+, variable substitution:
+
+subst(1/x^2,x,a)
+=
+1/a^2
+
+, and simplification of expressions using the "Math->Simplify" command in the menu bar (Ctrl+Q):
+
+exp(sqrt(-1)*pi)
+=
+-1
+
+It is often useful to rewrite an expression in term of elementary functions (log, exp, frac, sqrt, implicit roots), using the "Math->Elementary" command (Ctrl+L), before simplifying it. For instance:
+
+cos(x)^2+sin(x)^2
+=
+(1/2)^2*(1/exp(sqrt(-1)*x))^2+(1/2)^2*sqrt(-1)^2*(1/exp(sqrt(-1)*x))^2+2*(1/2)^2*1/exp(sqrt(-1)*x)*exp(sqrt(-1)*x)-2*(1/2)^2*sqrt(-1)^2*1/exp(sqrt(-1)*x)*exp(sqrt(-1)*x)+(1/2)^2*exp(sqrt(-1)*x)^2+(1/2)^2*sqrt(-1)^2*exp(sqrt(-1)*x)^2
+=
+1
+
+
+  As one can see, meditor knows of some usual functions. It can compute derivatives and integrals too, as shown below:
+
+d(cos(f(x)),x)
+=
+-f'(x)*sin(f(x))
+
+curl(grad(f(x,y,z),{x,y,z}),{x,y,z})
+=
+{0, 0, 0}
+
+sum(d(exp(x),x,0,i)/i!*(x-0)^i,i,0,4)
+=
+1+x+1/2*x^2+1/6*x^3+1/24*x^4
+
+integral(1/(1+x^2),x)
+=
+root[0](1, 0, 4)*log(1-2*x*root[0](1, 0, 4))+root[1](1, 0, 4)*log(1-2*x*root[1](1, 0, 4))
+
+
+  Another ability of the software is boolean algebra. For it polynomials in Z/2Z are used, by specifying the modulo as the fourth parameter of the "groebner" operation.
+
+0 represents "false", 1 "true", addition an "exclusive or", product an "and".
+
+The statement "a implies b", equivalent to "not a or b", that is "not (a and not b)", is written : a*(1+b) ("= 0" implied).
+
+"sokrates is a man" is written sokrates*(1+man)
+"a man is mortal" is written man*(1+mortal)
+
+We put the system:
+
+groebner({sokrates*(1+man),
+man*(1+mortal)},
+{man, mortal, sokrates},lex,2)
+
+"Expand", we get:
+
+{man+man*mortal, sokrates+man*sokrates, sokrates+mortal*sokrates}
+
+The last equation can be factorized (Ctrl+T) into : (1+mortal)*sokrates, which reads : "sokrates implies mortal".
+
+Other (positive) modulos are also usable.
+
+
+  Lastly, meditor allows web publishing, using the "File->Export to XHTML" command. The document is exported into a file with the .xhtml extension, near the original .txt file. One has to enclose each expression to be rendered within double brackets, like in:
+
+[[x^2*y^2]]
+
+This can be (un)done using the "Math->toMathML" command on the selected expression.
+
+
+  The complete syntax of meditor is found in the file grammar.txt. All the operations we've seen take an "Expression" as input.

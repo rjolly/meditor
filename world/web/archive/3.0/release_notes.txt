@@ -1,0 +1,41 @@
+		meditor version 3.0
+
+
+  meditor is undergoing substantial refactorings with respect to the previous state of affairs. The guideline is to reaffirm the direction of the editor form, while at the same time trying to go closer to the CLI-based functionning of the CAS mainstream, which is obviously more powerful.
+
+  Previously, what meditor allowed was to select an expression and to apply a transformation using some GUI support. The expression was then discarded and replaced by the result. There was no state memorization (no variable assignment). In the new design, what is now possible is the execution of arbitrary parts of a script, not just the evaluation of expressions.
+
+  There had to be a way to distinguish the two modes. The chosen means is based on carriage returns. If there is at least one, then the selected code is executed, otherwise it is evaluated. More precisely, the code is assumed to be executable if there is a newligne at the last string position. In that case, the selection is not replaced with the result, which goes to the standard output. Conversely, if the processed string is an expression, then the selection is overwritten with its value, as before.
+
+  With such a mechanism, one has the best of both worlds : scripting and editing are made the two sides of the same coin. Previously, to run the bsh examples, one had to switch to the Beanshell interpreter. Now, it can be done directly from the editor window. Then, instead of (or in addition to) the usual "print" made at the end of a script, one can select the variable and just hit "evaluate".
+
+  Hence, there is now a scripting engine involved in the editor operations. In fact, there are several possible ones. This introduces the second big evolution of meditor : a puggable architecture. The addition of a new engine is done simply by putting the corresponding jar file(s) in the classpath. This is made possible by the service discovery mechanism of Java. Providers of new engines have to implement jscl.editor.EngineFactory and indicate the name of the implementing classes in the jar meta-inf. The concept is being tested with three engines:
+
+  - the legacy JSCL library, accessed via Beanshell
+  - the JAS library, accessed via Jython
+  - an experimental Scala engine ("ScAS"), with no symbolic support (just the numerical functions of scala.Math._)
+
+
+  Now for the concrete changes with respect to version 2.x:
+
+  1) As was said, several engines are now available. The JSCL engine works pretty much like it used to, with some caveats:
+    a) there is now just one "evaluate" button in place of expand, factorize, etc. It passes the expression directly to the underlying script engine (Beanshell in this case). To find back the old behavior, the user must append a command, as in x*x expand -> x^2. This is a shortcut for Expression.valueOf("x*x").expand() which is what the engine actually receives as input.
+    b) in JSCL, as well as in other engines, the "carriage return" trick is used to tell expressions from executable blocks, which can be misleading at first sight
+    c) together with execution of code fragments, assignements are now possible, which means that variables are not only symbolic like before, but can be assigned values. In consequence, the environment is now stateful. The state is reset when switching engines.
+
+  2) the difference between text documents and scripts is blurred, due to them being accessed through the same tool. In some sense, meditor has become a code editor, which additionally is capable of evaluating code fragments, in one click. Conversely, text documents are thought to be valid executable programs : this is "litterate programming". Consequently, the examples directory which contained the .bsh programs has moved into the docs directory.
+
+  3) the rendering of MathML expressions is working a bit differently. It is now irreversible : expressions cannot be converted again to their text form. Whereas before, these were enclosed in brackets, as in [[x^2*y^2]], then now some XML code is actually directly written in the document, like <math><mrow><msup><mi>x</mi><mn>2</mn></msup><msup><mi>y</mi><mn>2</mn></msup></mrow></math>. This makes MathML available in full extent, whereas previously only valid meditor expressions were allowed. Non-meditor expressions have to be typed by hand, though (of course).
+
+  4) Content MathML is available, versus Presentation only, before. Under the hood, this is done via a content to presentation XSL stylesheet (that comes with JEuclid).
+
+  5) On a technical note, meditor now has a build file that is independant of Netbeans, which should help collaborative work. However, the evolution of the editor itself will soon be frozen, and the planned work will focus on the development resp. port of new resp. existing algebra engines. Participants are welcome.
+
+
+  To get started with meditor 3.0:
+
+  Some samples are found in the examples directory. The bsh ones come from meditor's older versions. Please refer to these versions' documentation for a presentation of the JSCL engine operation.
+
+  An example (polypower.py) is provided for the JAS engine, whose full documentation is found at http://krum.rz.uni-mannheim.de/jas/
+
+  Lastly, there is a "hello world" Scala program that demonstrates the operation of the ScAS engine.

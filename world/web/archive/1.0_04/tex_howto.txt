@@ -1,0 +1,17 @@
+
+To generate a tex file from a xhtml+mathml one, download xalan and xsltml from:
+
+  http://xml.apache.org/xalan-j/index.html
+  http://sourceforge.net/projects/xsltml/
+
+In the following these products are assumed to be installed in $HOME/xalan and $HOME/xsltml. Create a temp directory and put an xhtml sample file in it. In the temp directory issue the command below:
+
+  java -classpath $HOME/xalan/bin/xalan.jar:$HOME/xalan/bin/xml-apis.jar:$HOME/xalan/bin/xercesImpl.jar org.apache.xalan.xslt.Process -in sample.xhtml -xsl $HOME/xsltml/mmltex.xsl -out sample.tex
+
+To check the result, add \begin{document} and \end{document} at the beginning and end of the resulting tex file, respectively, then execute:
+
+  texi2dvi -p sample.tex
+  acroread sample.pdf
+
+(Notice that all non mathml xhtml content is discarded).
+

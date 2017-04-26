@@ -1,0 +1,33 @@
+Changes between version 16 and version 18:
+
++ can import from the web
+
+Changes between version 10 and version 16:
+
++ removed conduit
++ instead, added export/import function
+
+Changes between version 9 and version 10:
+
++ engine update
+
+Changes between version 8 and version 9:
+
++ error dialog
+
+Changes between version 7 and version 8:
+
++ graphing
+
+Changes between version 5 and version 7:
+
++ real, imag, conjugate
++ comparison operators
++ boolean algebra
++ fling to scroll
+
+Changes between version 4 and version 5:
+
++ evaluate menu item moved to top
++ conduit
+

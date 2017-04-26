@@ -1,0 +1,1823 @@
+In the forms given in Introduction to Colloid and Surface Chemistry by Duncan J. Shaw, publisher Butterworth-Heinemann. Data entry by Dienkuan Donn. Markup by meditor.
+
+Brownian Motion <math>
+<mrow>
+ <mi>x</mi>
+</mrow>
+</math> = <math>
+<mrow>
+ <msqrt>
+  <mrow>
+   <mn>2</mn>
+   <mi>D</mi>
+   <mi>t</mi>
+  </mrow>
+ </msqrt>
+</mrow>
+</math>, <math>
+<mrow>
+ <mi>D</mi>
+ <mi>f</mi>
+</mrow>
+</math> = <math>
+<mrow>
+ <mi>T</mi>
+ <mi>k</mi>
+</mrow>
+</math>, <math>
+<mrow>
+ <mi>f</mi>
+</mrow>
+</math> = <math>
+<mrow>
+ <mn>6</mn>
+ <mi>a</mi>
+ <mi>η</mi>
+ <mi>π</mi>
+</mrow>
+</math>
+
+Spreading Wetting <math>
+<mrow>
+ <mi>S</mi>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mo>-</mo>
+   <mi>Δ</mi>
+   <msub>
+    <mi>G</mi>
+    <mrow>
+     <mrow>
+      <mi>s</mi>
+     </mrow>
+    </mrow>
+   </msub>
+  </mrow>
+  <mrow>
+   <mi>A</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math> = <math>
+<mrow>
+ <msub>
+  <mi>γ</mi>
+  <mrow>
+   <mrow>
+    <mi>SG</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mo>-</mo>
+ <mrow>
+  <mo>(</mo>
+  <mrow>
+   <msub>
+    <mi>γ</mi>
+    <mrow>
+     <mrow>
+      <mi>LG</mi>
+     </mrow>
+    </mrow>
+   </msub>
+   <mo>+</mo>
+   <msub>
+    <mi>γ</mi>
+    <mrow>
+     <mrow>
+      <mi>SL</mi>
+     </mrow>
+    </mrow>
+   </msub>
+  </mrow>
+  <mo>)</mo>
+ </mrow>
+</mrow>
+</math>, Young's equation 0 = <math>
+<mrow>
+ <mo>-</mo>
+ <msub>
+  <mi>γ</mi>
+  <mrow>
+   <mrow>
+    <mi>S</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mo>+</mo>
+ <msub>
+  <mi>γ</mi>
+  <mrow>
+   <mrow>
+    <mi>SL</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mo>+</mo>
+ <msub>
+  <mi>π</mi>
+  <mrow>
+   <mrow>
+    <mi>SG</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mo>+</mo>
+ <msub>
+  <mi>γ</mi>
+  <mrow>
+   <mrow>
+    <mi>LG</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mi>cos</mi>
+ <mo stretchy="false">(</mo>
+ <mrow>
+  <mi>θ</mi>
+ </mrow>
+ <mo stretchy="false">)</mo>
+</mrow>
+</math>
+
+Adhesional Wetting, Dupre equation <math>
+<mrow>
+ <msub>
+  <mi>W</mi>
+  <mrow>
+   <mrow>
+    <mi>A</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mo>-</mo>
+   <mi>Δ</mi>
+   <msub>
+    <mi>G</mi>
+    <mrow>
+     <mrow>
+      <mi>a</mi>
+     </mrow>
+    </mrow>
+   </msub>
+  </mrow>
+  <mrow>
+   <mi>a</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math> = <math>
+<mrow>
+ <msub>
+  <mi>γ</mi>
+  <mrow>
+   <mrow>
+    <mi>LG</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mo>+</mo>
+ <msub>
+  <mi>γ</mi>
+  <mrow>
+   <mrow>
+    <mi>SG</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mo>-</mo>
+ <msub>
+  <mi>γ</mi>
+  <mrow>
+   <mrow>
+    <mi>SL</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math>, Young-Dupre equation <math>
+<mrow>
+ <msub>
+  <mi>W</mi>
+  <mrow>
+   <mrow>
+    <mi>a</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <msub>
+  <mi>γ</mi>
+  <mrow>
+   <mrow>
+    <mi>LG</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mrow>
+  <mo>(</mo>
+  <mrow>
+   <mn>1</mn>
+   <mo>+</mo>
+   <mi>cos</mi>
+   <mo stretchy="false">(</mo>
+   <mrow>
+    <mi>θ</mi>
+   </mrow>
+   <mo stretchy="false">)</mo>
+  </mrow>
+  <mo>)</mo>
+ </mrow>
+</mrow>
+</math>
+
+Immersional Wetting <math>
+<mrow>
+ <mo>-</mo>
+ <mi>Δ</mi>
+ <msub>
+  <mi>G</mi>
+  <mrow>
+   <mrow>
+    <mi>i</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <msub>
+  <mi>γ</mi>
+  <mrow>
+   <mrow>
+    <mi>SG</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mo>-</mo>
+ <msub>
+  <mi>γ</mi>
+  <mrow>
+   <mrow>
+    <mi>SL</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <msub>
+  <mi>γ</mi>
+  <mrow>
+   <mrow>
+    <mi>LG</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mrow>
+  <mo>(</mo>
+  <mrow>
+   <mi>cos</mi>
+   <mo stretchy="false">(</mo>
+   <mrow>
+    <mi>θ</mi>
+   </mrow>
+   <mo stretchy="false">)</mo>
+  </mrow>
+  <mo>)</mo>
+ </mrow>
+</mrow>
+</math>, Contact Angles p = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mn>2</mn>
+   <mi>γ</mi>
+   <mi>cos</mi>
+   <mo stretchy="false">(</mo>
+   <mrow>
+    <mi>θ</mi>
+   </mrow>
+   <mo stretchy="false">)</mo>
+  </mrow>
+  <mrow>
+   <mi>r</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>, <math>
+<mrow>
+ <msup>
+  <mi>p</mi>
+  <mo>′</mo>
+ </msup>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mn>2</mn>
+   <msup>
+    <mi>γ</mi>
+    <mo>′</mo>
+   </msup>
+  </mrow>
+  <mrow>
+   <mi>r</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>
+
+Adsorption Isotherms, Langmuir Isotherm q = <math>
+<mrow>
+ <msub>
+  <mi>K</mi>
+  <mrow>
+   <mrow>
+    <mi>a</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <msub>
+  <mi>q</mi>
+  <mrow>
+   <mrow>
+    <mi>m</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mfrac>
+  <mrow>
+   <mi>c</mi>
+  </mrow>
+  <mrow>
+   <mn>1</mn>
+   <mo>+</mo>
+   <msub>
+    <mi>K</mi>
+    <mrow>
+     <mrow>
+      <mi>a</mi>
+     </mrow>
+    </mrow>
+   </msub>
+   <mi>c</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math> , Freundlich Isotherm q = <math>
+<mrow>
+ <msub>
+  <mi>K</mi>
+  <mrow>
+   <mrow>
+    <mi>f</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mroot>
+  <mrow>
+   <mi>c</mi>
+  </mrow>
+  <mrow>
+   <mi>n</mi>
+  </mrow>
+ </mroot>
+</mrow>
+</math>, where q = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mi>x</mi>
+  </mrow>
+  <mrow>
+   <mi>m</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>
+
+Gouy-Chapman <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <msup>
+    <mo>d</mo>
+    <mn>2</mn>
+   </msup>
+   <mrow>
+    <mi>ψ</mi>
+   </mrow>
+  </mrow>
+  <mrow>
+   <mo>d</mo>
+   <msup>
+    <mi>x</mi>
+    <mn>2</mn>
+   </msup>
+  </mrow>
+ </mfrac>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mn>2</mn>
+   <mi>e</mi>
+   <msub>
+    <mi>n</mi>
+    <mrow>
+     <mn>0</mn>
+    </mrow>
+   </msub>
+   <mi>z</mi>
+  </mrow>
+  <mrow>
+   <mi>ε</mi>
+  </mrow>
+ </mfrac>
+ <mi>sinh</mi>
+ <mo stretchy="false">(</mo>
+ <mrow>
+  <mfrac>
+   <mrow>
+    <mi>e</mi>
+    <mi>ψ</mi>
+    <mi>z</mi>
+   </mrow>
+   <mrow>
+    <mi>T</mi>
+    <mi>k</mi>
+   </mrow>
+  </mfrac>
+ </mrow>
+ <mo stretchy="false">)</mo>
+</mrow>
+</math>, <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mo>d</mo>
+   <mrow>
+    <mi>ψ</mi>
+   </mrow>
+  </mrow>
+  <mrow>
+   <mo>d</mo>
+   <mi>x</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math> = <math>
+<mrow>
+ <mi>sinh</mi>
+ <mo stretchy="false">(</mo>
+ <mrow>
+  <mfrac>
+   <mrow>
+    <mi>e</mi>
+    <mi>ψ</mi>
+    <mi>z</mi>
+   </mrow>
+   <mrow>
+    <mn>2</mn>
+    <mi>T</mi>
+    <mi>k</mi>
+   </mrow>
+  </mfrac>
+ </mrow>
+ <mo stretchy="false">)</mo>
+ <msqrt>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mn>8</mn>
+     <mi>T</mi>
+     <mi>k</mi>
+     <msub>
+      <mi>n</mi>
+      <mrow>
+       <mn>0</mn>
+      </mrow>
+     </msub>
+    </mrow>
+    <mrow>
+     <mi>ε</mi>
+    </mrow>
+   </mfrac>
+  </mrow>
+ </msqrt>
+</mrow>
+</math>, <math>
+<mrow>
+ <mi>ψ</mi>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mn>2</mn>
+   <mi>k</mi>
+   <mi>t</mi>
+  </mrow>
+  <mrow>
+   <mi>e</mi>
+   <mi>z</mi>
+  </mrow>
+ </mfrac>
+ <mi>ln</mi>
+ <mo stretchy="false">(</mo>
+ <mrow>
+  <mfrac>
+   <mrow>
+    <mn>1</mn>
+    <mo>+</mo>
+    <mi>γ</mi>
+    <msup>
+     <mo>e</mo>
+     <mrow>
+      <mo>-</mo>
+      <mi>κ</mi>
+      <mi>x</mi>
+     </mrow>
+    </msup>
+   </mrow>
+   <mrow>
+    <mn>1</mn>
+    <mo>-</mo>
+    <mi>γ</mi>
+    <msup>
+     <mo>e</mo>
+     <mrow>
+      <mo>-</mo>
+      <mi>κ</mi>
+      <mi>x</mi>
+     </mrow>
+    </msup>
+   </mrow>
+  </mfrac>
+ </mrow>
+ <mo stretchy="false">)</mo>
+</mrow>
+</math>, where <math>
+<mrow>
+ <mi>γ</mi>
+</mrow> 
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mo>-</mo>
+   <mn>1</mn>
+   <mo>+</mo>
+   <msup>
+    <mo>e</mo>
+    <mrow>
+     <mfrac>
+      <mrow>
+       <mi>e</mi>
+       <msub>
+        <mi>ψ</mi>
+        <mrow>
+         <mn>0</mn>
+        </mrow>
+       </msub>
+       <mi>z</mi>
+      </mrow>
+      <mrow>
+       <mn>2</mn>
+       <mi>T</mi>
+       <mi>k</mi>
+      </mrow>
+     </mfrac>
+    </mrow>
+   </msup>
+  </mrow>
+  <mrow>
+   <mn>1</mn>
+   <mo>+</mo>
+   <msup>
+    <mo>e</mo>
+    <mrow>
+     <mfrac>
+      <mrow>
+       <mi>e</mi>
+       <msub>
+        <mi>ψ</mi>
+        <mrow>
+         <mn>0</mn>
+        </mrow>
+       </msub>
+       <mi>z</mi>
+      </mrow>
+      <mrow>
+       <mn>2</mn>
+       <mi>T</mi>
+       <mi>k</mi>
+      </mrow>
+     </mfrac>
+    </mrow>
+   </msup>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>, and <math>
+<mrow>
+ <mi>κ</mi>
+</mrow>
+</math> = <math>
+<mrow>
+ <msqrt>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mn>2</mn>
+     <msup>
+      <mi>e</mi>
+      <mn>2</mn>
+     </msup>
+     <msub>
+      <mi>n</mi>
+      <mrow>
+       <mn>0</mn>
+      </mrow>
+     </msub>
+     <msup>
+      <mi>z</mi>
+      <mn>2</mn>
+     </msup>
+    </mrow>
+    <mrow>
+     <mi>T</mi>
+     <mi>ε</mi>
+     <mi>k</mi>
+    </mrow>
+   </mfrac>
+  </mrow>
+ </msqrt>
+</mrow>
+</math> = <math>
+<mrow>
+ <msqrt>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mn>2</mn>
+     <msub>
+      <mi>N</mi>
+      <mrow>
+       <mrow>
+        <mi>A</mi>
+       </mrow>
+      </mrow>
+     </msub>
+     <mi>c</mi>
+     <msup>
+      <mi>e</mi>
+      <mn>2</mn>
+     </msup>
+     <msup>
+      <mi>z</mi>
+      <mn>2</mn>
+     </msup>
+    </mrow>
+    <mrow>
+     <mi>T</mi>
+     <mi>ε</mi>
+     <mi>k</mi>
+    </mrow>
+   </mfrac>
+  </mrow>
+ </msqrt>
+</mrow>
+</math> = <math>
+<mrow>
+ <msqrt>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mn>2</mn>
+     <msup>
+      <mi>F</mi>
+      <mn>2</mn>
+     </msup>
+     <mi>c</mi>
+     <msup>
+      <mi>z</mi>
+      <mn>2</mn>
+     </msup>
+    </mrow>
+    <mrow>
+     <mi>T</mi>
+     <mi>ε</mi>
+     <mi>k</mi>
+    </mrow>
+   </mfrac>
+  </mrow>
+ </msqrt>
+</mrow>
+</math>, in which F is coulombs/volts, at 25 C <math>
+<mrow>
+ <mi>κ</mi>
+</mrow>
+</math> = 0.329e+10<math>
+<mrow>
+ <mroot>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mi>c</mi>
+     <msup>
+      <mi>z</mi>
+      <mn>2</mn>
+     </msup>
+    </mrow>
+    <mrow>
+     <mi>mol</mi>
+     <msup>
+      <mrow>
+       <mi>dm</mi>
+      </mrow>
+      <mn>-3</mn>
+     </msup>
+    </mrow>
+   </mfrac>
+  </mrow>
+  <mn>2</mn>
+ </mroot>
+</mrow>
+<mrow>
+ <msup>
+  <mrow>
+   <mi>m</mi>
+  </mrow>
+  <mn>-1</mn>
+ </msup>
+</mrow>
+</math>.<math>
+<mrow>
+ <msub>
+  <mi>σ</mi>
+  <mrow>
+   <mn>0</mn>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mi>sinh</mi>
+ <mo stretchy="false">(</mo>
+ <mrow>
+  <mfrac>
+   <mrow>
+    <mi>e</mi>
+    <msub>
+     <mi>ψ</mi>
+     <mrow>
+      <mn>0</mn>
+     </mrow>
+    </msub>
+    <mi>z</mi>
+   </mrow>
+   <mrow>
+    <mn>2</mn>
+    <mi>T</mi>
+    <mi>k</mi>
+   </mrow>
+  </mfrac>
+ </mrow>
+ <mo stretchy="false">)</mo>
+ <msqrt>
+  <mrow>
+   <mn>8</mn>
+   <mi>T</mi>
+   <mi>ε</mi>
+   <mi>k</mi>
+   <msub>
+    <mi>n</mi>
+    <mrow>
+     <mn>0</mn>
+    </mrow>
+   </msub>
+  </mrow>
+ </msqrt>
+</mrow>
+</math>
+
+Debye-Huckel Approximation, When <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mi>e</mi>
+   <msub>
+    <mi>ψ</mi>
+    <mrow>
+     <mn>0</mn>
+    </mrow>
+   </msub>
+   <mi>z</mi>
+  </mrow>
+  <mrow>
+   <mn>2</mn>
+   <mi>T</mi>
+   <mi>k</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math> is far less than 1 then <math>
+<mrow>
+ <msup>
+  <mo>e</mo>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mi>e</mi>
+     <msub>
+      <mi>ψ</mi>
+      <mrow>
+       <mn>0</mn>
+      </mrow>
+     </msub>
+     <mi>z</mi>
+    </mrow>
+    <mrow>
+     <mn>2</mn>
+     <mi>T</mi>
+     <mi>k</mi>
+    </mrow>
+   </mfrac>
+  </mrow>
+ </msup>
+</mrow>
+</math> ~= <math>
+<mrow>
+ <mn>1</mn>
+ <mo>+</mo>
+ <mfrac>
+  <mrow>
+   <mi>e</mi>
+   <msub>
+    <mi>ψ</mi>
+    <mrow>
+     <mn>0</mn>
+    </mrow>
+   </msub>
+   <mi>z</mi>
+  </mrow>
+  <mrow>
+   <mn>2</mn>
+   <mi>T</mi>
+   <mi>k</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>, <math>
+<mrow>
+ <mi>ψ</mi>
+</mrow>
+</math> = <math>
+<mrow>
+ <msub>
+  <mi>ψ</mi>
+  <mrow>
+   <mn>0</mn>
+  </mrow>
+ </msub>
+ <msup>
+  <mo>e</mo>
+  <mrow>
+   <mo>-</mo>
+   <mi>κ</mi>
+   <mi>x</mi>
+  </mrow>
+ </msup>
+</mrow>
+</math>, <math>
+<mrow>
+ <msub>
+  <mi>σ</mi>
+  <mrow>
+   <mn>0</mn>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mi>ε</mi>
+ <mi>κ</mi>
+ <msub>
+  <mi>ψ</mi>
+  <mrow>
+   <mn>0</mn>
+  </mrow>
+ </msub>
+</mrow>
+</math>
+
+Stern Layer, As above substitute <math>
+<mrow>
+ <msub>
+  <mi>ψ</mi>
+  <mrow>
+   <mn>0</mn>
+  </mrow>
+ </msub>
+</mrow>
+</math> with <math>
+<mrow>
+ <msub>
+  <mi>ψ</mi>
+  <mrow>
+   <mrow>
+    <mi>d</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math>.<math>
+<mrow>
+ <msub>
+  <mi>σ</mi>
+  <mrow>
+   <mn>1</mn>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <msub>
+    <mi>σ</mi>
+    <mrow>
+     <mrow>
+      <mi>m</mi>
+     </mrow>
+    </mrow>
+   </msub>
+  </mrow>
+  <mrow>
+   <mn>1</mn>
+   <mo>+</mo>
+   <msup>
+    <mo>e</mo>
+    <mrow>
+     <mfrac>
+      <mrow>
+       <mi>φ</mi>
+       <mo>+</mo>
+       <mi>e</mi>
+       <msub>
+        <mi>ψ</mi>
+        <mrow>
+         <mrow>
+          <mi>d</mi>
+         </mrow>
+        </mrow>
+       </msub>
+       <mi>z</mi>
+      </mrow>
+      <mrow>
+       <mi>T</mi>
+       <mi>k</mi>
+      </mrow>
+     </mfrac>
+    </mrow>
+   </msup>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <mfrac>
+      <mrow>
+       <msub>
+        <mi>N</mi>
+        <mrow>
+         <mrow>
+          <mi>A</mi>
+         </mrow>
+        </mrow>
+       </msub>
+      </mrow>
+      <mrow>
+       <msub>
+        <mi>n</mi>
+        <mrow>
+         <mn>0</mn>
+        </mrow>
+       </msub>
+       <msub>
+        <mi>v</mi>
+        <mrow>
+         <mrow>
+          <mi>m</mi>
+         </mrow>
+        </mrow>
+       </msub>
+      </mrow>
+     </mfrac>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>
+
+Capacitances <math>
+<mrow>
+ <msub>
+  <mi>C</mi>
+  <mrow>
+   <mn>1</mn>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <msub>
+    <mi>σ</mi>
+    <mrow>
+     <mn>0</mn>
+    </mrow>
+   </msub>
+  </mrow>
+  <mrow>
+   <msub>
+    <mi>ψ</mi>
+    <mrow>
+     <mn>0</mn>
+    </mrow>
+   </msub>
+   <mo>-</mo>
+   <msub>
+    <mi>ψ</mi>
+    <mrow>
+     <mrow>
+      <mi>d</mi>
+     </mrow>
+    </mrow>
+   </msub>
+  </mrow>
+ </mfrac>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <msup>
+    <mi>ε</mi>
+    <mo>′</mo>
+   </msup>
+  </mrow>
+  <mrow>
+   <mi>δ</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>, <math>
+<mrow>
+ <msub>
+  <mi>C</mi>
+  <mrow>
+   <mn>2</mn>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <msub>
+    <mi>σ</mi>
+    <mrow>
+     <mn>0</mn>
+    </mrow>
+   </msub>
+  </mrow>
+  <mrow>
+   <msub>
+    <mi>ψ</mi>
+    <mrow>
+     <mrow>
+      <mi>d</mi>
+     </mrow>
+    </mrow>
+   </msub>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>, <math>
+<mrow>
+ <msub>
+  <mi>ψ</mi>
+  <mrow>
+   <mrow>
+    <mi>d</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <msub>
+    <mi>C</mi>
+    <mrow>
+     <mn>1</mn>
+    </mrow>
+   </msub>
+   <msub>
+    <mi>ψ</mi>
+    <mrow>
+     <mn>0</mn>
+    </mrow>
+   </msub>
+  </mrow>
+  <mrow>
+   <msub>
+    <mi>C</mi>
+    <mrow>
+     <mn>1</mn>
+    </mrow>
+   </msub>
+   <mo>+</mo>
+   <msub>
+    <mi>C</mi>
+    <mrow>
+     <mn>2</mn>
+    </mrow>
+   </msub>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>, at low potentials, 25 C <math>
+<mrow>
+ <msub>
+  <mi>C</mi>
+  <mrow>
+   <mn>2</mn>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mi>ε</mi>
+ <mi>κ</mi>
+</mrow>
+</math> = 2.28<math>
+<mrow>
+ <mroot>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mi>c</mi>
+     <msup>
+      <mi>z</mi>
+      <mn>2</mn>
+     </msup>
+    </mrow>
+    <mrow>
+     <mi>mol</mi>
+     <msup>
+      <mrow>
+       <mi>dm</mi>
+      </mrow>
+      <mn>-3</mn>
+     </msup>
+    </mrow>
+   </mfrac>
+  </mrow>
+  <mn>2</mn>
+ </mroot>
+</mrow>
+<mrow>
+ <mi>F</mi>
+</mrow>
+<mrow>
+ <msup>
+  <mrow>
+   <mi>m</mi>
+  </mrow>
+  <mn>-2</mn>
+ </msup>
+</mrow>
+</math>
+
+Surface Potentials <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mo>d</mo>
+   <mrow>
+    <mi>ζ</mi>
+   </mrow>
+  </mrow>
+  <mrow>
+   <mo>d</mo>
+   <mi>pAg</mi>
+  </mrow>
+ </mfrac>
+ <mo stretchy="false">(</mo>
+ <mrow>
+  <mi><mrow>
+ <mi>ζ</mi>
+</mrow>
+->0</mi>
+ </mrow>
+ <mo stretchy="false">)</mo>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mo>d</mo>
+   <mrow>
+    <msub>
+     <mi>ψ</mi>
+     <mrow>
+      <mn>0</mn>
+     </mrow>
+    </msub>
+   </mrow>
+  </mrow>
+  <mrow>
+   <mo>d</mo>
+   <mi>pAg</mi>
+  </mrow>
+ </mfrac>
+ <mfrac>
+  <mrow>
+   <mo>d</mo>
+   <mrow>
+    <msub>
+     <mi>ψ</mi>
+     <mrow>
+      <mrow>
+       <mi>d</mi>
+      </mrow>
+     </mrow>
+    </msub>
+   </mrow>
+  </mrow>
+  <mrow>
+   <mo>d</mo>
+   <msub>
+    <mi>ψ</mi>
+    <mrow>
+     <mn>0</mn>
+    </mrow>
+   </msub>
+  </mrow>
+ </mfrac>
+ <mo stretchy="false">(</mo>
+ <mrow>
+  <mi><mrow>
+ <mi>ζ</mi>
+</mrow>
+->0</mi>
+ </mrow>
+ <mo stretchy="false">)</mo>
+</mrow>
+</math> = <math>
+<mrow>
+ <mo>-</mo>
+ <mn>59</mn>
+ <mrow>
+  <mo>(</mo>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <msub>
+      <mi>C</mi>
+      <mrow>
+       <mn>1</mn>
+      </mrow>
+     </msub>
+    </mrow>
+    <mrow>
+     <msub>
+      <mi>C</mi>
+      <mrow>
+       <mn>1</mn>
+      </mrow>
+     </msub>
+     <mo>+</mo>
+     <msub>
+      <mi>C</mi>
+      <mrow>
+       <mn>2</mn>
+      </mrow>
+     </msub>
+    </mrow>
+   </mfrac>
+  </mrow>
+  <mo>)</mo>
+ </mrow>
+</mrow>
+<mrow>
+ <mi>mV</mi>
+</mrow>
+</math>
+
+Huckel Equation <math>
+<mrow>
+ <msub>
+  <mi>u</mi>
+  <mrow>
+   <mrow>
+    <mi>E</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <msub>
+    <mi>v</mi>
+    <mrow>
+     <mrow>
+      <mi>E</mi>
+     </mrow>
+    </mrow>
+   </msub>
+  </mrow>
+  <mrow>
+   <mi>E</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mi>ε</mi>
+   <mi>ζ</mi>
+  </mrow>
+  <mrow>
+   <mi>1.5</mi>
+   <mi>η</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>, Smoluchowski Equation <math>
+<mrow>
+ <msub>
+  <mi>u</mi>
+  <mrow>
+   <mrow>
+    <mi>E</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <msub>
+    <mi>v</mi>
+    <mrow>
+     <mrow>
+      <mi>E</mi>
+     </mrow>
+    </mrow>
+   </msub>
+  </mrow>
+  <mrow>
+   <mi>E</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mi>ε</mi>
+   <mi>ζ</mi>
+  </mrow>
+  <mrow>
+   <mi>η</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>, Electro-Osmosis <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mo>d</mo>
+   <mrow>
+    <msub>
+     <mi>V</mi>
+     <mrow>
+      <mrow>
+       <mi>EO</mi>
+      </mrow>
+     </mrow>
+    </msub>
+   </mrow>
+  </mrow>
+  <mrow>
+   <mo>d</mo>
+   <mi>t</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math> = <math>
+<mrow>
+ <mi>A</mi>
+ <msub>
+  <mi>V</mi>
+  <mrow>
+   <mrow>
+    <mi>EO</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mi>A</mi>
+   <mi>E</mi>
+   <mi>ε</mi>
+   <mi>ζ</mi>
+  </mrow>
+  <mrow>
+   <mi>η</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>
+
+Colloidal Stability V = <math>
+<mrow>
+ <msub>
+  <mi>V</mi>
+  <mrow>
+   <mrow>
+    <mi>A</mi>
+   </mrow>
+  </mrow>
+ </msub>
+ <mo>+</mo>
+ <msub>
+  <mi>V</mi>
+  <mrow>
+   <mrow>
+    <mi>R</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math> where <math>
+<mrow>
+ <msub>
+  <mi>V</mi>
+  <mrow>
+   <mrow>
+    <mi>R</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <msup>
+  <mo>e</mo>
+  <mrow>
+   <mo>-</mo>
+   <mi>H</mi>
+   <mi>κ</mi>
+  </mrow>
+ </msup>
+ <mrow>
+  <mo>(</mo>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mn>32</mn>
+     <msup>
+      <mi>T</mi>
+      <mn>2</mn>
+     </msup>
+     <mi>a</mi>
+     <mi>ε</mi>
+     <msup>
+      <mi>γ</mi>
+      <mn>2</mn>
+     </msup>
+     <msup>
+      <mi>k</mi>
+      <mn>2</mn>
+     </msup>
+     <mi>π</mi>
+    </mrow>
+    <mrow>
+     <msup>
+      <mi>e</mi>
+      <mn>2</mn>
+     </msup>
+     <msup>
+      <mi>z</mi>
+      <mn>2</mn>
+     </msup>
+    </mrow>
+   </mfrac>
+  </mrow>
+  <mo>)</mo>
+ </mrow>
+</mrow>
+</math>, and <math>
+<mrow>
+ <msub>
+  <mi>V</mi>
+  <mrow>
+   <mrow>
+    <mi>A</mi>
+   </mrow>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mrow>
+  <mo>(</mo>
+  <mrow>
+   <mfrac>
+    <mn>1</mn>
+    <mrow>
+     <mn>2</mn>
+     <mi>x</mi>
+    </mrow>
+   </mfrac>
+  </mrow>
+  <mo>)</mo>
+ </mrow>
+ <mrow>
+  <mo>(</mo>
+  <mrow>
+   <mo>-</mo>
+   <mfrac>
+    <mrow>
+     <mi>A</mi>
+    </mrow>
+    <mn>12</mn>
+   </mfrac>
+  </mrow>
+  <mo>)</mo>
+ </mrow>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mo>-</mo>
+   <mi>A</mi>
+   <mi>a</mi>
+  </mrow>
+  <mrow>
+   <mn>12</mn>
+   <mi>H</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>
+
+<math>
+<mrow>
+ <msub>
+  <mi>A</mi>
+  <mrow>
+   <mn>132</mn>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mrow>
+  <mo>(</mo>
+  <mrow>
+   <mroot>
+    <mrow>
+     <msub>
+      <mi>A</mi>
+      <mrow>
+       <mn>11</mn>
+      </mrow>
+     </msub>
+    </mrow>
+    <mn>2</mn>
+   </mroot>
+   <mo>-</mo>
+   <mroot>
+    <mrow>
+     <msub>
+      <mi>A</mi>
+      <mrow>
+       <mn>33</mn>
+      </mrow>
+     </msub>
+    </mrow>
+    <mn>2</mn>
+   </mroot>
+  </mrow>
+  <mo>)</mo>
+ </mrow>
+ <mrow>
+  <mo>(</mo>
+  <mrow>
+   <mroot>
+    <mrow>
+     <msub>
+      <mi>A</mi>
+      <mrow>
+       <mn>22</mn>
+      </mrow>
+     </msub>
+    </mrow>
+    <mn>2</mn>
+   </mroot>
+   <mo>-</mo>
+   <mroot>
+    <mrow>
+     <msub>
+      <mi>A</mi>
+      <mrow>
+       <mn>33</mn>
+      </mrow>
+     </msub>
+    </mrow>
+    <mn>2</mn>
+   </mroot>
+  </mrow>
+  <mo>)</mo>
+ </mrow>
+</mrow>
+</math>, <math>
+<mrow>
+ <msub>
+  <mi>A</mi>
+  <mrow>
+   <mn>131</mn>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <msup>
+  <mrow>
+   <mo>(</mo>
+   <mrow>
+    <mroot>
+     <mrow>
+      <msub>
+       <mi>A</mi>
+       <mrow>
+        <mn>11</mn>
+       </mrow>
+      </msub>
+     </mrow>
+     <mn>2</mn>
+    </mroot>
+    <mo>-</mo>
+    <mroot>
+     <mrow>
+      <msub>
+       <mi>A</mi>
+       <mrow>
+        <mn>33</mn>
+       </mrow>
+      </msub>
+     </mrow>
+     <mn>2</mn>
+    </mroot>
+   </mrow>
+   <mo>)</mo>
+  </mrow>
+  <mn>2</mn>
+ </msup>
+</mrow>
+</math>
+
+Coagulation Kinetics <math>
+<mrow>
+ <mo>-</mo>
+ <mfrac>
+  <mrow>
+   <mo>d</mo>
+   <mrow>
+    <mi>n</mi>
+   </mrow>
+  </mrow>
+  <mrow>
+   <mo>d</mo>
+   <mi>t</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math> = <math>
+<mrow>
+ <msub>
+  <mi>k</mi>
+  <mrow>
+   <mn>2</mn>
+  </mrow>
+ </msub>
+ <msup>
+  <mi>n</mi>
+  <mn>2</mn>
+ </msup>
+</mrow>
+</math>, <math>
+<mrow>
+ <mfrac>
+  <mn>1</mn>
+  <mrow>
+   <mi>n</mi>
+  </mrow>
+ </mfrac>
+ <mo>-</mo>
+ <mfrac>
+  <mn>1</mn>
+  <mrow>
+   <msub>
+    <mi>n</mi>
+    <mrow>
+     <mn>0</mn>
+    </mrow>
+   </msub>
+  </mrow>
+ </mfrac>
+</mrow>
+</math> = <math>
+<mrow>
+ <msub>
+  <mi>k</mi>
+  <mrow>
+   <mn>2</mn>
+  </mrow>
+ </msub>
+ <mi>t</mi>
+</mrow>
+</math>, <math>
+<mrow>
+ <msub>
+  <mi>k</mi>
+  <mrow>
+   <mn>2</mn>
+  </mrow>
+ </msub>
+</mrow>
+</math> = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <mn>4</mn>
+   <mi>T</mi>
+   <mi>k</mi>
+  </mrow>
+  <mrow>
+   <mn>3</mn>
+   <mi>η</mi>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>, W = <math>
+<mrow>
+ <mfrac>
+  <mrow>
+   <msub>
+    <mi>k</mi>
+    <mrow>
+     <mn>2</mn>
+    </mrow>
+   </msub>
+  </mrow>
+  <mrow>
+   <msub>
+    <mi>k</mi>
+    <mrow>
+     <mn>2</mn>
+    </mrow>
+   </msub>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>

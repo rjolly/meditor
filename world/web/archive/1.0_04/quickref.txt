@@ -1,0 +1,112 @@
+Constants
+pi=3.141592653589793
+
+Variables
+a, ai
+a[i1]...[in]
+a', a'...'
+
+Vectors and matrices
+{a1,...,an}
+{{a11,...,a1p},...,{an1,...,anp}}
+
+Expressions
+a+b, a-b, a*b, a/b, a**b, a!
+div(a,b), mod(a,b)
+a*(b+c)
+
+Trigonometric functions
+sin(x), cos(x), tan(x)
+asin(x), acos(x), atan(x)
+
+Hyperbolic functions
+sinh(x), cosh(x), tanh(x)
+asinh(x), acosh(x), atanh(x)
+
+Logarithm and exponential
+log(x), exp(x)
+
+Absolute value, sign
+abs(x), sgn(x)
+
+Square root
+sqrt(x)
+
+Conjugate
+conjugate(x)
+
+Implicit roots
+root[i](a0,...,an)
+
+Implicit functions
+f(x), f'(x), f'...'(x)
+f(x1,...,xm), f{n1,...,nm}(x1,...,xm)
+
+Derivation
+d(f(x),x,value_opt,order_opt)
+
+Integration
+integral(f(x),x,a,b), integral(f(x),x)
+
+Vector algebra
+grad(f(x1,...,xn),{x1,...,xn})
+diverg({f1(x1,...,xn),...,fn(x1,...,xn)},{x1,...,xn})
+curl({fx(x,y,z),fy(x,y,z),fz(x,y,z)},{x,y,z})
+laplacian(f(x1,...,xn),{x1,...,xn})
+laplacian({f1(x1,...,xn),...,fm(x1,...,xn)},{x1,...,xn})
+jacobian({f1(x1,...,xn),...,fm(x1,...,xn)},{x1,...,xn})
+
+Geometric differential operator
+del({f1(x1,...,xn),...,fp(x1,...,xn)},{x1,...,xn})
+p=2^n, n=1...4
+
+Scalar and vector product
+{a1,...,an}*{b1,...,bn}
+vector({ax,ay,az},{bx,by,bz})
+
+Matrix product
+matrix({{a11,...,a1k},...,{an1,...,ank}},{{b11,...,b1p},...,{bk1,...,bkp}})
+matrix({{a11,...,a1k},...,{an1,...,ank}},{b1,...,bk})
+matrix({a1,...,ak},{{b11,...,b1p},...,{bk1,...,bkp}})
+
+Tensor product
+tensor({{a11,...,a1p},...,{an1,...,anp}},{{b11,...,b1q},...,{bm1,...,bmq}})
+
+Complex and quaternion product
+complex({a,b},{c,d})
+quaternion({a,b,c,d},{e,f,g,h})
+
+Geometric product
+geometric({a1,...,ap},{b1,...,bp})
+p=2^n, n=0...4
+
+Transposition, trace, determinant
+tran({{a11,...,a1p},...,{an1,...,anp}})
+trace({{a11,...,a1n},...,{an1,...,ann}})
+det({{a11,...,a1n},...,{an1,...,ann}})
+
+Polynomial solving
+solve(p(x),x,subscript_opt)
+
+Variable substitution
+subst(f(x),x,value)
+
+Limit
+lim(f(x),x,value,direction_opt)
+value : -infin, a, infin
+direction : <0, 0, >0
+
+Sum, product
+sum(a[i],i,n1,n2)
+prod(a[i],i,n1,n2)
+
+Number theory
+modpow(a,exponent,modulo)
+modinv(a,modulo)
+eulerphi(a)
+primitiveroots(a)
+
+Groebner basis computation
+groebner({p1(x1,...,xm),...,pn(x1,...,xm)},{x1,...,xm},ordering_opt,modulo_opt)
+ordering : lex=lexicographic, tdl=total degree lexicographic, drl=degree reverse lexicographic, elim(k)=kth-elimination
+modulo : prime integer

@@ -1,0 +1,211 @@
+Expression:
+	Minus_opt Term Terms_opt
+
+Minus:
+	-
+
+Terms:
+	PlusOrMinusTerm
+	Terms PlusOrMinusTerm
+
+PlusOrMinusTerm:
+	PlusOrMinus Term
+
+PlusOrMinus: one of
+	+ -
+
+Term:
+	UnsignedFactor Factors_opt
+
+Factors:
+	MultiplyOrDivideFactor
+	Factors MultiplyOrDivideFactor
+
+MultiplyOrDivideFactor:
+	MultiplyOrDivide Factor
+
+MultiplyOrDivide: one of
+	* /
+
+Factor:
+	Minus_opt UnsignedFactor
+
+UnsignedFactor:
+	UnsignedExponent Exponents_opt
+
+Exponents:
+	PowerExponent
+	Exponents PowerExponent
+
+PowerExponent:
+	Power Exponent
+
+Power: one of
+	^ **
+
+Exponent:
+	Minus_opt UnsignedExponent
+
+UnsignedExponent:
+	PrimaryExpression Factorial_opt
+
+Factorial:
+	!
+
+PrimaryExpression:
+	Double
+	BigInteger
+	Variable
+	Matrix
+	Vector
+	BracketedExpression
+
+BigInteger:
+	Digits
+
+Digits:
+	Digit
+	Digits Digit
+
+Double:
+	NaN
+	Infinity
+	FloatingPointLiteral
+
+FloatingPointLiteral:
+	Digits Point Digits_opt ExponentPart_opt
+	Point Digits ExponentPart_opt
+	Digits ExponentPart
+
+Point
+	.
+
+ExponentPart:
+	ExponentIndicator SignedInteger
+
+ExponentIndicator: one of
+	e E
+
+SignedInteger:
+	Sign_opt Digits
+
+Sign: one of
+	+ -
+
+Variable:
+	Operator
+	Function
+	Constant
+
+BracketedExpression:
+	( Expression )
+
+Matrix:
+	{ Vector CommasAndVectors_opt }
+
+CommasAndVectors:
+	CommaAndVector
+	CommasAndVectors CommaAndVector
+
+CommaAndVector:
+	Comma Vector
+
+Comma:
+	,
+
+Vector:
+	{ Expression CommasAndExpressions_opt }
+
+CommasAndExpressions:
+	CommaAndExpression
+	CommasAndExpressions CommaAndExpression
+
+CommaAndExpression:
+	Comma Expression
+
+Operator:
+	OperatorName ParameterList
+
+OperatorName: one of
+	d grad diverg curl jacobian laplacian dalembertian del vector complex quaternion geometric matrix tensor tran trace det coef solve subst lim sum prod integral groebner div mod modpow modinv eulerphi primitiveroots
+
+ParameterList:
+	( Expression CommasAndExpressions_opt )
+
+Function:
+	UsualFunction
+	ImplicitRoot
+	ImplicitFunction
+
+UsualFunction:
+	UsualFunctionName ParameterList
+
+UsualFunctionName: one of
+	sin cos tan cot asin acos atan acot log exp sqrt cubic sinh cosh tanh coth asinh acosh atanh acoth abs sgn conjugate eq le ge ne lt gt ap
+
+ImplicitRoot:
+	root Subscript ParameterList
+
+ImplicitFunction:
+	CompoundIdentifier Subscripts_opt Derivation_opt ParameterList
+
+Derivation:
+	PrimeCharacters
+	SuperscriptList
+
+PrimeCharacters:
+	PrimeCharacter
+	PrimeCharacters PrimeCharacter
+
+PrimeCharacter:
+	'
+
+SuperscriptList:
+	{ Integer CommasAndIntegers_opt }
+
+CommasAndIntegers:
+	CommaAndInteger
+	CommasAndIntegers CommaAndInteger
+
+CommaAndInteger:
+	Comma Integer
+
+Integer:
+	Digits
+
+Constant:
+	CompoundIdentifier Subscripts_opt Prime_opt
+
+CompoundIdentifier:
+	Identifier DotsAndIdentifiers
+
+DotsAndIdentifiers:
+	DotAndIdentifier
+	DotsAndIdentifiers DotAndIdentifier
+
+DotAndIdentifier:
+	Dot Identifier
+
+Dot:
+	.
+
+Identifier:
+	Letter LettersOrDigits_opt
+
+LettersOrDigits:
+	LetterOrDigit
+	LettersOrDigits LetterOrDigit
+
+Prime:
+	PrimeCharacters
+	Superscript
+
+Superscript:
+	{ Integer }
+
+Subscripts:
+	Subscript
+	Subscripts Subscript
+
+Subscript:
+	[ Expression ]

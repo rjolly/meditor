@@ -1,0 +1,132 @@
+			meditor
+
+
+  meditor est un editeur de texte avec des capacites de calcul symbolique. En premier lieu, il est concu pour resoudre des systemes d'equations algebriques de degre quelconque a plusieurs inconnues en calculant les bases standards (ou de Groebner) d'ideaux de polynomes.
+
+Par exemple, soit le systeme pour les inconnues x, y:
+
+x^2 + y^2 = 4
+x*y = 1
+
+On pose:
+
+groebner({x^2 + y^2 - 4, x*y - 1}, {x, y})
+
+En selectionnant le bloc de texte ci-dessus et en faisant "Math->Expand" dans la barre de menu (Ctrl+E), on obtient:
+
+{1-4*x^2+x^4, 4*x-x^3-y}
+
+ce qui permet de determiner x, puis y en fonction de x. Cette operation ne calcule pas les racines, elle se contente de poser l'equation. Par exemple, elle ne donnerait pas "a = 4/5" mais "5*a-4" (sous entendu "= 0").
+
+Le calcul des bases de Groebner est explique plus en detail dans le fichier math_background.txt.
+
+
+  meditor permet de manipuler des expressions vectorielles et matricielles. Les vecteurs sont notes {a,b,c} et les matrices {{a,b},{c,d}}.
+
+Pour illustrer leur utilisation, posons un systeme d'equations lineaires simple. On ecrit:
+
+matrix(
+{{a[0][0], a[0][1]},
+{a[1][0], a[1][1]}},{x[0],
+                     x[1]})-{b[0],
+                             b[1]}
+
+(sous entendu "= 0" ; comme meditor ne sait pas gerer les operations non-commutatives, il est obligatoire d'utiliser "matrix(A,B)" au lieu de "A*B"). En selectionnant l'expression ci-dessus et en faisant "Expand", on obtient:
+
+{-b[0]+a[0][0]*x[0]+a[0][1]*x[1], -b[1]+a[1][0]*x[0]+a[1][1]*x[1]}
+
+, ce qui permet d'ecrire l'entree suivante qui peut etre utilisee pour resoudre le systeme lineaire:
+
+groebner({-b[0]+a[0][0]*x[0]+a[0][1]*x[1],
+-b[1]+a[1][0]*x[0]+a[1][1]*x[1]},
+{a[0][0], a[0][1], a[1][0], a[1][1], b[0], b[1], x[0], x[1]})
+
+D'autres operations vectorielles et matricielles sont listees dans quickref.txt, avec toutes les fonctions et operations disponibles dans meditor.
+
+
+  meditor permet la resolution de polynomes:
+
+solve(c+b*x+a*x^2,x)
+=
+root[0](c, b, a)
+
+, la substitution de variable:
+
+subst(1/x^2,x,a)
+=
+1/a^2
+
+, et la simplification d'expressions par la commande "Math->Simplify" de la barre de menu (Ctrl+Q):
+
+exp(pi*sqrt(-1))
+=
+-1
+
+Il est souvent utile de reecrire une expression en terme de fonctions elementaires (log, exp, frac, sqrt, racines implicites), par la commande "Math->Elementary" (Ctrl+L), avant de la simplifier. Par exemple:
+
+cos(x)^2+sin(x)^2
+=
+(1/2)^2*(1/exp(x*sqrt(-1)))^2+2*(1/2)^2*1/exp(x*sqrt(-1))*exp(x*sqrt(-1))+(1/2)^2*exp(x*sqrt(-1))^2+(1/2)^2*(1/exp(x*sqrt(-1)))^2*sqrt(-1)^2-2*(1/2)^2*1/exp(x*sqrt(-1))*exp(x*sqrt(-1))*sqrt(-1)^2+(1/2)^2*exp(x*sqrt(-1))^2*sqrt(-1)^2
+=
+1
+
+
+  Comme on peut le voir, meditor connait quelques functions usuelles. Il peut aussi calculer des derivees et des integrales, comme montre ci-dessous:
+
+d(cos(f(x)),x)
+=
+-f'(x)*sin(f(x))
+
+curl(grad(f(x,y,z),{x,y,z}),{x,y,z})
+=
+{0, 0, 0}
+
+sum(d(exp(x),x,0,i)/i!*(x-0)^i,i,0,4)
+=
+1+x+x^2*1/2+x^3*1/6+x^4*1/24
+
+integral(1/(1+x^2),x)
+=
+root[0](1, 0, 4)*log(1-2*x*root[0](1, 0, 4))+root[1](1, 0, 4)*log(1-2*x*root[1](1, 0, 4))
+
+
+  Une autre fonctionnalite du logiciel est l'algebre booleenne. Pour cela on utilise des polynomes dans Z/2Z, en specifiant le modulo en quatrieme parametre de l'operation "groebner".
+
+Le 0 represente "faux", le 1 "vrai", l'addition un "ou exclusif", le produit un "et".
+
+La proposition "a implique b", equivalente a "non a ou b", soit a "non (a et non b)", s'ecrit : a*(1+b) (sous entendu "= 0").
+
+"socrate est un homme" s'ecrit socrate*(1+homme)
+"un homme est mortel" s'ecrit homme*(1+mortel)
+
+On pose le systeme:
+
+groebner({socrate*(1+homme),
+homme*(1+mortel)},
+{homme, mortel, socrate},lex,2)
+
+"Expand", on obtient:
+
+{homme+homme*mortel, socrate+homme*socrate, socrate+mortel*socrate}
+
+La derniere equation peut etre factorisee (Ctrl+T) en : (1+mortal)*sokrates, ce qui se lit : "socrate implique mortel".
+
+D'autres modulos (positifs) sont aussi utilisables.
+
+
+  Enfin, meditor permet la publication sur la toile, grace a la fonction "File->Export to XHTML". Le document est exporte dans un fichier avec l'extension .xhtml, a cote du fichier .txt original. Il faut entourer chaque expression de balises "math", comme dans:
+
+<math>x^2*y^2</math>
+
+Ceci peut etre effectue en utilisant la fonction "Math->ToMathML" sur l'expression selectionnee.
+
+
+  La syntaxe complete de meditor est ecrite dans le fichier grammar.txt. La correspondance entre les operations du menu "Math" et les elements syntaxiques est la suivante:
+
+Expand		Expression
+Factorize	Expression
+Elementary	Expression
+Simplify	Expression
+Numeric		Expression
+ToJava		EquationOrExpression
+ToMathML	EquationOrExpression

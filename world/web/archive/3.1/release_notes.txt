@@ -1,0 +1,30 @@
+		meditor version 3.1
+
+
+  In this release:
+
+    * Packages for the following projects are added:
+
+MathPiper - active fork of Yacas
+Jasymca - Symbolic Calculator for Java
+SymPy - Python library for symbolic mathematics
+
+    * All engine packages are grouped together with the editor
+
+    * Most engines are enabled for java web start and available on-line from the project web page
+
+    * There is a new plotting facility which is used in Hartmath, MathEclipse and Jasymca (more engines to come). It is based on SVG and Batik and works as follows : as a "plot" expression is evaluated, it is converted in SVG and pasted in the editor. The latter renders automatically any expression enclosed in svg tags, as it already did for MathML. Exports to PDF and XHTML are supported, in vector graphics
+
+    * XML libraries are upgraded to their up-to-date versions, namely:
+
+jeuclid-3.1.4
+fop-0.95
+batik-1.7
+
+    * Version 1.0 of ScAS is made available
+
+    * Some engine interoperation is considered : through its Jython interface, the ScAS library can be used from the JAS engine. The newly included JLinAlg library can be used from any engine with import ability (i.e. Jython, BeanShell or Scala based ones, namely : JAS, SymPy, JSCL, ScAS)
+
+    * The mathematical editor is turned into a general purpose script editor : the chooser file filter is set to "accept all" (script extensions, instead of just "txt") and the "math->evaluate" menu item is changed into "script->run/evaluate". When no selection is made, the whole script is run.
+
+    * The document root of the treepad can be changed

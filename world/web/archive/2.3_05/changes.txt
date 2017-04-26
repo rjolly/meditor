@@ -1,0 +1,304 @@
+Changes between 2.3_04 and 2.3_05:
+
++ downgraded to jeuclid-3.0.3 patched against the sqrt issue in pdf
++ can run in 1.4, just with no MathML renderings
+
+Changes between 2.3_03 and 2.3_04:
+
++ font size of MathML fractions increased, now readable
++ fixed endless loop when multiplying geo_buckets
++ txt extension added automatically at saveAs
++ Variable.valueOf(String[])
++ added version number in "About"
+
+Changes between 2.3_02 and 2.3_03:
+
++ incorporated jeuclid 3.1.0 snapshot to solve square root pdf issue
++ font of various export formats set to monospace
+
+Changes between 2.3_01 and 2.3_02:
+
++ export to TeX
++ upgraded to jeuclid-3.0.2 ; as a result meditor must now run on 1.6 ; export to PDF
++ swing GUI compiles under gcj
+
+Changes between 2.3 and 2.3_01:
+
++ new interface with tree to navigate files
++ use of Java look and feel Graphics Repository icons
++ got rid of "working" dialog which refused to close in 1.6
++ trailing nulls in document when loading multibyte encodings : fixed
++ doubleVariable.symbolic()
+
+Changes between 2.2 and 2.3:
+
++ Generic.powerValue() returns custom class instead of object array
++ JSCLInteger, Rational declared final
++ polynomial API reworked and put in a separate package
+  + a Term class representing monomial+coef
+  + polynomial head & tail return term instead of monomial & coef
+  + polynomial.coefficient(monomial)
+  + polynomial iterators
+  + array polynomial declined by coef type
+  + tree polynomial, list polynomial
+  + Ordering class that extends Comparator
+  + generalized use of Basis.compute() flags argument
+  + a flag for Gebauer & Moeller setting, set as default
++ math objects created by means of factories
++ ModularInteger, JSCLBoolean
++ parsers moved in text package
++ MathML moved in mathml package
++ two new interfaces : jscl.math.Field and jscl.math.polynomial.DegreeOrdering
++ Block selection strategy set to "first pair" when in non-degree ordering
+
+Changes between 2.1_02 and 2.2:
+
++ protected access to various fields in Variable, Constant, Function, Root, ImplicitFunction, Operator
++ variable.name(), constant.prime(), constant.subscript(), function.parameters(), root.subscript(), implicitFunction.derivation(), implicitFunction.subscript(), operator.parameters()
++ GB computation defaulted to sugar/sloppy
++ polynomial code rewrite
++ MathML class gathering all MathML related stuff
++ compiles under gcj
++ an implementation of T Yan's GeoBuckets
+
+Changes between 2.1_01 and 2.1_02:
+
++ integer fraction first in ordering
++ an implementation of JC Faugere's F4 algorithm
++ a new Groebner algorithm "block"
++ a new package "groebner"
++ rational arithmetically compatible with expression
++ polynomial code reworked
++ substitute(x,list,list)
++ (-1)^x "to mathml" = -1^x fixed
++ integral of exp(a+b*x)
++ cubic(x) != x^(1/3) for x<0.
+
+Changes between 2.1 and 2.1_01:
+
++ solution of cubic equation in the positive discriminant case fixed
++ solution of quartic equation fixed
++ primitiveroots returns NullPointerException when there aren't any : fixed
+
+Changes between 2.0_04 and 2.1:
+
++ Groebner Basis code completely reworked
++ code cleanup : remaining non Collection classes replaced
++ various API adjustments : JSCLInteger content made accessible, Rational made accessible, polynomial.monomial(literal) made accessible
+
+Changes between 2.0_03 and 2.0_04:
+
++ math rendering of a[i] fixed
++ additional flags argument to Basis.compute()
++ x^(1/-2) "expand/simplify" NegativeArraySizeException fixed
++ (-1)^x "expand/simplify" = -1^x fixed
++ cotangent
+
+Changes between 2.0_02 and 2.0_03:
+
++ factorization improved
++ anti-aliased math rendering
++ underscores '_' and periods '.' allowed in identifiers
+
+Changes between 2.0_01 and 2.0_02:
+
++ integral(1/(2*(1+z)^2),z) = (-1)/(1+z) fixed
+
+Changes between 2.0 and 2.0_01:
+
++ integral((x^4 + 2*x^2 + 2*x + 1) / x^3, x) fixed
++ geometric product in arbitrary Cl(p,q) algebra
++ reintroduced coef()
++ graph.bsh example fixed
++ Basis.compute() now static
+
+Changes between 1.0_04 and 2.0:
+
++ graphical rendering of math expressions
++ complete redevelopment of the interface with netbeans
++ rewrite of the low-level engine (data structures)
++ the power operator ^ is right-associative as it should
++ powers fenced in MathML
++ functions with subscripts
++ switched primes and subscripts in constants
++ Constant.PRIMECHARS = 3 instead of 2
++ d'Alembertian operator added
++ conjugate(exp(x)) = exp(conjugate(x)) and the same for log
++ (-1)^(1/2)=NaN fixed
++ Complex.valueOf(0.,0.).pow(numeric) = NaN+NaN*sqrt(-1) fixed
++ 0^0.0 "numeric" = NaN now yields 1.0
++ 0^0.0 "expand" = 0 now yields 0^0.0
++ boolean GB computation fixed
++ conversion to xhtml : math tags replaced by double brackets as delimiters
++ "copy to wiki" operation
++ xhtml to LaTeX conversion utility (mmltex)
++ sqrt(-1) first in ordering
++ equations disabled as rendering input : the equal sign must stay outside of the rendered expressions
++ comparison functions
+
+Changes between 1.0_03 and 1.0_04:
+
++ fixed a bug with greater than or equal operator
++ Export to XHTML converts the whole document into a XHTML file
++ implemented integral of f(a+b*x) where f=trigonometric function
++ the simplifier avoids using the trigonometric identities
+
+Changes between 1.0_02 and 1.0_03:
+
++ avoided simplifying log(exp(x)) to x
++ FileReader not closed : fixed
++ can parse an EquationOrExpression with equal sign
+
+Changes between 1.0_01 and 1.0_02:
+
++ subclasses of GenericVariable made non-public
++ subclasses of MultivariatePolynomial made non-public
++ implemented MultivariatePolynomial.divide and remainder
++ polynomial.remainderUpToCoefficient()
++ 81^(1/4) (expand) fails : fixed
++ some number-theoretic functions : modpow, modinv, eulerphi, primitiveroots
+
+Changes between 1.0 and 1.0_01:
+
++ (1+x-x^5)*(1-x+x^5) (expand) (factorize) fails : fixed
+
+Changes between 1.0rc4 and 1.0:
+
++ a test suite for substitutions
++ some groebner benchmark timings
++ geometric product and differential operator (Feature Request item #890925)
++ fixed the quaternion product
+
+Changes between 1.0rc3 and 1.0rc4:
+
++ an exception is thrown when multiplying matrices without matrix() (Bug item #869813)
++ computation of nth roots
+
+Changes between 1.0rc2 and 1.0rc3:
+
++ a new Generic type which inherits from Arithmetic
++ Arithmetic limited to the 4 arithmetic operation and becomes an interface
++ polynomial.reduceCompletely() becomes polynomial.reduce(completely)
++ overloaded comparison and arithmetic methods
+
+Changes between 1.0rc1 and 1.0rc2:
+
++ added a command mode launcher : bin/jscl
++ symbolic parameters allowed in matrix etc. operators
++ a change of reduction strategy improves groebner performance
+
+Changes between 0.99 and 1.0rc1:
+
++ file opening via drag and drop
++ fixed a mistake with anti/derivative of conjugate()
+
+Changes between 0.98 and 0.99:
+
++ a conjugate() function
++ tested to work on jdistro
++ bug with scrollbar when resizing fixed
++ (2+2*x+y)*(2+x+2*y) (expand) (factorize) ClassCastException : fixed (Bug item #851149)
+
+Changes between 0.97 and 0.98:
+
++ pseudo-NumericWrapper to enable latest version on MIDP
++ used mfenced mathml tag
++ a mathml to tex conversion howto (see docs)
++ various improvements
+
+Changes between 0.96 and 0.97:
+
++ separated Numeric from Arithmetic
++ separated UnivariatePolynomial from MultivariatePolynomial
++ groebner() returns a vector
++ graphing (see examples)
+
+Changes between 0.95 and 0.96:
+
++ fixed a performance problem with the factorization
+
+Changes between 0.90 and 0.95:
+
++ java code generation
++ matinv replaced by 1/matrix
++ expand evaluates the functions
++ a numeric package
++ a nested polyonmial
+
+Changes between 0.80 and 0.90:
+
++ numerics (except on MIDP which doesn't support floating point)
++ formalized the type conversions
++ complex and quaternion products
++ jacobian, laplacian
++ moved vector/matrix/product operations into a package of their own
+
+Changes between 0.77 and 0.80:
+
++ the simplifier knows of some additional trigonometric identities
++ factorization code improved
++ Polynomial no more inherits from Arithmetic and becomes abstract
++ a new MultivariatePolynomial class
++ an own zaurus software package
++ fixed a bug with hyperbolic function names
++ added abs, sgn
++ added div, mod
++ renamed divg as diverg
++ implemented matrix inverse
+
+Changes between 0.76 and 0.77:
+
++ developed some junit tests
++ replaced coef() by solve()
++ created a new Rational type
++ added kth-elimination ordering
++ changes in groebner() syntax and implementation
++ simplification improved
++ removed Factorized*, OptimizedExpression
++ moved trigonometric/hyperbolic functions into a package of their own
++ changed ch, sh, th, argch, argsh, argth into cosh, sinh, tanh, acosh, asinh, atanh
++ put parser/format related code in jscl.text package
++ "modified" status of the awt editor should now behave correctly under j2me-pp1.0
++ the factorization is recursive
++ fixed a limitation of antiderivative() with respect to integral+expand()
+
+Changes between 0.75 and 0.76:
+
++ (3+x)*(4+x) (expand) (factorize) not working : fixed (Bug item #736503)
++ made use of the Java Collections Framework data structures
++ stopped using NotDivisibleException in monomial divisibility checks, resulting in performance improvement
++ a new distribution for Personal Java (jdk1.1) devices : meditor-pjava
+
+Changes between 0.74 and 0.75:
+
++ FileNotFoundException's taken into account
++ (1+x)^(1/x) (simplify) infinite loop fixed
++ (1-x+x^5)^2 (expand) (factorize) = (1-x-a4*x^4+x^5)*(1-x+a4*x^4+x^5) fixed
++ packages renamed and re-organized
+
+Changes before 0.74:
+
+Jan 20 2003 integral(x/(1+x)^2,x) = 1/(1+x) fixed
+Jan 13 2003 Expression and Variable.valueOf(String) throw ParseException
+Nov  1 2002 integral(x/(x^3+1),x) NullPointerException fixed
+Oct 12 2002 computations execute in a separate thread
+Oct  8 2002 Ctrl+Z = Undo, Simplify = Ctrl+Q
+Sep 21 2002 separated elementary function decomposition from simplification
+Sep  7 2002 changed the notation for partial derivatives
+Jun  7 2002 integral(x+7/5,x) = x*(7+5*x)/5 fixed
+Jun  5 2002 Inv inherits from Frac
+May 20 2002 "!" instead of fact, "^" instead of pow
+Apr 20 2002 changed Arithmetic from interface to abstract class
+Mar 29 2002 translated the whole API into english
+Mar  8 2002 port on midp1.0
+Mar  2 2002 renamed divergence as divg
+Feb 18 2002 the modulo is a parameter instead of being global
+Feb 16 2002 used "/" instead of inv and frac
+Jun 11 2001 port on jdk1.3/swing
+Mar 18 2001 added an undo command
+Mar 11 2001 grammar simplification
+Jan 24 2001 the classloading of Variable used to fail in modular mode : fixed
+Jan  7 2001 runtime exceptions are handled at GUI level
+Dec  7 2000 only one menu command ("expand") and associated syntax changes
+Dec  3 2000 important syntax changes toward compatibility with other software
+Nov 29 2000 several GUI bug fixes

@@ -1,0 +1,74 @@
+Changes between 3.0_build11 and 3.0_build12:
+
++ upgraded sympy engine from 0.6.4_beta1 to 0.6.4_beta2
++ defined mml(expr) for MathML in sympy
++ upgraded matheclipse engine from 0.0.6 to 0.0.7
++ matheclipse plotting (jvLite.jar needed in classpath, not provided)
++ jasymca plotting (just evaluate "plot" when the plot window is active)
++ mathpiper engine made webstartable
++ upgraded to jeuclid-3.1.4 and consequently to fop-0.95 and batik-1.7
+
+Changes between 3.0_build10 and 3.0_build11:
+
++ plotting facility
++ upgraded scas engine from 0.1 to 1.0
++ upgraded hartmath engine from 07pre19 to 08pre2
++ hartmath hacked to work with bsh-2.0b4 ; webstartable
++ hartmath plotting works (Plot, ParametricPlot, Plot3D, ContourPlot, DensityPlot)
+
+Changes between 3.0_build9 and 3.0_build10:
+
++ document root choice added
++ distinct run and evaluate commands
++ chooser default file filter set to accept all
++ chooser don't strip extensions when filter in accept all
++ fixed an untimely font change occuring in MathTextPane
++ jscl engine syntax change : expr expand becomes expand("expr") and likewise for the other keywords
++ matheclipse engine made webstartable
++ engine for jasymca (version 2.0), webstartable
++ engine for mathpiper (version .74)
+
+Changes between 3.0_build8 and 3.0_build9:
+
++ sympy engine webstartable
++ jas engine webstartable
+
+Changes between 3.0_build7 and 3.0_build8:
+
++ upgraded sympy engine from 0.6.3 to 0.6.4_beta1
++ upgraded jas engine from 2.2.2088 to 2.3.2428
+
+Changes between 3.0_build6 and 3.0_build7:
+
++ supressed the error when evaluating empty selection
++ fixed missing newlines in multiline error messages
+
+Changes between 3.0_build5 and 3.0_build6:
+
++ added a sympy engine (version 0.6.3)
++ upgraded from jython2.2.1 to jython2.5b1
+
+Changes between 3.0_build4 and 3.0_build5:
+
++ allowed attributes in math and svg tags (esp. svg width and height)
+
+Changes between 3.0_build3 and 3.0_build4:
+
++ SVG graphing capability
++ moved "&" replacement ahead of "<" so as not to spoil the latter
++ upgraded scas engine from 0.0 to 0.1
+
+Changes between 3.0_build2 and 3.0_build3:
+
++ created per engine launcher scripts in bin directory, as suggested by "legven"
++ put examples in their respective engine distributions
++ escaped "&" which made pdf export fail
++ no more need to comment imports in jas scripts
+
+Changes between 3.0_build1 and 3.0_build2:
+
++ jscl keywords can be nested as in "cos(x)^2+sin(x)^2 elementary simplify"
++ separated eval and exec methods in EditorEngine source files
++ added a docs/faq.txt
++ upgraded jas engine from 2.1.1770 to 2.2.2088
+

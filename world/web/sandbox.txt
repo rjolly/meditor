@@ -1,0 +1,3 @@
+<math><apply><times></times><apply><power></power><ci>x</ci><cn>2</cn></apply><apply><power></power><ci>y</ci><cn>2</cn></apply></apply></math>
+index.txt
+visit http://raphael.jolly.free.fr/
