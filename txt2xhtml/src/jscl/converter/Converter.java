@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package jscl.converter;
 
 import java.io.IOException;
@@ -20,10 +16,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-/**
- *
- * @author raphael
- */
 public class Converter {
 	public static final Pattern pattern=Pattern.compile("(?s:<math.*?/math\n?>)|(?s:<svg.*?/svg\n?>)");
 	public static final String XML="<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>";

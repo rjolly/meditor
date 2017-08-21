@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.sourceforge.jscl-meditor</groupId>
+  <artifactId>meditor</artifactId>
+  <packaging>jar</packaging>
+  <version>5.0</version>
+  <url>http://jscl-meditor.sourceforge.net/</url>
+  <description>java symbolic computing library and mathematical editor</description>
+  <licenses>
+    <license>
+      <name>GPL</name>
+      <url>http://www.gnu.org/licenses/gpl.txt</url>
+    </license>
+  </licenses>
+  <name>meditor</name>
+  <organization>
+    <name>net.sourceforge.jscl-meditor</name>
+  </organization>
+  <scm>
+    <url>git@github.com:rjolly/meditor.git</url>
+    <connection>scm:git:git@github.com:rjolly/meditor.git</connection>
+  </scm>
+  <developers>
+    <developer>
+      <id>rjolly</id>
+      <name>Raphael Jolly</name>
+      <url>http://github.com/rjolly</url>
+    </developer>
+  </developers>
+  <dependencies>
+    <dependency>
+      <groupId>net.java.linoleum</groupId>
+      <artifactId>application</artifactId>
+      <version>1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.jscl-meditor</groupId>
+      <artifactId>txt2xhtml</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.jeuclid</groupId>
+      <artifactId>jeuclid-core</artifactId>
+      <version>3.1.9</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.jeuclid</groupId>
+      <artifactId>jeuclid-fop</artifactId>
+      <version>3.1.9</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>batik-transcoder</artifactId>
+      <version>1.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>batik-codec</artifactId>
+      <version>1.7</version>
+    </dependency>
+    <dependency>
+      <groupId>xalan</groupId>
+      <artifactId>xalan</artifactId>
+      <version>2.7.2</version>
+    </dependency>
+    <dependency>
+      <groupId>net.java.linoleum</groupId>
+      <artifactId>jlfgr</artifactId>
+      <version>1_0</version>
+    </dependency>
+  </dependencies>
+</project>

@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-AutoUpdate-Show-In-Client: false
-OpenIDE-Module: jscl.textpane
-OpenIDE-Module-Localizing-Bundle: jscl/textpane/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0
-

@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-AutoUpdate-Show-In-Client: false
-OpenIDE-Module: jscl.mathml
-OpenIDE-Module-Localizing-Bundle: jscl/mathml/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0
-
