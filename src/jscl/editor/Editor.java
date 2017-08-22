@@ -683,7 +683,7 @@ public class Editor extends ScriptSupport {
 	public Editor() {
 		initComponents();
 		setIcon(new ImageIcon(getClass().getResource("meditor24.png")));
-		setMimeType("text/plain");
+		setMimeType("text/plain:text/*");
 		chooser.setFileFilter(new FileNameExtensionFilter("Text", "txt"));
 		cutAction.putValue(Action.NAME, "Cut");
 		cutAction.putValue(Action.SMALL_ICON, cutIcon16);
