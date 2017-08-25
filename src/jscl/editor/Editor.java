@@ -653,9 +653,14 @@ public class Editor extends ScriptSupport {
 	}
 
 	private String code(final String str) throws Exception {
-		final String name = engine.getFactory().getNames().get(0);
-		final String stylesheet = prefs.get(getKey(name, "stylesheet"), "");
-		return stylesheet.isEmpty()?str:MathML.instance.code(str, stylesheet);
+		if (engine != null) {
+			final String name = engine.getFactory().getNames().get(0);
+			final String stylesheet = prefs.get(getKey(name, "stylesheet"), "");
+			if (!stylesheet.isEmpty()) {
+				return MathML.instance.code(str, stylesheet);
+			}
+		}
+		return str;
 	}
 
 	private void initEngine() throws ScriptException {
@@ -668,8 +673,11 @@ public class Editor extends ScriptSupport {
 	}
 
 	private boolean isRendering() {
-		final String name = engine.getFactory().getNames().get(0);
-		return prefs.getBoolean(getKey(name, "rendering"), false);
+		if (engine != null) {
+			final String name = engine.getFactory().getNames().get(0);
+			return prefs.getBoolean(getKey(name, "rendering"), false);
+		}
+		return false;
 	}
 
 	private String getKey(final String name, final String str) {
