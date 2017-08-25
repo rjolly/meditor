@@ -749,7 +749,7 @@ public class Editor extends ScriptSupport {
 	}
 
 	private void loadEngine() {
-		name = getLanguageName();
+		name = getSelectedLanguage();
 		jTextArea1.setText(prefs.get(getKey(name, "init"), ""));
 		jTextField3.setText(prefs.get(getKey(name, "stylesheet"), ""));
 		jCheckBox1.setSelected(prefs.getBoolean(getKey(name, "rendering"), false));
@@ -1240,7 +1240,6 @@ public class Editor extends ScriptSupport {
 
         private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
 		saveEngine();
-		name = getLanguageName();
 		loadEngine();
 		optionPanel1.setDirty(true);
         }//GEN-LAST:event_jComboBox1ActionPerformed
