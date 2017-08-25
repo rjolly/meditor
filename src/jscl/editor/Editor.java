@@ -558,7 +558,7 @@ public class Editor extends ScriptSupport {
 	}
 
 	class FileExporter extends AbstractWorker {
-		final String formattingStylesheet = prefs.get(getKey("stylesheet.formatting"), "");
+		final String formatting = prefs.get(getKey("stylesheet.formatting"), "");
 		final String stylesheet = prefs.get(getKey("stylesheet"), "");
 		final String feed = prefs.get(getKey("feed"), "");
 		final String icon = prefs.get(getKey("icon"), "");
@@ -575,15 +575,11 @@ public class Editor extends ScriptSupport {
 		@Override
 		public Boolean doInBackground() throws Exception {
 			if("pdf".equals(extension)) try (final OutputStream out = new FileOutputStream(f)) {
-				out.write(MathML.instance.exportToPDF(doc.getText(), orNull(formattingStylesheet)));
+				out.write(MathML.instance.exportToPDF(doc.getText(), formatting.isEmpty()?"/jscl/editor/xhtmlfo.xsl":formatting));
 			} else try (final Writer out = new FileWriter(f)) {
-				out.write(MathML.instance.exportToXHTML(doc.getText(), orNull(stylesheet), orNull(name), orNull(feed), orNull(icon)));
+				out.write(MathML.instance.exportToXHTML(doc.getText(), stylesheet, name, feed, icon));
 			}
 			return true;
-		}
-
-		private String orNull(final String str) {
-			return "".equals(str)?null:str;
 		}
 	}
 
@@ -659,7 +655,7 @@ public class Editor extends ScriptSupport {
 	private String code(final String str) throws Exception {
 		final String name = engine.getFactory().getNames().get(0);
 		final String stylesheet = prefs.get(getKey(name, "stylesheet"), "");
-		return "".equals(stylesheet)?str:MathML.instance.code(str, stylesheet);
+		return stylesheet.isEmpty()?str:MathML.instance.code(str, stylesheet);
 	}
 
 	private void initEngine() throws ScriptException {

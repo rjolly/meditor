@@ -37,7 +37,7 @@ public class MathML {
 		final Reader r = new StringReader(str);
 		final ByteArrayOutputStream out = new ByteArrayOutputStream();
 		final Fop fop = FopFactory.newInstance().newFop(MimeConstants.MIME_PDF, out);
-		Converter.instance(stylesheet == null?"/jscl/editor/xhtmlfo.xsl":stylesheet).transformer.transform(new StreamSource(r), new SAXResult(fop.getDefaultHandler()));
+		Converter.instance(stylesheet).transformer.transform(new StreamSource(r), new SAXResult(fop.getDefaultHandler()));
 		return out.toByteArray();
 	}
 
