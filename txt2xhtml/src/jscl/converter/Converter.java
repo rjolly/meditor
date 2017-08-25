@@ -73,18 +73,18 @@ public class Converter {
 	public static String apply(final String str, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension) {
 		final Matcher pm = pattern.matcher(str);
 		final StringBuffer b = new StringBuffer(XML);
-		if (stylesheet != null) {
+		if (stylesheet != null && !stylesheet.isEmpty()) {
 			b.append("<?xml-stylesheet href=\"").append(stylesheet).append("\" type=\"text/xsl\"?>");
 		}
 		b.append("<html xmlns=\"http://www.w3.org/1999/xhtml\">\n");
 		b.append("<head>\n");
-		if (title != null) {
+		if (title != null && !title.isEmpty()) {
 			b.append("<title>").append(title).append("</title>\n");
 		}
-		if (feed != null) {
+		if (feed != null && !feed.isEmpty()) {
 			b.append("<link rel=\"alternate\" type=\"application/rss+xml\" title=\"rss\" href=\"").append(feed).append("\"/>\n");
 		}
-		if (icon != null) {
+		if (icon != null && !icon.isEmpty()) {
 			b.append("<link rel=\"shortcut icon\" href=\"").append(icon).append("\" type=\"image/x-icon\"/>\n");
 		}
 		b.append("</head>\n");
