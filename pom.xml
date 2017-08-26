@@ -34,7 +34,7 @@
     <dependency>
       <groupId>net.java.linoleum</groupId>
       <artifactId>application</artifactId>
-      <version>1.4</version>
+      <version>1.5</version>
     </dependency>
     <dependency>
       <groupId>net.sourceforge.jscl-meditor</groupId>
