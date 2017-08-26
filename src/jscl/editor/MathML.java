@@ -52,7 +52,7 @@ public class MathML {
 	private String c2p(final String document) throws Exception {
 		final Reader r = new StringReader(document);
 		final Writer w = new StringWriter();
-		Converter.instance("/jscl/editor/mathmlc2p.xsl").transformer.transform(new StreamSource(r), new StreamResult(w));
+		Converter.instance("/net/sourceforge/jeuclid/content/mathmlc2p.xsl").transformer.transform(new StreamSource(r), new StreamResult(w));
 		return w.toString().replaceAll("\u2148", "i");
 	}
 

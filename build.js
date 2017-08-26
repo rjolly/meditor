@@ -6,6 +6,7 @@ mkdir("build/javadoc");
 javac("src", "build/classes");
 copy("res", "build/classes");
 copy("src", "build/sources");
+copy("res/jscl", "build/sources/jscl");
 javadoc("src", "build/javadoc");
 
 mkdir("dist");
