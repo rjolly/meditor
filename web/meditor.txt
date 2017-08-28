@@ -13,38 +13,36 @@ jscl-meditor - java symbolic computing library and mathematical editor
 # Contact
 # Copyright
 
-News
-
-meditor for android/index.txt
-
-release_notes.txt Version 4.2
+release_notes.txt Version 5.0
 
 Project description
 
-The goal of this project is to provide a java symbolic computing library with a mathematical editor front-end. There are several computer algebra systems available on the market, most of them developed in other languages, mainly C/C++ and Lisp. But the benefits of using java in symbolic computation are great. Aside from being widely used and to comply with various standards, this language has two features of concern : readability and portability.
+The goal of this project is to develop a java symbolic computing library and a mathematical editor front-end. There are several computer algebra systems out there, most of them in other languages, mainly C/C++ and Lisp. But there are great benefits of using Java in symbolic computation. In addition to being widely used and to comply with various standards, it has two relevant features : readability and portability.
 
-Regarding readability, the goal is to produce a code as nice and short as the pseudo-code found in textbooks or research papers. As an illustration, here is what the Euclidean algorithm would look like:
+Regarding readability, the goal is to produce code as nice and short as the pseudo-code found in textbooks or research papers. As an illustration, here is what the Euclidean algorithm would look like:
 
 	Polynomial gcd(Polynomial p, Polynomial q) {
-		while(q.signum()!=0) {
-			Polynomial r=p.remainder(q);
-			p=q;
-			q=r;
+		while (q.signum() != 0) {
+			Polynomial r = p.remainder(q);
+			p = q;
+			q = r;
 		}
 		return p;
 	}
 
-It entails a dedicated development effort. This choice of clear coding, enabled by java, may have consequences in terms of performance compared to other software. But it could be worth the commitment, in the respect that understanding an algorithm just by looking at the code is made possible. Object-orientation allows to hide ugly optimizations behind a clean, easy to use interface.
+It entails a dedicated development effort. This choice of clear coding, enabled by Java, may have consequences in terms of performance compared to other languages. But it could be worth the effort, in the sense that understanding an algorithm just by looking at the code is made possible. Object-orientation allows to hide ugly optimizations behind a clean, easy to use interface.
 
-Some may doubt however that java will ever be as clear as C++ because it doesn't provide operator overloading, which means that a+b is written a.add(b), and will remain as such. The interested reader can look at the on-going discussion on the matter at Sun http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4905919 
+Some may doubt however that Java will ever be as clear as C++, because it does not have operator overloading, which means that a + b is written a.add(b), and will remain so. The interested reader can look at the on-going discussion on the matter at Sun http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4905919 
 
-As for portability, it means that a lot of platforms are available at no cost, from powerful unix workstations or servers to handheld devices. To make it possible, the project is split in two parts : the engine (jscl) and the mathematical editor front-end (meditor). The engine is usable interactively or in batch mode from a java shell interpreter (like BeanShell for instance), or as a java library in any third-party application.
+As for portability, it means that many platforms are available at no cost, from powerful unix workstations or servers to handheld devices. To make it possible, the project is split in two parts : the engine (jscl) and the mathematical editor front-end (meditor). The engine is usable interactively or in batch mode from a Java shell interpreter (like BeanShell for instance), or as a Java library in any third-party application.
 
-The front-end has currently two implementations (see below). Among others, it is intended for taking course notes. With it, a student can perform the calculations asked by their teacher fast and reliably. The plain text format should make the exchange of notes easy. The produced worksheets can be published on http://meditorworld.appspot.com/ through the Connect to web folder feature.
+The front-end has currently three implementations (see below). Among others, it is intended for taking course notes. With it, a student can do the calculations asked by their teacher fast and reliably. The plain text format should make the exchange of notes easy. The produced worksheets can be exported to XHTML and published on-line, see http://meditorworld.appspot.com/ for an illustration.
 
 Implementations
 
-The current implementations of the front-end are as follows:
+The implementations of the front-end are as follows:
+
+    * New : there is now a version for android/index.txt
 
     * j2se/swing for desktop platforms
 
@@ -158,7 +156,7 @@ AElFTkSuQmCC
   </g>
 </svg>
 
-There was a special effort to make the palm front-end powerful enough for school use, by compiling the software into native code with http://jump.sourceforge.net/ 
+There was a special effort to make the palm front-end powerful enough to be used at school, by compiling the software into native code with http://jump.sourceforge.net/ 
 
 Symbolic capabilities
 
@@ -181,7 +179,7 @@ Go to the Project summary page http://sourceforge.net/projects/jscl-meditor/
 
 Installation
 
-Desktop version (v3.0 onward)
+Desktop version (v3.0)
 
 Extract the meditor3.0.zip archive into any appropriate directory on your hard drive. It will create a "meditor3.0" directory. Change dir to it.
 
@@ -193,12 +191,12 @@ PalmOS version (up to v2.3)
 
 Go to the "palm" subdirectory. Upload the editor.prc into the device.
 
-To have the data persisted, create an entry in the memopad with the word "meditor" (+return) on the first line. The memo.csv that you can optionally install (via your desktop application import) has such an entry and several other memos containing the documentation.
+To have the data persisted, create an entry in the memopad with the word "meditor" ( + return ) on the first line. The memo.csv that you can optionally install (via your desktop application import) has such an entry and several other memos containing the documentation.
 
 Dependencies
 
 http://jeuclid.sourceforge.net/ 3.1.9
-http://xmlgraphics.apache.org/fop/ 0.95
+http://xmlgraphics.apache.org/fop/ 0.95-1
 http://xml.apache.org/batik/ 1.7
 http://xsltml.sourceforge.net/ 2.1.2
 http://www2.ph.ed.ac.uk/snuggletex/ 1.2.2
@@ -240,4 +238,4 @@ Copyright
 http://www.gnu.org/licenses/gpl.html The GNU General Public License
 
 --
-last updated on Wed Jul  9 2014
+last updated on Mon Aug 28 2017

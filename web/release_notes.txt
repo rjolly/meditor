@@ -1,7 +1,26 @@
-                meditor version 4.2
+                meditor version 5.0
 
 
   In this release:
+
+
+    * Due to java.net being stopped, the module system and the web folder are broken
+
+    * As a result, meditor is re-developed to run on http://raphael.jolly.free.fr/linoleum
+
+    * Most of the functionality is preserved, except for:
+
+      Paste from Wiki, due to SnuggleTeX not being available in Maven Central
+      The web folder, which is replaced by making pull requests to the github repository
+      Every script engine/library that is not available in Maven
+
+    * Available (and tested) modules are currently:
+
+      org.beanshell#bsh;2.0b5
+      org.scala-lang#scala-compiler;2.12.2
+
+
+  In version 4.2:
 
 
     * Upgrade to Netbeans platform version 7.4
@@ -65,6 +84,6 @@
       jython-2.5.2
       scala-2.9.2 with JSR-223 addition
 
-    * Engines+libraries available through Update Center ; currently : beanshell+jscl (working), scala+scas (working), jython+jas (working), jython+sympy (not yet working), matheclipse+jas (not yet working)
+    * Engines + libraries available through Update Center ; currently : beanshell + jscl (working), scala + scas (working), jython + jas (working), jython + sympy (not yet working), matheclipse + jas (not yet working)
 
     * Incorporation of ScAS 2.0

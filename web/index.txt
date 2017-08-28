@@ -1,4 +1,4 @@
-This website is meant as a collection of user-created meditor.txt worksheets. Feel free to add your own productions. To do so, run meditor and click "Connect to web folder". Enter your http://java.net/ credentials (you need to register if not already done). To create a new document, select "docs" and choose "New->Empty file". To edit an existing document, just click on it and it will load in the editor pane. Click "save" when you are done. Your changes will be reflected on the website. If you are not confident, you can use the sandbox.txt.
+This website is meant as a collection of user-created meditor.txt worksheets. Feel free to add your own productions. To do so, please make a pull request to https://github.com/rjolly/meditor/tree/master/web . Your changes will be reflected on the website.
 
 Notice that MathML parts of meditor documents are rendered automatically:
 
