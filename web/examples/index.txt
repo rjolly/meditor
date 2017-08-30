@@ -1,0 +1,34 @@
+import java.io.{File, FileReader}
+import javax.script.ScriptEngineManager
+import jscl.converter.Converter
+
+val home = System.getProperty("user.dir")
+val dir = new File(new File(home), "examples")
+val manager = new ScriptEngineManager
+val converter = Converter.instance("mmlscala.xsl")
+
+val list = List("pp1.txt", "pp2.txt", "polynomial.txt", "solvable_polynomial.txt", "gb.txt", "group.txt", "bigint.txt", "modint.txt", "mod_polynomial.txt", "product.txt", "rational.txt", "rational_polynomial.txt", "univariate_polynomial.txt", "rf.txt", "rfi.txt", "complex.txt", "complex_residue.txt", "an.txt", "module.txt", "gcd_subres.txt", "gcd_multivariate.txt", "polypower.txt", "primes1.txt", "primes2.txt", "interface.txt")
+
+def task(name: String) = {
+  println(name)
+  val file = new File(dir, name)
+  val engine = manager.getEngineByName("scala")
+  val reader = new FileReader(file)
+  val code = converter(reader)
+  try {
+    engine.eval(code)
+    1
+  } catch {
+    case e : Throwable => {
+      e.printStackTrace
+      println(name + " failure")
+      0
+    }
+  } finally {
+    reader.close
+  }
+}
+
+val n = (0 /: (list map task)) { (l, r) => l + r }
+val m = list.length - n
+println("success : " + n + ", failure : " + m)
