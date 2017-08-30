@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0">
+    <info module="world" organisation="net.sourceforge.jscl-meditor" revision="1.0"/>
+    <configurations>
+        <conf name="default" extends="runtime,master"/>
+        <conf name="master"/>
+        <conf name="compile"/>
+        <conf name="runtime"/>
+        <conf name="compile-test"/>
+        <conf name="runtime-test"/>
+    </configurations>
+    <dependencies>
+        <dependency org="net.sourceforge.jscl-meditor" name="txt2xhtml" rev="1.0" conf="compile->master;runtime->default"/>
+        <dependency org="javax.servlet" name="servlet-api" rev="2.2" conf="compile->master;runtime->default"/>
+    </dependencies>
+</ivy-module>
