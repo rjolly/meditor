@@ -1,4 +1,4 @@
-This website is meant as a collection of user-created meditor.txt worksheets. Feel free to add your own productions. To do so, please make a pull request to https://github.com/rjolly/meditor/tree/master/web . Your changes will be reflected on the website.
+This website is meant as a collection of user-created meditor.txt worksheets. Feel free to add your own. To do so, please make a pull request to https://github.com/rjolly/meditor/tree/master/docs . Your changes will be reflected on the website. If you are not confident, you can use the sandbox.txt.
 
 Notice that MathML parts of meditor documents are rendered automatically:
 

@@ -6,7 +6,7 @@
         <servlet-class>jscl.html.Processor</servlet-class>
         <init-param>
             <param-name>target</param-name>
-            <param-value>https://github.com/rjolly/meditor/raw/master/web</param-value>
+            <param-value>https://github.com/rjolly/meditor/raw/master/docs</param-value>
         </init-param>
         <init-param>
             <param-name>source</param-name>
