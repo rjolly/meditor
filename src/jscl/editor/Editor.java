@@ -108,6 +108,7 @@ public class Editor extends ScriptSupport {
 	private int modified;
 	private String name;
 	private Path file;
+	private Path prev;
 
 	class UndoAction extends AbstractAction {
 		public UndoAction() {
@@ -334,10 +335,8 @@ public class Editor extends ScriptSupport {
 
 		@Override
 		public void actionPerformed(final ActionEvent e) {
-			if (proceed()) {
-				setFile(null);
-				open();
-			}
+			setFile(null);
+			open();
 		}
 	}
 
@@ -352,15 +351,13 @@ public class Editor extends ScriptSupport {
 
 		@Override
 		public void actionPerformed(final ActionEvent e) {
-			if (proceed()) {
-				final FileChooser chooser = getOwner().chooser;
-				switch (chooser.showInternalOpenDialog(jPanel1)) {
-				case JFileChooser.APPROVE_OPTION:
-					setFile(chooser.getSelectedFile().toPath());
-					open();
-					break;
-				default:
-				}
+			final FileChooser chooser = getOwner().chooser;
+			switch (chooser.showInternalOpenDialog(jPanel1)) {
+			case JFileChooser.APPROVE_OPTION:
+				setFile(chooser.getSelectedFile().toPath());
+				open();
+				break;
+			default:
 			}
 		}
 	}
@@ -410,18 +407,23 @@ public class Editor extends ScriptSupport {
 	}
 
 	private void setFile(final Path file) {
+		prev = this.file;
 		this.file = file;
 	}
 
 	@Override
 	public void open() {
-		final MathDocument doc = mathTextPane1.getEditorKit().createDefaultDocument();
-		mathTextPane1.getDocument().removeUndoableEditListener(undoHandler);
-		mathTextPane1.setDocument(doc);
-		if (file != null && Files.exists(file)) {
-			new FileLoader().execute();
+		if (proceed()) {
+			final MathDocument doc = mathTextPane1.getEditorKit().createDefaultDocument();
+			mathTextPane1.getDocument().removeUndoableEditListener(undoHandler);
+			mathTextPane1.setDocument(doc);
+			if (file != null && Files.exists(file)) {
+				new FileLoader().execute();
+			} else {
+				reset();
+			}
 		} else {
-			reset();
+			file = prev;
 		}
 	}
 
@@ -1269,8 +1271,9 @@ public class Editor extends ScriptSupport {
 
         private void formVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_formVetoableChange
 		if (IS_CLOSED_PROPERTY.equals(evt.getPropertyName()) && (Boolean) evt.getNewValue()) {
-			if (proceed()) {
-			} else {
+			setFile(null);
+			open();
+			if (modified != 0) {
 				throw new PropertyVetoException("aborted", evt);
 			}
 		}
