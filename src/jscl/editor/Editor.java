@@ -254,8 +254,8 @@ public class Editor extends ScriptSupport {
 			final int n = data.length() - 1;
 			if (n < 0);
 			else try {
-				String srcData = Wiki.instance.copyToWiki(data);
-				StringSelection contents = new StringSelection(srcData);
+				final String srcData = Wiki.instance.copyToWiki(data);
+				final StringSelection contents = new StringSelection(srcData);
 				getClipboard().setContents(contents, null);
 			} catch (final Exception ex) {
 				ex.printStackTrace();
@@ -276,8 +276,8 @@ public class Editor extends ScriptSupport {
 			final int n = data.length() - 1;
 			if (n < 0);
 			else try {
-				String srcData = code(data);
-				StringSelection contents = new StringSelection(srcData);
+				final String srcData = code(data);
+				final StringSelection contents = new StringSelection(srcData);
 				getClipboard().setContents(contents, null);
 			} catch (final Exception ex) {
 				ex.printStackTrace();
@@ -299,7 +299,7 @@ public class Editor extends ScriptSupport {
 			final FileChooser chooser = getOwner().exportChooser;
 			final String name = file == null?null:stripExtension(file.getFileName().toString());
 			chooser.setSelectedFile(name == null?null:new File(name));
-			if(chooser.showInternalSaveDialog(jPanel1) != JFileChooser.APPROVE_OPTION) return;
+			if (chooser.showInternalSaveDialog(jPanel1) != JFileChooser.APPROVE_OPTION) return;
 			final String extension = ((MathFileFilter) chooser.getFileFilter()).getExtension();
 			final File f = putExtension(chooser.getSelectedFile(), extension);
 			if (f.exists() && !proceed("File exists. Overwrite ?")) return;
@@ -334,7 +334,7 @@ public class Editor extends ScriptSupport {
 
 		@Override
 		public void actionPerformed(final ActionEvent e) {
-			if (clean() || proceed("Changes not saved. Proceed ?")) {
+			if (proceed()) {
 				setFile(null);
 				open();
 			}
@@ -352,7 +352,7 @@ public class Editor extends ScriptSupport {
 
 		@Override
 		public void actionPerformed(final ActionEvent e) {
-			if (clean() || proceed("Changes not saved. Proceed ?")) {
+			if (proceed()) {
 				final FileChooser chooser = getOwner().chooser;
 				switch (chooser.showInternalOpenDialog(jPanel1)) {
 				case JFileChooser.APPROVE_OPTION:
@@ -409,28 +409,32 @@ public class Editor extends ScriptSupport {
 		}
 	}
 
-	private void resetUndoManager() {
-		undo.discardAllEdits();
-		modified = 0;
-		undoAction.update();
-		redoAction.update();
-	}
-
 	private void setFile(final Path file) {
-		final MathDocument doc = mathTextPane1.getEditorKit().createDefaultDocument();
-		mathTextPane1.getDocument().removeUndoableEditListener(undoHandler);
-		mathTextPane1.setDocument(doc);
 		this.file = file;
 	}
 
 	@Override
 	public void open() {
+		final MathDocument doc = mathTextPane1.getEditorKit().createDefaultDocument();
+		mathTextPane1.getDocument().removeUndoableEditListener(undoHandler);
+		mathTextPane1.setDocument(doc);
 		if (file != null && Files.exists(file)) {
 			new FileLoader().execute();
 		} else {
-			mathTextPane1.getDocument().addUndoableEditListener(undoHandler);
-			resetUndoManager();
+			reset();
 		}
+	}
+
+	private void reset() {
+		mathTextPane1.getDocument().addUndoableEditListener(undoHandler);
+		resetUndoManager();
+	}
+
+	private void resetUndoManager() {
+		undo.discardAllEdits();
+		modified = 0;
+		undoAction.update();
+		redoAction.update();
 	}
 
 	private void save(final Path file) {
@@ -455,8 +459,8 @@ public class Editor extends ScriptSupport {
 		saveAction.setEnabled(file != null && modified != 0);
 	}
 
-	private boolean clean() {
-		return modified == 0;
+	private boolean proceed() {
+		return modified == 0 || proceed("Changes not saved. Proceed ?");
 	}
 
 	private boolean proceed(final String msg) {
@@ -529,8 +533,7 @@ public class Editor extends ScriptSupport {
 
 		@Override
 		public void doDone() {
-			doc.addUndoableEditListener(undoHandler);
-			resetUndoManager();
+			reset();
 		}
 	}
 
@@ -599,10 +602,7 @@ public class Editor extends ScriptSupport {
 
 		@Override
 		public Object doInBackground() throws Exception  {
-			if (engine == null) {
-				initEngine();
-			}
-			return engine.eval(code(data));
+			return getEngine().eval(code(data));
 		}
 
 		@Override
@@ -653,31 +653,32 @@ public class Editor extends ScriptSupport {
 	}
 
 	private String code(final String str) throws Exception {
-		if (engine != null) {
-			final String name = engine.getFactory().getNames().get(0);
-			final String stylesheet = prefs.get(getKey(name, "stylesheet"), "");
-			if (!stylesheet.isEmpty()) {
-				return MathML.instance.code(str, stylesheet);
-			}
+		final String name = getEngine().getFactory().getNames().get(0);
+		final String stylesheet = prefs.get(getKey(name, "stylesheet"), "");
+		if (!stylesheet.isEmpty()) {
+			return MathML.instance.code(str, stylesheet);
 		}
 		return str;
 	}
 
-	private void initEngine() throws ScriptException {
-		engine = getEngine();
-		final String name = engine.getFactory().getNames().get(0);
-		final String init = prefs.get(getKey(name, "init"), "").trim();
-		if (init.length() > 0) {
-			engine.eval(init);
+	@Override
+	public ScriptEngine getEngine() {
+		if (engine == null) try {
+			engine = super.getEngine();
+			final String name = engine.getFactory().getNames().get(0);
+			final String init = prefs.get(getKey(name, "init"), "").trim();
+			if (init.length() > 0) {
+				engine.eval(init);
+			}
+		} catch (final ScriptException e) {
+			e.printStackTrace();
 		}
+		return engine;
 	}
 
 	private boolean isRendering() {
-		if (engine != null) {
-			final String name = engine.getFactory().getNames().get(0);
-			return prefs.getBoolean(getKey(name, "rendering"), false);
-		}
-		return false;
+		final String name = getEngine().getFactory().getNames().get(0);
+		return prefs.getBoolean(getKey(name, "rendering"), false);
 	}
 
 	private String getKey(final String name, final String str) {
@@ -1268,7 +1269,7 @@ public class Editor extends ScriptSupport {
 
         private void formVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_formVetoableChange
 		if (IS_CLOSED_PROPERTY.equals(evt.getPropertyName()) && (Boolean) evt.getNewValue()) {
-			if (clean() || proceed("Changes not saved. Proceed ?")) {
+			if (proceed()) {
 			} else {
 				throw new PropertyVetoException("aborted", evt);
 			}

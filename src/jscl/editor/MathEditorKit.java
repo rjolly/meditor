@@ -43,12 +43,16 @@ public class MathEditorKit extends StyledEditorKit {
 			buffer.append(data, 0, n);
 			worker.setNumber(s += n);
 		}
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				editor.replaceSelection(buffer.toString());
-				editor.setCaretPosition(0);
-			}
-		});
+		try {
+			SwingUtilities.invokeAndWait(new Runnable() {
+				public void run() {
+					editor.replaceSelection(buffer.toString());
+					editor.setCaretPosition(0);
+				}
+			});
+		} catch (final Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
