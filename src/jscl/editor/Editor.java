@@ -448,8 +448,6 @@ public class Editor extends ScriptSupport {
 
 	private void doSave() {
 		new FileSaver().execute();
-		modified = 0;
-		update();
 	}
 
 	private void update() {
@@ -459,6 +457,9 @@ public class Editor extends ScriptSupport {
 		}
 		setTitle(title);
 		saveAction.setEnabled(file != null && modified != 0);
+		if (file != null) {
+			getOwner().chooser.setSelectedFile(file.toFile());
+		}
 	}
 
 	private boolean proceed() {
@@ -496,16 +497,16 @@ public class Editor extends ScriptSupport {
 		public void done() {
 			try {
 				get();
-				mathTextPane1.requestFocus();
+				doDone();
 			} catch (final InterruptedException e) {
 				e.printStackTrace();
 			} catch (final ExecutionException e) {
 				e.printStackTrace();
 			}
+			mathTextPane1.requestFocus();
 			mathTextPane1.setCursor(cursor);
 			layout.show(jPanel3, "card1");
 			jProgressBar1.setValue(0);
-			doDone();
 		}
 
 		protected void doDone() {
@@ -559,6 +560,12 @@ public class Editor extends ScriptSupport {
 				out.flush();
 			}
 			return true;
+		}
+
+		@Override
+		public void doDone() {
+			modified = 0;
+			update();
 		}
 	}
 
@@ -724,11 +731,7 @@ public class Editor extends ScriptSupport {
 
 	@Override
 	public void setURI(final URI uri) {
-		try {
-			setFile(Paths.get(uri).toRealPath());
-		} catch (final IOException ex) {
-			ex.printStackTrace();
-		}
+		setFile(Paths.get(uri));
 	}
 
 	@Override
