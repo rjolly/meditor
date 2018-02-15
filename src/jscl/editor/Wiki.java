@@ -13,7 +13,7 @@ public class Wiki {
 	}
 
 	public String copyToWiki(final String document) throws Exception {
-		return math(Converter.instance("/xsltml/mmltex.xsl").apply(document));
+		return math(MathML.instance.code(document, "/xsltml/mmltex.xsl"));
 	}
 
 	public String pasteFromWiki(final String str) throws Exception {

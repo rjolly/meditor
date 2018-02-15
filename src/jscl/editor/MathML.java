@@ -10,6 +10,11 @@ import java.io.Writer;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.ByteArrayOutputStream;
+import java.util.Map;
+import java.util.HashMap;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
@@ -29,6 +34,15 @@ import org.w3c.dom.Node;
 
 public class MathML {
 	public static final MathML instance = new MathML();
+	private final Map<String, Transformer> cache = new HashMap<>();
+	private final TransformerFactory factory = TransformerFactory.newInstance();
+
+	private Transformer getTransformer(final String stylesheet) throws TransformerConfigurationException {
+		if (!cache.containsKey(stylesheet)) {
+			cache.put(stylesheet, factory.newTransformer(new StreamSource(getClass().getResource(stylesheet).toString())));
+		}
+ 		return cache.get(stylesheet);
+	}
 
 	private MathML() {
 	}
@@ -38,7 +52,7 @@ public class MathML {
 		final Reader r = new StringReader(str);
 		final ByteArrayOutputStream out = new ByteArrayOutputStream();
 		final Fop fop = FopFactory.newInstance().newFop(MimeConstants.MIME_PDF, out);
-		Converter.instance(stylesheet).transformer.transform(new StreamSource(r), new SAXResult(fop.getDefaultHandler()));
+		getTransformer(stylesheet).transform(new StreamSource(r), new SAXResult(fop.getDefaultHandler()));
 		return out.toByteArray();
 	}
 
@@ -47,13 +61,17 @@ public class MathML {
 	}
 
 	public String code(final String document, final String stylesheet) throws Exception {
-		return Converter.instance(stylesheet).apply(document);
+		final String s = Converter.apply(document, null);
+		final Reader r = new StringReader(s);
+		final Writer w = new StringWriter();
+		getTransformer(stylesheet).transform(new StreamSource(r), new StreamResult(w));
+		return Converter.replace(w.toString());
 	}
 
 	private String c2p(final String document) throws Exception {
 		final Reader r = new StringReader(document);
 		final Writer w = new StringWriter();
-		Converter.instance("/net/sourceforge/jeuclid/content/mathmlc2p.xsl").transformer.transform(new StreamSource(r), new StreamResult(w));
+		getTransformer("/net/sourceforge/jeuclid/content/mathmlc2p.xsl").transform(new StreamSource(r), new StreamResult(w));
 		return w.toString().replaceAll("\u2148", "i");
 	}
 

@@ -68,7 +68,11 @@ public class Converter {
 		final Reader r = new StringReader(s);
 		final Writer w = new StringWriter();
 		transformer.transform(new StreamSource(r), new StreamResult(w));
-		return w.toString().replaceAll("\r", "").replaceAll("\u00a0", " ").replaceAll(" +\n", "\n").replaceAll(" {8}", "\t").trim();
+		return replace(w.toString());
+	}
+
+	public static String replace(final String str) {
+		return str.replaceAll("\r", "").replaceAll("\u00a0", " ").replaceAll(" +\n", "\n").replaceAll(" {8}", "\t").trim();
 	}
 
 	public static String apply(final String str, final String stylesheet) {

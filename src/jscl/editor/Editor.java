@@ -28,7 +28,6 @@ import java.nio.file.Path;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.prefs.Preferences;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.AbstractAction;
@@ -52,7 +51,6 @@ import linoleum.application.FileChooser;
 import linoleum.application.ScriptSupport;
 
 public class Editor extends ScriptSupport {
-	private final Preferences prefs = Preferences.userNodeForPackage(getClass());
 	private final Icon newIcon = new ImageIcon(getClass().getResource("/toolbarButtonGraphics/general/New24.gif"));
 	private final Icon newIcon16 = new ImageIcon(getClass().getResource("/toolbarButtonGraphics/general/New16.gif"));
 	private final Icon openIcon = new ImageIcon(getClass().getResource("/toolbarButtonGraphics/general/Open24.gif"));
@@ -581,10 +579,10 @@ public class Editor extends ScriptSupport {
 	}
 
 	class FileExporter extends AbstractWorker {
-		final String formatting = prefs.get(getKey("stylesheet.formatting"), "");
-		final String stylesheet = prefs.get(getKey("stylesheet"), "");
-		final String feed = prefs.get(getKey("feed"), "");
-		final String icon = prefs.get(getKey("icon"), "");
+		final String formatting = getPref("stylesheet.formatting");
+		final String stylesheet = getPref("stylesheet");
+		final String feed = getPref("feed");
+		final String icon = getPref("icon");
 		final String extension;
 		final String name;
 		final File f;
@@ -598,7 +596,7 @@ public class Editor extends ScriptSupport {
 		@Override
 		public Boolean doInBackground() throws Exception {
 			if("pdf".equals(extension)) try (final OutputStream out = new FileOutputStream(f)) {
-				out.write(MathML.instance.exportToPDF(doc.getText(), formatting.isEmpty()?"/jscl/editor/xhtmlfo.xsl":formatting));
+				out.write(MathML.instance.exportToPDF(doc.getText(), formatting));
 			} else try (final Writer out = new FileWriter(f)) {
 				out.write(MathML.instance.exportToXHTML(doc.getText(), stylesheet, name, feed, icon));
 			}
@@ -674,7 +672,7 @@ public class Editor extends ScriptSupport {
 
 	private String code(final String str) throws Exception {
 		final String name = getEngine().getFactory().getNames().get(0);
-		final String stylesheet = prefs.get(getKey(name, "stylesheet"), "");
+		final String stylesheet = getPref(getKey(name, "stylesheet"));
 		if (!stylesheet.isEmpty()) {
 			return MathML.instance.code(str, stylesheet);
 		}
@@ -686,7 +684,7 @@ public class Editor extends ScriptSupport {
 		if (engine == null) try {
 			engine = super.getEngine();
 			final String name = engine.getFactory().getNames().get(0);
-			final String init = prefs.get(getKey(name, "init"), "").trim();
+			final String init = getPref(getKey(name, "init")).trim();
 			if (init.length() > 0) {
 				engine.eval(init);
 			}
@@ -698,11 +696,11 @@ public class Editor extends ScriptSupport {
 
 	private boolean isRendering() {
 		final String name = getEngine().getFactory().getNames().get(0);
-		return prefs.getBoolean(getKey(name, "rendering"), false);
+		return getBooleanPref(getKey(name, "rendering"));
 	}
 
 	private String getKey(final String name, final String str) {
-		return getKey(name + "." + str);
+		return name + "." + str;
 	}
 
 	public Editor() {
@@ -759,34 +757,34 @@ public class Editor extends ScriptSupport {
 	public void load() {
 		super.load();
 		loadEngine();
-		jTextField4.setText(prefs.get(getKey("stylesheet"), ""));
-		jTextField5.setText(prefs.get(getKey("feed"), ""));
-		jTextField6.setText(prefs.get(getKey("icon"), ""));
-		jTextField7.setText(prefs.get(getKey("stylesheet.formatting"), ""));
+		jTextField4.setText(getPref("stylesheet"));
+		jTextField5.setText(getPref("feed"));
+		jTextField6.setText(getPref("icon"));
+		jTextField7.setText(getPref("stylesheet.formatting"));
 	}
 
 	private void loadEngine() {
 		name = getSelectedLanguage();
-		jTextArea1.setText(prefs.get(getKey(name, "init"), ""));
-		jTextField3.setText(prefs.get(getKey(name, "stylesheet"), ""));
-		jCheckBox1.setSelected(prefs.getBoolean(getKey(name, "rendering"), false));
+		jTextArea1.setText(getPref(getKey(name, "init")));
+		jTextField3.setText(getPref(getKey(name, "stylesheet")));
+		jCheckBox1.setSelected(getBooleanPref(getKey(name, "rendering")));
 	}
 
 	@Override
 	public void save() {
 		super.save();
 		saveEngine();
-		prefs.put(getKey("stylesheet"), jTextField4.getText());
-		prefs.put(getKey("feed"), jTextField5.getText());
-		prefs.put(getKey("icon"), jTextField6.getText());
-		prefs.put(getKey("stylesheet.formatting"), jTextField7.getText());
+		putPref("stylesheet", jTextField4.getText());
+		putPref("feed", jTextField5.getText());
+		putPref("icon", jTextField6.getText());
+		putPref("stylesheet.formatting", jTextField7.getText());
 	}
 
 	private void saveEngine() {
 		if (name != null) {
-			prefs.put(getKey(name, "init"), jTextArea1.getText());
-			prefs.put(getKey(name, "stylesheet"), jTextField3.getText());
-			prefs.putBoolean(getKey(name, "rendering"), jCheckBox1.isSelected());
+			putPref(getKey(name, "init"), jTextArea1.getText());
+			putPref(getKey(name, "stylesheet"), jTextField3.getText());
+			putBooleanPref(getKey(name, "rendering"), jCheckBox1.isSelected());
 		}
 	}
 
