@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
@@ -83,6 +84,7 @@ public class Editor extends ScriptSupport {
 	private final Action runAction = new RunAction();
 	private final Action evalAction = new EvalAction();
 	private final Action copyToWikiAction = new CopyToWikiAction();
+	private final Action pasteFromWikiAction = new PasteFromWikiAction();
 	private final Action copyToCodeAction = new CopyToCodeAction();
 	private final Action exportAction = new ExportAction();
 	private final Action newAction = new NewAction();
@@ -258,6 +260,23 @@ public class Editor extends ScriptSupport {
 				final String srcData = Wiki.instance.copyToWiki(data);
 				final StringSelection contents = new StringSelection(srcData);
 				getClipboard().setContents(contents, null);
+			} catch (final Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+
+	private class PasteFromWikiAction extends AbstractAction {
+		private PasteFromWikiAction() {
+			super("Paste from wiki");
+			putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
+		}
+
+		@Override
+		public void actionPerformed(final ActionEvent e) {
+			try {
+				final String srcData = (String) getClipboard().getContents(null).getTransferData(DataFlavor.stringFlavor);
+				mathTextPane1.replaceSelection(Wiki.instance.pasteFromWiki(srcData));
 			} catch (final Exception ex) {
 				ex.printStackTrace();
 			}
@@ -849,6 +868,8 @@ public class Editor extends ScriptSupport {
                 jMenuItem17 = new javax.swing.JMenuItem();
                 jSeparator6 = new javax.swing.JPopupMenu.Separator();
                 jMenuItem18 = new javax.swing.JMenuItem();
+                jSeparator7 = new javax.swing.JPopupMenu.Separator();
+                jMenuItem19 = new javax.swing.JMenuItem();
 
                 jLabel1.setText("Find :");
 
@@ -1205,12 +1226,16 @@ public class Editor extends ScriptSupport {
                 jMenuItem16.setAction(copyToWikiAction);
                 jMenu3.add(jMenuItem16);
 
-                jMenuItem17.setAction(copyToCodeAction);
+                jMenuItem17.setAction(pasteFromWikiAction);
                 jMenu3.add(jMenuItem17);
                 jMenu3.add(jSeparator6);
 
-                jMenuItem18.setAction(exportAction);
+                jMenuItem18.setAction(copyToCodeAction);
                 jMenu3.add(jMenuItem18);
+                jMenu3.add(jSeparator7);
+
+                jMenuItem19.setAction(exportAction);
+                jMenu3.add(jMenuItem19);
 
                 jMenuBar1.add(jMenu3);
 
@@ -1330,6 +1355,7 @@ public class Editor extends ScriptSupport {
         private javax.swing.JMenuItem jMenuItem16;
         private javax.swing.JMenuItem jMenuItem17;
         private javax.swing.JMenuItem jMenuItem18;
+        private javax.swing.JMenuItem jMenuItem19;
         private javax.swing.JMenuItem jMenuItem2;
         private javax.swing.JMenuItem jMenuItem3;
         private javax.swing.JMenuItem jMenuItem4;
@@ -1352,6 +1378,7 @@ public class Editor extends ScriptSupport {
         private javax.swing.JPopupMenu.Separator jSeparator3;
         private javax.swing.JPopupMenu.Separator jSeparator4;
         private javax.swing.JPopupMenu.Separator jSeparator6;
+        private javax.swing.JPopupMenu.Separator jSeparator7;
         private javax.swing.JTabbedPane jTabbedPane1;
         private javax.swing.JTextArea jTextArea1;
         private javax.swing.JTextField jTextField1;

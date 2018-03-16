@@ -61,11 +61,12 @@ public class MathML {
 		if (Converter.isSvg(text)) {
 			return SVG.instance.createImage(Converter.XML + t);
 		} else {
-			return createMathImage(Converter.XML + t);
+			final Image c = createMathImage(Converter.XML + t);
+			return c == null?TeX.instance.createImage(text):c;
 		}
 	}
 
-	private Image createMathImage(final String document) throws Exception {
+	Image createMathImage(final String document) throws Exception {
 		final String str = c2p(document);
 		final Node node = MathMLParserSupport.parseString(str);
 		final NodeList t = node.getFirstChild().getChildNodes();
@@ -73,7 +74,7 @@ public class MathML {
 		return createImage(node);
 	}
 
-	private Image createImage(final Node node) throws Exception {
+	Image createImage(final Node node) throws Exception {
 		((MutableLayoutContext)LayoutContextImpl.getDefaultLayoutContext()).setParameter(Parameter.SCRIPTMINSIZE, new Float(10f));
 		final JEuclidView view=DOMBuilder.getInstance().createJeuclidDom(node).getDefaultView();
 		final int width = (int) Math.ceil(view.getWidth());
