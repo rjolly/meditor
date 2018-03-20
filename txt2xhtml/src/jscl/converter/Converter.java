@@ -19,7 +19,11 @@ import javax.xml.transform.stream.StreamSource;
 public class Converter {
 	public static final Pattern pattern = Pattern.compile("(?s:<math.*?/math\n?>)|(?s:<svg.*?/svg\n?>)");
 	public static final String XML = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>";
-	private static final Pattern links = Pattern.compile("(https?://[\\w_\\-\\.:/~\\?=&#]*)|([\\w_\\-\\./]*\\.txt)");
+	private static final Pattern word = Pattern.compile("[\\w_\\-\\.]+");
+	private static final Pattern http = Pattern.compile("https?://[\\w_\\-\\.:/~\\?=&#]*");
+	private static final Pattern txt = Pattern.compile("(" + word.pattern() + ")(?:/(" + word.pattern() + "))*\\.txt");
+	private static final Pattern mvn = Pattern.compile("(" + word.pattern() + ")#(" + word.pattern() + ");(" + word.pattern() + ")");
+	private static final Pattern links = Pattern.compile("(" + http.pattern() + ")|(" + txt.pattern() + ")|(" + mvn.pattern() + ")");
 	private static final Pattern newlines = Pattern.compile("\n");
 	private static final Pattern spaces = Pattern.compile("(?m:^ +)|(  +)|(\\t)");
 	private static final String mml = " xmlns=\"http://www.w3.org/1998/Math/MathML\"";
@@ -115,14 +119,58 @@ public class Converter {
 		while (pm.find()) {
 			final int m = pm.start();
 			final String s = pm.group();
+			final Matcher pm0 = txt.matcher(s);
+			final Matcher pm1 = mvn.matcher(s);
 			buffer.append(newlines(str.substring(n, m)));
-			if (s.endsWith(".txt")) {
-				final String ss = s.substring(0, s.length() - 4);
-				buffer.append("<a href=\"" + ss + (extension?".xhtml":".txt") + "\">");
-				buffer.append(ss.endsWith("/index")?ss.substring(0, ss.length() - 6):ss);
+			if (pm0.matches()) {
+				buffer.append("<a href=\"");
+				for (int i = 1 ; i <= pm0.groupCount() ; i++) {
+					final String ss = pm0.group(i);
+					if (ss != null) {
+						if (i > 1) {
+							buffer.append("/");
+						}
+						buffer.append(ss);
+					}
+				}
+				buffer.append(extension?".xhtml":".txt");
+				buffer.append("\">");
+				for (int i = 1 ; i <= pm0.groupCount() ; i++) {
+					final String ss = pm0.group(i);
+					if (ss != null && (!"index".equals(ss) || i < pm0.groupCount())) {
+						if (i > 1) {
+							buffer.append("/");
+						}
+						buffer.append(ss);
+					}
+				}
+				buffer.append("</a>");
+			} else if (pm1.matches()) {
+				buffer.append("<a href=\"");
+				buffer.append("mvn:");
+				for (int i = 1 ; i <= pm1.groupCount() ; i++) {
+					final String ss = pm1.group(i);
+					if (i > 1) {
+						buffer.append("/");
+					}
+					buffer.append(ss);
+				}
+				buffer.append("\">");
+				for (int i = 1 ; i <= pm1.groupCount() ; i++) {
+					final String ss = pm1.group(i);
+					if (i > 1) {
+						buffer.append(i == 2?"#":";");
+					}
+					buffer.append(ss);
+				}
 				buffer.append("</a>");
 			} else {
-				buffer.append("<a href=\"" + special(s) + "\">" + special(s) + "</a>");
+				final String ss = special(s);
+				buffer.append("<a href=\"");
+				buffer.append(ss);
+				buffer.append("\">");
+				buffer.append(ss);
+				buffer.append("</a>");
 			}
 			n = pm.end();
 		}
