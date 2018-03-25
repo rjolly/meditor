@@ -1,12 +1,10 @@
 package jscl.editor;
 
-import java.awt.Dimension;
 import java.util.regex.Matcher;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JTextPane;
-import javax.swing.plaf.basic.BasicEditorPaneUI;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
@@ -15,8 +13,6 @@ import javax.swing.text.Element;
 import jscl.converter.Converter;
 
 public class MathTextPane extends JTextPane {
-	int width;
-
 	@Override
 	protected EditorKit createDefaultEditorKit() {
 		return new MathEditorKit();
@@ -25,15 +21,6 @@ public class MathTextPane extends JTextPane {
 	@Override
 	public MathEditorKit getEditorKit() {
 		return (MathEditorKit) super.getEditorKit();
-	}
-
-	public MathTextPane() {
-		setUI(new BasicEditorPaneUI() {
-			public Dimension getMinimumSize(final JComponent c) {
-				final Dimension size=super.getPreferredSize(c);
-				return new Dimension(width, size.height);
-			}
-		});
 	}
 
 	@Override
@@ -51,7 +38,6 @@ public class MathTextPane extends JTextPane {
 	}
 
 	public void setMathDocument(final MathDocument doc) {
-		width = 0;
 		setStyledDocument(doc);
 	}
 
@@ -130,7 +116,6 @@ public class MathTextPane extends JTextPane {
 	}
 
 	public void insertIcon(final Icon g) {
-		width = Math.max(width, g.getIconWidth());
 		final AttributeSet a = getInputAttributes().copyAttributes();
 		super.insertIcon(g);
 		getInputAttributes().addAttributes(a);

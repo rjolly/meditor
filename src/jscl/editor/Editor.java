@@ -25,7 +25,6 @@ import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -743,7 +742,7 @@ public class Editor extends ScriptSupport {
 
 	@Override
 	public void setURI(final URI uri) {
-		setFile(Paths.get(uri));
+		setFile(getPath(uri));
 	}
 
 	@Override
