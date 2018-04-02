@@ -23,11 +23,42 @@
     <dependencies>
         <dependency org="net.java.linoleum" name="application" rev="1.5" conf="compile->master;runtime->default"/>
         <dependency org="net.sourceforge.jscl-meditor" name="txt2xhtml" rev="1.0" conf="compile->master;runtime->default"/>
-        <dependency org="net.sourceforge.jeuclid" name="jeuclid-core" rev="3.1.9" conf="compile->master;runtime->default"/>
-        <dependency org="net.sourceforge.jeuclid" name="jeuclid-fop" rev="3.1.9" conf="compile->master;runtime->default"/>
-        <dependency org="org.apache.xmlgraphics" name="batik-transcoder" rev="1.7" conf="compile->master;runtime->default"/>
-        <dependency org="org.apache.xmlgraphics" name="batik-codec" rev="1.7" conf="compile->master;runtime->default"/>
-        <dependency org="xalan" name="xalan" rev="2.7.2" conf="compile->master;runtime->default"/>
+        <dependency org="net.sourceforge.jeuclid" name="jeuclid-core" rev="3.1.9" conf="compile->master;runtime->default">
+            <exclude org="org.apache.xmlgraphics" module="batik-dom" name="*" type="*" ext="*" conf="" matcher="exact"/>
+        </dependency>
+        <dependency org="net.sourceforge.jeuclid" name="jeuclid-fop" rev="3.1.9" conf="compile->master;runtime->default">
+            <exclude org="org.apache.xmlgraphics" module="fop" name="*" type="*" ext="*" conf="" matcher="exact"/>
+        </dependency>
+        <dependency org="org.apache.xmlgraphics" name="fop" rev="0.95-1" conf="compile->master;runtime->default">
+            <exclude org="org.apache.xmlgraphics" module="batik-bridge" name="*" type="*" ext="*" conf="" matcher="exact"/>
+            <exclude org="org.apache.xmlgraphics" module="batik-transcoder" name="*" type="*" ext="*" conf="" matcher="exact"/>
+            <exclude org="javax.servlet" module="servlet-api" name="*" type="*" ext="*" conf="" matcher="exact"/>
+            <exclude org="xalan" module="xalan" name="*" type="*" ext="*" conf="" matcher="exact"/>
+        </dependency>
+        <dependency org="org.apache.xmlgraphics" name="batik-transcoder" rev="1.7" conf="compile->master;runtime->default">
+            <exclude org="org.apache.xmlgraphics" module="fop" name="*" type="*" ext="*" conf="" matcher="exact"/>
+            <exclude org="org.apache.xmlgraphics" module="batik-bridge" name="*" type="*" ext="*" conf="" matcher="exact"/>
+            <exclude org="org.apache.xmlgraphics" module="batik-dom" name="*" type="*" ext="*" conf="" matcher="exact"/>
+        </dependency>
+        <dependency org="org.apache.xmlgraphics" name="batik-bridge" rev="1.7" conf="compile->master;runtime->default">
+            <exclude org="xalan" module="xalan" name="*" type="*" ext="*" conf="" matcher="exact"/>
+            <exclude org="org.apache.xmlgraphics" module="batik-script" name="*" type="*" ext="*" conf="" matcher="exact"/>
+            <exclude org="org.apache.xmlgraphics" module="batik-dom" name="*" type="*" ext="*" conf="" matcher="exact"/>
+        </dependency>
+        <dependency org="org.apache.xmlgraphics" name="batik-script" rev="1.7" conf="compile->master;runtime->default">
+            <exclude org="org.apache.xmlgraphics" module="batik-bridge" name="*" type="*" ext="*" conf="" matcher="exact"/>
+            <exclude org="org.apache.xmlgraphics" module="batik-dom" name="*" type="*" ext="*" conf="" matcher="exact"/>
+        </dependency>
+        <dependency org="org.apache.xmlgraphics" name="batik-dom" rev="1.7" conf="compile->master;runtime->default">
+            <exclude org="xalan" module="xalan" name="*" type="*" ext="*" conf="" matcher="exact"/>
+        </dependency>
+        <dependency org="org.apache.xmlgraphics" name="batik-anim" rev="1.7" conf="compile->master;runtime->default">
+            <exclude org="org.apache.xmlgraphics" module="batik-dom" name="*" type="*" ext="*" conf="" matcher="exact"/>
+        </dependency>
+        <dependency org="org.apache.xmlgraphics" name="batik-codec" rev="1.7" conf="compile->master;runtime->default">
+            <exclude org="org.apache.xmlgraphics" module="batik-bridge" name="*" type="*" ext="*" conf="" matcher="exact"/>
+            <exclude org="org.apache.xmlgraphics" module="batik-transcoder" name="*" type="*" ext="*" conf="" matcher="exact"/>
+        </dependency>
         <dependency org="net.java.linoleum" name="jlfgr" rev="1_0" conf="runtime->default"/>
     </dependencies>
 </ivy-module>
