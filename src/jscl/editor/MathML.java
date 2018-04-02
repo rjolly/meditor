@@ -23,6 +23,7 @@ import net.sourceforge.jeuclid.layout.JEuclidView;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
+import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 
@@ -56,21 +57,27 @@ public class MathML {
 		return w.toString().replaceAll("\u2148", "i");
 	}
 
-	public Image createImage(final String text) throws Exception {
+	private String asString(final Color color) {
+		return String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+	}
+
+	public Image createImage(final String text, final Color color) throws Exception {
 		final String t = Converter.insertNameSpace(text);
 		if (Converter.isSvg(text)) {
 			return SVG.instance.createImage(Converter.XML + t);
 		} else {
-			final Image c = createMathImage(Converter.XML + t);
+			final Image c = createMathImage(Converter.XML + t, asString(color));
 			return c == null?TeX.instance.createImage(text):c;
 		}
 	}
 
-	Image createMathImage(final String document) throws Exception {
+	Image createMathImage(final String document, final String color) throws Exception {
 		final String str = c2p(document);
 		final Node node = MathMLParserSupport.parseString(str);
-		final NodeList t = node.getFirstChild().getChildNodes();
+		final Node s = node.getFirstChild();
+		final NodeList t = s.getChildNodes();
 		if(t.getLength() == 1 && t.item(0).getNodeName().equals("#text")) return null;
+		((Element) s).setAttribute("color", color);
 		return createImage(node);
 	}
 

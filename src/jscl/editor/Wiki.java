@@ -24,7 +24,7 @@ public class Wiki {
 			final int m = pm.start();
 			final String s = pm.group();
 			String t = Converter.insertNameSpace(s);
-			if (MathML.instance.createMathImage(Converter.XML + t) == null) {
+			if (MathML.instance.createMathImage(Converter.XML + t, null) == null) {
 				t = TeX.instance.mml(s);
 			}
 			b.append(str.substring(n, m));
