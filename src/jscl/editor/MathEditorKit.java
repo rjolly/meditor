@@ -1,6 +1,5 @@
 package jscl.editor;
 
-import java.awt.Font;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
@@ -71,12 +70,8 @@ public class MathEditorKit extends StyledEditorKit {
 
 	@Override
 	public void install(JEditorPane c) {
-		Font font = new Font("Monospaced", 0, 12);
-		MutableAttributeSet attr = new SimpleAttributeSet();
-		StyleConstants.setFontSize(attr, font.getSize());
-		StyleConstants.setFontFamily(attr, font.getFamily());
-		StyleConstants.setBold(attr, font.isBold());
-		StyleConstants.setItalic(attr, font.isItalic());
+		final MutableAttributeSet attr = new SimpleAttributeSet();
+		StyleConstants.setFontFamily(attr, "Monospaced");
 		getInputAttributes().addAttributes(attr);
 		c.getInputMap().put(KeyStroke.getKeyStroke("ctrl H"), "none");
 		editor = (MathTextPane) c;

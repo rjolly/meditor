@@ -75,8 +75,8 @@ public class MathML {
 	}
 
 	Image createImage(final Node node) throws Exception {
-		((MutableLayoutContext)LayoutContextImpl.getDefaultLayoutContext()).setParameter(Parameter.SCRIPTMINSIZE, new Float(10f));
-		final JEuclidView view=DOMBuilder.getInstance().createJeuclidDom(node).getDefaultView();
+		((MutableLayoutContext) LayoutContextImpl.getDefaultLayoutContext()).setParameter(Parameter.SCRIPTMINSIZE, new Float(10f));
+		final JEuclidView view = DOMBuilder.getInstance().createJeuclidDom(node).getDefaultView();
 		final int width = (int) Math.ceil(view.getWidth());
 		final int height = (int) (Math.ceil(view.getAscentHeight()) + Math.ceil(view.getDescentHeight()));
 
@@ -90,7 +90,7 @@ public class MathML {
 		g.fillRect(0, 0, width, height);
 		g.setColor(Color.black);
 
-		view.draw(g, 0, (float)Math.ceil(view.getAscentHeight()));
+		view.draw(g, 0, (float) Math.ceil(view.getAscentHeight()));
 		return image;
 	}
 }
