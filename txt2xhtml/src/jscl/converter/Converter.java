@@ -23,7 +23,8 @@ public class Converter {
 	private static final Pattern http = Pattern.compile("https?://[\\w_\\-\\.:/~\\?=&#]*");
 	private static final Pattern txt = Pattern.compile("(" + word.pattern() + ")(?:/(" + word.pattern() + "))*\\.txt");
 	private static final Pattern mvn = Pattern.compile("(" + word.pattern() + ")#(" + word.pattern() + ");(" + word.pattern() + ")");
-	private static final Pattern links = Pattern.compile("(" + http.pattern() + ")|(" + txt.pattern() + ")|(" + mvn.pattern() + ")");
+	private static final Pattern mail = Pattern.compile(word.pattern() + "@" + word.pattern());
+	private static final Pattern links = Pattern.compile("(" + http.pattern() + ")|(" + txt.pattern() + ")|(" + mvn.pattern() + ")|(" + mail.pattern() + ")");
 	private static final Pattern newlines = Pattern.compile("\n");
 	private static final Pattern spaces = Pattern.compile("(?m:^ +)|(  +)|(\\t)");
 	private static final String mml = " xmlns=\"http://www.w3.org/1998/Math/MathML\"";
@@ -121,6 +122,7 @@ public class Converter {
 			final String s = pm.group();
 			final Matcher pm0 = txt.matcher(s);
 			final Matcher pm1 = mvn.matcher(s);
+			final Matcher pm2 = mail.matcher(s);
 			buffer.append(newlines(str.substring(n, m)));
 			if (pm0.matches()) {
 				buffer.append("<a href=\"");
@@ -163,6 +165,14 @@ public class Converter {
 					}
 					buffer.append(ss);
 				}
+				buffer.append("</a>");
+			} else if (pm2.matches()) {
+				final String ss = pm2.group();
+				buffer.append("<a href=\"");
+				buffer.append("mailto:");
+				buffer.append(ss);
+				buffer.append("\">");
+				buffer.append(ss);
 				buffer.append("</a>");
 			} else {
 				final String ss = special(s);

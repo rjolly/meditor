@@ -231,11 +231,11 @@ http://mtac.sourceforge.net/ - More than a Calculator
 
 Contact
 
-You can send your reactions to raphael.jolly@free.fr. For bug reports and support requests, you have tools on the Project summary page http://sourceforge.net/projects/jscl-meditor/ 
+You can send your reactions to raphael.jolly@free.fr . For bug reports and support requests, you have tools on the Project summary page http://sourceforge.net/projects/jscl-meditor/ 
 
 Copyright
 
 http://www.gnu.org/licenses/gpl.html The GNU General Public License
 
 --
-last updated on Mon Aug 28 2017
+last updated on Sat Apr 14 2018
