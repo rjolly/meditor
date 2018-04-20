@@ -3,4 +3,5 @@
     <application>meditorworld-hrd</application>
     <version>1</version>
     <threadsafe>false</threadsafe>
+    <url-stream-handler>urlfetch</url-stream-handler>
 </appengine-web-app>
