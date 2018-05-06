@@ -1,7 +1,25 @@
-                meditor version 5.0
+                meditor version 5.1
 
 
   In this release:
+
+
+    * Restored Paste-from-Wiki
+
+    * Upgraded to linoleum 1.6
+
+    * Tested script engines:
+
+      com.github.rjolly#jshellscriptengine;1.0
+      org.python#jython-standalone;2.7.1
+      org.jruby#jruby-complete;9.1.17.0
+
+    * Tested libraries:
+
+      jas 2.6.5803
+
+
+  In version 5.0:
 
 
     * Due to java.net being stopped, the module system and the web folder are broken
