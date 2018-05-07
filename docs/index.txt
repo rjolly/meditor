@@ -38,7 +38,7 @@ jas examples
 
 - polypower.txt
 - chebyshev.txt
-- trinks_sigbased_gb.txt
+- trinks_sigbased_gb.txt (need to run staggered_linear_basis.txt and basic_sigbased_gb.txt first)
 - chebyshev_rb.txt
 
 other system examples

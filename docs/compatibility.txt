@@ -2,10 +2,10 @@ compatibility
 
                 bsh     scala   jython  jruby   groovy  matheclipse     scas
         jscl    ok
-        scas            ok                                              const_of
-        jas                     ok      ok              const_of
+        scas            ok                                              provided
+        jas                     ok      ok              provided
         sympy                   ok
         jlinalg
-        c.math                                          const_of
+        c.math                                          provided
         c.math3
         redberry                                ok

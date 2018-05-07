@@ -1,6 +1,6 @@
 #
 # jruby examples for jas.
-# $Id: chebyshev.rb 3785 2011-09-29 21:43:06Z kredel $
+# $Id: chebyshev.rb 4879 2014-08-23 20:27:43Z kredel $
 #
 
 require "jas"
@@ -10,23 +10,24 @@ require "jas"
 # T(1) = x
 # T(n) = 2 * x * T(n-1) - T(n-2)
 
-r = Ring.new( "Z(x) L" );
+#r = Ring.new( "Z(x) L" );
+r = PolyRing.new( ZZ(), "(x)", PolyRing.lex );
 puts "Ring: " + str(r);
 puts;
 
 # sage like: with generators for the polynomial ring
-one,x = r.gens();
+#is automatic: one,x = r.gens();
 
 x2 = 2 * x;
 
 N = 10;
 T = [one,x];
-for n in 2..N
+for n in 2..N 
     t = x2 * T[n-1] - T[n-2];
     T[n] = t;
 end
 
-for n in 0..N
+for n in 0..N 
   puts "T[#{n}] = #{T[n]}";
 end
 

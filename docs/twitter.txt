@@ -1,4 +1,4 @@
-// Required modules : scala, twitter
+// Required modules : scala, org.twitter4j#twitter4j-core;4.0.6
 
 import twitter4j.{Status, Paging}
 import scala.collection.convert.WrapAsScala.collectionAsScalaIterable
@@ -6,7 +6,7 @@ import scala.collection.convert.WrapAsScala.collectionAsScalaIterable
 val configurationBuilder = new twitter4j.conf.ConfigurationBuilder
 configurationBuilder.setOAuthConsumerKey("6fIZgCQLwztil0mmLc10A")
 configurationBuilder.setOAuthConsumerSecret("TnX7LyzVNQMRZii0SxEB2vKugHVRtVvwaYsNp3ylWs")
-configurationBuilder.setUseSSL(true)
+configurationBuilder.setTweetModeExtended(true)
 val configuration = configurationBuilder.build
 val twitter = new twitter4j.TwitterFactory(configuration).getInstance
 
