@@ -351,14 +351,7 @@ public class Editor extends ScriptSupport {
 
 		@Override
 		public void actionPerformed(final ActionEvent e) {
-			final FileChooser chooser = getOwner().chooser;
-			switch (chooser.showInternalOpenDialog(jPanel1)) {
-			case JFileChooser.APPROVE_OPTION:
-				setFile(chooser.getSelectedFile().toPath());
-				open();
-				break;
-			default:
-			}
+			getApplicationManager().get("Files").open(file == null?prev == null?null:prev.toUri():file.toUri(), getDesktopPane());
 		}
 	}
 
@@ -418,6 +411,9 @@ public class Editor extends ScriptSupport {
 			mathTextPane1.getDocument().removeUndoableEditListener(undoHandler);
 			mathTextPane1.setDocument(doc);
 			if (file != null && Files.exists(file)) {
+				try {
+					getOwner().chooser.setSelectedFile(file.toFile());
+				} catch (final UnsupportedOperationException e) {}
 				new FileLoader().execute();
 			} else {
 				reset();
@@ -457,9 +453,6 @@ public class Editor extends ScriptSupport {
 		}
 		setTitle(title);
 		saveAction.setEnabled(file != null && modified != 0);
-		if (file != null) {
-			getOwner().chooser.setSelectedFile(file.toFile());
-		}
 	}
 
 	private boolean proceed() {
