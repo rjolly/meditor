@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-    <info module="meditor" organisation="net.sourceforge.jscl-meditor" revision="5.0">
+    <info module="meditor" organisation="net.sourceforge.jscl-meditor" revision="5.1">
         <description homepage="http://jscl-meditor.sourceforge.net/"/>
     </info>
     <configurations>
@@ -21,8 +21,8 @@
         <artifact name="meditor" type="pom" ext="pom" conf="pom"/>
     </publications>
     <dependencies>
-        <dependency org="net.java.linoleum" name="application" rev="1.5" conf="compile->master;runtime->default"/>
-        <dependency org="net.sourceforge.jscl-meditor" name="txt2xhtml" rev="1.0" conf="compile->master;runtime->default"/>
+        <dependency org="net.java.linoleum" name="application" rev="1.6" conf="compile->master;runtime->default"/>
+        <dependency org="net.sourceforge.jscl-meditor" name="txt2xhtml" rev="1.1" conf="compile->master;runtime->default"/>
         <dependency org="net.sourceforge.jeuclid" name="jeuclid-core" rev="3.1.9" conf="compile->master;runtime->default">
             <exclude org="org.apache.xmlgraphics" module="batik-dom" name="*" type="*" ext="*" conf="" matcher="exact"/>
         </dependency>
