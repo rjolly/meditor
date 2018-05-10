@@ -705,6 +705,7 @@ public class Editor extends ScriptSupport {
 
 	public Editor() {
 		initComponents();
+		setDescription("Java symbolic computing library and mathematical editor");
 		setIcon(new ImageIcon(getClass().getResource("meditor24.png")));
 		setMimeType("text/plain:text/*");
 		chooser.setFileFilter(new FileNameExtensionFilter("Text", "txt"));
