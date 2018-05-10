@@ -13,7 +13,7 @@ jscl-meditor - java symbolic computing library and mathematical editor
 # Contact
 # Copyright
 
-release_notes.txt Version 5.1
+release_notes.txt Version 5.1.1
 
 Project description
 

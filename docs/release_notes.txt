@@ -1,4 +1,4 @@
-                meditor version 5.1
+                meditor version 5.1.1
 
 
   In this release:
