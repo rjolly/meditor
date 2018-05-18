@@ -16,7 +16,7 @@
 
     * Tested libraries:
 
-      jas 2.6.5803
+      de.uni-mannheim.rz.krum#jas;2.6.5803 (need to install log4j#log4j;1.2.17 manually)
 
 
   In version 5.0:
