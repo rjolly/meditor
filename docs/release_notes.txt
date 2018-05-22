@@ -10,7 +10,7 @@
 
     * Tested script engines:
 
-      com.github.rjolly#jshellscriptengine;1.0
+      com.github.rjolly#jshellscriptengine;1.0 (requires Java 9)
       org.python#jython-standalone;2.7.1
       org.jruby#jruby-complete;9.1.17.0
 
