@@ -1,0 +1,6 @@
+import frege.prelude.Math (cos)
+
+cosines = iterate cos 1.0
+pairsOf xs = zip xs (tail xs)
+head [ x | (x,y) <- pairsOf cosines, x == y]
+0.7390851332151607

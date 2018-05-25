@@ -13,6 +13,7 @@
       com.github.rjolly#jshellscriptengine;1.0 (requires Java 9)
       org.python#jython-standalone;2.7.1
       org.jruby#jruby-complete;9.1.17.0
+      org.frege-lang#frege-interpreter-core;1.2
 
     * Tested libraries:
 
