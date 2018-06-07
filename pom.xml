@@ -181,10 +181,5 @@
       <artifactId>snuggletex-core</artifactId>
       <version>1.2.2</version>
     </dependency>
-    <dependency>
-      <groupId>net.java.linoleum</groupId>
-      <artifactId>jlfgr</artifactId>
-      <version>1_0</version>
-    </dependency>
   </dependencies>
 </project>
