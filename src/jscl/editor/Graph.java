@@ -12,8 +12,8 @@ import java.awt.event.ComponentEvent;
 import java.lang.reflect.Method;
 
 public class Graph extends Component {
-	Object obj;
-	Method method;
+	final Object obj[];
+	final Method method;
 	int w;
 	int h;
 	double z = 1.0;
@@ -21,8 +21,8 @@ public class Graph extends Component {
 	double y0 = 0.0;
 
 	void shift(double x, double y) {
-		x0 += x / (double)h * 2.0 / z;
-		y0 += y / (double)h * 2.0 / z;
+		x0 += x / (double) h * 2.0 / z;
+		y0 += y / (double) h * 2.0 / z;
 	}
 
 	void scale(double a) {
@@ -59,7 +59,7 @@ public class Graph extends Component {
 		}
 	};
 
-	public Graph(final Object obj, final Method method) {
+	public Graph(final Object obj[], final Method method) {
 		this.obj = obj;
 		this.method = method;
 		addComponentListener(cadapter);
@@ -68,30 +68,36 @@ public class Graph extends Component {
 		setPreferredSize(new Dimension(400, 400));
 	}
 
-	double eval(final double x) {
+	public Graph(final Object obj, final Method method) {
+		this(new Object[] {obj}, method);
+	}
+
+	double eval(final double x, final int n) {
 		try {
-			return (Double) method.invoke(obj, Double.valueOf(x));
+			return (Double) method.invoke(obj[n], Double.valueOf(x));
 		} catch (final Exception ex) {
 			return 0.0;
 		}
 	}
 
 	public void paint(final Graphics g) {
-		int xs[] = new int[w];
-		int ys[] = new int[w];
-		for (int n = 0 ; n < w ; n++) {
-			xs[n] = n;
-			double x = (2.0 * (double)n - (double)w) / (double)h / z - x0;
-			double y = eval(x);
-			ys[n] = (int)(((double)h + (y0 - y) * z * (double)h) / 2.0);
+		for (int i = 0 ; i < obj.length ; i++) {
+			int xs[] = new int[w];
+			int ys[] = new int[w];
+			for (int n = 0 ; n < w ; n++) {
+				xs[n] = n;
+				double x = (2.0 * (double) n - (double) w) / (double) h / z - x0;
+				double y = eval(x, i);
+				ys[n] = (int) (((double) h + (y0 - y) * z * (double) h) / 2.0);
+			}
+			int x2 = (int) (((double) w + x0 * z * (double) h) / 2.0);
+			int y2 = (int) (((double) h + y0 * z * (double) h) / 2.0);
+			Color color = g.getColor();
+			g.setColor(Color.RED);
+			g.drawLine(0, y2, w, y2);
+			g.drawLine(x2, 0, x2, h);
+			g.setColor(color);
+			g.drawPolyline(xs, ys, w);
 		}
-		int x2 = (int)(((double)w + x0 * z * (double)h) / 2.0);
-		int y2 = (int)(((double)h + y0 * z * (double)h) / 2.0);
-		Color color = g.getColor();
-		g.setColor(Color.RED);
-		g.drawLine(0, y2, w, y2);
-		g.drawLine(x2, 0, x2, h);
-		g.setColor(color);
-		g.drawPolyline(xs, ys, w);
 	}
 }

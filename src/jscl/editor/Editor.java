@@ -659,12 +659,21 @@ public class Editor extends ScriptSupport {
 		default:
 		}
 		final Class<?> cls = obj.getClass();
-		try {
-			return render(new Graph(obj, cls.getMethod("apply", double.class)));
-		} catch (final NoSuchMethodException ex) {}
-		try {
-			return render(new Graph(obj, cls.getMethod("apply", Object.class)));
-		} catch (final NoSuchMethodException ex) {}
+		if (cls.isArray()) {
+			try {
+				return render(new Graph((Object[]) obj, cls.getComponentType().getMethod("apply", double.class)));
+			} catch (final NoSuchMethodException ex) {}
+			try {
+				return render(new Graph((Object[]) obj, cls.getComponentType().getMethod("apply", Object.class)));
+			} catch (final NoSuchMethodException ex) {}
+		} else {
+			try {
+				return render(new Graph(new Object[] {obj}, cls.getMethod("apply", double.class)));
+			} catch (final NoSuchMethodException ex) {}
+			try {
+				return render(new Graph(new Object[] {obj}, cls.getMethod("apply", Object.class)));
+			} catch (final NoSuchMethodException ex) {}
+		}
 		if (isRendering()) try {
 			return "<math>" + cls.getMethod("toMathML").invoke(obj) + "</math>";
 		} catch (final NoSuchMethodException ex) {}
