@@ -2,6 +2,7 @@ package jscl.editor;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Toolkit;
@@ -687,15 +688,13 @@ public class Editor extends ScriptSupport {
 	}
 
 	private JXGraph getGraph(final Object obj[], final Method method) {
-		final JXGraph.Plot plot[] = new JXGraph.Plot[obj.length];
-		for (int i = 0 ; i < obj.length ; i++) {
-			plot[i] = new Plot(obj[i], method);
-		}
 		final JXGraph graph = new JXGraph();
 		graph.setMinorCountX(3);
 		graph.setMinorCountY(3);
 		graph.setView(new Rectangle2D.Double(-1.1, -1.1, 2.2, 2.2));
-		graph.addPlots(graph.getForeground(), plot);
+		for (int i = 0 ; i < obj.length ; i++) {
+			graph.addPlots(Color.black, new Plot(obj[i], method));
+		}
 		return graph;
 	}
 
