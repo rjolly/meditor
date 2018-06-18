@@ -11,6 +11,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyVetoException;
@@ -21,6 +22,7 @@ import java.io.Writer;
 import java.io.FileWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Method;
 import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -49,6 +51,7 @@ import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoManager;
 import linoleum.application.FileChooser;
 import linoleum.application.ScriptSupport;
+import org.jdesktop.swingx.JXGraph;
 
 public class Editor extends ScriptSupport {
 	private final Icon newIcon = new ImageIcon(getClass().getResource("/toolbarButtonGraphics/general/New24.gif"));
@@ -661,17 +664,17 @@ public class Editor extends ScriptSupport {
 		final Class<?> cls = obj.getClass();
 		if (cls.isArray()) {
 			try {
-				return render(new Graph((Object[]) obj, cls.getComponentType().getMethod("apply", double.class)));
+				return render(getGraph((Object[]) obj, cls.getComponentType().getMethod("apply", double.class)));
 			} catch (final NoSuchMethodException ex) {}
 			try {
-				return render(new Graph((Object[]) obj, cls.getComponentType().getMethod("apply", Object.class)));
+				return render(getGraph((Object[]) obj, cls.getComponentType().getMethod("apply", Object.class)));
 			} catch (final NoSuchMethodException ex) {}
 		} else {
 			try {
-				return render(new Graph(new Object[] {obj}, cls.getMethod("apply", double.class)));
+				return render(getGraph(new Object[] {obj}, cls.getMethod("apply", double.class)));
 			} catch (final NoSuchMethodException ex) {}
 			try {
-				return render(new Graph(new Object[] {obj}, cls.getMethod("apply", Object.class)));
+				return render(getGraph(new Object[] {obj}, cls.getMethod("apply", Object.class)));
 			} catch (final NoSuchMethodException ex) {}
 		}
 		if (isRendering()) try {
@@ -681,6 +684,23 @@ public class Editor extends ScriptSupport {
 			return cls.getMethod("toJava").invoke(obj).toString();
 		} catch (final NoSuchMethodException ex) {}
 		return obj.toString();
+	}
+
+	private JXGraph getGraph(final Object obj[], final Method method) {
+		final JXGraph.Plot plot[] = new JXGraph.Plot[obj.length];
+		for (int i = 0 ; i < obj.length ; i++) {
+			plot[i] = new Plot(obj[i], method);
+		}
+		final JXGraph graph = new JXGraph();
+		graph.setMinorCountX(3);
+		graph.setMinorCountY(3);
+		graph.setView(new Rectangle2D.Double(-1.1, -1.1, 2.2, 2.2));
+		graph.addPlots(graph.getForeground(), plot);
+		return graph;
+	}
+
+	private JXGraph getGraph(final Object obj, final Method method) {
+		return getGraph(new Object[] {obj}, method);
 	}
 
 	private String code(final String str) throws Exception {
