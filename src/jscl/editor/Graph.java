@@ -59,7 +59,7 @@ public class Graph extends Component {
 		}
 	};
 
-	public Graph(Object obj, Method method) {
+	public Graph(final Object obj, final Method method) {
 		this.obj = obj;
 		this.method = method;
 		addComponentListener(cadapter);
@@ -68,15 +68,15 @@ public class Graph extends Component {
 		setPreferredSize(new Dimension(400, 400));
 	}
 
-	double eval(double x) {
+	double eval(final double x) {
 		try {
-			return (Double)method.invoke(obj, new Object[] {x});
-		} catch (Exception ex) {
+			return (Double) method.invoke(obj, Double.valueOf(x));
+		} catch (final Exception ex) {
 			return 0.0;
 		}
 	}
 
-	public void paint(Graphics g) {
+	public void paint(final Graphics g) {
 		int xs[] = new int[w];
 		int ys[] = new int[w];
 		for (int n = 0 ; n < w ; n++) {

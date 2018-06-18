@@ -658,14 +658,18 @@ public class Editor extends ScriptSupport {
 			return SVG.instance.print((Component) obj);
 		default:
 		}
+		final Class<?> cls = obj.getClass();
 		try {
-			return render(new Graph(obj, obj.getClass().getMethod("apply", double.class)));
+			return render(new Graph(obj, cls.getMethod("apply", double.class)));
+		} catch (final NoSuchMethodException ex) {}
+		try {
+			return render(new Graph(obj, cls.getMethod("apply", Object.class)));
 		} catch (final NoSuchMethodException ex) {}
 		if (isRendering()) try {
-			return "<math>" + obj.getClass().getMethod("toMathML").invoke(obj) + "</math>";
+			return "<math>" + cls.getMethod("toMathML").invoke(obj) + "</math>";
 		} catch (final NoSuchMethodException ex) {}
 		try {
-			return obj.getClass().getMethod("toJava").invoke(obj).toString();
+			return cls.getMethod("toJava").invoke(obj).toString();
 		} catch (final NoSuchMethodException ex) {}
 		return obj.toString();
 	}
