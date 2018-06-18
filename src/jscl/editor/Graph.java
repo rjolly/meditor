@@ -12,7 +12,7 @@ import java.awt.event.ComponentEvent;
 import java.lang.reflect.Method;
 
 public class Graph extends Component {
-	final Object obj[];
+	final Plot plot[];
 	final Method method;
 	int w;
 	int h;
@@ -60,7 +60,10 @@ public class Graph extends Component {
 	};
 
 	public Graph(final Object obj[], final Method method) {
-		this.obj = obj;
+		plot = new Plot[obj.length];
+		for (int i = 0 ; i < obj.length ; i++) {
+			plot[i] = new Plot(obj[i]);
+		}
 		this.method = method;
 		addComponentListener(cadapter);
 		addMouseMotionListener(madapter);
@@ -72,27 +75,36 @@ public class Graph extends Component {
 		this(new Object[] {obj}, method);
 	}
 
-	double eval(final double x, final int n) {
-		try {
-			return (Double) method.invoke(obj[n], Double.valueOf(x));
-		} catch (final Exception ex) {
-			return 0.0;
+	class Plot {
+		final Object obj;
+
+		Plot(final Object obj) {
+			this.obj = obj;
+		}
+
+		double eval(final double x) {
+			try {
+				return (Double) method.invoke(obj, Double.valueOf(x));
+			} catch (final Exception ex) {
+				return 0.0;
+			}
 		}
 	}
 
 	public void paint(final Graphics g) {
-		for (int i = 0 ; i < obj.length ; i++) {
-			int xs[] = new int[w];
-			int ys[] = new int[w];
+		for (int i = 0 ; i < plot.length ; i++) {
+			final Plot p = plot[i];
+			final int xs[] = new int[w];
+			final int ys[] = new int[w];
 			for (int n = 0 ; n < w ; n++) {
 				xs[n] = n;
-				double x = (2.0 * (double) n - (double) w) / (double) h / z - x0;
-				double y = eval(x, i);
+				final double x = (2.0 * (double) n - (double) w) / (double) h / z - x0;
+				final double y = p.eval(x);
 				ys[n] = (int) (((double) h + (y0 - y) * z * (double) h) / 2.0);
 			}
-			int x2 = (int) (((double) w + x0 * z * (double) h) / 2.0);
-			int y2 = (int) (((double) h + y0 * z * (double) h) / 2.0);
-			Color color = g.getColor();
+			final int x2 = (int) (((double) w + x0 * z * (double) h) / 2.0);
+			final int y2 = (int) (((double) h + y0 * z * (double) h) / 2.0);
+			final Color color = g.getColor();
 			g.setColor(Color.RED);
 			g.drawLine(0, y2, w, y2);
 			g.drawLine(x2, 0, x2, h);
