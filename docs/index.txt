@@ -46,4 +46,5 @@ other system examples
 - matheclipse.txt
 - sympy.txt
 - redberry bhabha_scattering.txt example
+- redberry rings.txt
 - frege.txt
