@@ -1,7 +1,23 @@
-                meditor version 5.1.1
+                meditor version 5.2
 
 
   In this release:
+
+
+    * Upgraded to Jeuclid 3.1.14, Fop 2.4 and Batik 1.12
+
+    * Plot based on SwingX
+
+    * Tested script engines:
+
+      ch.epfl.lamp#dotty-compiler_0.22;0.22.0-RC1 (requires Java 8)
+
+    * Tested libraries:
+
+      de.uni-mannheim.rz.krum#jas;2.6.5988 (need to install log4j#log4j-core;2.13.0 instead of 2.5.0 for the library to work with Dotty, above)
+
+
+  In version 5.1.1:
 
 
     * Restored Paste-from-Wiki

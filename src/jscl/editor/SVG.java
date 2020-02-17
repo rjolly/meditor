@@ -6,7 +6,7 @@ import java.io.Writer;
 import java.io.StringReader;
 import java.io.StringWriter;
 import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.dom.svg.SVGDOMImplementation;
+import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 
