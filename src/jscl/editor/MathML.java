@@ -54,7 +54,7 @@ public class MathML {
 		final String str = c2p(Converter.apply(document, null));
 		final Reader r = new StringReader(str);
 		final ByteArrayOutputStream out = new ByteArrayOutputStream();
-		final FopFactoryBuilder builder = new FopFactoryBuilder(new URI(""));
+		final FopFactoryBuilder builder = new FopFactoryBuilder(new URI("http://meditorworld.appspot.com/"));
 		final FopFactory factory = builder.build();
 		JEuclidFopFactoryConfigurator.configure(factory);
 		final Fop fop = factory.newFop(MimeConstants.MIME_PDF, out);

@@ -1,12 +1,11 @@
-                meditor version 5.2
+                meditor version 5.2.1
 
 
   In this release:
 
-
     * Upgraded to Jeuclid 3.1.14, Fop 2.4 and Batik 1.12
 
-    * Plot based on SwingX
+    * Plot based on SwingX JXGraph
 
     * Tested script engines:
 
@@ -18,7 +17,6 @@
 
 
   In version 5.1.1:
-
 
     * Restored Paste-from-Wiki
 
@@ -39,7 +37,6 @@
 
   In version 5.0:
 
-
     * Due to java.net being stopped, the module system and the web folder are broken
 
     * As a result, meditor is re-developed to run on http://raphael.jolly.free.fr/linoleum
@@ -57,7 +54,6 @@
 
 
   In version 4.2:
-
 
     * Upgrade to Netbeans platform version 7.4
 
@@ -77,7 +73,6 @@
 
 
   In version 4.1:
-
 
     * Upgrade to Netbeans platform version 7.3.1
 
@@ -99,7 +94,6 @@
 
 
   In version 4.0:
-
 
     * Application rewritten using the Netbeans platform (version 7.1.2)
 
