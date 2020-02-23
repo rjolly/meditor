@@ -3,9 +3,10 @@ compatibility
                 bsh     scala   jython  jruby   groovy  matheclipse     scas
         jscl    ok
         scas            ok                                              provided
-        jas                     ok      ok              provided
+        jas             ok      ok      ok              provided
         sympy                   ok
         jlinalg
         c.math                                          provided
-        c.math3
+        c.math3         ok
         redberry                                ok
+        r.rings         ok
