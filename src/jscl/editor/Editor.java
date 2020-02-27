@@ -2,7 +2,6 @@ package jscl.editor;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Toolkit;
@@ -12,7 +11,6 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyVetoException;
@@ -52,7 +50,6 @@ import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoManager;
 import linoleum.application.FileChooser;
 import linoleum.application.ScriptSupport;
-import org.jdesktop.swingx.JXGraph;
 
 public class Editor extends ScriptSupport {
 	private final Icon newIcon = new ImageIcon(getClass().getResource("/toolbarButtonGraphics/general/New24.gif"));
@@ -663,21 +660,6 @@ public class Editor extends ScriptSupport {
 		default:
 		}
 		final Class<?> cls = obj.getClass();
-		if (cls.isArray()) {
-			try {
-				return render(getGraph((Object[]) obj, cls.getComponentType().getMethod("apply", double.class)));
-			} catch (final NoSuchMethodException ex) {}
-			try {
-				return render(getGraph((Object[]) obj, cls.getComponentType().getMethod("apply", Object.class)));
-			} catch (final NoSuchMethodException ex) {}
-		} else {
-			try {
-				return render(getGraph(new Object[] {obj}, cls.getMethod("apply", double.class)));
-			} catch (final NoSuchMethodException ex) {}
-			try {
-				return render(getGraph(new Object[] {obj}, cls.getMethod("apply", Object.class)));
-			} catch (final NoSuchMethodException ex) {}
-		}
 		if (isRendering()) try {
 			return "<math>" + cls.getMethod("toMathML").invoke(obj) + "</math>";
 		} catch (final NoSuchMethodException ex) {}
@@ -685,21 +667,6 @@ public class Editor extends ScriptSupport {
 			return cls.getMethod("toJava").invoke(obj).toString();
 		} catch (final NoSuchMethodException ex) {}
 		return obj.toString();
-	}
-
-	private JXGraph getGraph(final Object obj[], final Method method) {
-		final JXGraph graph = new JXGraph();
-		graph.setMinorCountX(3);
-		graph.setMinorCountY(3);
-		graph.setView(new Rectangle2D.Double(-1.1, -1.1, 2.2, 2.2));
-		for (int i = 0 ; i < obj.length ; i++) {
-			graph.addPlots(Color.black, new Plot(obj[i], method));
-		}
-		return graph;
-	}
-
-	private JXGraph getGraph(final Object obj, final Method method) {
-		return getGraph(new Object[] {obj}, method);
 	}
 
 	private String code(final String str) throws Exception {
