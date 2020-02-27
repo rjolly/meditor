@@ -31,7 +31,7 @@ scas examples/index.txt
 
 other scala examples
 
-- graph.txt
+- editorgraph.txt
 - twitter.txt
 
 jas examples

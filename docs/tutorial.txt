@@ -36,7 +36,7 @@ Rendering MathML and SVG
 
 If the Math panel's Render MathML checkbox is selected, then if evaluating an expression yields an object of a type with a toMathML() method, then this method is called and its return value is pasted instead of the object itself (as a string). The resulting expression is then rendered as MathML in the editor's textpane.
 
-Similarly, if evaluating an expression yields an object of type java.awt.Component, then a window opens, allowing to interact with the component. Then, when the window is closed, the component is rendered as a SVG fragement in the editor's texpane.
+Similarly, if evaluating an expression yields an object of type java.awt.Component, then a window opens, allowing to interact with the component. Then, when the window is closed, the component is rendered as a SVG fragment in the editor's texpane.
 
 Evaluating (or running code with) MathML expressions
 
