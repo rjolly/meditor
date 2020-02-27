@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0">
+    <info module="complete" organisation="net.sourceforge.jscl-meditor" revision="5.3">
+        <description homepage="http://jscl-meditor.sourceforge.net/"/>
+    </info>
+    <configurations>
+        <conf name="default" extends="runtime"/>
+        <conf name="compile"/>
+        <conf name="runtime"/>
+        <conf name="compile-test"/>
+        <conf name="runtime-test"/>
+        <conf name="pom"/>
+    </configurations>
+    <publications>
+        <artifact name="complete" type="pom" ext="pom" conf="pom"/>
+    </publications>
+    <dependencies>
+        <dependency org="net.java.linoleum" name="complete" rev="1.6" conf="runtime->default"/>
+        <dependency org="net.sourceforge.jscl-meditor" name="meditor" rev="5.3" conf="runtime->default"/>
+        <dependency org="com.github.rjolly" name="flying-saucer" rev="9.1.20" conf="runtime->default"/>
+        <dependency org="com.github.rjolly" name="scas_0.22" rev="3.0" conf="runtime->default"/>
+        <dependency org="de.uni-mannheim.rz.krum" name="jas" rev="2.6.5988" conf="runtime->default">
+            <exclude org="org.apache.logging.log4j" module="log4j-core" name="*" type="*" ext="*" conf="" matcher="exact"/>
+            <exclude org="org.apache.logging.log4j" module="log4j-api" name="*" type="*" ext="*" conf="" matcher="exact"/>
+        </dependency>
+        <dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.13.0" conf="runtime->default"/>
+        <dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.13.0" conf="runtime->default"/>
+        <dependency org="cc.redberry" name="rings" rev="2.5.7" conf="runtime->default"/>
+        <dependency org="org.frege-lang" name="frege-interpreter-core" rev="1.2" conf="runtime->default"/>
+        <dependency org="org.python" name="jython-standalone" rev="2.7.1" conf="runtime->default"/>
+        <dependency org="org.jruby" name="jruby-complete" rev="9.1.17.0" conf="runtime->default"/>
+    </dependencies>
+</ivy-module>
