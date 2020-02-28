@@ -23,6 +23,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -85,6 +86,7 @@ public class Editor extends ScriptSupport {
 	private final Action pasteFromWikiAction = new PasteFromWikiAction();
 	private final Action copyToCodeAction = new CopyToCodeAction();
 	private final Action exportAction = new ExportAction();
+	private final Action preferenceAction = new PreferenceAction();
 	private final Action newAction = new NewAction();
 	private final Action openAction = new OpenAction();
 	private final Action saveAction = new SaveAction();
@@ -322,6 +324,21 @@ public class Editor extends ScriptSupport {
 			final File f = putExtension(chooser.getSelectedFile(), extension);
 			if (f.exists() && !proceed("File exists. Overwrite ?")) return;
 			new FileExporter(f, name, extension).execute();
+		}
+	}
+
+	private class PreferenceAction extends AbstractAction {
+		private PreferenceAction() {
+			super("Preferences");
+		}
+
+		@Override
+		public void actionPerformed(final ActionEvent e) {
+			try {
+				getApplicationManager().open(new URI("prefs", getName(), null));
+			} catch (final URISyntaxException ex) {
+				ex.printStackTrace();
+			}
 		}
 	}
 
@@ -867,6 +884,8 @@ public class Editor extends ScriptSupport {
                 jMenuItem18 = new javax.swing.JMenuItem();
                 jSeparator7 = new javax.swing.JPopupMenu.Separator();
                 jMenuItem19 = new javax.swing.JMenuItem();
+                jSeparator8 = new javax.swing.JPopupMenu.Separator();
+                jMenuItem20 = new javax.swing.JMenuItem();
 
                 jLabel1.setText("Find :");
 
@@ -1233,6 +1252,10 @@ public class Editor extends ScriptSupport {
 
                 jMenuItem19.setAction(exportAction);
                 jMenu3.add(jMenuItem19);
+                jMenu3.add(jSeparator8);
+
+                jMenuItem20.setAction(preferenceAction);
+                jMenu3.add(jMenuItem20);
 
                 jMenuBar1.add(jMenu3);
 
@@ -1353,6 +1376,7 @@ public class Editor extends ScriptSupport {
         private javax.swing.JMenuItem jMenuItem17;
         private javax.swing.JMenuItem jMenuItem18;
         private javax.swing.JMenuItem jMenuItem19;
+        private javax.swing.JMenuItem jMenuItem20;
         private javax.swing.JMenuItem jMenuItem2;
         private javax.swing.JMenuItem jMenuItem3;
         private javax.swing.JMenuItem jMenuItem4;
@@ -1376,6 +1400,7 @@ public class Editor extends ScriptSupport {
         private javax.swing.JPopupMenu.Separator jSeparator4;
         private javax.swing.JPopupMenu.Separator jSeparator6;
         private javax.swing.JPopupMenu.Separator jSeparator7;
+        private javax.swing.JPopupMenu.Separator jSeparator8;
         private javax.swing.JTabbedPane jTabbedPane1;
         private javax.swing.JTextArea jTextArea1;
         private javax.swing.JTextField jTextField1;
