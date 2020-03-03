@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0">
-    <info module="complete" organisation="net.sourceforge.jscl-meditor" revision="5.3">
+    <info module="complete" organisation="net.sourceforge.jscl-meditor" revision="5.3.1">
         <description homepage="http://jscl-meditor.sourceforge.net/"/>
     </info>
     <configurations>
@@ -16,7 +16,7 @@
     </publications>
     <dependencies>
         <dependency org="net.java.linoleum" name="complete" rev="1.6" conf="runtime->default"/>
-        <dependency org="net.sourceforge.jscl-meditor" name="meditor" rev="5.3" conf="runtime->default"/>
+        <dependency org="net.sourceforge.jscl-meditor" name="meditor" rev="5.3.1" conf="runtime->default"/>
         <dependency org="com.github.rjolly" name="flying-saucer" rev="9.1.20" conf="runtime->default"/>
         <dependency org="com.github.rjolly" name="scas_0.22" rev="3.0" conf="runtime->default"/>
         <dependency org="de.uni-mannheim.rz.krum" name="jas" rev="2.6.5988" conf="runtime->default">
