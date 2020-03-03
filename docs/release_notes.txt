@@ -1,4 +1,4 @@
-                meditor version 5.3
+                meditor version 5.3.1
 
 
   In this release:
@@ -6,6 +6,20 @@
     * Externalized graph as jscl.editor.Graph
 
     * Upgraded to Java 8 and Snuggletex 1.3.0
+
+    * Tested script engine:
+
+      org.scala-lang#scala-compiler;2.11.0-M6 - needs to be enabled, with:
+      com.github.rjolly#jarlister_2.11;1.0
+
+            jarlister("lib/scala-library-2.11.0-M6.jar")
+
+    * Tested library:
+
+      com.github.rjolly#scas_2.11.0-M6;2.1.1 - needs to be enabled, with:
+
+            jarlister("lib/scala-xml_2.11.0-M6.jar")
+            jarlister("lib/scala-parser-combinators_2.11.0-M6")
 
 
   In version 5.2.1:

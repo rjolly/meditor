@@ -1,11 +1,12 @@
+// jarlister("lib/txt2xhtml-1.1.jar")
+
 import java.io.{File, FileReader}
 import javax.script.ScriptEngineManager
 import jscl.converter.Converter
 
-val home = System.getProperty("user.dir")
-val dir = new File(new File(home), "examples")
+val dir = new File("examples")
 val manager = new ScriptEngineManager
-val converter = Converter.instance("mmlscala.xsl")
+val converter = Converter.instance("jscl/editor/mmlscala.xsl")
 
 val list = List("pp1.txt", "pp2.txt", "polynomial.txt", "solvable_polynomial.txt", "gb.txt", "group.txt", "bigint.txt", "modint.txt", "mod_polynomial.txt", "product.txt", "rational.txt", "rational_polynomial.txt", "univariate_polynomial.txt", "rf.txt", "rfi.txt", "complex.txt", "complex_residue.txt", "an.txt", "module.txt", "gcd_subres.txt", "gcd_multivariate.txt", "polypower.txt", "primes1.txt", "primes2.txt", "interface.txt")
 
