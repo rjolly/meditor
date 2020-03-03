@@ -48,7 +48,15 @@
       <exclusions>
         <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
-          <artifactId>batik-dom</artifactId>
+          <artifactId>batik-anim</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>batik-svg-dom</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.ant</groupId>
+          <artifactId>ant</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
@@ -57,6 +65,10 @@
       <artifactId>jeuclid-fop</artifactId>
       <version>3.1.14</version>
       <exclusions>
+        <exclusion>
+          <groupId>de.rototor.jeuclid</groupId>
+          <artifactId>jeuclid-core</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
           <artifactId>fop</artifactId>
@@ -70,11 +82,38 @@
       <exclusions>
         <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>fop-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>fop-events</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>fop-core</artifactId>
+      <version>2.4</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>batik-anim</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
           <artifactId>batik-bridge</artifactId>
         </exclusion>
         <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>batik-extension</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
           <artifactId>batik-transcoder</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>fop-events</artifactId>
         </exclusion>
         <exclusion>
           <groupId>javax.servlet</groupId>
@@ -84,9 +123,16 @@
           <groupId>org.apache.ant</groupId>
           <artifactId>ant</artifactId>
         </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>fop-events</artifactId>
+      <version>2.4</version>
+      <exclusions>
         <exclusion>
-          <groupId>xalan</groupId>
-          <artifactId>xalan</artifactId>
+          <groupId>org.apache.ant</groupId>
+          <artifactId>ant</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
@@ -97,11 +143,34 @@
       <exclusions>
         <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
-          <artifactId>fop</artifactId>
+          <artifactId>batik-anim</artifactId>
         </exclusion>
         <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
           <artifactId>batik-bridge</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>batik-dom</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>batik-extension</artifactId>
+      <version>1.12</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>batik-anim</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>batik-bridge</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>batik-svg-dom</artifactId>
         </exclusion>
         <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
@@ -115,16 +184,20 @@
       <version>1.12</version>
       <exclusions>
         <exclusion>
-          <groupId>xalan</groupId>
-          <artifactId>xalan</artifactId>
+          <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>batik-anim</artifactId>
         </exclusion>
         <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
-          <artifactId>batik-script</artifactId>
+          <artifactId>batik-svg-dom</artifactId>
         </exclusion>
         <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
           <artifactId>batik-dom</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>batik-script</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
@@ -135,11 +208,22 @@
       <exclusions>
         <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
-          <artifactId>batik-bridge</artifactId>
+          <artifactId>batik-anim</artifactId>
         </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>batik-svg-dom</artifactId>
+      <version>1.12</version>
+      <exclusions>
         <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
           <artifactId>batik-dom</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>xalan</groupId>
+          <artifactId>xalan</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
@@ -159,6 +243,10 @@
       <artifactId>batik-anim</artifactId>
       <version>1.12</version>
       <exclusions>
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>batik-svg-dom</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
           <artifactId>batik-dom</artifactId>
