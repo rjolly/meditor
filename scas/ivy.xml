@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0">
+    <info module="scas" organisation="net.sourceforge.jscl-meditor" revision="5.3.1">
+        <description homepage="http://jscl-meditor.sourceforge.net/"/>
+    </info>
+    <configurations>
+        <conf name="default" extends="runtime"/>
+        <conf name="compile"/>
+        <conf name="runtime"/>
+        <conf name="compile-test"/>
+        <conf name="runtime-test"/>
+        <conf name="pom"/>
+    </configurations>
+    <publications>
+        <artifact name="scas" type="pom" ext="pom" conf="pom"/>
+    </publications>
+    <dependencies>
+        <dependency org="net.java.linoleum" name="complete" rev="1.6" conf="runtime->default"/>
+        <dependency org="net.sourceforge.jscl-meditor" name="meditor" rev="5.3.1" conf="runtime->default"/>
+        <dependency org="com.github.rjolly" name="flying-saucer" rev="9.1.20" conf="runtime->default"/>
+        <dependency org="com.github.rjolly" name="scas_2.11.0-M6" rev="2.1.1" conf="runtime->default"/>
+        <dependency org="org.scala-lang" name="scala-compiler" rev="2.11.0-M6" conf="runtime->default">
+            <exclude org="org.scala-lang.modules" module="scala-xml_2.11.0-M5" name="*" type="*" ext="*" conf="" matcher="exact"/>
+            <exclude org="org.scala-lang.modules" module="scala-parser-combinators_2.11.0-M5" name="*" type="*" ext="*" conf="" matcher="exact"/>
+        </dependency>
+        <dependency org="com.github.rjolly" name="jarlister_2.11" rev="1.0" conf="runtime->default">
+            <exclude org="org.apache.ant" module="ant" name="*" type="*" ext="*" conf="" matcher="exact"/>
+            <exclude org="org.scala-lang" module="scala-library" name="*" type="*" ext="*" conf="" matcher="exact"/>
+        </dependency>
+    </dependencies>
+</ivy-module>

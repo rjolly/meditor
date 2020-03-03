@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.sourceforge.jscl-meditor</groupId>
+  <artifactId>scas</artifactId>
+  <packaging>pom</packaging>
+  <version>5.3.1</version>
+  <url>http://jscl-meditor.sourceforge.net/</url>
+  <description>java symbolic computing library and mathematical editor</description>
+  <licenses>
+    <license>
+      <name>GPL</name>
+      <url>http://www.gnu.org/licenses/gpl.txt</url>
+    </license>
+  </licenses>
+  <name>scas</name>
+  <organization>
+    <name>net.sourceforge.jscl-meditor</name>
+  </organization>
+  <scm>
+    <url>git@github.com:rjolly/meditor.git</url>
+    <connection>scm:git:git@github.com:rjolly/meditor.git</connection>
+  </scm>
+  <developers>
+    <developer>
+      <id>rjolly</id>
+      <name>Raphael Jolly</name>
+      <url>http://github.com/rjolly</url>
+    </developer>
+  </developers>
+  <dependencies>
+    <dependency>
+      <groupId>net.java.linoleum</groupId>
+      <artifactId>complete</artifactId>
+      <version>1.6</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.jscl-meditor</groupId>
+      <artifactId>meditor</artifactId>
+      <version>5.3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.rjolly</groupId>
+      <artifactId>flying-saucer</artifactId>
+      <version>9.1.20</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.rjolly</groupId>
+      <artifactId>scas_2.11.0-M6</artifactId>
+      <version>2.1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-compiler</artifactId>
+      <version>2.11.0-M6</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.scala-lang.modules</groupId>
+          <artifactId>scala-xml_2.11.0-M5</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.scala-lang.modules</groupId>
+          <artifactId>scala-parser-combinators_2.11.0-M5</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.github.rjolly</groupId>
+      <artifactId>jarlister_2.11</artifactId>
+      <version>1.0</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.ant</groupId>
+          <artifactId>ant</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.scala-lang</groupId>
+          <artifactId>scala-library</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
+</project>
