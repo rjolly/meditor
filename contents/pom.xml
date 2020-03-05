@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.sourceforge.jscl-meditor</groupId>
+  <artifactId>contents</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0</version>
+  <url>http://jscl-meditor.sourceforge.net/</url>
+  <description>java symbolic computing library and mathematical editor</description>
+  <licenses>
+    <license>
+      <name>GPL</name>
+      <url>http://www.gnu.org/licenses/gpl.txt</url>
+    </license>
+  </licenses>
+  <name>contents</name>
+  <organization>
+    <name>net.sourceforge.jscl-meditor</name>
+  </organization>
+  <scm>
+    <url>git@github.com:rjolly/meditor.git</url>
+    <connection>scm:git:git@github.com:rjolly/meditor.git</connection>
+  </scm>
+  <developers>
+    <developer>
+      <id>rjolly</id>
+      <name>Raphael Jolly</name>
+      <url>http://github.com/rjolly</url>
+    </developer>
+  </developers>
+</project>
