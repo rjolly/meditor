@@ -10,7 +10,7 @@
     * Tested script engine:
 
       org.scala-lang#scala-compiler;2.11.0-M6 - needs to be enabled, with:
-      com.github.rjolly#jarlister_2.11;1.0
+      com.github.rjolly#jarlister_2.11;1.1
 
             jarlister("lib/scala-library-2.11.0-M6.jar")
 
