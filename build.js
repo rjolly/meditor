@@ -3,7 +3,7 @@ mkdir("build/classes");
 mkdir("build/sources");
 mkdir("build/javadoc");
 
-javac("src", "build/classes", "1.8");
+javac("src", "build/classes");
 copy("res", "build/classes");
 copy("src", "build/sources");
 copy("res/jscl", "build/sources/jscl");
