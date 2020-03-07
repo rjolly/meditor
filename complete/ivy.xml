@@ -32,9 +32,10 @@
         <dependency org="cc.redberry" name="rings" rev="2.5.7" conf="runtime->default">
             <exclude org="org.apache.commons" module="commons-math3" name="*" type="*" ext="*" conf="" matcher="exact"/>
         </dependency>
-        <dependency org="org.apache.commons" name="commons-math3" rev="3.5" conf="runtime->default"/>
+        <dependency org="org.apache.commons" name="commons-math3" rev="3.6.1" conf="runtime->default"/>
         <dependency org="org.frege-lang" name="frege-interpreter-core" rev="1.2" conf="runtime->default"/>
-        <dependency org="org.python" name="jython-standalone" rev="2.7.1" conf="runtime->default"/>
+        <dependency org="org.python" name="jython-standalone" rev="2.7.2b3" conf="runtime->default"/>
         <dependency org="org.jruby" name="jruby-complete" rev="9.1.17.0" conf="runtime->default"/>
+        <dependency org="org.beanshell" name="bsh" rev="2.0b5" conf="runtime->default"/>
     </dependencies>
 </ivy-module>
