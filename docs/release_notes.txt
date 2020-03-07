@@ -9,17 +9,11 @@
 
     * Tested script engine:
 
-      org.scala-lang#scala-compiler;2.11.0-M6 - needs to be enabled, with:
-      com.github.rjolly#jarlister_2.11;1.1
-
-            jarlister("lib/scala-library-2.11.0-M6.jar")
+      org.scala-lang#scala-compiler;2.11.0-M6
 
     * Tested library:
 
-      com.github.rjolly#scas_2.11.0-M6;2.1.1 - needs to be enabled, with:
-
-            jarlister("lib/scala-xml_2.11.0-M6.jar")
-            jarlister("lib/scala-parser-combinators_2.11.0-M6")
+      com.github.rjolly#scas_2.11.0-M6;2.1.1
 
 
   In version 5.2.1:

@@ -1,5 +1,3 @@
-// jarlister("lib/txt2xhtml-1.1.jar")
-
 import java.io.{File, FileReader}
 import javax.script.ScriptEngineManager
 import jscl.converter.Converter

@@ -48,8 +48,23 @@
     </dependency>
     <dependency>
       <groupId>com.github.rjolly</groupId>
-      <artifactId>scas_0.22</artifactId>
-      <version>3.0</version>
+      <artifactId>scas_2.11.0-M6</artifactId>
+      <version>2.1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-compiler</artifactId>
+      <version>2.11.0-M6</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.scala-lang.modules</groupId>
+          <artifactId>scala-xml_2.11.0-M5</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.scala-lang.modules</groupId>
+          <artifactId>scala-parser-combinators_2.11.0-M5</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>de.uni-mannheim.rz.krum</groupId>

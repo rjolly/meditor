@@ -48,38 +48,13 @@
     </dependency>
     <dependency>
       <groupId>com.github.rjolly</groupId>
-      <artifactId>scas_2.11.0-M6</artifactId>
-      <version>2.1.1</version>
+      <artifactId>scas_0.22</artifactId>
+      <version>3.0</version>
     </dependency>
     <dependency>
-      <groupId>org.scala-lang</groupId>
-      <artifactId>scala-compiler</artifactId>
-      <version>2.11.0-M6</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.scala-lang.modules</groupId>
-          <artifactId>scala-xml_2.11.0-M5</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.scala-lang.modules</groupId>
-          <artifactId>scala-parser-combinators_2.11.0-M5</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>com.github.rjolly</groupId>
-      <artifactId>jarlister_2.11</artifactId>
-      <version>1.1</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.ant</groupId>
-          <artifactId>ant</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.scala-lang</groupId>
-          <artifactId>scala-library</artifactId>
-        </exclusion>
-      </exclusions>
+      <groupId>ch.epfl.lamp</groupId>
+      <artifactId>dotty-compiler_0.22</artifactId>
+      <version>0.22.0-RC1</version>
     </dependency>
   </dependencies>
 </project>
