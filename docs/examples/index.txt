@@ -1,3 +1,5 @@
+// Requires : net.sourceforge.jscl-meditor#meditor;5.3.3
+
 import java.io.{File, FileReader}
 import javax.script.ScriptEngineManager
 import jscl.editor.Code

@@ -1,4 +1,4 @@
-// Requires : net.sourceforge.jscl-meditor#meditor;5.3.2
+// Requires : net.sourceforge.jscl-meditor#meditor;5.3.3
 
 class Graph(f: Double => Double) extends org.jdesktop.swingx.JXGraph.Plot {
   def compute(x: Double) = f(x)
