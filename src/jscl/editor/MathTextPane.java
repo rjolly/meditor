@@ -10,7 +10,6 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.EditorKit;
 import javax.swing.text.Element;
-import jscl.converter.Converter;
 
 public class MathTextPane extends JTextPane {
 	@Override
@@ -95,7 +94,7 @@ public class MathTextPane extends JTextPane {
 	}
 
 	void replaceMathSelection(final String str) {
-		final Matcher pm = Converter.pattern.matcher(str);
+		final Matcher pm = MathML.instance.pattern.matcher(str);
 		int n=0;
 		while(pm.find()) {
 			final int m = pm.start();

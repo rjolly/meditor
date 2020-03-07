@@ -20,11 +20,11 @@ public class TeX {
 		return session;
 	}
 
-	String mml(final String str) throws IOException {
+	public String mml(final String str) throws IOException {
 		return session(str).buildXMLString();
 	}
 
-	Image createImage(final String str) throws Exception {
+	public Image createImage(final String str) throws Exception {
 		final Element e = (Element) session(str).buildDOMSubtree().item(0);
 		e.setAttribute("color", "red");
 		return MathML.instance.createImage(e);

@@ -2,7 +2,6 @@ package jscl.editor;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-import jscl.converter.Converter;
 
 public class Wiki {
 	public static final Wiki instance = new Wiki();
@@ -13,7 +12,7 @@ public class Wiki {
 	}
 
 	public String copyToWiki(final String document) throws Exception {
-		return math(MathML.instance.code(document, "/xsltml/mmltex.xsl"));
+		return math(Code.instance("/xsltml/mmltex.xsl").apply(document));
 	}
 
 	public String pasteFromWiki(final String str) throws Exception {
@@ -23,12 +22,9 @@ public class Wiki {
 		while (pm.find()) {
 			final int m = pm.start();
 			final String s = pm.group();
-			String t = Converter.insertNameSpace(s);
-			if (MathML.instance.createMathImage(Converter.XML + t, null) == null) {
-				t = TeX.instance.mml(s);
-			}
+			final String t = MathML.instance.createImage(s) == null?MathML.instance.fromTeX(s):s;
 			b.append(str.substring(n, m));
-			b.append(Converter.stripNameSpace(t));
+			b.append(t);
 			n = pm.end();
 		}
 		b.append(str.substring(n));

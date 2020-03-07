@@ -690,7 +690,7 @@ public class Editor extends ScriptSupport {
 		final String name = getEngine().getFactory().getNames().get(0);
 		final String stylesheet = getPref(getKey(name, "stylesheet"));
 		if (!stylesheet.isEmpty()) {
-			return MathML.instance.code(str, stylesheet);
+			return Code.instance(stylesheet).apply(str);
 		}
 		return str;
 	}

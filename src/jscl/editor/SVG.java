@@ -21,18 +21,18 @@ public class SVG {
 		g.setSVGCanvasSize(comp.getSize());
 		comp.print(g);
 
-		final Writer w = new StringWriter();
-		g.stream(w);
+		final Writer writer = new StringWriter();
+		g.stream(writer);
 
-		String s = w.toString();
+		String s = writer.toString();
 		s = s.replaceAll("\r", "");
 		for (int i = 0 ; i < 3 ; i++) s = s.substring(s.indexOf('\n') + 1);
 		return s.substring(0, s.lastIndexOf('\n'));
 	}
 
 	public Image createImage(final String document) throws Exception {
-		final MemoryTranscoder t = new MemoryTranscoder();
-		t.transcode(new TranscoderInput(new StringReader(document)), new TranscoderOutput());
-		return t.getImage();
+		final MemoryTranscoder transcoder = new MemoryTranscoder();
+		transcoder.transcode(new TranscoderInput(new StringReader(document)), new TranscoderOutput());
+		return transcoder.getImage();
 	}
 }

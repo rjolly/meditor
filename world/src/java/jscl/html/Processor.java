@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import jscl.converter.Converter;
 
 public class Processor extends HttpServlet {
+	private final Converter converter = new Converter();
 
 	protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String uri = req.getRequestURI().substring(req.getContextPath().length());
@@ -30,7 +31,7 @@ public class Processor extends HttpServlet {
 			resp.setContentType("text/xml; charset=utf-8");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
 			PrintWriter writer = resp.getWriter();
-			Converter.write(Converter.apply(Converter.read(reader), "/mathmlc2p.xsl", title, null, null, source ? url.toString() : null, false), writer);
+			converter.pipe(new StringReader(converter.apply(reader, "/mathmlc2p.xsl", title, null, null, source ? url.toString() : null, false)), writer);
 			reader.close();
 			writer.close();
 		}

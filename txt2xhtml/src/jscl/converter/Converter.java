@@ -5,81 +5,28 @@ import java.io.Reader;
 import java.io.Writer;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.net.URL;
-import java.util.Map;
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
 
 public class Converter {
-	public static final Pattern pattern = Pattern.compile("(?s:<math.*?/math\n?>)|(?s:<svg.*?/svg\n?>)");
-	public static final String XML = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>";
-	private static final Pattern word = Pattern.compile("[\\w_\\-\\.]+");
-	private static final Pattern http = Pattern.compile("https?://[\\w_\\-\\.:/~\\?=&#]*");
-	private static final Pattern txt = Pattern.compile("(" + word.pattern() + ")(?:/(" + word.pattern() + "))*\\.txt");
-	private static final Pattern mvn = Pattern.compile("(" + word.pattern() + ")#(" + word.pattern() + ");(" + word.pattern() + ")");
-	private static final Pattern mail = Pattern.compile(word.pattern() + "@" + word.pattern());
-	private static final Pattern links = Pattern.compile("(" + http.pattern() + ")|(" + txt.pattern() + ")|(" + mvn.pattern() + ")|(" + mail.pattern() + ")");
-	private static final Pattern newlines = Pattern.compile("\n");
-	private static final Pattern spaces = Pattern.compile("(?m:^ +)|(  +)|(\\t)");
-	private static final String mml = " xmlns=\"http://www.w3.org/1998/Math/MathML\"";
-	private static final String svg = " xmlns=\"http://www.w3.org/2000/svg\"";
-	private static final Map<String, Converter> cache = new HashMap<String, Converter>();
-	public final Transformer transformer;
+	public final Pattern pattern = Pattern.compile("(?s:<math.*?/math\n?>)|(?s:<svg.*?/svg\n?>)");
+	protected final String XML = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>";
+	private final Pattern word = Pattern.compile("[\\w_\\-\\.]+");
+	private final Pattern http = Pattern.compile("https?://[\\w_\\-\\.:/~\\?=&#]*");
+	private final Pattern txt = Pattern.compile("(" + word.pattern() + ")(?:/(" + word.pattern() + "))*\\.txt");
+	private final Pattern mvn = Pattern.compile("(" + word.pattern() + ")#(" + word.pattern() + ");(" + word.pattern() + ")");
+	private final Pattern mail = Pattern.compile(word.pattern() + "@" + word.pattern());
+	private final Pattern links = Pattern.compile("(" + http.pattern() + ")|(" + txt.pattern() + ")|(" + mvn.pattern() + ")|(" + mail.pattern() + ")");
+	private final Pattern newlines = Pattern.compile("\n");
+	private final Pattern spaces = Pattern.compile("(?m:^ +)|(  +)|(\\t)");
+	private final String mml = " xmlns=\"http://www.w3.org/1998/Math/MathML\"";
+	private final String svg = " xmlns=\"http://www.w3.org/2000/svg\"";
 
-	private Converter(final Transformer transformer) {
-		this.transformer = transformer;
-	}
-
-	public static Converter instance(String stylesheet) throws Exception {
-		if (stylesheet.startsWith("/")) {
-			stylesheet = stylesheet.substring(1);
-		}
-		if (!cache.containsKey(stylesheet)) {
-			final URL resource = Thread.currentThread().getContextClassLoader().getResource(stylesheet);
-			if (resource == null) throw new Exception("Stylesheet not found: \"" + stylesheet + "\"");
-			cache.put(stylesheet, new Converter(TransformerFactory.newInstance().newTransformer(new StreamSource(resource.toString()))));
-		}
- 		return cache.get(stylesheet);
- 	}
-
-	public static String read(final Reader reader) throws IOException {
-		final Writer w = new StringWriter();
-		pipe(reader, w);
-		w.close();
-		return w.toString();
-	}
-
-	public static void write(final String str, final Writer writer) throws IOException {
-		pipe(new StringReader(str), writer);
-	}
-
-	public String apply(final Reader reader) throws Exception {
-		return apply(read(reader));
-	}
-
-	public String apply(final String str) throws TransformerException {
-		final String s = apply(str, null);
-		final Reader r = new StringReader(s);
-		final Writer w = new StringWriter();
-		transformer.transform(new StreamSource(r), new StreamResult(w));
-		return replace(w.toString());
-	}
-
-	public static String replace(final String str) {
-		return str.replaceAll("\r", "").replaceAll("\u00a0", " ").replaceAll(" +\n", "\n").replaceAll(" {8}", "\t").trim();
-	}
-
-	public static String apply(final String str, final String stylesheet) {
+	public String apply(final String str, final String stylesheet) {
 		return apply(str, stylesheet, null, null, null, null, false);
 	}
 
-	public static String apply(final String str, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension) {
+	public String apply(final String str, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension) {
 		final Matcher pm = pattern.matcher(str);
 		final StringBuffer b = new StringBuffer(XML);
 		if (stylesheet != null && !stylesheet.isEmpty()) {
@@ -117,7 +64,7 @@ public class Converter {
 		return b.toString();
 	}
 
-	private static String links(final String str, final boolean extension) {
+	private String links(final String str, final boolean extension) {
 		final StringBuffer buffer = new StringBuffer();
 		final Matcher pm = links.matcher(str);
 		int n = 0;
@@ -192,7 +139,7 @@ public class Converter {
 		return buffer.toString();
 	}
 
-	private static String newlines(final String str) {
+	private String newlines(final String str) {
 		final StringBuffer buffer = new StringBuffer();
 		final Matcher pm = newlines.matcher(str);
 		int n = 0;
@@ -207,7 +154,7 @@ public class Converter {
 		return buffer.toString();
 	}
 
-	private static String spaces(final String str) {
+	private String spaces(final String str) {
 		final StringBuffer buffer = new StringBuffer();
 		final Matcher pm = spaces.matcher(str);
 		int n = 0;
@@ -224,30 +171,43 @@ public class Converter {
 		return buffer.toString();
 	}
 
-	private static String special(final String str) {
+	private String special(final String str) {
 		return str.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\"","&quot;");
 	}
 
-	public static String insertNameSpace(final String str) {
+	protected String insertNameSpace(final String str) {
 		final String m = str.indexOf(mml) > -1?"":mml;
 		final String s = str.indexOf(svg) > -1?"":svg;
 		return isSvg(str)?str.substring(0, 4) + s + str.substring(4):str.substring(0, 5) + m + str.substring(5);
 	}
 
-	public static String stripNameSpace(final String str) {
+	protected String stripNameSpace(final String str) {
 		final int n = str.indexOf(mml);
 		return str.substring(0, n) + str.substring(n + mml.length());
 	}
 
-	public static boolean isSvg(final String str) {
+	protected boolean isSvg(final String str) {
 		return str.substring(1, 4).compareTo("svg") == 0;
 	}
 
-	private static void pipe(final Reader in, final Writer out) throws IOException {
-		int c = in.read();
-		while (c != -1) {
-			out.write(c);
-			c = in.read();
+	public String apply(final Reader reader, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension) throws IOException {
+		return apply(stringFromReader(reader), stylesheet, title, feed, icon, url, extension);
+	}
+
+	protected String stringFromReader(final Reader reader) throws IOException {
+		final Writer writer = new StringWriter();
+		pipe(reader, writer);
+		writer.close();
+		return writer.toString();
+	}
+
+	private char buffer[] = new char[8192];
+
+	public void pipe(final Reader in, final Writer out) throws IOException {
+		int n = in.read(buffer);
+		while (n > -1) {
+			out.write(buffer, 0, n);
+			n = in.read(buffer);
 		}
 	}
 }
