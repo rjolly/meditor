@@ -22,11 +22,21 @@ public class Converter {
 	private final String mml = " xmlns=\"http://www.w3.org/1998/Math/MathML\"";
 	private final String svg = " xmlns=\"http://www.w3.org/2000/svg\"";
 
-	public String apply(final String str, final String stylesheet) {
-		return apply(str, stylesheet, null, null, null, null, false);
+	public String apply(final String str) {
+		return fromString(str, null, null, null, null, null, false);
 	}
 
+	@Deprecated
+	public String apply(final String str, final String stylesheet) {
+		return fromString(str, stylesheet, null, null, null, null, false);
+	}
+
+	@Deprecated
 	public String apply(final String str, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension) {
+		return fromString(str, stylesheet, title, feed, icon, url, extension);
+	}
+
+	private String fromString(final String str, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension) {
 		final Matcher pm = pattern.matcher(str);
 		final StringBuffer b = new StringBuffer(XML);
 		if (stylesheet != null && !stylesheet.isEmpty()) {
@@ -191,7 +201,7 @@ public class Converter {
 	}
 
 	public String apply(final Reader reader, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension) throws IOException {
-		return apply(stringFromReader(reader), stylesheet, title, feed, icon, url, extension);
+		return fromString(stringFromReader(reader), stylesheet, title, feed, icon, url, extension);
 	}
 
 	protected String stringFromReader(final Reader reader) throws IOException {

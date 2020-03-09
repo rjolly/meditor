@@ -4,6 +4,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
 import javax.xml.transform.Transformer;
@@ -30,14 +31,14 @@ public class Code extends Converter {
 		return cache.get(stylesheet);
 	}
 
-	public String apply(final String document) throws TransformerException {
-		final Reader reader = new StringReader(apply(document, null));
+	private String fromString(final String document) throws TransformerException {
+		final Reader reader = new StringReader(apply(document));
 		final Writer writer = new StringWriter();
 		transformer.transform(new StreamSource(reader), new StreamResult(writer));
 		return writer.toString().replaceAll("\r", "").replaceAll("\u00a0", " ").replaceAll(" +\n", "\n").replaceAll(" {8}", "\t").trim();
 	}
 
-	public String apply(final Reader reader) throws Exception {
-		return apply(stringFromReader(reader));
+	public String apply(final Reader reader) throws TransformerException, IOException {
+		return fromString(stringFromReader(reader));
 	}
 }

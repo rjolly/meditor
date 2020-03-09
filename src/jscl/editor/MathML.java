@@ -51,7 +51,7 @@ public class MathML extends Converter {
 	}
 
 	public byte[] exportToPDF(final String document, final String stylesheet) throws Exception {
-		final Reader reader = new StringReader(c2p(apply(document, null)));
+		final Reader reader = new StringReader(c2p(apply(document)));
 		final ByteArrayOutputStream out = new ByteArrayOutputStream();
 		final FopFactoryBuilder builder = new FopFactoryBuilder(new URI("http://meditorworld.appspot.com/"));
 		final FopFactory factory = builder.build();

@@ -1,5 +1,6 @@
 package jscl.editor;
 
+import java.io.StringReader;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -12,7 +13,7 @@ public class Wiki {
 	}
 
 	public String copyToWiki(final String document) throws Exception {
-		return math(Code.instance("/xsltml/mmltex.xsl").apply(document));
+		return math(Code.instance("/xsltml/mmltex.xsl").apply(new StringReader(document)));
 	}
 
 	public String pasteFromWiki(final String str) throws Exception {

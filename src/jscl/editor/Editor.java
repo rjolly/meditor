@@ -16,6 +16,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyVetoException;
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.Reader;
 import java.io.Writer;
 import java.io.FileWriter;
@@ -690,7 +691,7 @@ public class Editor extends ScriptSupport {
 		final String name = getEngine().getFactory().getNames().get(0);
 		final String stylesheet = getPref(getKey(name, "stylesheet"));
 		if (!stylesheet.isEmpty()) {
-			return Code.instance(stylesheet).apply(str);
+			return Code.instance(stylesheet).apply(new StringReader(str));
 		}
 		return str;
 	}

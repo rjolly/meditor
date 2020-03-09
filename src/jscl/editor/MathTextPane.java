@@ -110,7 +110,7 @@ public class MathTextPane extends JTextPane {
 		try {
 			return new ImageIcon(MathML.instance.createImage(text, getForeground()), text);
 		} catch (final Exception ex) {
-			return new ImageIcon(MathTextPane.class.getResource("/toolbarButtonGraphics/general/Bookmarks16.gif"), text);
+			return new ImageIcon(getClass().getResource("/toolbarButtonGraphics/general/Bookmarks16.gif"), text);
 		}
 	}
 
