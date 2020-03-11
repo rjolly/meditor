@@ -1197,6 +1197,10 @@ public class Editor extends ScriptSupport {
 
                 jMenuItem12.setAction(saveAsAction);
                 jMenu1.add(jMenuItem12);
+                jMenu1.add(jSeparator7);
+
+                jMenuItem19.setAction(exportAction);
+                jMenu1.add(jMenuItem19);
                 jMenu1.add(jSeparator3);
 
                 jMenuItem1.setAction(closeAction);
@@ -1249,10 +1253,6 @@ public class Editor extends ScriptSupport {
 
                 jMenuItem18.setAction(copyToCodeAction);
                 jMenu3.add(jMenuItem18);
-                jMenu3.add(jSeparator7);
-
-                jMenuItem19.setAction(exportAction);
-                jMenu3.add(jMenuItem19);
                 jMenu3.add(jSeparator8);
 
                 jMenuItem20.setAction(preferenceAction);
