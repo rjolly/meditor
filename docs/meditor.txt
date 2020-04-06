@@ -205,6 +205,7 @@ http://beanshell.org/ 2.0b5
 
 Papers
 
+Computer algebra in Scala : what's new with Dotty ? (ScalaUA 2020) https://drive.google.com/file/d/1MixKt_OXD719SgomXx81VrtW8jvAV78_/view?usp=sharing presentation https://www.youtube.com/watch?v=L-NTXZZPV4A
 Categories as type classes in the Scala Algebra System (CASC 2013) http://jscl-meditor.sourceforge.net/catc-slides.pdf
 Parallelizing Stream with Future (2013) http://arxiv.org/abs/1305.4367
 Straightforward parallelization of polynomial multiplication using parallel collections in Scala (EOOPS 2013) http://jscl-meditor.sourceforge.net/parallel-slides.pdf
@@ -238,4 +239,4 @@ Copyright
 http://www.gnu.org/licenses/gpl.html The GNU General Public License
 
 --
-last updated on Sat Apr 14 2018
+last updated on Mon Apr 27 2020
