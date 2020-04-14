@@ -35,7 +35,7 @@ public class Code extends Converter {
 		final Reader reader = new StringReader(apply(document));
 		final Writer writer = new StringWriter();
 		transformer.transform(new StreamSource(reader), new StreamResult(writer));
-		return writer.toString().replaceAll("\r", "").replaceAll("\u00a0", " ").replaceAll(" +\n", "\n").replaceAll(" {8}", "\t").trim();
+		return writer.toString().replaceAll("\r", "").replaceAll("\u00a0", " ").replaceAll(" +\n", "\n").trim();
 	}
 
 	public String apply(final Reader reader) throws TransformerException, IOException {
