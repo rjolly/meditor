@@ -3,3 +3,13 @@ x = Symbol("x")
 (1/cos(x)).series(x, 0, 10)
 
 # 1 + x**2/2 + 5*x**4/24 + 61*x**6/720 + 277*x**8/8064 + O(x**10)
+
+# java.lang.RuntimeException: Module or method too large in `file:/home/user/lib/sympy-1.5.1.jar!/sympy/polys/polyquinticconst.py`.
+#
+# Please provide a CPython 2.7 bytecode file (.pyc), e.g. run
+#     python -m py_compile file:/home/user/lib/sympy-1.5.1.jar!/sympy/polys/polyquinticconst.py
+#
+# Alternatively, specify a CPython 2.7 command via the python.cpython2 property, e.g.:
+#     jython -Dpython.cpython2=python
+# or (e.g. for pip) through the environment variable JYTHON_OPTS:
+#     export JYTHON_OPTS="-Dpython.cpython2=python"
