@@ -681,9 +681,6 @@ public class Editor extends ScriptSupport {
 		if (isRendering()) try {
 			return "<math>" + cls.getMethod("toMathML").invoke(obj) + "</math>";
 		} catch (final NoSuchMethodException ex) {}
-		try {
-			return cls.getMethod("toJava").invoke(obj).toString();
-		} catch (final NoSuchMethodException ex) {}
 		return obj.toString();
 	}
 
