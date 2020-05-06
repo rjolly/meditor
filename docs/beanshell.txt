@@ -1,0 +1,13 @@
+import javax.script.ScriptEngineManager;
+import jscl.math.JSCLInteger;
+import jscl.math.Expression;
+import jscl.math.Rational;
+
+manager = new ScriptEngineManager();
+engine = manager.getEngineByName("jscl");
+
+x = Expression.valueOf("x");
+assert(engine.eval("x+x").equals(<math><apply><times/><cn>2</cn><ci>x</ci></apply></math>));
+assert(engine.eval("1").equals(<math><cn>1</cn></math>));
+assert(engine.eval("1+x").equals(<math><apply><plus/><cn>1</cn><ci>x</ci></apply></math>));
+assert(engine.eval("1/4").equals(<math><cn type="rational">1<sep/>4</cn></math>));
