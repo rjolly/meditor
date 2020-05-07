@@ -16,7 +16,7 @@ Here is a list of caveats:
 
 Which one of the four women satisfies all of Johnny's requirements?
 
-expand("groebner({r[a]^2+r[a],
+groebner({r[a]^2+r[a],
 g[a]^2+g[a],
 s[a]^2+s[a],
 t[a]^2+t[a],
@@ -63,9 +63,9 @@ t[d]+t[a]},
 {r[a],g[a],s[a],t[a],
 r[b],g[b],s[b],t[b],
 r[c],g[c],s[c],t[c],
-r[d],g[d],s[d],t[d]},lex,2)")
-
-<math><mrow><mfenced><mtable><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>r</mi><mrow><mrow><mi>a</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>g</mi><mrow><mrow><mi>a</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>s</mi><mrow><mrow><mi>a</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>t</mi><mrow><mrow><mi>a</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><msub><mi>r</mi><mrow><mrow><mi>b</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>g</mi><mrow><mrow><mi>b</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>s</mi><mrow><mrow><mi>b</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><msub><mi>t</mi><mrow><mrow><mi>b</mi></mrow></mrow></msub><mo>+</mo><msup><msub><mi>t</mi><mrow><mrow><mi>b</mi></mrow></mrow></msub><mn>2</mn></msup></mrow></mtd></mtr><mtr><mtd><mrow><msub><mi>r</mi><mrow><mrow><mi>c</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>g</mi><mrow><mrow><mi>c</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>s</mi><mrow><mrow><mi>c</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>t</mi><mrow><mrow><mi>b</mi></mrow></mrow></msub><mo>+</mo><msub><mi>t</mi><mrow><mrow><mi>c</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>r</mi><mrow><mrow><mi>d</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><msub><mi>g</mi><mrow><mrow><mi>d</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><msub><mi>s</mi><mrow><mrow><mi>d</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>t</mi><mrow><mrow><mi>d</mi></mrow></mrow></msub></mrow></mtd></mtr></mtable></mfenced></mrow></math>
+r[d],g[d],s[d],t[d]},lex,2)
+=
+<math><vector><apply><plus/><cn>1</cn><ci><msub><mi>r</mi><mrow><ci>a</ci></mrow></msub></ci></apply><apply><plus/><cn>1</cn><ci><msub><mi>g</mi><mrow><ci>a</ci></mrow></msub></ci></apply><apply><plus/><cn>1</cn><ci><msub><mi>s</mi><mrow><ci>a</ci></mrow></msub></ci></apply><apply><plus/><cn>1</cn><ci><msub><mi>t</mi><mrow><ci>a</ci></mrow></msub></ci></apply><ci><msub><mi>r</mi><mrow><ci>b</ci></mrow></msub></ci><apply><plus/><cn>1</cn><ci><msub><mi>g</mi><mrow><ci>b</ci></mrow></msub></ci></apply><apply><plus/><cn>1</cn><ci><msub><mi>s</mi><mrow><ci>b</ci></mrow></msub></ci></apply><apply><plus/><ci><msub><mi>t</mi><mrow><ci>b</ci></mrow></msub></ci><apply><power/><ci><msub><mi>t</mi><mrow><ci>b</ci></mrow></msub></ci><cn>2</cn></apply></apply><ci><msub><mi>r</mi><mrow><ci>c</ci></mrow></msub></ci><apply><plus/><cn>1</cn><ci><msub><mi>g</mi><mrow><ci>c</ci></mrow></msub></ci></apply><apply><plus/><cn>1</cn><ci><msub><mi>s</mi><mrow><ci>c</ci></mrow></msub></ci></apply><apply><plus/><apply><plus/><cn>1</cn><ci><msub><mi>t</mi><mrow><ci>b</ci></mrow></msub></ci></apply><ci><msub><mi>t</mi><mrow><ci>c</ci></mrow></msub></ci></apply><apply><plus/><cn>1</cn><ci><msub><mi>r</mi><mrow><ci>d</ci></mrow></msub></ci></apply><ci><msub><mi>g</mi><mrow><ci>d</ci></mrow></msub></ci><ci><msub><mi>s</mi><mrow><ci>d</ci></mrow></msub></ci><apply><plus/><cn>1</cn><ci><msub><mi>t</mi><mrow><ci>d</ci></mrow></msub></ci></apply></vector></math>
 
 References
 

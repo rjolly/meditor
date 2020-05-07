@@ -90,6 +90,15 @@ Variable substitution
 subst(f(x),x,value)
 subst(f(x1,...,xn),{x1,...,xn},{a1,...,an})
 
+Graphing and various transforms
+graph(f(x),x)
+graph({f1(x),...,fn(x)},x)
+elementary(a)
+factorize(a)
+simplify(a)
+numeric(a)
+quote(a)
+
 Limit
 lim(f(x),x,value,direction_opt)
 value : -infin, a, infin

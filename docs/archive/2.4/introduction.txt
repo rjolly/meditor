@@ -1,7 +1,7 @@
 			meditor
 
 
-  meditor is a text editor with symbolic computation capabilities. In the first place, it is intended to solve algebraic equation systems of any degree, with several indeterminates, by computing the Groebner bases of polynomial ideals.
+  meditor is a text editor with symbolic computation capabilities. Primarily, it is intended to solve algebraic equation systems of any degree, with several indeterminates, by computing the Groebner bases of polynomial ideals.
 
 For example, let this system for the indeterminates x, y:
 
@@ -12,18 +12,18 @@ We put:
 
 groebner({x^2 + y^2 - 4, x*y - 1}, {x, y})
 
-By selecting the text bloc above and by doing "Math->Expand" in the menu bar (Ctrl+E), we get:
+By selecting the text bloc above and by doing "Math->Evaluate" in the menu bar (Ctrl+E), we get:
 
 {1-4*x^2+x^4, 4*x-x^3-y}
 
-which allows to find x, then y from x. This operation doesn't calculate the roots, it just writes the equation. For example, it wouldn't give "a = 4/5" but "5*a-4" ("= 0" implied).
+which allows to find x, then y from x. This operation does not calculate the roots, it just writes the equation. For example, it would not give "a = 4/5" but "5*a-4" ("= 0" implied).
 
 Groebner basis computation is explained in more details in the file math_background.txt.
 
 
-  meditor allows vector and matrix expressions processing. Vectors are noted as {a,b,c} and matrices as {{a,b},{c,d}}.
+  meditor can process vector and matrix expressions. Vectors are denoted as {a,b,c} and matrices as {{a,b},{c,d}}.
 
-To illustrate their use, let's put a simple system of linear equations. We write:
+To illustrate their use, let us consider a simple system of linear equations. We write:
 
 matrix(
 {{a[0][0], a[0][1]},
@@ -31,7 +31,7 @@ matrix(
                      x[1]})-{b[0],
                              b[1]}
 
-("= 0" implied ; as meditor can't deal with non-commutative operations, it is mandatory to use "matrix(A,B)" instead of "A*B"). By selecting the expression above and by doing "Expand", we get:
+("= 0" implied ; as meditor cannot deal with non-commutative operations, it is mandatory to use "matrix(A,B)" instead of "A*B"). By selecting the expression above and by doing "Evaluate", we get:
 
 {-b[0]+a[0][0]*x[0]+a[0][1]*x[1], -b[1]+a[1][0]*x[0]+a[1][1]*x[1]}
 
@@ -56,22 +56,26 @@ subst(1/x^2,x,a)
 =
 1/a^2
 
-, and simplification of expressions using the "Math->Simplify" command in the menu bar (Ctrl+Q):
+, and simplification of expressions using the "simplify" operator:
 
-exp(sqrt(-1)*pi)
+simplify(exp(sqrt(-1)*pi))
 =
 -1
 
-It is often useful to rewrite an expression in term of elementary functions (log, exp, frac, sqrt, implicit roots), using the "Math->Elementary" command (Ctrl+L), before simplifying it. For instance:
+It is often useful to rewrite an expression in term of elementary functions (log, exp, frac, sqrt, implicit roots), using the "elementary" operator, before simplifying it. For instance:
 
-cos(x)^2+sin(x)^2
-=
-(1/2)^2*(1/exp(sqrt(-1)*x))^2+(1/2)^2*sqrt(-1)^2*(1/exp(sqrt(-1)*x))^2+2*(1/2)^2*1/exp(sqrt(-1)*x)*exp(sqrt(-1)*x)-2*(1/2)^2*sqrt(-1)^2*1/exp(sqrt(-1)*x)*exp(sqrt(-1)*x)+(1/2)^2*exp(sqrt(-1)*x)^2+(1/2)^2*sqrt(-1)^2*exp(sqrt(-1)*x)^2
+simplify(elementary(cos(x)^2+sin(x)^2))
 =
 1
 
+To compute numerical values, use the "numeric" operator:
 
-  As one can see, meditor knows of some usual functions. It can compute derivatives and integrals too, as shown below:
+numeric(exp(1))
+=
+2.718281828459045
+
+
+  As we can see, meditor knows of some usual functions. It can compute derivatives and integrals too, as shown below:
 
 d(cos(f(x)),x)
 =
@@ -90,7 +94,7 @@ integral(1/(1+x^2),x)
 root[0](1, 0, 4)*log(1-2*x*root[0](1, 0, 4))+root[1](1, 0, 4)*log(1-2*x*root[1](1, 0, 4))
 
 
-  Another ability of the software is boolean algebra. For it polynomials in Z/2Z are used, by specifying the modulo as the fourth parameter of the "groebner" operation.
+  Another capability of the software is boolean algebra. For this purpose, polynomials in Z/2Z are used, by specifying the modulo as the fourth parameter of the "groebner" operation.
 
 0 represents "false", 1 "true", addition an "exclusive or", product an "and".
 
@@ -109,16 +113,42 @@ man*(1+mortal)},
 
 {man+man*mortal, sokrates+man*sokrates, sokrates+mortal*sokrates}
 
-The last equation can be factorized (Ctrl+T) into : (1+mortal)*sokrates, which reads : "sokrates implies mortal".
+The last equation can be factorized:
+
+factorize(sokrates+mortal*sokrates)
+=
+sokrates*(1+mortal), which reads : "sokrates implies mortal".
 
 Other (positive) modulos are also usable.
 
 
-  Lastly, meditor allows web publishing, using the "File->Export to XHTML" command. The document is exported into a file with the .xhtml extension, near the original .txt file. One has to enclose each expression to be rendered within double brackets, like in:
+  Lastly, meditor can render MathML expressions and convert them back to text via XSLT:
 
-[[x^2*y^2]]
+quote(integral(1/(1+x^2),x))
+=
+<math><mrow><mo>∫</mo><apply><divide/><cn>1</cn><apply><plus/><cn>1</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply><mo>d</mo><ci>x</ci></mrow></math>
 
-This can be (un)done using the "Math->toMathML" command on the selected expression.
+<math><apply><times/><apply><power/><ci>x</ci><cn>2</cn></apply><apply><power/><ci>y</ci><cn>2</cn></apply></apply></math>
+=
+x^2*y^2
+
+It can also draw SVG graphs with the "graph" operator:
+
+graph(sin(x),x)
+=
+<svg stroke-dasharray="none" shape-rendering="auto" xmlns="http://www.w3.org/2000/svg" font-family="'Dialog'" width="400" text-rendering="auto" fill-opacity="1" contentScriptType="text/ecmascript" color-interpolation="auto" color-rendering="auto" preserveAspectRatio="xMidYMid meet" font-size="12px" fill="black" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="black" image-rendering="auto" stroke-miterlimit="10" zoomAndPan="magnify" version="1.0" stroke-linecap="square" stroke-linejoin="miter" contentStyleType="text/css" font-style="normal" height="400" stroke-width="1" stroke-dashoffset="0" font-weight="normal" stroke-opacity="1"
+><!--Generated by the Batik Graphics2D SVG Generator--><defs id="genericDefs"
+  /><g
+  ><g fill="red" stroke="red"
+    ><line y2="200" fill="none" x1="0" x2="400" y1="200"
+      /><line y2="400" fill="none" x1="200" x2="200" y1="0"
+      /><path fill="none" d="M0 224 L1 224 L2 224 L3 224 L4 224 L5 224 L6 224 L7 224 L8 224 L9 224 L10 224 L11 223 L12 223 L13 223 L14 222 L15 222 L16 222 L17 221 L18 220 L19 220 L20 219 L21 219 L22 218 L23 217 L24 217 L25 216 L26 215 L27 214 L28 214 L29 213 L30 212 L31 211 L32 210 L33 209 L34 208 L35 207 L36 206 L37 205 L38 204 L39 203 L40 202 L41 201 L42 200 L43 199 L44 198 L45 197 L46 196 L47 195 L48 194 L49 193 L50 193 L51 192 L52 191 L53 190 L54 189 L55 188 L56 187 L57 186 L58 185 L59 185 L60 184 L61 183 L62 182 L63 182 L64 181 L65 180 L66 180 L67 179 L68 178 L69 178 L70 177 L71 177 L72 177 L73 176 L74 176 L75 176 L76 175 L77 175 L78 175 L79 175 L80 175 L81 175 L82 175 L83 175 L84 175 L85 175 L86 175 L87 175 L88 175 L89 175 L90 176 L91 176 L92 176 L93 177 L94 177 L95 178 L96 178 L97 179 L98 179 L99 180 L100 181 L101 181 L102 182 L103 183 L104 183 L105 184 L106 185 L107 186 L108 187 L109 188 L110 188 L111 189 L112 190 L113 191 L114 192 L115 193 L116 194 L117 195 L118 196 L119 197 L120 198 L121 199 L122 200 L123 201 L124 202 L125 203 L126 204 L127 205 L128 206 L129 207 L130 208 L131 209 L132 210 L133 211 L134 212 L135 212 L136 213 L137 214 L138 215 L139 216 L140 216 L141 217 L142 218 L143 218 L144 219 L145 220 L146 220 L147 221 L148 221 L149 222 L150 222 L151 223 L152 223 L153 223 L154 224 L155 224 L156 224 L157 224 L158 224 L159 224 L160 224 L161 224 L162 224 L163 224 L164 224 L165 224 L166 224 L167 224 L168 223 L169 223 L170 223 L171 222 L172 222 L173 222 L174 221 L175 221 L176 220 L177 219 L178 219 L179 218 L180 217 L181 217 L182 216 L183 215 L184 214 L185 214 L186 213 L187 212 L188 211 L189 210 L190 209 L191 208 L192 207 L193 206 L194 205 L195 204 L196 203 L197 202 L198 201 L199 200 L200 200 L201 199 L202 198 L203 197 L204 196 L205 195 L206 194 L207 193 L208 192 L209 191 L210 190 L211 189 L212 188 L213 187 L214 186 L215 185 L216 185 L217 184 L218 183 L219 182 L220 182 L221 181 L222 180 L223 180 L224 179 L225 178 L226 178 L227 177 L228 177 L229 177 L230 176 L231 176 L232 176 L233 175 L234 175 L235 175 L236 175 L237 175 L238 175 L239 175 L240 175 L241 175 L242 175 L243 175 L244 175 L245 175 L246 175 L247 176 L248 176 L249 176 L250 177 L251 177 L252 178 L253 178 L254 179 L255 179 L256 180 L257 181 L258 181 L259 182 L260 183 L261 183 L262 184 L263 185 L264 186 L265 187 L266 187 L267 188 L268 189 L269 190 L270 191 L271 192 L272 193 L273 194 L274 195 L275 196 L276 197 L277 198 L278 199 L279 200 L280 201 L281 202 L282 203 L283 204 L284 205 L285 206 L286 207 L287 208 L288 209 L289 210 L290 211 L291 211 L292 212 L293 213 L294 214 L295 215 L296 216 L297 216 L298 217 L299 218 L300 218 L301 219 L302 220 L303 220 L304 221 L305 221 L306 222 L307 222 L308 223 L309 223 L310 223 L311 224 L312 224 L313 224 L314 224 L315 224 L316 224 L317 224 L318 224 L319 224 L320 224 L321 224 L322 224 L323 224 L324 224 L325 223 L326 223 L327 223 L328 222 L329 222 L330 222 L331 221 L332 221 L333 220 L334 219 L335 219 L336 218 L337 217 L338 217 L339 216 L340 215 L341 214 L342 214 L343 213 L344 212 L345 211 L346 210 L347 209 L348 208 L349 207 L350 206 L351 206 L352 205 L353 204 L354 203 L355 202 L356 201 L357 200 L358 199 L359 198 L360 197 L361 196 L362 195 L363 194 L364 193 L365 192 L366 191 L367 190 L368 189 L369 188 L370 187 L371 186 L372 185 L373 185 L374 184 L375 183 L376 182 L377 182 L378 181 L379 180 L380 180 L381 179 L382 179 L383 178 L384 177 L385 177 L386 177 L387 176 L388 176 L389 176 L390 175 L391 175 L392 175 L393 175 L394 175 L395 175 L396 175 L397 175 L398 175 L399 175" stroke="black"
+    /></g
+  ></g
+></svg
+>
+
+, and it can export the result to XHTML for web publishing, and also to PDF.
 
 
-  The complete syntax of meditor is found in the file grammar.txt. All the operations we've seen take an "Expression" as input.
+  The complete syntax of meditor is found in the file grammar.txt. The entry point for the interpreter is the "Expression" token.
