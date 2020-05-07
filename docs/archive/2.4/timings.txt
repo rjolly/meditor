@@ -1,0 +1,44 @@
+Here is a comparison in speed with Singular on a well known computation (cyclic) and a one less so (meyer).
+
+All computations were made on a Athlon XP-M 1.8GHz with 768MB. The java virtual machine is "Java HotSpot(TM) Server VM (build Blackdown-1.4.2-03, mixed mode)" with 400MB initial and maximum heap size.
+
+The software versions are:
+
+Singular-2-0-3-ix86-Linux	(2002/02)
+j2sdk-1_4_2_03-linux-i586      	(2005/11/27)
+meditor1.0			(2004/02/22)
+meditor2.2			(2007/06/30)
+
+All times are given in seconds unless otherwise noted.
+
+1) cyclic, DegreeReverseLexicographic, BigIntegers
+
+        | meditor 1.0 | meditor 2.2 | Singular | ratio  |
+--------+-------------+-------------+----------+--------+
+cyclic4 | 0.020       | 0.043       | 0.000    |        |
+cyclic5 | 1.917       | 1.795       | 0.005    | 359.00 |
+cyclic6 | 7.527       | 5.749       | 0.359    |  16.01 |
+cyclic7 | 1 month     | 1 week      | (*)      |        |
+--------+-------------+-------------+----------+--------+
+
+(*) Singular stops by itself at 1GB
+
+2) cyclic, DegreeReverseLexicographic, modulo p (p=32003)
+
+        | meditor 1.0 | meditor 2.2 | Singular | ratio  |
+--------+-------------+-------------+----------+--------+
+cyclic4 |   0.018     |  0.038      |   0.000  |        |
+cyclic5 |   1.630     |  0.898      |   0.003  | 299.33 |
+cyclic6 |   3.984     |  1.796      |   0.043  |  41.76 |
+cyclic7 | 253.861     | 54.094      |   5.107  |  10.59 |
+cyclic8 |   06:22h    |  00:51h     | 164.512  |  18.89 |
+cyclic9 |             |             |   19:58h |        |
+--------+-------------+-------------+----------+--------+
+
+3) meyer, Lexicographic, (boolean)
+
+        | meditor 1.0 | meditor 2.2 | Singular | ratio  |
+--------+-------------+-------------+----------+--------+
+meyer2b | 0.439       | 0.733       | 0.004    | 183.25 |
+meyer4b | 2.405       | 6.437       | 0.452    |  14.24 |
+--------+-------------+-------------+----------+--------+
