@@ -677,9 +677,8 @@ public class Editor extends ScriptSupport {
 			return SVG.instance.print((Component) obj);
 		default:
 		}
-		final Class<?> cls = obj.getClass();
 		if (isRendering()) try {
-			return "<math>" + cls.getMethod("toMathML").invoke(obj) + "</math>";
+			return "<math>" + obj.getClass().getMethod("toMathML").invoke(obj) + "</math>";
 		} catch (final NoSuchMethodException ex) {}
 		return obj.toString();
 	}
