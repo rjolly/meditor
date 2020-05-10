@@ -52,6 +52,7 @@ import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoManager;
 import linoleum.application.FileChooser;
 import linoleum.application.ScriptSupport;
+import org.jdesktop.swingx.JXGraph;
 
 public class Editor extends ScriptSupport {
 	private final Icon newIcon = new ImageIcon(getClass().getResource("/toolbarButtonGraphics/general/New24.gif"));
@@ -676,6 +677,12 @@ public class Editor extends ScriptSupport {
 		case JOptionPane.OK_OPTION:
 			return SVG.instance.print((Component) obj);
 		default:
+		}
+		if(obj instanceof JXGraph.Plot) {
+			return render(new Graph((JXGraph.Plot) obj));
+		}
+		if(obj instanceof JXGraph.Plot[]) {
+			return render(new Graph((JXGraph.Plot[]) obj));
 		}
 		if (isRendering()) try {
 			return "<math>" + obj.getClass().getMethod("toMathML").invoke(obj) + "</math>";
