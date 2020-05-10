@@ -44,8 +44,11 @@ assert(eval("simplify(elementary(cos(x)^2+sin(x)^2))")
 assert(eval("numeric(exp(1))").content()
 .equals(<math><cn type="real">2.718281828459045</cn></math>));
 
-assert(eval("d(cos(f(x)),x)").toString()
-.equals("-f'(x)*sin(f(x))"));
+Generic f(Generic x) { return function("f", 0, x); }
+Generic f_(Generic x) { return function("f", 1, x); }
+
+assert(eval("d(cos(f(x)),x)")
+.equals(<math><apply><minus/><apply><times/><apply><ci><mrow><mi>f</mi><mo>′</mo></mrow></ci><ci>x</ci></apply><apply><sin/><apply><ci>f</ci><ci>x</ci></apply></apply></apply></apply></math>));
 
 assert(eval("curl(grad(f(x,y,z),{x,y,z}),{x,y,z})")
 .equals(<math><vector><cn>0</cn><cn>0</cn><cn>0</cn></vector></math>));
