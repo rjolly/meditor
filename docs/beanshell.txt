@@ -1,7 +1,4 @@
 import jscl.math.Generic;
-import jscl.math.JSCLInteger;
-import jscl.math.JSCLVector;
-import jscl.math.numeric.JSCLDouble;
 static import jscl.math.Predef.*;
 
 manager = new javax.script.ScriptEngineManager();
@@ -14,9 +11,9 @@ y = variable("y");
 assert(eval("groebner({x^2 + y^2 - 4, x*y - 1}, {x, y})")
 .equals(<math><vector><apply><plus/><apply><minus/><cn>1</cn><apply><times/><cn>4</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply><apply><power/><ci>x</ci><cn>4</cn></apply></apply><apply><minus/><apply><minus/><apply><times/><cn>4</cn><ci>x</ci></apply><apply><power/><ci>x</ci><cn>3</cn></apply></apply><ci>y</ci></apply></vector></math>));
 
-a = matrix("a", 2).elements();
-b = vector("b", 2).elements();
-x = vector("x", 2).elements();
+a = matrix("a", 2);
+b = vector("b", 2);
+x = vector("x", 2);
 
 assert(eval("matrix({{a[0][0], a[0][1]},"+
                     "{a[1][0], a[1][1]}}, {x[0],"+
@@ -30,7 +27,7 @@ c = variable("c");
 x = variable("x");
 
 assert(eval("solve(c+b*x+a*x^2,x)")
-.equals(<math><apply><ci><msub><mi>root</mi><cn>0</cn></msub></ci><ci>c</ci><ci>b</ci><ci>a</ci></apply></math>));
+.equals(<math><apply><ci><msub><mi>root</mi><mrow><cn>0</cn></mrow></msub></ci><ci>c</ci><ci>b</ci><ci>a</ci></apply></math>));
 
 assert(eval("subst(1/x^2,x,a)")
 .equals(<math><apply><divide/><cn>1</cn><apply><power/><ci>a</ci><cn>2</cn></apply></apply></math>));
@@ -41,11 +38,11 @@ assert(eval("simplify(exp(sqrt(-1)*pi))")
 assert(eval("simplify(elementary(cos(x)^2+sin(x)^2))")
 .equals(<math><cn>1</cn></math>));
 
-assert(eval("numeric(exp(1))").content()
+assert(eval("numeric(exp(1))")
 .equals(<math><cn type="real">2.718281828459045</cn></math>));
 
-Generic f(Generic x) { return function("f", 0, x); }
-Generic f_(Generic x) { return function("f", 1, x); }
+f = function("f", 0);
+f_ = function("f", 1);
 
 assert(eval("d(cos(f(x)),x)")
 .equals(<math><apply><minus/><apply><times/><apply><ci><mrow><mi>f</mi><mo>′</mo></mrow></ci><ci>x</ci></apply><apply><sin/><apply><ci>f</ci><ci>x</ci></apply></apply></apply></apply></math>));
@@ -57,10 +54,10 @@ assert(eval("sum(d(exp(x),x,0,i)/i!*(x-0)^i,i,0,4)")
 .equals(<math><apply><plus/><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><ci>x</ci></apply><apply><times/><apply><divide/><cn>1</cn><cn>2</cn></apply><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply><apply><times/><apply><divide/><cn>1</cn><cn>6</cn></apply><apply><power/><ci>x</ci><cn>3</cn></apply></apply></apply><apply><times/><apply><divide/><cn>1</cn><cn>24</cn></apply><apply><power/><ci>x</ci><cn>4</cn></apply></apply></apply></math>));
 
 assert(eval("integral(1/(1+x^2),x)")
-.equals(<math><apply><plus/><apply><times/><apply><ci><msub><mi>root</mi><cn>0</cn></msub></ci><cn>1</cn><cn>0</cn><cn>4</cn></apply><apply><ln/><apply><minus/><cn>1</cn><apply><times/><cn>2</cn><apply><times/><ci>x</ci><apply><ci><msub><mi>root</mi><cn>0</cn></msub></ci><cn>1</cn><cn>0</cn><cn>4</cn></apply></apply></apply></apply></apply></apply><apply><times/><apply><ci><msub><mi>root</mi><cn>1</cn></msub></ci><cn>1</cn><cn>0</cn><cn>4</cn></apply><apply><ln/><apply><minus/><cn>1</cn><apply><times/><cn>2</cn><apply><times/><ci>x</ci><apply><ci><msub><mi>root</mi><cn>1</cn></msub></ci><cn>1</cn><cn>0</cn><cn>4</cn></apply></apply></apply></apply></apply></apply></apply></math>));
+.equals(<math><apply><plus/><apply><times/><apply><ci><msub><mi>root</mi><mrow><cn>0</cn></mrow></msub></ci><cn>1</cn><cn>0</cn><cn>4</cn></apply><apply><ln/><apply><minus/><cn>1</cn><apply><times/><cn>2</cn><apply><times/><ci>x</ci><apply><ci><msub><mi>root</mi><mrow><cn>0</cn></mrow></msub></ci><cn>1</cn><cn>0</cn><cn>4</cn></apply></apply></apply></apply></apply></apply><apply><times/><apply><ci><msub><mi>root</mi><mrow><cn>1</cn></mrow></msub></ci><cn>1</cn><cn>0</cn><cn>4</cn></apply><apply><ln/><apply><minus/><cn>1</cn><apply><times/><cn>2</cn><apply><times/><ci>x</ci><apply><ci><msub><mi>root</mi><mrow><cn>1</cn></mrow></msub></ci><cn>1</cn><cn>0</cn><cn>4</cn></apply></apply></apply></apply></apply></apply></apply></math>));
 
-assert(eval("quote(integral(1/(1+x^2),x))").toString()
-.equals("integral(1/(1+x^2), x)"));
+assert(eval("quote(integral(1/(1+x^2),x))")
+.equals(<math><apply><int/><bvar><ci>x</ci></bvar><apply><divide/><cn>1</cn><apply><plus/><cn>1</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply></apply></math>));
 
 man = variable("man");
 mortal = variable("mortal");
@@ -71,6 +68,3 @@ assert(eval("groebner({sokrates*(1+man), man*(1+mortal)}, {man, mortal, sokrates
 
 assert(eval("factorize(sokrates+mortal*sokrates)").expand()
 .equals(<math><apply><times/><ci>sokrates</ci><apply><plus/><cn>1</cn><ci>mortal</ci></apply></apply></math>));
-
-assert(eval("x^2*y^2")
-.equals(<math><apply><times/><apply><power/><ci>x</ci><cn>2</cn></apply><apply><power/><ci>y</ci><cn>2</cn></apply></apply></math>));
