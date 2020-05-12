@@ -27,6 +27,11 @@ misc
 - digit.txt statistics of occurence of a digit in a number
 - cospi5.txt computation of cos(pi/5)
 
+beanshell scripts
+
+- beanshell.txt
+- editorgraph_bsh.txt
+
 scas examples/index.txt
 
 other scala examples
