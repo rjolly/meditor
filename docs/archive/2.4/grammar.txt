@@ -147,7 +147,7 @@ ImplicitRoot:
 	root Subscript ParameterList
 
 ImplicitFunction:
-	CompoundIdentifier Subscripts_opt Derivation_opt ParameterList
+	CompoundIdentifier Derivation_opt Subscripts_opt ParameterList
 
 Derivation:
 	PrimeCharacters
@@ -174,7 +174,7 @@ Integer:
 	Digits
 
 Constant:
-	CompoundIdentifier Subscripts_opt Prime_opt
+	CompoundIdentifier Prime_opt Subscripts_opt
 
 CompoundIdentifier:
 	Identifier DotsAndIdentifiers
