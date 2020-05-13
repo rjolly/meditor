@@ -628,14 +628,16 @@ public class Editor extends ScriptSupport {
 		final Cursor cursor = mathTextPane1.getCursor();
 		final String selected = mathTextPane1.getSelectedText();
 		final Cursor waitCursor = Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR);
-		final boolean replace;
+		final boolean newline;
+		final boolean eval;
 		final String data;
 
 		EvalWorker(final boolean eval) {
 			mathTextPane1.setCursor(waitCursor);
 			data = selected == null?eval?"":mathTextPane1.getText():selected;
-			final int n = data.length() - 1;
-			replace = n < 0 || "\n".equals(data.substring(n))?false:eval;
+			final int n = data.length();
+			newline = n > 0 && "\n".equals(data.substring(n - 1));
+			this.eval = eval;
 		}
 
 		@Override
@@ -647,11 +649,11 @@ public class Editor extends ScriptSupport {
 		public void done() {
 			try {
 				final Object result = get();
-				if (replace) try {
-					mathTextPane1.replaceSelection(render(result));
-					mathTextPane1.requestFocus();
-				} catch (final Exception e) {
-					e.printStackTrace();
+				if (eval) {
+					if (newline) {
+						unselect();
+					}
+					replace(result);
 				} else {
 					unselect();
 				}
@@ -663,11 +665,18 @@ public class Editor extends ScriptSupport {
 			mathTextPane1.setCursor(cursor);
 		}
 
+		private void replace(final Object result) {
+			try {
+				mathTextPane1.replaceSelection(render(result));
+			} catch (final Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		private void unselect() {
 			int n = mathTextPane1.getCaretPosition();
 			mathTextPane1.setSelectionStart(n);
 			mathTextPane1.setSelectionEnd(n);
-			mathTextPane1.requestFocus();
 		}
 	}
 
