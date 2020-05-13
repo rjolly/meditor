@@ -1,0 +1,116 @@
+<svg height="300" version="1.1" width="756" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ffffff" height="272" rx="16" ry="16" stroke="#000000" stroke-width="1" width="104" x="318" y="14"/>
+<rect fill="#ffffff" height="270" rx="16" ry="16" stroke="#ffffff" stroke-width="1" width="102" x="319" y="15"/>
+<text font-family="Dialog" font-size="12" x="343" y="146">
+MathML</text>
+<text font-family="Dialog" font-size="12" x="342" y="161">
+Content</text>
+<rect fill="#ffffff" height="80" rx="16" ry="16" stroke="#000000" stroke-width="1" width="112" x="94" y="14"/>
+<rect fill="#ffffff" height="78" rx="16" ry="16" stroke="#ffffff" stroke-width="1" width="110" x="95" y="15"/>
+<text font-family="Dialog" font-size="12" x="127" y="50">
+MathML</text>
+<text font-family="Dialog" font-size="12" x="110" y="65">
+Presentation</text>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="318" x2="206" y1="54" y2="54"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="206" x2="214" y1="54" y2="46"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="206" x2="214" y1="54" y2="62"/>
+<rect fill="#ffffff" height="80" rx="16" ry="16" stroke="#000000" stroke-width="1" width="112" x="534" y="14"/>
+<rect fill="#ffffff" height="78" rx="16" ry="16" stroke="#ffffff" stroke-width="1" width="110" x="535" y="15"/>
+<ellipse cx="49" cy="31" fill="#000000" rx="8.0" ry="7.5" stroke="#000000" stroke-width="1"/>
+<ellipse cx="49" cy="31" fill="#ffffff" rx="7.0" ry="6.5" stroke="#ffffff" stroke-width="1"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="49" x2="49" y1="39" y2="54"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="39" x2="59" y1="44" y2="44"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="49" x2="44" y1="54" y2="69"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="49" x2="54" y1="54" y2="69"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="422" x2="534" y1="54" y2="54"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="526" x2="534" y1="62" y2="54"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="526" x2="534" y1="46" y2="54"/>
+<rect fill="#ffffff" height="80" rx="16" ry="16" stroke="#000000" stroke-width="1" width="112" x="534" y="110"/>
+<rect fill="#ffffff" height="78" rx="16" ry="16" stroke="#ffffff" stroke-width="1" width="110" x="535" y="111"/>
+<text font-family="Dialog" font-size="12" x="566" y="154">
+Scala</text>
+<text font-family="Dialog" font-size="12" x="558" y="58">
+Bsh/JShell</text>
+<rect fill="#ffffff" height="80" rx="16" ry="16" stroke="#000000" stroke-width="1" width="112" x="534" y="206"/>
+<rect fill="#ffffff" height="78" rx="16" ry="16" stroke="#ffffff" stroke-width="1" width="110" x="535" y="207"/>
+<text font-family="Dialog" font-size="12" x="566" y="250">
+Python</text>
+<text font-family="Dialog" font-size="12" x="430" y="42">
+mmljava.xsl</text>
+<text font-family="Dialog" font-size="12" x="218" y="42">
+mathmlc2p.xsl</text>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="422" x2="534" y1="150" y2="150"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="526" x2="534" y1="142" y2="150"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="526" x2="534" y1="158" y2="150"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="422" x2="534" y1="246" y2="246"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="526" x2="534" y1="238" y2="246"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="526" x2="534" y1="254" y2="246"/>
+<text font-family="Dialog" font-size="12" x="430" y="138">
+mmlscala.xsl</text>
+<text font-family="Dialog" font-size="12" x="430" y="234">
+mmlpython.xsl</text>
+<rect fill="#ffffff" height="80" rx="16" ry="16" stroke="#000000" stroke-width="1" width="112" x="94" y="110"/>
+<rect fill="#ffffff" height="78" rx="16" ry="16" stroke="#ffffff" stroke-width="1" width="110" x="95" y="111"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="318" x2="206" y1="150" y2="150"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="214" x2="206" y1="142" y2="150"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="206" x2="214" y1="150" y2="158"/>
+<rect fill="#ffffff" height="80" rx="16" ry="16" stroke="#000000" stroke-width="1" width="112" x="94" y="206"/>
+<rect fill="#ffffff" height="78" rx="16" ry="16" stroke="#ffffff" stroke-width="1" width="110" x="95" y="207"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="318" x2="206" y1="246" y2="246"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="214" x2="206" y1="238" y2="246"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="214" x2="206" y1="254" y2="246"/>
+<text font-family="Dialog" font-size="12" x="118" y="250">
+JSCL/ScAS</text>
+<text font-family="Dialog" font-size="12" x="222" y="130">
+mmltex.xsl</text>
+<text font-family="Dialog" font-size="12" x="126" y="154">
+LaTeX</text>
+<text font-family="Dialog" font-size="12" x="222" y="234">
+mmltxt.xsl</text>
+<ellipse cx="49" cy="127" fill="#000000" rx="8.0" ry="7.5" stroke="#000000" stroke-width="1"/>
+<ellipse cx="49" cy="127" fill="#ffffff" rx="7.0" ry="6.5" stroke="#ffffff" stroke-width="1"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="49" x2="49" y1="135" y2="150"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="39" x2="59" y1="140" y2="140"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="49" x2="44" y1="150" y2="165"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="49" x2="54" y1="150" y2="165"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="710" x2="710" y1="38" y2="62"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="710" x2="734" y1="38" y2="38"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="734" x2="734" y1="38" y2="62"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="710" x2="734" y1="62" y2="62"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="702" x2="702" y1="62" y2="30"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="702" x2="742" y1="30" y2="30"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="742" x2="742" y1="30" y2="62"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="702" x2="686" y1="62" y2="78"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="742" x2="734" y1="62" y2="78"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="686" x2="734" y1="78" y2="78"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="710" x2="710" y1="134" y2="158"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="710" x2="734" y1="134" y2="134"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="734" x2="734" y1="134" y2="158"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="734" x2="710" y1="158" y2="158"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="702" x2="742" y1="126" y2="126"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="702" x2="702" y1="126" y2="158"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="742" x2="742" y1="126" y2="158"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="702" x2="686" y1="158" y2="174"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="686" x2="734" y1="174" y2="174"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="742" x2="734" y1="158" y2="174"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="710" x2="734" y1="230" y2="230"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="710" x2="710" y1="230" y2="254"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="710" x2="734" y1="254" y2="254"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="734" x2="734" y1="254" y2="230"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="702" x2="742" y1="222" y2="222"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="702" x2="702" y1="222" y2="254"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="742" x2="742" y1="222" y2="254"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="702" x2="686" y1="254" y2="270"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="686" x2="734" y1="270" y2="270"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="742" x2="734" y1="254" y2="270"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="38" x2="38" y1="230" y2="254"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="38" x2="62" y1="254" y2="254"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="62" x2="62" y1="254" y2="230"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="62" x2="38" y1="230" y2="230"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="30" x2="70" y1="222" y2="222"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="70" x2="70" y1="222" y2="254"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="30" x2="30" y1="222" y2="254"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="30" x2="14" y1="254" y2="270"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="70" x2="62" y1="254" y2="270"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="14" x2="62" y1="270" y2="270"/>
+</svg>
