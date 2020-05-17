@@ -67,6 +67,7 @@ Changes between 2.1_01 and 2.1_02:
 + an implementation of JC Faugere's F4 algorithm
 + a new Groebner algorithm "block"
 + a new package "groebner"
++ rational and modular polynomial.normalize() make head coefficient equal to one
 + rational arithmetically compatible with expression
 + polynomial code reworked
 + substitute(x,list,list)
