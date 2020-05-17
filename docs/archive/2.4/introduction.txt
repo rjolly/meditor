@@ -1,9 +1,9 @@
 			meditor
 
 
-  meditor is a text editor with symbolic computation capabilities. Primarily, it is intended to solve algebraic equation systems of any degree, with several indeterminates, by computing the Groebner bases of polynomial ideals.
+  meditor is a text editor interfaced with a symbolic engine for interpreting mathematical expressions. Primarily, it is intended to solve algebraic equation systems of degree n in m indeterminates, for any (n, m), by computing the Groebner bases of polynomial ideals.
 
-For example, let this system for the indeterminates x, y:
+For example, let us consider this system for the indeterminates x, y:
 
 x^2 + y^2 = 4
 x*y = 1
@@ -16,7 +16,7 @@ By selecting the text bloc above and by doing "Math->Evaluate" in the menu bar (
 
 {1-4*x^2+x^4, 4*x-x^3-y}
 
-which allows to find x, then y from x. This operation does not calculate the roots, it just writes the equation. For example, it would not give "a = 4/5" but "5*a-4" ("= 0" implied).
+, which allows us to find x, then y from x. This operation does not calculate the roots, it just writes the equation. For instance, it would not give "a = 4/5" but "5*a-4" ("= 0" implied).
 
 Groebner basis computation is explained in more details in the file math_background.txt.
 
@@ -35,7 +35,7 @@ matrix(
 
 {-b[0]+a[0][0]*x[0]+a[0][1]*x[1], -b[1]+a[1][0]*x[0]+a[1][1]*x[1]}
 
-, which allows to write the following input that can be used to solve the linear system:
+, which allows us to write the following input, that can be used to solve the linear system:
 
 groebner({-b[0]+a[0][0]*x[0]+a[0][1]*x[1],
 -b[1]+a[1][0]*x[0]+a[1][1]*x[1]},
@@ -68,7 +68,7 @@ simplify(elementary(cos(x)^2+sin(x)^2))
 =
 1
 
-To compute numerical values, use the "numeric" operator:
+To compute numerical values, one can use the "numeric" operator:
 
 numeric(exp(1))
 =
@@ -94,11 +94,7 @@ integral(1/(1+x^2),x)
 root[0](1, 0, 4)*log(1-2*x*root[0](1, 0, 4))+root[1](1, 0, 4)*log(1-2*x*root[1](1, 0, 4))
 
 
-  Another capability of the software is boolean algebra. For this purpose, polynomials in Z/2Z are used, by specifying the modulo as the fourth parameter of the "groebner" operation.
-
-0 represents "false", 1 "true", addition an "exclusive or", product an "and".
-
-The statement "a implies b", equivalent to "not a or b", that is "not (a and not b)", is written : a*(1+b) ("= 0" implied).
+  meditor can also be used for boolean computations, using modulo "2" as fourth parameter of the "groebner" operation. 0 represents "false", 1 "true", the addition an "exclusive or" and the product an "and". The statement "a implies b", equivalent to "not a or b", or "not (a and not b)", is written : a*(1+b) ("= 0" implied).
 
 "sokrates is a man" is written sokrates*(1+man)
 "a man is mortal" is written man*(1+mortal)
@@ -109,20 +105,20 @@ groebner({sokrates*(1+man),
 man*(1+mortal)},
 {man, mortal, sokrates},lex,2)
 
-"Expand", we get:
+"Evaluate", we get:
 
 {man+man*mortal, sokrates+man*sokrates, sokrates+mortal*sokrates}
 
-The last equation can be factorized:
+The last equation can be factorized as follows:
 
 factorize(sokrates+mortal*sokrates)
 =
 sokrates*(1+mortal), which reads : "sokrates implies mortal".
 
-Other (positive) modulos are also usable.
+Other modulos are also possible.
 
 
-  Lastly, meditor can render MathML expressions and convert them back to text via XSLT:
+  Lastly, meditor can produce and render MathML expressions, and convert them back to text via XSLT:
 
 quote(integral(1/(1+x^2),x))
 =
@@ -132,7 +128,7 @@ quote(integral(1/(1+x^2),x))
 =
 x^2*y^2
 
-It can also draw SVG graphs with the "graph" operator:
+It can also produce SVG graphs with the "graph" operator:
 
 graph(sin(x),x)
 =
