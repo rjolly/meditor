@@ -1,12 +1,12 @@
 compatibility
 
                 bsh     scala   jython  jruby   groovy  matheclipse     scas    jscl
-        jscl    ok                                                              provided
-        scas            ok                                              provided
-        jas             ok      ok      ok              provided
+        jscl    ok                                                              embedded
+        scas            ok                                              embedded
+        jas             ok      ok      ok              embedded
         sympy                   ok
         jlinalg
-        c.math                                          provided
+        c.math                                          embedded
         c.math3         ok
         redberry                                ok
         r.rings         ok

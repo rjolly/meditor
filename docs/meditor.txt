@@ -1,6 +1,5 @@
 jscl-meditor - java symbolic computing library and mathematical editor
 
-# News
 # Project description
 # Implementations
 # Symbolic capabilities
@@ -17,9 +16,9 @@ release_notes.txt Version 5.3.3
 
 Project description
 
-The goal of this project is to develop a java symbolic computing library and a mathematical editor front-end. There are several computer algebra systems out there, most of them in other languages, mainly C/C++ and Lisp. But there are great benefits of using Java in symbolic computation. In addition to being widely used and to comply with various standards, it has two relevant features : readability and portability.
+The goal of this project is to develop a java symbolic computing library and a mathematical editor front-end. There are already several existing computer algebra systems, most of them developed in other languages, mainly C/C++ and Lisp. But using Java for symbolic computation has some benefits. In addition to being widely used and to comply with various standards, it has two important features : readability and portability.
 
-Regarding readability, the goal is to produce code as nice and short as the pseudo-code found in textbooks or research papers. As an illustration, here is what the Euclidean algorithm would look like:
+Regarding readability, the goal is to produce code that is as nice and short as the pseudo-code found in textbooks or research papers. As an illustration, here is what the Euclidean algorithm would look like:
 
 	Polynomial gcd(Polynomial p, Polynomial q) {
 		while (q.signum() != 0) {
@@ -30,7 +29,7 @@ Regarding readability, the goal is to produce code as nice and short as the pseu
 		return p;
 	}
 
-It entails a dedicated development effort. This choice of clear coding, enabled by Java, may have consequences in terms of performance compared to other languages. But it could be worth the effort, in the sense that understanding an algorithm just by looking at the code is made possible. Object-orientation allows to hide ugly optimizations behind a clean, easy to use interface.
+It entails a dedicated development effort. This choice of clear coding, enabled by Java, may have consequences in terms of performance compared to other languages. But it could be worth the effort, in the sense that understanding an algorithm just by looking at the code is made possible. Object-orientation allows to hide unsightly optimizations behind a clean, easy to use interface.
 
 Some may doubt however that Java will ever be as clear as C++, because it does not have operator overloading, which means that a + b is written a.add(b), and will remain so. The interested reader can look at the on-going discussion on the matter at Sun http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4905919 
 
@@ -179,13 +178,13 @@ Go to the Project summary page http://sourceforge.net/projects/jscl-meditor/
 
 Installation
 
-Desktop version (v3.0)
+Desktop version (from v3.0 on)
 
-Extract the meditor3.0.zip archive into any appropriate directory on your hard drive. It will create a "meditor3.0" directory. Change dir to it.
+Extract the meditor.zip archive into any appropriate directory on your hard drive. It will create a "meditor" directory. Change dir to it.
 
 To run meditor, add the bin directory to your path, give bin/meditor execution privilege (unix), then : meditor [file.txt]
 
-Once the application is up, you may go to the docs directory and try the examples it contains.
+Once the application is up, you can go to the docs directory and try the examples it contains.
 
 PalmOS version (up to v2.3)
 
@@ -239,4 +238,4 @@ Copyright
 http://www.gnu.org/licenses/gpl.html The GNU General Public License
 
 --
-last updated on Mon Apr 27 2020
+last updated on Sun May 17 2020
