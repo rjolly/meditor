@@ -666,11 +666,7 @@ public class Editor extends ScriptSupport {
 		}
 
 		private void replace(final Object result) {
-			try {
-				mathTextPane1.replaceSelection(render(result));
-			} catch (final Exception e) {
-				e.printStackTrace();
-			}
+			mathTextPane1.replaceSelection(render(result));
 		}
 
 		private void unselect() {
@@ -680,7 +676,7 @@ public class Editor extends ScriptSupport {
 		}
 	}
 
-	private String render(final Object obj) throws Exception {
+	private String render(final Object obj) {
 		if(obj == null) return "null";
 		if(obj instanceof Component) switch (JOptionPane.showInternalConfirmDialog(this, obj, obj.getClass().getSimpleName(), JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE)) {
 		case JOptionPane.OK_OPTION:
@@ -693,9 +689,22 @@ public class Editor extends ScriptSupport {
 		if(obj instanceof JXGraph.Plot[]) {
 			return render(new Graph((JXGraph.Plot[]) obj));
 		}
-		if (isRendering()) try {
-			return "<math>" + obj.getClass().getMethod("toMathML").invoke(obj) + "</math>";
-		} catch (final NoSuchMethodException ex) {}
+		if (isRendering()) {
+			if(obj instanceof MathObject) {
+				return "<math>" + ((MathObject) obj).toMathML() + "</math>";
+			}
+			try {
+				final Method m = obj.getClass().getMethod("toMathML");
+				return render(new MathObject() {
+					public String toMathML() {
+						try {
+							return (String) m.invoke(obj);
+						} catch (final ReflectiveOperationException ex) {}
+						return null;
+					}
+				});
+			} catch (final NoSuchMethodException ex) {}
+		}
 		return obj.toString();
 	}
 

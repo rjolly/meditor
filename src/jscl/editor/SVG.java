@@ -6,6 +6,7 @@ import java.io.Writer;
 import java.io.StringReader;
 import java.io.StringWriter;
 import org.apache.batik.svggen.SVGGraphics2D;
+import org.apache.batik.svggen.SVGGraphics2DIOException;
 import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
@@ -16,14 +17,16 @@ public class SVG {
 	private SVG() {
 	}
 
-	public String print(final Component comp) throws Exception {
+	public String print(final Component comp) {
 		final SVGGraphics2D g = new SVGGraphics2D(SVGDOMImplementation.getDOMImplementation().createDocument(SVGDOMImplementation.SVG_NAMESPACE_URI, "svg", null));
 		g.setSVGCanvasSize(comp.getSize());
 		comp.print(g);
-
 		final Writer writer = new StringWriter();
-		g.stream(writer);
-
+		try {
+			g.stream(writer);
+		} catch (final SVGGraphics2DIOException e) {
+			e.printStackTrace();
+		}
 		String s = writer.toString();
 		s = s.replaceAll("\r", "");
 		for (int i = 0 ; i < 3 ; i++) s = s.substring(s.indexOf('\n') + 1);
