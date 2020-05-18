@@ -1,0 +1,243 @@
+jscl-meditor - java symbolic computing library and mathematical editor
+
+# News
+# Project description
+# Implementations
+# Symbolic capabilities
+# Download
+# Installation
+# Dependencies
+# Papers
+# Acknowledgements
+# Related projects
+# Contact
+# Copyright
+
+News
+
+meditor for android/index.txt
+
+release_notes.txt Version 4.2
+
+Project description
+
+The goal of this project is to provide a java symbolic computing library with a mathematical editor front-end. There are several computer algebra systems available on the market, most of them developed in other languages, mainly C/C++ and Lisp. But the benefits of using java in symbolic computation are great. Aside from being widely used and to comply with various standards, this language has two features of concern : readability and portability.
+
+Regarding readability, the goal is to produce a code as nice and short as the pseudo-code found in textbooks or research papers. As an illustration, here is what the Euclidean algorithm would look like:
+
+	Polynomial gcd(Polynomial p, Polynomial q) {
+		while(q.signum()!=0) {
+			Polynomial r=p.remainder(q);
+			p=q;
+			q=r;
+		}
+		return p;
+	}
+
+It entails a dedicated development effort. This choice of clear coding, enabled by java, may have consequences in terms of performance compared to other software. But it could be worth the commitment, in the respect that understanding an algorithm just by looking at the code is made possible. Object-orientation allows to hide ugly optimizations behind a clean, easy to use interface.
+
+Some may doubt however that java will ever be as clear as C++ because it doesn't provide operator overloading, which means that a+b is written a.add(b), and will remain as such. The interested reader can look at the on-going discussion on the matter at Sun http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4905919 
+
+As for portability, it means that a lot of platforms are available at no cost, from powerful unix workstations or servers to handheld devices. To make it possible, the project is split in two parts : the engine (jscl) and the mathematical editor front-end (meditor). The engine is usable interactively or in batch mode from a java shell interpreter (like BeanShell for instance), or as a java library in any third-party application.
+
+The front-end has currently two implementations (see below). Among others, it is intended for taking course notes. With it, a student can perform the calculations asked by their teacher fast and reliably. The plain text format should make the exchange of notes easy. The produced worksheets can be published on http://meditorworld.appspot.com/ through the Connect to web folder feature.
+
+Implementations
+
+The current implementations of the front-end are as follows:
+
+    * j2se/swing for desktop platforms
+
+    * Native jump/pilotjfc/wabajump for PalmOS
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="160"
+   height="160"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="New document 1">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="80"
+     inkscape:cy="80.000009"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="613"
+     inkscape:window-height="495"
+     inkscape:window-x="201"
+     inkscape:window-y="34"
+     inkscape:window-maximized="0" />
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       id="perspective10"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2884" />
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1"
+     transform="translate(-295,-458.07648)">
+    <image
+       xlink:href="data:image/png;base64,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
+AElFTkSuQmCC
+"
+       width="160"
+       height="160"
+       id="image2886"
+       x="295"
+       y="458.07648" />
+  </g>
+</svg>
+
+There was a special effort to make the palm front-end powerful enough for school use, by compiling the software into native code with http://jump.sourceforge.net/ 
+
+Symbolic capabilities
+
+The symbolic capabilities are currently:
+
+    * polynomial system solving
+    * vectors and matrices
+    * factorization
+    * derivatives
+    * integrals (rational functions)
+    * boolean algebra
+    * simplification
+    * geometric algebra
+    * java code generation
+    * graphical rendering of math expressions
+
+Download
+
+Go to the Project summary page http://sourceforge.net/projects/jscl-meditor/ 
+
+Installation
+
+Desktop version (v3.0 onward)
+
+Extract the meditor3.0.zip archive into any appropriate directory on your hard drive. It will create a "meditor3.0" directory. Change dir to it.
+
+To run meditor, add the bin directory to your path, give bin/meditor execution privilege (unix), then : meditor [file.txt]
+
+Once the application is up, you may go to the docs directory and try the examples it contains.
+
+PalmOS version (up to v2.3)
+
+Go to the "palm" subdirectory. Upload the editor.prc into the device.
+
+To have the data persisted, create an entry in the memopad with the word "meditor" (+return) on the first line. The memo.csv that you can optionally install (via your desktop application import) has such an entry and several other memos containing the documentation.
+
+Dependencies
+
+http://jeuclid.sourceforge.net/ 3.1.9
+http://xmlgraphics.apache.org/fop/ 0.95
+http://xml.apache.org/batik/ 1.7
+http://xsltml.sourceforge.net/ 2.1.2
+http://www2.ph.ed.ac.uk/snuggletex/ 1.2.2
+http://github.com/lookfirst/sardine/ 5.1
+http://beanshell.org/ 2.0b5
+
+Papers
+
+Categories as type classes in the Scala Algebra System (CASC 2013) http://jscl-meditor.sourceforge.net/catc-slides.pdf
+Parallelizing Stream with Future (2013) http://arxiv.org/abs/1305.4367
+Straightforward parallelization of polynomial multiplication using parallel collections in Scala (EOOPS 2013) http://jscl-meditor.sourceforge.net/parallel-slides.pdf
+Categories as classes and mixin composition (CASC 2012, with H. Kredel) http://krum.rz.uni-mannheim.de/kredel/com-casc2012-poster.pdf
+Algebraic structures as typed objects (CASC 2011, with H. Kredel) http://krum.rz.uni-mannheim.de/kredel/to-cas-casc2011-slides.pdf
+Object Scala Found - a JSR223-compliant version of the scala interpreter (Scala Days 2011) http://jscl-meditor.sourceforge.net/scalaint.pdf presentation http://days2011.scala-lang.org/node/138/319
+Generic, Type-safe and Object Oriented Computer Algebra Software (CASC 2010, with H. Kredel) http://krum.rz.uni-mannheim.de/kredel/oocas-casc2010-slides.pdf
+A real world use of higher kinds in the domain of computer algebra (2010) http://jscl-meditor.sourceforge.net/hk-ca.pdf
+Symbolic script programming for Java (2009, with H. Kredel) http://arxiv.org/abs/0906.2315
+How to turn a scripting language into a domain specific language for computer algebra (2008, with H. Kredel) http://arxiv.org/abs/0811.1061
+
+Acknowledgements
+
+Thanks to Yves Noyer, Jeffry Madura, Eric Smith, Sergio Melas, Andrea Boright, Ross Green, Nicolas Rosillo, Marten van Wezel, Toyin Akin, Philippe d'Oreye, Sione Palu, Michael Braginsky, Mike Thomas, David Schneider, Oleg Volkov, Markus Hohenwarter, Dimitri Pissarenko, Eckhard Hitzer, Daniel Fontijne, Alfredo Vianna, Oliver Pretzel, Axel Kramer, Bob Orchard.
+
+Related projects
+
+http://jscience.org/ Java Tools and Libraries for the Advancement of Sciences
+http://www.geogebra.at/ dynamic mathematics software that connects geometry, algebra and calculus
+http://mvt.sourceforge.net/ Mathematical Visualization Toolkit
+http://gcalc.net/ mathematical graphing system in Java
+http://mathdragn.squarespace.com/ Symbolic Equation Manipulator
+http://mtac.sourceforge.net/ - More than a Calculator
+
+Contact
+
+You can send your reactions to raphael.jolly@free.fr. For bug reports and support requests, you have tools on the Project summary page http://sourceforge.net/projects/jscl-meditor/ 
+
+Copyright
+
+http://www.gnu.org/licenses/gpl.html The GNU General Public License
+
+--
+last updated on Wed Jul  9 2014

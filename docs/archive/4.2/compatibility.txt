@@ -1,0 +1,11 @@
+compatibility
+
+                bsh     scala   jython  jruby   groovy  matheclipse     scas
+        jscl    ok
+        scas            ok                                              const_of
+        jas                     ok      ok              const_of
+        sympy                   ok
+        jlinalg
+        c.math                                          const_of
+        c.math3
+        redberry                                ok

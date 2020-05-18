@@ -1,0 +1,72 @@
+Johnny is looking for his ideal girfriend, which (according to him; and not meant to favor any preconceived biases) must be red-haired, green-eyed, slender, and tall.
+
+He knows four women: Adele, Betty, Carol, and Doris.
+
+Here is a list of caveats:
+
+# Only one of the four women has all four characteristics that Johnny requires.
+# Only three of the women are both green-eyed and slender.
+# Only two of the women are both red-haired and tall.
+# Only two of the women are both slender and tall.
+# Only one of the women is both green-eyed and red haired.
+# Adele and Betty have the same color eyes.
+# Betty and Carol have the same color hair.
+# Carol and Doris have different builds.
+# Doris and Adele are the same height.
+
+Which one of the four women satisfies all of Johnny's requirements?
+
+expand("groebner({r[a]^2+r[a],
+g[a]^2+g[a],
+s[a]^2+s[a],
+t[a]^2+t[a],
+r[b]^2+r[b],
+g[b]^2+g[b],
+s[b]^2+s[b],
+t[b]^2+t[b],
+r[c]^2+r[c],
+g[c]^2+g[c],
+s[c]^2+s[c],
+t[c]^2+t[c],
+r[d]^2+r[d],
+g[d]^2+g[d],
+s[d]^2+s[d],
+t[d]^2+t[d],
+r[a]*g[a]*s[a]*t[a]+(r[b]*g[b]*s[b]*t[b]+1)*(r[c]*g[c]*s[c]*t[c]+1)*(r[d]*g[d]*s[d]*t[d]+1),
+r[b]*g[b]*s[b]*t[b]+(r[c]*g[c]*s[c]*t[c]+1)*(r[d]*g[d]*s[d]*t[d]+1)*(r[a]*g[a]*s[a]*t[a]+1),
+r[c]*g[c]*s[c]*t[c]+(r[d]*g[d]*s[d]*t[d]+1)*(r[a]*g[a]*s[a]*t[a]+1)*(r[b]*g[b]*s[b]*t[b]+1),
+r[d]*g[d]*s[d]*t[d]+(r[a]*g[a]*s[a]*t[a]+1)*(r[b]*g[b]*s[b]*t[b]+1)*(r[c]*g[c]*s[c]*t[c]+1),
+(g[a]*s[a]+1)+g[b]*s[b]*g[c]*s[c]*g[d]*s[d],
+(g[b]*s[b]+1)+g[c]*s[c]*g[d]*s[d]*g[a]*s[a],
+(g[c]*s[c]+1)+g[d]*s[d]*g[a]*s[a]*g[b]*s[b],
+(g[d]*s[d]+1)+g[a]*s[a]*g[b]*s[b]*g[c]*s[c],
+r[a]*t[a]*r[b]*t[b]+(r[c]*t[c]+1)*(r[d]*t[d]+1),
+r[a]*t[a]*r[c]*t[c]+(r[b]*t[b]+1)*(r[d]*t[d]+1),
+r[a]*t[a]*r[d]*t[d]+(r[b]*t[b]+1)*(r[c]*t[c]+1),
+r[b]*t[b]*r[c]*t[c]+(r[a]*t[a]+1)*(r[d]*t[d]+1),
+r[b]*t[b]*r[d]*t[d]+(r[a]*t[a]+1)*(r[c]*t[c]+1),
+r[c]*t[c]*r[d]*t[d]+(r[a]*t[a]+1)*(r[b]*t[b]+1),
+s[a]*t[a]*s[b]*t[b]+(s[c]*t[c]+1)*(s[d]*t[d]+1),
+s[a]*t[a]*s[c]*t[c]+(s[b]*t[b]+1)*(s[d]*t[d]+1),
+s[a]*t[a]*s[d]*t[d]+(s[b]*t[b]+1)*(s[c]*t[c]+1),
+s[b]*t[b]*s[c]*t[c]+(s[a]*t[a]+1)*(s[d]*t[d]+1),
+s[b]*t[b]*s[d]*t[d]+(s[a]*t[a]+1)*(s[c]*t[c]+1),
+s[c]*t[c]*s[d]*t[d]+(s[a]*t[a]+1)*(s[b]*t[b]+1),
+r[a]*g[a]+(r[b]*g[b]+1)*(r[c]*g[c]+1)*(r[d]*g[d]+1),
+r[b]*g[b]+(r[c]*g[c]+1)*(r[d]*g[d]+1)*(r[a]*g[a]+1),
+r[c]*g[c]+(r[d]*g[d]+1)*(r[a]*g[a]+1)*(r[b]*g[b]+1),
+r[d]*g[d]+(r[a]*g[a]+1)*(r[b]*g[b]+1)*(r[c]*g[c]+1),
+g[a]+g[b],
+r[b]+r[c],
+s[c]+s[d]+1,
+t[d]+t[a]},
+{r[a],g[a],s[a],t[a],
+r[b],g[b],s[b],t[b],
+r[c],g[c],s[c],t[c],
+r[d],g[d],s[d],t[d]},lex,2)")
+
+<math><mrow><mfenced><mtable><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>r</mi><mrow><mrow><mi>a</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>g</mi><mrow><mrow><mi>a</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>s</mi><mrow><mrow><mi>a</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>t</mi><mrow><mrow><mi>a</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><msub><mi>r</mi><mrow><mrow><mi>b</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>g</mi><mrow><mrow><mi>b</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>s</mi><mrow><mrow><mi>b</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><msub><mi>t</mi><mrow><mrow><mi>b</mi></mrow></mrow></msub><mo>+</mo><msup><msub><mi>t</mi><mrow><mrow><mi>b</mi></mrow></mrow></msub><mn>2</mn></msup></mrow></mtd></mtr><mtr><mtd><mrow><msub><mi>r</mi><mrow><mrow><mi>c</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>g</mi><mrow><mrow><mi>c</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>s</mi><mrow><mrow><mi>c</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>t</mi><mrow><mrow><mi>b</mi></mrow></mrow></msub><mo>+</mo><msub><mi>t</mi><mrow><mrow><mi>c</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>r</mi><mrow><mrow><mi>d</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><msub><mi>g</mi><mrow><mrow><mi>d</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><msub><mi>s</mi><mrow><mrow><mi>d</mi></mrow></mrow></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mo>+</mo><msub><mi>t</mi><mrow><mrow><mi>d</mi></mrow></mrow></msub></mrow></mtd></mtr></mtable></mfenced></mrow></math>
+
+References
+
+http://groups.google.com/group/sci.math.symbolic/browse_frm/thread/6315e82bf75a5c6/ Google Groups: View Thread "Helping Johnny to find his ideal woman (a problem in Set Theory, and Mathematica)"

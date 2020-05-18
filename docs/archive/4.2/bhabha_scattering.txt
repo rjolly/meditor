@@ -1,0 +1,55 @@
+import cc.redberry.groovy.Redberry
+
+import static cc.redberry.core.indices.IndexType.*
+import static cc.redberry.groovy.RedberryPhysics.*
+import static cc.redberry.groovy.RedberryStatic.*
+
+//******************************************//
+//******** Bhabha scattering in QED *******//
+//******************************************//
+
+use(Redberry){
+    defineMatrices 'G_a', 'V_i', Matrix1.matrix,
+            'v[p_a]', 'u[p_a]', Matrix1.vector,
+            'cv[p_a]', 'cu[p_a]', Matrix1.covector
+
+    //photon propagator
+    def G = 'G_mn[k_a] = -I*g_mn/(k_a*k^a)'.t
+    //vertex
+    def V = 'V_i = -I*e*G_i'.t
+    //diagram a)
+    def Ma = 'cv[p2_a]*V_i*u[p1_a]*G^ij[p1_a + p2_a]*cu[k1_a]*V_j*v[k2_a]'.t
+    //diagram b)
+    def Mb = 'cu[k1_a]*V_i*u[p1_a]*G^ij[p1_a - k1_a]*cv[p2_a]*V_j*v[k2_a]'.t
+    //matrix element
+    def M = Ma - Mb
+    M = (V & G) >> M
+
+    def mandelstam = setMandelstam(
+            ['p1_m': 'm', 'p2_m': 'm', 'k1_m': 'm', 'k2_m': 'm'])
+
+    M = (EliminateMetrics & ExpandDenominator & mandelstam) >> M
+
+    //complex conjugation
+    def MC = Conjugate >> M
+    MC = 'u[p1_a]*cv[p2_a] = v[p2_a]*cu[p1_a]'.t >> MC
+    MC = 'v[k2_a]*cu[k1_a] = u[k1_a]*cv[k2_a]'.t >> MC
+    MC = 'u[p1_a]*cu[k1_a] = u[k1_a]*cu[p1_a]'.t >> MC
+    MC = 'v[k2_a]*cv[p2_a] = v[p2_a]*cv[k2_a]'.t >> MC
+
+    def M2 = ExpandAll >> (M * MC / 4)
+
+    //electron polarizations
+    M2 = 'u[p1_a]*cu[p1_a] = m + p1_a*G^a'.t >> M2
+    M2 = 'u[k1_a]*cu[k1_a] = m + k1_a*G^a'.t >> M2
+    M2 = 'v[p2_a]*cv[p2_a] = -m + p2_a*G^a'.t >> M2
+    M2 = 'v[k2_a]*cv[k2_a] = -m + k2_a*G^a'.t >> M2
+
+    M2 = DiracTrace['G_a'] >> M2
+
+    M2 = (ExpandAndEliminate & mandelstam) >> M2
+    M2 = 'u = 4*m**2 - s - t'.t >> M2
+    M2 = Factor >> M2
+
+    println M2
+}

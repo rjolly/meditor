@@ -1,0 +1,48 @@
+This website is meant as a collection of user-created meditor.txt worksheets. Feel free to add your own productions. To do so, run meditor and click "Connect to web folder". Enter your http://java.net/ credentials (you need to register if not already done). To create a new document, select "docs" and choose "New->Empty file". To edit an existing document, just click on it and it will load in the editor pane. Click "save" when you are done. Your changes will be reflected on the website. If you are not confident, you can use the sandbox.txt.
+
+Notice that MathML parts of meditor documents are rendered automatically:
+
+<math><apply><times></times><apply><power></power><ci>x</ci><cn>2</cn></apply><apply><power></power><ci>y</ci><cn>2</cn></apply></apply></math>
+
+meditor documentation
+
+- tutorial.txt
+- release_notes.txt
+- http://jscl-meditor.sourceforge.net/viewlet1_viewlet_swf.html How to use meditor - by Dmitri Pissarenko (applies to version 1.0)
+- archive/index.txt
+
+exercises and solutions
+
+- exercise1.txt
+- exercise2.txt
+
+puzzles
+
+- johnny.txt Helping Johnny to find his ideal woman
+
+misc
+
+- trigo.txt trigonometric identities
+- surface.txt surface chemistry equations
+- digit.txt statistics of occurence of a digit in a number
+- cospi5.txt computation of cos(pi/5)
+
+scas examples/index.txt
+
+other scala examples
+
+- graph.txt
+- twitter.txt
+
+jas examples
+
+- polypower.txt
+- chebyshev.txt
+- trinks_sigbased_gb.txt
+- chebyshev_rb.txt
+
+other system examples
+
+- matheclipse.txt
+- sympy.txt
+- redberry bhabha_scattering.txt example

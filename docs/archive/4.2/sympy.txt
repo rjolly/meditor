@@ -1,0 +1,5 @@
+from sympy import Symbol, cos
+x = Symbol("x")
+(1/cos(x)).series(x, 0, 10)
+
+# 1 + x**2/2 + 5*x**4/24 + 61*x**6/720 + 277*x**8/8064 + O(x**10)
