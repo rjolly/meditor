@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -259,10 +260,8 @@ public class Editor extends ScriptSupport {
 			final int n = data.length() - 1;
 			if (n < 0);
 			else try {
-				final String srcData = Wiki.instance.copyToWiki(data);
-				final StringSelection contents = new StringSelection(srcData);
-				getClipboard().setContents(contents, null);
-			} catch (final Exception ex) {
+				getClipboard().setContents(new StringSelection(Wiki.instance.copyToWiki(data)), null);
+			} catch (final IOException ex) {
 				ex.printStackTrace();
 			}
 		}
@@ -277,9 +276,10 @@ public class Editor extends ScriptSupport {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
 			try {
-				final String srcData = (String) getClipboard().getContents(null).getTransferData(DataFlavor.stringFlavor);
-				mathTextPane1.replaceSelection(Wiki.instance.pasteFromWiki(srcData));
-			} catch (final Exception ex) {
+				mathTextPane1.replaceSelection(Wiki.instance.pasteFromWiki((String) getClipboard().getContents(null).getTransferData(DataFlavor.stringFlavor)));
+			} catch (final UnsupportedFlavorException ex) {
+				ex.printStackTrace();
+			} catch (final IOException ex) {
 				ex.printStackTrace();
 			}
 		}
@@ -298,9 +298,7 @@ public class Editor extends ScriptSupport {
 			final int n = data.length() - 1;
 			if (n < 0);
 			else try {
-				final String srcData = code(data);
-				final StringSelection contents = new StringSelection(srcData);
-				getClipboard().setContents(contents, null);
+				getClipboard().setContents(new StringSelection(code(data)), null);
 			} catch (final IOException ex) {
 				ex.printStackTrace();
 			}
