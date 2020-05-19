@@ -24,21 +24,27 @@ public class Code extends Converter {
 		transformer = factory.newTransformer(new StreamSource(getClass().getResource(stylesheet).toString()));
 	}
 
-	public static Code instance(final String stylesheet) throws TransformerConfigurationException {
-		if (!cache.containsKey(stylesheet)) {
+	public static Code instance(final String stylesheet) {
+		if (!cache.containsKey(stylesheet)) try {
 			cache.put(stylesheet, new Code(stylesheet));
+		} catch (final TransformerConfigurationException e) {
+			e.printStackTrace();
 		}
 		return cache.get(stylesheet);
 	}
 
-	private String fromString(final String document) throws TransformerException {
+	private String fromString(final String document) {
 		final Reader reader = new StringReader(apply(document));
 		final Writer writer = new StringWriter();
-		transformer.transform(new StreamSource(reader), new StreamResult(writer));
+		try {
+			transformer.transform(new StreamSource(reader), new StreamResult(writer));
+		} catch (final TransformerException e) {
+			e.printStackTrace();
+		}
 		return writer.toString().replaceAll("\r", "").replaceAll("\u00a0", " ").replaceAll(" +\n", "\n").trim();
 	}
 
-	public String apply(final Reader reader) throws TransformerException, IOException {
+	public String apply(final Reader reader) throws IOException {
 		return fromString(stringFromReader(reader));
 	}
 }

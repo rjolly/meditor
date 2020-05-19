@@ -301,7 +301,7 @@ public class Editor extends ScriptSupport {
 				final String srcData = code(data);
 				final StringSelection contents = new StringSelection(srcData);
 				getClipboard().setContents(contents, null);
-			} catch (final Exception ex) {
+			} catch (final IOException ex) {
 				ex.printStackTrace();
 			}
 		}
@@ -708,7 +708,7 @@ public class Editor extends ScriptSupport {
 		return obj.toString();
 	}
 
-	private String code(final String str) throws Exception {
+	private String code(final String str) throws IOException {
 		final String name = getEngine().getFactory().getNames().get(0);
 		final String stylesheet = getPref(getKey(name, "stylesheet"));
 		if (!stylesheet.isEmpty()) {

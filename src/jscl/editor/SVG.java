@@ -10,6 +10,7 @@ import org.apache.batik.svggen.SVGGraphics2DIOException;
 import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
+import org.apache.batik.transcoder.TranscoderException;
 
 public class SVG {
 	public static final SVG instance = new SVG();
@@ -33,9 +34,13 @@ public class SVG {
 		return s.substring(0, s.lastIndexOf('\n'));
 	}
 
-	public Image createImage(final String document) throws Exception {
+	public Image createImage(final String document) {
 		final MemoryTranscoder transcoder = new MemoryTranscoder();
-		transcoder.transcode(new TranscoderInput(new StringReader(document)), new TranscoderOutput());
+		try {
+			transcoder.transcode(new TranscoderInput(new StringReader(document)), new TranscoderOutput());
+		} catch (final TranscoderException e) {
+			e.printStackTrace();
+		}
 		return transcoder.getImage();
 	}
 }

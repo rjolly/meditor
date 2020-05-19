@@ -14,6 +14,7 @@ import java.net.URI;
 import java.util.Map;
 import java.util.HashMap;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXResult;
@@ -65,10 +66,14 @@ public class MathML extends Converter {
 		return apply(document, stylesheet, title, feed, icon, null, true);
 	}
 
-	private String c2p(final String document) throws Exception {
+	private String c2p(final String document) {
 		final Reader reader = new StringReader(document);
 		final Writer writer = new StringWriter();
-		getTransformer("/net/sourceforge/jeuclid/content/mathmlc2p.xsl").transform(new StreamSource(reader), new StreamResult(writer));
+		try {
+			getTransformer("/net/sourceforge/jeuclid/content/mathmlc2p.xsl").transform(new StreamSource(reader), new StreamResult(writer));
+		} catch (final TransformerException e) {
+			e.printStackTrace();
+		}
 		return writer.toString().replaceAll("\u2148", "i");
 	}
 
