@@ -14,17 +14,21 @@ public class TeX {
 	private TeX() {
 	}
 
-	private SnuggleSession session(final String str) throws IOException {
+	private SnuggleSession session(final String str) {
 		final SnuggleSession session = engine.createSession();
-		session.parseInput(new SnuggleInput(stripMath(str)));
+		try {
+			session.parseInput(new SnuggleInput(stripMath(str)));
+		} catch (final IOException e) {
+			e.printStackTrace();
+		}
 		return session;
 	}
 
-	public String mml(final String str) throws IOException {
+	public String mml(final String str) {
 		return session(str).buildXMLString();
 	}
 
-	public Image createImage(final String str) throws IOException {
+	public Image createImage(final String str) {
 		final Element e = (Element) session(str).buildDOMSubtree().item(0);
 		e.setAttribute("color", "red");
 		return MathML.instance.createImage(e);

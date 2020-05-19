@@ -14,6 +14,7 @@ import java.io.ByteArrayOutputStream;
 import java.net.URI;
 import java.util.Map;
 import java.util.HashMap;
+import javax.swing.ImageIcon;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
@@ -43,6 +44,7 @@ public class MathML extends Converter {
 	public static final MathML instance = new MathML();
 	private final Map<String, Transformer> cache = new HashMap<>();
 	private final TransformerFactory factory = TransformerFactory.newInstance();
+	private final Image bookmark = new ImageIcon(getClass().getResource("/toolbarButtonGraphics/general/Bookmarks16.gif")).getImage();
 
 	private Transformer getTransformer(final String stylesheet) throws TransformerConfigurationException {
 		if (!cache.containsKey(stylesheet)) {
@@ -84,15 +86,15 @@ public class MathML extends Converter {
 		return String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
 	}
 
-	public String fromTeX(final String str) throws Exception {
+	public String fromTeX(final String str) {
 		return stripNameSpace(TeX.instance.mml(str));
 	}
 
-	public Image createImage(final String str) throws Exception {
+	public Image createImage(final String str) {
 		return createMathImage(XML + insertNameSpace(str), null);
 	}
 
-	public Image createImage(final String text, final Color color) throws Exception {
+	public Image createImage(final String text, final Color color) {
 		final String t = insertNameSpace(text);
 		if (isSvg(text)) {
 			return SVG.instance.createImage(XML + t);
@@ -102,13 +104,22 @@ public class MathML extends Converter {
 		}
 	}
 
-	private Image createMathImage(final String document, final String color) throws SAXException, ParserConfigurationException, IOException {
-		final Node node = MathMLParserSupport.parseString(c2p(document));
-		final Node s = node.getFirstChild();
-		final NodeList t = s.getChildNodes();
-		if(t.getLength() == 1 && t.item(0).getNodeName().equals("#text")) return null;
-		((Element) s).setAttribute("color", color);
-		return createImage(node);
+	private Image createMathImage(final String document, final String color) {
+		try {
+			final Node node = MathMLParserSupport.parseString(c2p(document));
+			final Node s = node.getFirstChild();
+			final NodeList t = s.getChildNodes();
+			if(t.getLength() == 1 && t.item(0).getNodeName().equals("#text")) return null;
+			((Element) s).setAttribute("color", color);
+			return createImage(node);
+		} catch (final SAXException e) {
+			e.printStackTrace();
+		} catch (final ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (final IOException e) {
+			e.printStackTrace();
+		}
+		return bookmark;
 	}
 
 	public Image createImage(final Node node) {

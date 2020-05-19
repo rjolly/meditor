@@ -1,5 +1,6 @@
 package jscl.editor;
 
+import java.io.IOException;
 import java.io.StringReader;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -12,11 +13,11 @@ public class Wiki {
 	private Wiki() {
 	}
 
-	public String copyToWiki(final String document) throws Exception {
+	public String copyToWiki(final String document) throws IOException {
 		return math(Code.instance("/xsltml/mmltex.xsl").apply(new StringReader(document)));
 	}
 
-	public String pasteFromWiki(final String str) throws Exception {
+	public String pasteFromWiki(final String str) {
 		final StringBuffer b = new StringBuffer();
 		final Matcher pm = math.matcher(str);
 		int n = 0;
