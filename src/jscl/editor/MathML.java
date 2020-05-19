@@ -12,6 +12,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Map;
 import java.util.HashMap;
 import javax.swing.ImageIcon;
@@ -35,6 +36,7 @@ import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.FopFactoryBuilder;
 import org.apache.fop.apps.MimeConstants;
+import org.apache.fop.apps.FOPException;
 import org.xml.sax.SAXException;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -56,14 +58,22 @@ public class MathML extends Converter {
 	private MathML() {
 	}
 
-	public byte[] exportToPDF(final String document, final String stylesheet) throws Exception {
+	public byte[] exportToPDF(final String document, final String stylesheet) {
 		final Reader reader = new StringReader(c2p(apply(document)));
 		final ByteArrayOutputStream out = new ByteArrayOutputStream();
-		final FopFactoryBuilder builder = new FopFactoryBuilder(new URI("http://meditorworld.appspot.com/"));
-		final FopFactory factory = builder.build();
-		JEuclidFopFactoryConfigurator.configure(factory);
-		final Fop fop = factory.newFop(MimeConstants.MIME_PDF, out);
-		getTransformer(stylesheet).transform(new StreamSource(reader), new SAXResult(fop.getDefaultHandler()));
+		try {
+			final FopFactoryBuilder builder = new FopFactoryBuilder(new URI("http://meditorworld.appspot.com/"));
+			final FopFactory factory = builder.build();
+			JEuclidFopFactoryConfigurator.configure(factory);
+			final Fop fop = factory.newFop(MimeConstants.MIME_PDF, out);
+			getTransformer(stylesheet).transform(new StreamSource(reader), new SAXResult(fop.getDefaultHandler()));
+		} catch (final URISyntaxException e) {
+			e.printStackTrace();
+		} catch (final FOPException e) {
+			e.printStackTrace();
+		} catch (final TransformerException e) {
+			e.printStackTrace();
+		}
 		return out.toByteArray();
 	}
 

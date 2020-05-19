@@ -612,7 +612,7 @@ public class Editor extends ScriptSupport {
 		}
 
 		@Override
-		public Boolean doInBackground() throws Exception {
+		public Boolean doInBackground() throws IOException, BadLocationException {
 			if("pdf".equals(extension)) try (final OutputStream out = new FileOutputStream(f)) {
 				out.write(MathML.instance.exportToPDF(doc.getText(), formatting));
 			} else try (final Writer out = new FileWriter(f)) {
@@ -639,7 +639,7 @@ public class Editor extends ScriptSupport {
 		}
 
 		@Override
-		public Object doInBackground() throws Exception  {
+		public Object doInBackground() throws ScriptException, IOException  {
 			return getEngine().eval(code(data));
 		}
 
