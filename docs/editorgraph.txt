@@ -1,10 +1,10 @@
-// Requires : net.sourceforge.jscl-meditor#meditor;5.3.3
+// Requires : org.swinglabs#swingx-core;1.6.2-2
 
 class Graph(f: Double => Double) extends org.jdesktop.swingx.JXGraph.Plot {
   def compute(x: Double) = f(x)
 }
 object Graph {
-  def apply(fs: (Double => Double)*) = new jscl.editor.Graph(fs.map(new Graph(_)): _*)
+  def apply(fs: (Double => Double)*) = fs.map(new Graph(_)).toArray
 }
 
 Graph(x => x*x, x => x*x*x)
