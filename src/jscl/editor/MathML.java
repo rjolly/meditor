@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.io.StringReader;
@@ -13,6 +14,7 @@ import java.io.ByteArrayOutputStream;
 import java.net.URI;
 import java.util.Map;
 import java.util.HashMap;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerConfigurationException;
@@ -32,6 +34,7 @@ import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.FopFactoryBuilder;
 import org.apache.fop.apps.MimeConstants;
+import org.xml.sax.SAXException;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -99,7 +102,7 @@ public class MathML extends Converter {
 		}
 	}
 
-	private Image createMathImage(final String document, final String color) throws Exception {
+	private Image createMathImage(final String document, final String color) throws SAXException, ParserConfigurationException, IOException {
 		final Node node = MathMLParserSupport.parseString(c2p(document));
 		final Node s = node.getFirstChild();
 		final NodeList t = s.getChildNodes();
@@ -108,7 +111,7 @@ public class MathML extends Converter {
 		return createImage(node);
 	}
 
-	public Image createImage(final Node node) throws Exception {
+	public Image createImage(final Node node) {
 		((MutableLayoutContext) LayoutContextImpl.getDefaultLayoutContext()).setParameter(Parameter.SCRIPTMINSIZE, new Float(10f));
 		final JEuclidView view = DOMBuilder.getInstance().createJeuclidDom(node).getDefaultView();
 		final int width = (int) Math.ceil(view.getWidth());

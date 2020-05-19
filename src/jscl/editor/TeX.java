@@ -24,7 +24,7 @@ public class TeX {
 		return session(str).buildXMLString();
 	}
 
-	public Image createImage(final String str) throws Exception {
+	public Image createImage(final String str) throws IOException {
 		final Element e = (Element) session(str).buildDOMSubtree().item(0);
 		e.setAttribute("color", "red");
 		return MathML.instance.createImage(e);
