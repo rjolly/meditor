@@ -18,10 +18,9 @@ import jscl.converter.Converter;
 public class Code extends Converter {
 	private static final Map<String, Code> cache = new HashMap<>();
 	private final Transformer transformer;
-	private final TransformerFactory factory = TransformerFactory.newInstance("com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl", null);
 
 	private Code(final String stylesheet) throws TransformerConfigurationException {
-		transformer = factory.newTransformer(new StreamSource(getClass().getResource(stylesheet).toString()));
+		transformer = TransformerFactory.newInstance().newTransformer(new StreamSource(getClass().getResource(stylesheet).toString()));
 	}
 
 	public static Code instance(final String stylesheet) {
