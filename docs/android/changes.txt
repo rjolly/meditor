@@ -1,3 +1,8 @@
+Changes between version 18 and version 19:
+
++ upgade to 2.1.1
++ fix import from the web
+
 Changes between version 16 and version 18:
 
 + can import from the web
@@ -30,4 +35,3 @@ Changes between version 4 and version 5:
 
 + evaluate menu item moved to top
 + conduit
-
