@@ -1,0 +1,20 @@
+// Requires : cc.redberry#rings;2.5.7
+
+import scala.language.implicitConversions
+import cc.redberry.rings.poly.multivar.MonomialOrder
+import cc.redberry.rings.poly.multivar.MultivariatePolynomial
+import rings.{BigInteger, MultivariatePolynomialRing, id, coef2poly, int2bigInt}
+
+given r as MultivariatePolynomialRing[BigInteger](MonomialOrder.LEX, "x", "y", "z")(using BigInteger)
+val Array(x, y, z) = r.gens
+
+given s as MultivariatePolynomialRing[MultivariatePolynomial[BigInteger]](MonomialOrder.LEX, "a")(using r)
+val Array(a) = s.gens
+import s.+
+
+assert(BigInteger(1) + 1 >< 1 + BigInteger(1))
+assert(x + 1 >< 1 + x)
+assert(x + BigInteger(1) >< BigInteger(1) + x)
+assert(a + 1 >< 1 + a)
+assert(a + BigInteger(1) >< BigInteger(1) + a)
+assert(a + x >< x + a)

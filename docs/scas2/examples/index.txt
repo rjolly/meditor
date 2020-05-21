@@ -1,0 +1,32 @@
+// Requires : net.sourceforge.jscl-meditor#meditor;5.3.3
+
+import java.io.{File, FileReader}
+import javax.script.ScriptEngineManager
+import jscl.editor.Code
+
+val dir = new File("examples")
+val manager = new ScriptEngineManager
+val code = Code.instance("mmlscala.xsl")
+
+val list = List("pp1.txt", "pp2.txt", "polynomial.txt", "solvable_polynomial.txt", "gb.txt", "group.txt", "bigint.txt", "modint.txt", "mod_polynomial.txt", "product.txt", "rational.txt", "rational_polynomial.txt", "univariate_polynomial.txt", "rf.txt", "rfi.txt", "complex.txt", "complex_residue.txt", "an.txt", "module.txt", "gcd_subres.txt", "gcd_multivariate.txt", "polypower.txt", "primes1.txt", "primes2.txt", "interface.txt")
+
+val n = (0 /: (list.map { name =>
+  println(name)
+  val file = new File(dir, name)
+  val engine = manager.getEngineByName("scala")
+  val reader = new FileReader(file)
+  try {
+    engine.eval(code(reader))
+    1
+  } catch {
+    case e : Throwable => {
+      e.printStackTrace
+      println(name + " failure")
+      0
+    }
+  } finally {
+    reader.close
+  }
+})) { (l, r) => l + r }
+val m = list.length - n
+println("success : " + n + ", failure : " + m)

@@ -1,11 +1,28 @@
-import scas._
-import Implicits.{<math><integers/></math>, coef2polynomial}
-implicit val r = Polynomial(<math><integers/></math>, 'x)
-implicit val s = Polynomial(r, 'y)
-val Array(<math><ci>x</ci></math>) = r.generators
-val Array(<math><ci>y</ci></math>) = s.generators
-assert (<math><ci>x</ci></math> + 1 >< <math><apply><plus/><cn>1</cn><ci>x</ci></apply></math>)
-assert (<math><ci>x</ci></math> + BigInteger(1) >< BigInteger(1) + <math><ci>x</ci></math>)
-assert (<math><ci>y</ci></math> + <math><ci>x</ci></math> >< <math><apply><plus/><ci>x</ci><ci>y</ci></apply></math>)
-assert (<math><ci>y</ci></math> + 1 >< <math><apply><plus/><cn>1</cn><ci>y</ci></apply></math>)
-assert (<math><ci>y</ci></math> + BigInteger(1) >< BigInteger(1) + <math><ci>y</ci></math>)
+// Requires : de.uni-mannheim.rz.krum#jas;2.6.5988
+
+import scala.language.implicitConversions
+import edu.jas.poly.TermOrderByName
+import edu.jas.poly.GenPolynomialRing
+import edu.jas.poly.GenPolynomial
+import jas.{ZZ, BigInteger, poly2scas, id, coef2poly, int2bigInt}
+
+given r as GenPolynomialRing[BigInteger](ZZ, Array("x", "y", "z"), TermOrderByName.INVLEX)
+val Array(one, x, y, z) = r.gens
+
+given s as GenPolynomialRing[GenPolynomial[BigInteger]](r, Array("a"), TermOrderByName.INVLEX)
+val Array(_, a) = s.gens
+val t = poly2scas(s)
+import t.+
+
+assert(BigInteger(1) + 1 >< 1 + BigInteger(1))
+assert(x + 1 >< 1 + x)
+// assert(x + 18446744073709551616 >< 18446744073709551616 + x)
+// number too large
+assert(x + BigInteger(1) >< BigInteger(1) + x)
+assert(x + BigInteger(18446744073709551616) >< BigInteger(18446744073709551616) + x)
+assert(x + one >< one + x)
+assert(x > one)
+assert(a + 1 >< 1 + a)
+assert(a + BigInteger(1) >< BigInteger(1) + a)
+assert(a + x >< x + a)
+assert(a > x)

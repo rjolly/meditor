@@ -1,19 +1,25 @@
-import scas._
-import Implicits.{ZZ => s}
-//val s = base.ModInt(2147483647)
-implicit val r = Polynomial(s, PowerProduct.lexicographic[Int]('x, 'y, 'z))
-import r.{size, generators}
-val Array(x, y, z) = generators
+// Requires : de.uni-mannheim.rz.krum#jas;2.6.5988
+
+import scala.language.implicitConversions
+import edu.jas.poly.TermOrderByName
+import edu.jas.poly.GenPolynomialRing
+import jas.{ZZ, BigInteger, poly2scas, coef2poly, int2bigInt, long2bigInt, bigInt2scas}
+
+given r as GenPolynomialRing[BigInteger](ZZ, Array("x", "y", "z"), TermOrderByName.INVLEX)
+val Array(one, x, y, z) = r.gens
+val s = poly2scas(r)
+import s.{+, *}
+
 val p = 1 + x + y + z
-//val p = 10000000001l * (1 + x + y + z)
-//val p = 1 + pow(x, 2147483647) + pow(y, 2147483647) + pow(z, 2147483647)
+// val p = 1 + x \ 2147483647 + y \ 2147483647 + z \ 2147483647
+// val p = 10000000001l + 10000000001l * x + 10000000001l * y + 10000000001l * z
 println("p: " + p)
-val q = pow(p, 20)
-println("q: " + size(q))
-val q1 = 1 + q
-println("q1: " + size(q1))
+val q = p \ 20
+println("q: " + q.length)
+val q1 = q + 1
+println("q1: " + q1.length)
 var t = System.currentTimeMillis();
 val q2 = q * q1
 t = System.currentTimeMillis() - t;
-println("q2: " + size(q2))
+println("q2: " + q2.length)
 println("t: " + t)
