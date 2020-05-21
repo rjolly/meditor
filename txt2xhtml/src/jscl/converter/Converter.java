@@ -198,10 +198,10 @@ public class Converter {
 	}
 
 	protected String stringFromReader(final Reader reader) throws IOException {
-		final Writer writer = new StringWriter();
-		pipe(reader, writer);
-		writer.close();
-		return writer.toString();
+		try (final Writer writer = new StringWriter()) {
+			pipe(reader, writer);
+			return writer.toString();
+		}
 	}
 
 	private char buffer[] = new char[8192];

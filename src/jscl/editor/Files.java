@@ -1,7 +1,13 @@
 package jscl.editor;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.io.Reader;
+import java.io.Writer;
+import java.io.FileWriter;
 import java.net.URL;
 import java.util.List;
 import java.util.ArrayList;
@@ -23,5 +29,18 @@ public class Files {
 			list.add(new URL(base, file));
 		}
 		return list;
+	}
+
+	public void dump(final String url, final File dir, final String stylesheet) throws IOException {
+		final Code code = Code.instance(stylesheet);
+		for (final URL file : list(url)) {
+			final String name = new File(file.getFile()).getName();
+			System.out.println(name);
+			try (final Reader reader = new InputStreamReader(file.openStream()); final Writer writer = new FileWriter(new File(dir, name))) {
+				code.pipe(new StringReader(code.apply(reader) + "\n"), writer);
+			} catch (final FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
