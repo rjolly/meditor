@@ -22,12 +22,12 @@ x2 = 2 * x;
 
 N = 10;
 T = [one,x];
-for n in 2..N 
+for n in 2..N
     t = x2 * T[n-1] - T[n-2];
     T[n] = t;
 end
 
-for n in 0..N 
+for n in 0..N
   puts "T[#{n}] = #{T[n]}";
 end
 
