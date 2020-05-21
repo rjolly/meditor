@@ -87,24 +87,17 @@ public class Converter {
 			buffer.append(newlines(str.substring(n, m)));
 			if (pm0.matches()) {
 				buffer.append("<a href=\"");
-				for (int i = 1 ; i <= pm0.groupCount() ; i++) {
-					final String ss = pm0.group(i);
-					if (ss != null) {
-						if (i > 1) {
-							buffer.append("/");
-						}
-						buffer.append(ss);
-					}
+				final String ss = pm0.group();
+				if (ss != null) {
+					buffer.append(ss.substring(0, ss.lastIndexOf(".txt")));
 				}
 				buffer.append(extension?".xhtml":".txt");
 				buffer.append("\">");
-				for (int i = 1 ; i <= pm0.groupCount() ; i++) {
-					final String ss = pm0.group(i);
-					if (ss != null && (!"index".equals(ss) || i < pm0.groupCount())) {
-						if (i > 1) {
-							buffer.append("/");
-						}
-						buffer.append(ss);
+				if (ss != null) {
+					if (ss.endsWith("/index.txt")) {
+						buffer.append(ss.substring(0, ss.lastIndexOf("/index.txt")));
+					} else {
+						buffer.append(ss.substring(0, ss.lastIndexOf(".txt")));
 					}
 				}
 				buffer.append("</a>");
