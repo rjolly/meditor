@@ -7,9 +7,7 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.Reader;
-import java.io.Writer;
 import java.io.StringReader;
-import java.io.StringWriter;
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -22,9 +20,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXResult;
-import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import jscl.converter.Converter;
 import net.sourceforge.jeuclid.DOMBuilder;
 import net.sourceforge.jeuclid.MathMLParserSupport;
 import net.sourceforge.jeuclid.MutableLayoutContext;
@@ -42,11 +38,20 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 
-public class MathML extends Converter {
-	public static final MathML instance = new MathML();
+public class MathML extends jscl.converter.Transformer {
+	public static final MathML instance = getInstance();
 	private final Map<String, Transformer> cache = new HashMap<>();
 	private final TransformerFactory factory = TransformerFactory.newInstance();
 	private final Image bookmark = new ImageIcon(getClass().getResource("/toolbarButtonGraphics/general/Bookmarks16.gif")).getImage();
+
+	private static MathML getInstance() {
+		try {
+			return new MathML();
+		} catch (final TransformerConfigurationException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	private Transformer getTransformer(final String stylesheet) throws TransformerConfigurationException {
 		if (!cache.containsKey(stylesheet)) {
@@ -55,18 +60,18 @@ public class MathML extends Converter {
 		return cache.get(stylesheet);
 	}
 
-	private MathML() {
+	private MathML() throws TransformerConfigurationException {
+		super("/net/sourceforge/jeuclid/content/mathmlc2p.xsl");
 	}
 
-	public byte[] exportToPDF(final String document, final String stylesheet) {
-		final Reader reader = new StringReader(c2p(apply(document)));
+	public byte[] exportToPDF(final Reader reader, final String stylesheet) throws IOException {
 		final ByteArrayOutputStream out = new ByteArrayOutputStream();
 		try {
 			final FopFactoryBuilder builder = new FopFactoryBuilder(new URI("http://meditorworld.appspot.com/"));
 			final FopFactory factory = builder.build();
 			JEuclidFopFactoryConfigurator.configure(factory);
 			final Fop fop = factory.newFop(MimeConstants.MIME_PDF, out);
-			getTransformer(stylesheet).transform(new StreamSource(reader), new SAXResult(fop.getDefaultHandler()));
+			getTransformer(stylesheet).transform(new StreamSource(new StringReader(apply(reader))), new SAXResult(fop.getDefaultHandler()));
 		} catch (final URISyntaxException e) {
 			e.printStackTrace();
 		} catch (final FOPException e) {
@@ -77,19 +82,13 @@ public class MathML extends Converter {
 		return out.toByteArray();
 	}
 
-	public String exportToXHTML(final String document, final String stylesheet, final String title, final String feed, final String icon) {
-		return apply(document, stylesheet, title, feed, icon, null, true);
+	public String exportToXHTML(final Reader reader, final String stylesheet, final String title, final String feed, final String icon) throws IOException {
+		return apply(reader, stylesheet, title, feed, icon, null, true);
 	}
 
-	private String c2p(final String document) {
-		final Reader reader = new StringReader(document);
-		final Writer writer = new StringWriter();
-		try {
-			getTransformer("/net/sourceforge/jeuclid/content/mathmlc2p.xsl").transform(new StreamSource(reader), new StreamResult(writer));
-		} catch (final TransformerException e) {
-			e.printStackTrace();
-		}
-		return writer.toString().replaceAll("\u2148", "i");
+	@Override
+	public String apply(final Reader reader) throws IOException {
+		return super.apply(reader).replaceAll("\u2148", "i");
 	}
 
 	private String asString(final Color color) {
@@ -116,7 +115,7 @@ public class MathML extends Converter {
 
 	private Image createMathImage(final String document, final String color) {
 		try {
-			final Node node = MathMLParserSupport.parseString(c2p(document));
+			final Node node = MathMLParserSupport.parseString(transform(new StringReader(document)));
 			final Node s = node.getFirstChild();
 			final NodeList t = s.getChildNodes();
 			if(t.getLength() == 1 && t.item(0).getNodeName().equals("#text")) return null;

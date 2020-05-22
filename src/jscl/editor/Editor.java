@@ -614,9 +614,9 @@ public class Editor extends ScriptSupport {
 		@Override
 		public Boolean doInBackground() throws IOException, BadLocationException {
 			if("pdf".equals(extension)) try (final OutputStream out = new FileOutputStream(f)) {
-				out.write(MathML.instance.exportToPDF(doc.getText(), formatting));
+				out.write(MathML.instance.exportToPDF(new StringReader(doc.getText()), formatting));
 			} else try (final Writer out = new FileWriter(f)) {
-				out.write(MathML.instance.exportToXHTML(doc.getText(), stylesheet, name, feed, icon));
+				out.write(MathML.instance.exportToXHTML(new StringReader(doc.getText()), stylesheet, name, feed, icon));
 			}
 			return true;
 		}

@@ -3,7 +3,6 @@ package jscl.converter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,20 +20,6 @@ public class Converter {
 	private final Pattern spaces = Pattern.compile("(?m:^ +)|(  +)|(\\t)");
 	private final String mml = " xmlns=\"http://www.w3.org/1998/Math/MathML\"";
 	private final String svg = " xmlns=\"http://www.w3.org/2000/svg\"";
-
-	public String apply(final String str) {
-		return fromString(str, null, null, null, null, null, false);
-	}
-
-	@Deprecated
-	public String apply(final String str, final String stylesheet) {
-		return fromString(str, stylesheet, null, null, null, null, false);
-	}
-
-	@Deprecated
-	public String apply(final String str, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension) {
-		return fromString(str, stylesheet, title, feed, icon, url, extension);
-	}
 
 	private String fromString(final String str, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension) {
 		final Matcher pm = pattern.matcher(str);
@@ -197,7 +182,7 @@ public class Converter {
 		return fromString(stringFromReader(reader), stylesheet, title, feed, icon, url, extension);
 	}
 
-	protected String stringFromReader(final Reader reader) throws IOException {
+	private String stringFromReader(final Reader reader) throws IOException {
 		try (final Writer writer = new StringWriter()) {
 			pipe(reader, writer);
 			return writer.toString();
