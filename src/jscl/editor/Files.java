@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.io.Reader;
 import java.io.Writer;
 import java.io.FileWriter;
@@ -37,7 +36,8 @@ public class Files {
 			final String name = new File(file.getFile()).getName();
 			System.out.println(name);
 			try (final Reader reader = new InputStreamReader(file.openStream()); final Writer writer = new FileWriter(new File(dir, name))) {
-				code.pipe(new StringReader(code.apply(reader) + "\n"), writer);
+				code.transform(reader, writer);
+				writer.write("\n");
 			} catch (final FileNotFoundException e) {
 				e.printStackTrace();
 			}

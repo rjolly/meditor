@@ -3,6 +3,7 @@ package jscl.converter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -191,11 +192,15 @@ public class Converter {
 
 	private char buffer[] = new char[8192];
 
-	public void pipe(final Reader in, final Writer out) throws IOException {
+	protected void pipe(final Reader in, final Writer out) throws IOException {
 		int n = in.read(buffer);
 		while (n > -1) {
 			out.write(buffer, 0, n);
 			n = in.read(buffer);
 		}
+	}
+
+	public void convert(final Reader reader, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension, final Writer writer) throws IOException {
+		pipe(new StringReader(apply(reader, stylesheet, title, feed, icon, url, extension)), writer);
 	}
 }

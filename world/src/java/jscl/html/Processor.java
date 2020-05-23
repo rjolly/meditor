@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.servlet.ServletException;
@@ -30,7 +29,7 @@ public class Processor extends HttpServlet {
 		} else {
 			resp.setContentType("text/xml; charset=utf-8");
 			try (final BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8")); final PrintWriter writer = resp.getWriter()) {
-				converter.pipe(new StringReader(converter.apply(reader, "/mathmlc2p.xsl", title, null, null, source ? url.toString() : null, false)), writer);
+				converter.convert(reader, "/mathmlc2p.xsl", title, null, null, source ? url.toString() : null, false, writer);
 			}
 		}
 	}

@@ -31,4 +31,8 @@ public class Transformer extends Converter {
 		}
 		return writer.toString();
 	}
+
+	public void transform(final Reader reader, final Writer writer) throws IOException {
+		pipe(new StringReader(apply(reader)), writer);
+	}
 }
