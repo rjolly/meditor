@@ -17,7 +17,7 @@
     <dependencies>
         <dependency org="net.java.linoleum" name="complete" rev="1.6" conf="runtime->default"/>
         <dependency org="net.sourceforge.jscl-meditor" name="meditor" rev="5.3.3" conf="runtime->default"/>
-        <dependency org="com.github.rjolly" name="flying-saucer" rev="9.1.20" conf="runtime->default"/>
+        <dependency org="net.sourceforge.jscl-meditor" name="contents" rev="1.0" conf="runtime->default"/>
         <dependency org="com.github.rjolly" name="scas_2.11.0-M6" rev="2.1.1" conf="runtime->default"/>
         <dependency org="org.scala-lang" name="scala-compiler" rev="2.11.0-M6" conf="runtime->default">
             <exclude org="org.scala-lang.modules" module="scala-xml_2.11.0-M5" name="*" type="*" ext="*" conf="" matcher="exact"/>
