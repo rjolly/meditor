@@ -53,6 +53,7 @@ import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoManager;
 import linoleum.application.FileChooser;
 import linoleum.application.ScriptSupport;
+import jscl.editor.rendering.MathObject;
 import org.jdesktop.swingx.JXGraph;
 
 public class Editor extends ScriptSupport {
