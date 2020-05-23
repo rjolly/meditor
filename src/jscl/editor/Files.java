@@ -10,18 +10,29 @@ import java.io.FileWriter;
 import java.net.URL;
 import java.util.List;
 import java.util.ArrayList;
+import javax.xml.transform.TransformerConfigurationException;
+import jscl.converter.Transformer;
 
-public class Files {
-	public static final Files instance = new Files();
-	private final Code code = Code.instance("listfiles.xsl");
+public class Files extends Transformer {
+	public static final Files instance = getInstance();
 
-	private Files() {
+	private static Files getInstance() {
+		try {
+			return new Files();
+		} catch (final TransformerConfigurationException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Files() throws TransformerConfigurationException {
+		super("listfiles.xsl");
 	}
 
 	public List<URL> list(final String url) throws IOException {
 		final URL base = new URL(url);
 		final URL index = new URL(base, "index.txt");
-		final String files[] = code.apply(new InputStreamReader(index.openStream())).split("\n");
+		final String files[] = apply(new InputStreamReader(index.openStream())).trim().split("\n");
 		final List<URL> list = new ArrayList<>();
 		list.add(index);
 		for (final String file : files) {
