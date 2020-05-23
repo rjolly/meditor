@@ -8,40 +8,22 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
-import java.io.ByteArrayOutputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Map;
-import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.sax.SAXResult;
-import javax.xml.transform.stream.StreamSource;
 import net.sourceforge.jeuclid.DOMBuilder;
 import net.sourceforge.jeuclid.MathMLParserSupport;
 import net.sourceforge.jeuclid.MutableLayoutContext;
 import net.sourceforge.jeuclid.context.LayoutContextImpl;
 import net.sourceforge.jeuclid.context.Parameter;
 import net.sourceforge.jeuclid.layout.JEuclidView;
-import net.sourceforge.jeuclid.fop.plugin.JEuclidFopFactoryConfigurator;
-import org.apache.fop.apps.Fop;
-import org.apache.fop.apps.FopFactory;
-import org.apache.fop.apps.FopFactoryBuilder;
-import org.apache.fop.apps.MimeConstants;
-import org.apache.fop.apps.FOPException;
 import org.xml.sax.SAXException;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 
-public class MathML extends jscl.converter.Transformer {
+public class MathML extends Content {
 	public static final MathML instance = getInstance();
-	private final Map<String, Transformer> cache = new HashMap<>();
-	private final TransformerFactory factory = TransformerFactory.newInstance();
 	private final Image bookmark = new ImageIcon(getClass().getResource("/toolbarButtonGraphics/general/Bookmarks16.gif")).getImage();
 
 	private static MathML getInstance() {
@@ -53,42 +35,7 @@ public class MathML extends jscl.converter.Transformer {
 		return null;
 	}
 
-	private Transformer getTransformer(final String stylesheet) throws TransformerConfigurationException {
-		if (!cache.containsKey(stylesheet)) {
-			cache.put(stylesheet, factory.newTransformer(new StreamSource(getClass().getResource(stylesheet).toString())));
-		}
-		return cache.get(stylesheet);
-	}
-
 	private MathML() throws TransformerConfigurationException {
-		super("/net/sourceforge/jeuclid/content/mathmlc2p.xsl");
-	}
-
-	public byte[] exportToPDF(final Reader reader, final String stylesheet) throws IOException {
-		final ByteArrayOutputStream out = new ByteArrayOutputStream();
-		try {
-			final FopFactoryBuilder builder = new FopFactoryBuilder(new URI("http://meditorworld.appspot.com/"));
-			final FopFactory factory = builder.build();
-			JEuclidFopFactoryConfigurator.configure(factory);
-			final Fop fop = factory.newFop(MimeConstants.MIME_PDF, out);
-			getTransformer(stylesheet).transform(new StreamSource(new StringReader(apply(reader))), new SAXResult(fop.getDefaultHandler()));
-		} catch (final URISyntaxException e) {
-			e.printStackTrace();
-		} catch (final FOPException e) {
-			e.printStackTrace();
-		} catch (final TransformerException e) {
-			e.printStackTrace();
-		}
-		return out.toByteArray();
-	}
-
-	public String exportToXHTML(final Reader reader, final String stylesheet, final String title, final String feed, final String icon) throws IOException {
-		return apply(reader, stylesheet, title, feed, icon, null, true);
-	}
-
-	@Override
-	public String apply(final Reader reader) throws IOException {
-		return super.apply(reader).replaceAll("\u2148", "i");
 	}
 
 	private String asString(final Color color) {
@@ -115,7 +62,7 @@ public class MathML extends jscl.converter.Transformer {
 
 	private Image createMathImage(final String document, final String color) {
 		try {
-			final Node node = MathMLParserSupport.parseString(transform(new StringReader(document)));
+			final Node node = MathMLParserSupport.parseString(c2p(document));
 			final Node s = node.getFirstChild();
 			final NodeList t = s.getChildNodes();
 			if(t.getLength() == 1 && t.item(0).getNodeName().equals("#text")) return null;
