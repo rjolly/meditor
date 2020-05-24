@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0">
+    <info module="base" organisation="net.sourceforge.jscl-meditor" revision="5.4">
+        <description homepage="http://jscl-meditor.sourceforge.net/"/>
+    </info>
+    <configurations>
+        <conf name="default" extends="runtime"/>
+        <conf name="compile"/>
+        <conf name="runtime"/>
+        <conf name="compile-test"/>
+        <conf name="runtime-test"/>
+        <conf name="pom"/>
+    </configurations>
+    <publications>
+        <artifact name="base" type="pom" ext="pom" conf="pom"/>
+    </publications>
+    <dependencies>
+        <dependency org="net.java.linoleum" name="complete" rev="1.6" conf="runtime->default"/>
+        <dependency org="net.sourceforge.jscl-meditor" name="meditor" rev="5.4" conf="runtime->default"/>
+        <dependency org="net.sourceforge.jscl-meditor" name="contents" rev="1.0" conf="runtime->default"/>
+        <dependency org="net.sourceforge.jscl-meditor" name="jscl" rev="2.4" conf="runtime->default"/>
+        <dependency org="org.beanshell" name="bsh" rev="2.0b5" conf="runtime->default"/>
+    </dependencies>
+</ivy-module>
