@@ -23,7 +23,6 @@ import java.io.Writer;
 import java.io.FileWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
@@ -692,17 +691,6 @@ public class Editor extends ScriptSupport {
 			if(obj instanceof MathObject) {
 				return "<math>" + ((MathObject) obj).toMathML() + "</math>";
 			}
-			try {
-				final Method m = obj.getClass().getMethod("toMathML");
-				return render(new MathObject() {
-					public String toMathML() {
-						try {
-							return (String) m.invoke(obj);
-						} catch (final ReflectiveOperationException ex) {}
-						return null;
-					}
-				});
-			} catch (final NoSuchMethodException ex) {}
 		}
 		return obj.toString();
 	}
