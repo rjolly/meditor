@@ -1,12 +1,12 @@
 import scala.language.implicitConversions
-import scas.{ModInteger, BigInteger, int2bigInt}
+import scas.{ModInteger, <math><integers/></math>, int2bigInt}
 import scas.power.Lexicographic
 import scas.polynomial.TreePolynomial
 import TreePolynomial.coef2poly
 
-given r as TreePolynomial[BigInteger, Array[Int]](using ModInteger(2), Lexicographic("x"))
-val Array(x) = r.generators
+given r as TreePolynomial[<math><integers/></math>, Array[Int]](using <math><msub><integers/><cn>2</cn></msub></math>, Lexicographic("<math><ci>x</ci></math>"))
+val Array(<math><ci>x</ci></math>) = r.generators
 import r.+
 
-assert (1 + x + 1 >< x)
-assert (r.toString == "ZZ(2)[x]")
+assert (<math><cn>1</cn></math> + <math><ci>x</ci></math> + <math><cn>1</cn></math> >< <math><ci>x</ci></math>)
+assert (r.toString == "ModInteger(2)[x]")

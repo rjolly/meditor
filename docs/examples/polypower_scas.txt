@@ -1,21 +1,21 @@
 import scala.language.implicitConversions
-import scas.{BigInteger, int2bigInt, long2bigInt}
+import scas.{<math><integers/></math>, int2bigInt, long2bigInt}
 import scas.power.Lexicographic
 import scas.polynomial.TreePolynomial
 import TreePolynomial.coef2poly
 
-given r as TreePolynomial[BigInteger, Array[Int]](using BigInteger, Lexicographic("x", "y", "z"))
-// given r as TreePolynomial[BigInteger, Array[Long]](using BigInteger, Lexicographic("x", "y", "z"))
-val Array(x, y, z) = r.generators
+given r as TreePolynomial[<math><integers/></math>, Array[Int]](using <math><integers/></math>, Lexicographic("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
+// given r as TreePolynomial[<math><integers/></math>, Array[Long]](using <math><integers/></math>, Lexicographic("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
+val Array(<math><ci>x</ci></math>, <math><ci>y</ci></math>, <math><ci>z</ci></math>) = r.generators
 import r.{+, *}
 
-val p = 1 + x + y + z
-// val p = 1 + x \ 2147483647 + y \ 2147483647 + z \ 2147483647
-// val p = 10000000001l + 10000000001l * x + 10000000001l * y + 10000000001l * z
+val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><ci>x</ci></apply><ci>y</ci></apply><ci>z</ci></apply></math>
+// val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><apply><power/><ci>x</ci><cn>2147483647</cn></apply></apply><apply><power/><ci>y</ci><cn>2147483647</cn></apply></apply><apply><power/><ci>z</ci><cn>2147483647</cn></apply></apply></math>
+// val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>10000000001</cn><apply><times/><cn>10000000001</cn><ci>x</ci></apply></apply><apply><times/><cn>10000000001</cn><ci>y</ci></apply></apply><apply><times/><cn>10000000001</cn><ci>z</ci></apply></apply></math>
 println("p: " + p.show)
 val q = p \ 20
 println("q: " + q.size)
-val q1 = q + 1
+val q1 = q + <math><cn>1</cn></math>
 println("q1: " + q1.size)
 var t = System.currentTimeMillis();
 val q2 = q * q1

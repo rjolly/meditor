@@ -1,7 +1,7 @@
 import scala.language.implicitConversions
-import scas.{BigInteger, int2bigInt, Rational, bigInt2rational, %%}
-import Rational.+
+import scas.{<math><integers/></math>, int2bigInt, <math><rationals/></math>, bigInt2rational, %%}
+import <math><rationals/></math>.+
 
-assert (1 + 1 %%2 >< 1 %%2 + 1)
-assert (1 %%2 + 3 %%4 >< 5 %%4)
-assert ((3 %%2) \ 2 >< 9 %%4)
+assert (<math><cn>1</cn></math> + <math><cn type="rational">1<sep/>2</cn></math> >< <math><cn type="rational">1<sep/>2</cn></math> + <math><cn>1</cn></math>)
+assert (<math><cn type="rational">1<sep/>2</cn></math> + <math><cn type="rational">3<sep/>4</cn></math> >< <math><cn type="rational">5<sep/>4</cn></math>)
+assert ((<math><cn type="rational">3<sep/>2</cn></math>) \ 2 >< <math><cn type="rational">9<sep/>4</cn></math>)

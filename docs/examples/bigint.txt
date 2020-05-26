@@ -1,15 +1,15 @@
 import scala.language.implicitConversions
-import scas.{BigInteger, \:, int2bigInt}
-import BigInteger.{+, abs, unary_-}
+import scas.{<math><integers/></math>, \:, int2bigInt}
+import <math><integers/></math>.{+, abs, unary_-}
 
-assert(BigInteger(1) + 1 >< 1 + BigInteger(1))
-assert(BigInteger(1) - BigInteger(1) >< 0)
+assert(BigInteger(1) + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + BigInteger(1))
+assert(BigInteger(1) - BigInteger(1) >< <math><cn>0</cn></math>)
 assert(BigInteger(2) \ 2 >< BigInteger(4))
 assert(BigInteger(2) \ 64 >< BigInteger(18446744073709551616))
 assert(BigInteger(2) \ 64 >< 18446744073709551616)
 assert(BigInteger(2) \ 2 >< 4)
-assert(2 \:2 >< 4)
-assert(2 \:2 \:3 >< 256)
-assert((2 \:2) \ 3 >< 64)
-assert(abs(-1) >< -1.abs)
-assert(unary_-(-1) >< -1.unary_-)
+assert(<math><cn>2</cn></math> \:2 >< <math><cn>4</cn></math>)
+assert(<math><cn>2</cn></math> \:2 \:3 >< <math><cn>256</cn></math>)
+assert((<math><cn>2</cn></math> \:2) \ 3 >< <math><cn>64</cn></math>)
+assert(abs(<math><cn>-1</cn></math>) >< <math><cn>-1</cn></math>.abs)
+assert(unary_-(<math><cn>-1</cn></math>) >< <math><cn>-1</cn></math>.unary_-)
