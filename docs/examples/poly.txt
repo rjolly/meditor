@@ -6,10 +6,10 @@ import scas.polynomial.TreePolynomial
 import TreePolynomial.coef2poly
 
 given r as TreePolynomial[<math><integers/></math>, Array[Int]](using <math><integers/></math>, Lexicographic("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
-val Array(<math><ci>x</ci></math>, <math><ci>y</ci></math>, <math><ci>z</ci></math>) = r.generators
+val <math><list><ci>x</ci><ci>y</ci><ci>z</ci></list></math> = r.generators.toList
 
 given s as TreePolynomial[TreePolynomial.Element[<math><integers/></math>, Array[Int]], Array[Int]](using r, Lexicographic("<math><ci>a</ci></math>"))
-val Array(<math><ci>a</ci></math>) = s.generators
+val <math><list><ci>a</ci></list></math> = s.generators.toList
 import s.+
 
 assert(BigInteger(1) + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + BigInteger(1))
