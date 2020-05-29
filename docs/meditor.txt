@@ -12,7 +12,7 @@ jscl-meditor - java symbolic computing library and mathematical editor
 # Contact
 # Copyright
 
-release_notes.txt Version 5.3.3
+release_notes.txt Version 5.4
 
 Project description
 
@@ -178,7 +178,15 @@ Go to the Project summary page http://sourceforge.net/projects/jscl-meditor/
 
 Installation
 
-Desktop version (from v3.0 on)
+Linoleum version (from v5.0 on)
+
+Create a "meditor" directory on your hard drive. Extract the meditor-linoleum.zip archive in it.
+
+To run meditor, add the bin directory to your path, give bin/linoleum execution privilege (unix), then : linoleum
+
+Open the application panel (Ctrl+O). Click on "meditor".
+
+Desktop version (up to v4.2)
 
 Extract the meditor.zip archive into any appropriate directory on your hard drive. It will create a "meditor" directory. Change dir to it.
 
@@ -238,4 +246,4 @@ Copyright
 http://www.gnu.org/licenses/gpl.html The GNU General Public License
 
 --
-last updated on Sun May 17 2020
+last updated on Fri May 29 2020

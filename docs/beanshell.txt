@@ -45,7 +45,13 @@ f = function("f", 0);
 f_ = function("f", 1);
 
 assert(eval("d(cos(f(x)),x)")
-.equals(<math><apply><minus/><apply><times/><apply><ci><mrow><mi>f</mi><mo>′</mo></mrow></ci><ci>x</ci></apply><apply><sin/><apply><ci>f</ci><ci>x</ci></apply></apply></apply></apply></math>));
+.equals(<math><apply><minus/><apply><times/><apply><ci>f′</ci><ci>x</ci></apply><apply><sin/><apply><ci>f</ci><ci>x</ci></apply></apply></apply></apply></math>));
+
+z = variable("z");
+f = function("f", new int[] {0,0,0});
+f_1_0_0 = function("f", new int[] {1,0,0});
+f_0_1_0 = function("f", new int[] {0,1,0});
+f_0_0_1 = function("f", new int[] {0,0,1});
 
 assert(eval("curl(grad(f(x,y,z),{x,y,z}),{x,y,z})")
 .equals(<math><vector><cn>0</cn><cn>0</cn><cn>0</cn></vector></math>));

@@ -12,7 +12,7 @@ Vectors and matrices
 
 Expressions
 a+b, a-b, a*b, a/b, a**b, a!
-div(a,b), mod(a,b)
+quotient(a,b), rem(a,b), factorof(a,b)
 a*(b+c)
 
 Trigonometric and hyperbolic functions
@@ -24,14 +24,11 @@ asinh(x), acosh(x), atanh(x), acoth(x)
 Logarithm and exponential
 log(x), exp(x)
 
-Absolute value, sign
-abs(x), sgn(x)
+Absolute value, conjugate
+abs(x), conjugate(x)
 
 Square root, cubic root
 sqrt(x), cubic(x)
-
-Conjugate
-conjugate(x)
 
 Implicit roots
 root[i](a0,...,an)
@@ -49,7 +46,7 @@ integral(f(x),x,a,b), integral(f(x),x)
 
 Vector algebra
 grad(f(x1,...,xn),{x1,...,xn})
-diverg({f1(x1,...,xn),...,fn(x1,...,xn)},{x1,...,xn})
+divergence({f1(x1,...,xn),...,fn(x1,...,xn)},{x1,...,xn})
 curl({fx(x,y,z),fy(x,y,z),fz(x,y,z)},{x,y,z})
 laplacian(f(x1,...,xn),{x1,...,xn})
 dalembertian(f(t,x,y,z),{t,x,y,z})
@@ -78,9 +75,12 @@ m=2^n
 algebra : cl(p,q), p+q=n
 
 Transposition, trace, determinant
-tran({{a11,...,a1p},...,{an1,...,anp}})
+transpose({{a11,...,a1p},...,{an1,...,anp}})
 trace({{a11,...,a1n},...,{an1,...,ann}})
-det({{a11,...,a1n},...,{an1,...,ann}})
+determinant({{a11,...,a1n},...,{an1,...,ann}})
+
+Binomial coefficient
+C(n,p)
 
 Polynomial coefficients and solving
 coef(p(x),x)
@@ -100,27 +100,35 @@ numeric(a)
 quote(a)
 
 Limit
-lim(f(x),x,value,direction_opt)
-value : -infin, a, infin
+limit(x),x,value,direction_opt)
+value : -oo, a, oo
 direction : <0, 0, >0
 
 Sum, product
 sum(a[i],i,n1,n2)
-prod(a[i],i,n1,n2)
+product(a[i],i,n1,n2)
 
 Comparison
 eq(a,b)
-le(a,b)
-ge(a,b)
-ne(a,b)
+neq(a,b)
+leq(a,b)
 lt(a,b)
+geq(a,b)
 gt(a,b)
-ap(a,b)
+approx(a,b)
+
+Boolean functions
+and(a,b)
+or(a,b)
+xor(a,b)
+not(a)
+implies(a,b)
 
 Number theory
+mod(a,modulo)
 modpow(a,exponent,modulo)
 modinv(a,modulo)
-eulerphi(a)
+phi(a)
 primitiveroots(a)
 
 Groebner basis computation

@@ -127,7 +127,7 @@ Operator:
 	OperatorName ParameterList
 
 OperatorName: one of
-	d grad diverg curl jacobian laplacian dalembertian del vector complex quaternion geometric matrix tensor tran trace det coef solve subst graph elementary factorize simplify numeric quote lim sum prod integral groebner div mod modpow modinv eulerphi primitiveroots
+	d grad divergence curl jacobian laplacian dalembertian del vector complex quaternion geometric matrix tensor transpose trace determinant C coef solve subst graph elementary factorize simplify numeric quote limit sum product integral groebner quotient rem factorof mod modpow modinv phi primitiveroots
 
 ParameterList:
 	( Expression CommasAndExpressions_opt )
@@ -141,7 +141,7 @@ UsualFunction:
 	UsualFunctionName ParameterList
 
 UsualFunctionName: one of
-	sin cos tan cot asin acos atan acot log exp sqrt cubic sinh cosh tanh coth asinh acosh atanh acoth abs sgn conjugate eq le ge ne lt gt ap
+	sin cos tan cot asin acos atan acot log exp sqrt cubic sinh cosh tanh coth asinh acosh atanh acoth abs conjugate eq neq leq lt geq gt approx and or xor not implies
 
 ImplicitRoot:
 	root Subscript ParameterList

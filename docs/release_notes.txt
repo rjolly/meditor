@@ -1,7 +1,24 @@
-                meditor version 5.3.3
+                meditor version 5.4
 
 
   In this release:
+
+    * New script engine/library:
+
+      net.sourceforge.jscl-meditor#jscl;2.4
+
+    * Script engine output is rendered automatically if implementing jscl.editor.rendering.MathObject from:
+
+      net.sourceforge.jscl-meditor#rendering;1.0
+
+    * Graphs are rendered automatically if implementing org.jdesktop.swingx.JXGraph.Plot (or array thereof) from:
+
+      org.swinglabs#swingx-core;1.6.2-2
+
+    * Upgraded to txt2xhthml 3.0
+
+
+  In version 5.3.3:
 
     * Externalized graph as jscl.editor.Graph
 
