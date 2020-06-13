@@ -1,136 +1,128 @@
 			meditor
 
 
-  meditor is a text editor interfaced with a symbolic engine for interpreting mathematical expressions. Primarily, it is intended to solve algebraic equation systems of degree n in m indeterminates, for any (n, m), by computing the Groebner bases of polynomial ideals.
+  meditor is a text editor interfaced with a symbolic engine for interpreting mathematical expressions. Primarily, it is intended to solve algebraic equation systems of degree <math><ci>n</ci></math> in <math><ci>m</ci></math> indeterminates, for any <math><vector><ci>n</ci><ci>m</ci></vector></math>, by computing the Groebner bases of polynomial ideals.
 
-For example, let us consider this system for the indeterminates x, y:
+For example, let us consider this system for the indeterminates <math><ci>x</ci></math>, <math><ci>y</ci></math>:
 
-x^2 + y^2 = 4
-x*y = 1
+<math><apply><eq/><apply><plus/><apply><power/><ci>x</ci><cn>2</cn></apply><apply><power/><ci>y</ci><cn>2</cn></apply></apply><cn>4</cn></apply></math>
+<math><apply><eq/><apply><times/><ci>x</ci><ci>y</ci></apply><cn>1</cn></apply></math>
 
 We put:
 
-groebner({x^2 + y^2 - 4, x*y - 1}, {x, y})
+<math><apply><ci>groebner</ci><vector><apply><minus/><apply><minus/><cn>4</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply><apply><power/><ci>y</ci><cn>2</cn></apply></apply><apply><minus/><cn>1</cn><apply><times/><ci>x</ci><ci>y</ci></apply></apply></vector><vector><ci>x</ci><ci>y</ci></vector></apply></math>
 
 By selecting the text bloc above and by doing "Math->Evaluate" in the menu bar (Ctrl+E), we get:
 
-{1-4*x^2+x^4, 4*x-x^3-y}
+<math><vector><apply><plus/><apply><minus/><cn>1</cn><apply><times/><cn>4</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply><apply><power/><ci>x</ci><cn>4</cn></apply></apply><apply><minus/><apply><minus/><apply><times/><cn>4</cn><ci>x</ci></apply><apply><power/><ci>x</ci><cn>3</cn></apply></apply><ci>y</ci></apply></vector></math>
 
-, which allows us to find x, then y from x. This operation does not calculate the roots, it just writes the equation. For instance, it would not give "a = 4/5" but "5*a-4" ("= 0" implied).
+, which allows us to find x, then y from x. This operation does not calculate the roots, it just writes the equation. For instance, it would not give <math><apply><eq/><ci>a</ci><apply><divide/><cn>4</cn><cn>5</cn></apply></apply></math> but <math><apply><plus/><apply><minus/><cn>4</cn></apply><apply><times/><cn>5</cn><ci>a</ci></apply></apply></math> ("= <math><cn>0</cn></math>" implied).
 
 Groebner basis computation is explained in more details in the file math_background.txt.
 
 
-  meditor can process vector and matrix expressions. Vectors are denoted as {a,b,c} and matrices as {{a,b},{c,d}}.
+  meditor can process vector and matrix expressions. Vectors are denoted as <math><vector><ci>a</ci><ci>b</ci><ci>c</ci></vector></math> and matrices as <math><matrix><matrixrow><ci>a</ci><ci>b</ci></matrixrow><matrixrow><ci>c</ci><ci>d</ci></matrixrow></matrix></math>.
 
 To illustrate their use, let us consider a simple system of linear equations. We write:
 
-matrix(
-{{a[0][0], a[0][1]},
-{a[1][0], a[1][1]}},{x[0],
-                     x[1]})-{b[0],
-                             b[1]}
+<math><apply><minus/><apply><ci>matrix</ci><matrix><matrixrow><ci><msub><mi>a</mi><mrow><cn>0</cn><cn>0</cn></mrow></msub></ci><ci><msub><mi>a</mi><mrow><cn>0</cn><cn>1</cn></mrow></msub></ci></matrixrow><matrixrow><ci><msub><mi>a</mi><mrow><cn>1</cn><cn>0</cn></mrow></msub></ci><ci><msub><mi>a</mi><mrow><cn>1</cn><cn>1</cn></mrow></msub></ci></matrixrow></matrix><vector><ci><msub><mi>x</mi><mrow><cn>0</cn></mrow></msub></ci><ci><msub><mi>x</mi><mrow><cn>1</cn></mrow></msub></ci></vector></apply><vector><ci><msub><mi>b</mi><mrow><cn>0</cn></mrow></msub></ci><ci><msub><mi>b</mi><mrow><cn>1</cn></mrow></msub></ci></vector></apply></math>
 
-("= 0" implied ; as meditor cannot deal with non-commutative operations, it is mandatory to use "matrix(A,B)" instead of "A*B"). By selecting the expression above and by doing "Evaluate", we get:
+("= <math><cn>0</cn></math>" implied ; as meditor cannot deal with non-commutative operations, it is mandatory to use <math><apply><ci>matrix</ci><ci>A</ci><ci>B</ci></apply></math> instead of <math><apply><times/><ci>A</ci><ci>B</ci></apply></math>). By selecting the expression above and by doing "Evaluate", we get:
 
-{-b[0]+a[0][0]*x[0]+a[0][1]*x[1], -b[1]+a[1][0]*x[0]+a[1][1]*x[1]}
+<math><vector><apply><plus/><apply><plus/><apply><minus/><ci><msub><mi>b</mi><mrow><cn>0</cn></mrow></msub></ci></apply><apply><times/><ci><msub><mi>a</mi><mrow><cn>0</cn><cn>0</cn></mrow></msub></ci><ci><msub><mi>x</mi><mrow><cn>0</cn></mrow></msub></ci></apply></apply><apply><times/><ci><msub><mi>a</mi><mrow><cn>0</cn><cn>1</cn></mrow></msub></ci><ci><msub><mi>x</mi><mrow><cn>1</cn></mrow></msub></ci></apply></apply><apply><plus/><apply><plus/><apply><minus/><ci><msub><mi>b</mi><mrow><cn>1</cn></mrow></msub></ci></apply><apply><times/><ci><msub><mi>a</mi><mrow><cn>1</cn><cn>0</cn></mrow></msub></ci><ci><msub><mi>x</mi><mrow><cn>0</cn></mrow></msub></ci></apply></apply><apply><times/><ci><msub><mi>a</mi><mrow><cn>1</cn><cn>1</cn></mrow></msub></ci><ci><msub><mi>x</mi><mrow><cn>1</cn></mrow></msub></ci></apply></apply></vector></math>
 
 , which allows us to write the following input, that can be used to solve the linear system:
 
-groebner({-b[0]+a[0][0]*x[0]+a[0][1]*x[1],
--b[1]+a[1][0]*x[0]+a[1][1]*x[1]},
-{a[0][0], a[0][1], a[1][0], a[1][1], b[0], b[1], x[0], x[1]})
+<math><apply><ci>groebner</ci><vector><apply><minus/><apply><minus/><ci><msub><mi>b</mi><mrow><cn>0</cn></mrow></msub></ci><apply><times/><ci><msub><mi>a</mi><mrow><cn>0</cn><cn>0</cn></mrow></msub></ci><ci><msub><mi>x</mi><mrow><cn>0</cn></mrow></msub></ci></apply></apply><apply><times/><ci><msub><mi>a</mi><mrow><cn>0</cn><cn>1</cn></mrow></msub></ci><ci><msub><mi>x</mi><mrow><cn>1</cn></mrow></msub></ci></apply></apply><apply><minus/><apply><minus/><ci><msub><mi>b</mi><mrow><cn>1</cn></mrow></msub></ci><apply><times/><ci><msub><mi>a</mi><mrow><cn>1</cn><cn>0</cn></mrow></msub></ci><ci><msub><mi>x</mi><mrow><cn>0</cn></mrow></msub></ci></apply></apply><apply><times/><ci><msub><mi>a</mi><mrow><cn>1</cn><cn>1</cn></mrow></msub></ci><ci><msub><mi>x</mi><mrow><cn>1</cn></mrow></msub></ci></apply></apply></vector><vector><ci><msub><mi>a</mi><mrow><cn>0</cn><cn>0</cn></mrow></msub></ci><ci><msub><mi>a</mi><mrow><cn>0</cn><cn>1</cn></mrow></msub></ci><ci><msub><mi>a</mi><mrow><cn>1</cn><cn>0</cn></mrow></msub></ci><ci><msub><mi>a</mi><mrow><cn>1</cn><cn>1</cn></mrow></msub></ci><ci><msub><mi>b</mi><mrow><cn>0</cn></mrow></msub></ci><ci><msub><mi>b</mi><mrow><cn>1</cn></mrow></msub></ci><ci><msub><mi>x</mi><mrow><cn>0</cn></mrow></msub></ci><ci><msub><mi>x</mi><mrow><cn>1</cn></mrow></msub></ci></vector></apply></math>
 
 Other vector and matrix operations are listed in quickref.txt, along with all the functions and operations available in meditor.
 
 
   meditor allows polynomial solving:
 
-solve(c+b*x+a*x^2,x)
+<math><apply><ci>solve</ci><apply><plus/><apply><plus/><ci>c</ci><apply><times/><ci>b</ci><ci>x</ci></apply></apply><apply><times/><ci>a</ci><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply><ci>x</ci></apply></math>
 =
-root[0](c, b, a)
+<math><apply><ci><msub><mi>root</mi><mrow><cn>0</cn></mrow></msub></ci><ci>c</ci><ci>b</ci><ci>a</ci></apply></math>
 
 , variable substitution:
 
-subst(1/x^2,x,a)
+<math><apply><ci>subst</ci><apply><divide/><cn>1</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply><ci>x</ci><ci>a</ci></apply></math>
 =
-1/a^2
+<math><apply><divide/><cn>1</cn><apply><power/><ci>a</ci><cn>2</cn></apply></apply></math>
 
 , and simplification of expressions using the "simplify" operator:
 
-simplify(exp(sqrt(-1)*pi))
+<math><apply><ci>simplify</ci><apply><exp/><apply><times/><imaginaryi/><pi/></apply></apply></apply></math>
 =
--1
+<math><cn>-1</cn></math>
 
 It is often useful to rewrite an expression in term of elementary functions (log, exp, frac, sqrt, implicit roots), using the "elementary" operator, before simplifying it. For instance:
 
-simplify(elementary(cos(x)^2+sin(x)^2))
+<math><apply><ci>simplify</ci><apply><ci>elementary</ci><apply><plus/><apply><power/><apply><cos/><ci>x</ci></apply><cn>2</cn></apply><apply><power/><apply><sin/><ci>x</ci></apply><cn>2</cn></apply></apply></apply></apply></math>
 =
-1
+<math><cn>1</cn></math>
 
 To compute numerical values, one can use the "numeric" operator:
 
-numeric(exp(1))
+<math><apply><ci>numeric</ci><exponentiale/></apply></math>
 =
-2.718281828459045
+<math><cn type="real">2.718281828459045</cn></math>
 
 
   As we can see, meditor knows of some usual functions. It can compute derivatives and integrals too, as shown below:
 
-d(cos(f(x)),x)
+<math><apply><diff/><bvar><degree><cn>1</cn></degree><ci>x</ci></bvar><apply><cos/><apply><ci>f</ci><ci>x</ci></apply></apply></apply></math>
 =
--f'(x)*sin(f(x))
+<math><apply><minus/><apply><times/><apply><ci>f′</ci><ci>x</ci></apply><apply><sin/><apply><ci>f</ci><ci>x</ci></apply></apply></apply></apply></math>
 
-curl(grad(f(x,y,z),{x,y,z}),{x,y,z})
+<math><apply><curl/><apply><grad/><apply><ci>f</ci><ci>x</ci><ci>y</ci><ci>z</ci></apply><vector><ci>x</ci><ci>y</ci><ci>z</ci></vector></apply><vector><ci>x</ci><ci>y</ci><ci>z</ci></vector></apply></math>
 =
-{0, 0, 0}
+<math><vector><cn>0</cn><cn>0</cn><cn>0</cn></vector></math>
 
-sum(d(exp(x),x,0,i)/i!*(x-0)^i,i,0,4)
+<math><apply><sum/><lowlimit><cn>0</cn></lowlimit><uplimit><cn>4</cn></uplimit><bvar><ci>i</ci></bvar><apply><times/><apply><divide/><apply><apply><diff/><bvar><degree><ci>i</ci></degree><ci>x</ci></bvar><apply><exp/><ci>x</ci></apply></apply><cn>0</cn></apply><apply><factorial/><ci>i</ci></apply></apply><apply><power/><ci>x</ci><ci>i</ci></apply></apply></apply></math>
 =
-1+x+1/2*x^2+1/6*x^3+1/24*x^4
+<math><apply><plus/><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><ci>x</ci></apply><apply><times/><apply><divide/><cn>1</cn><cn>2</cn></apply><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply><apply><times/><apply><divide/><cn>1</cn><cn>6</cn></apply><apply><power/><ci>x</ci><cn>3</cn></apply></apply></apply><apply><times/><apply><divide/><cn>1</cn><cn>24</cn></apply><apply><power/><ci>x</ci><cn>4</cn></apply></apply></apply></math>
 
-integral(1/(1+x^2),x)
+<math><apply><int/><bvar><ci>x</ci></bvar><apply><divide/><cn>1</cn><apply><plus/><cn>1</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply></apply></math>
 =
-root[0](1, 0, 4)*log(1-2*x*root[0](1, 0, 4))+root[1](1, 0, 4)*log(1-2*x*root[1](1, 0, 4))
+<math><apply><plus/><apply><times/><apply><ci><msub><mi>root</mi><mrow><cn>0</cn></mrow></msub></ci><cn>1</cn><cn>0</cn><cn>4</cn></apply><apply><ln/><apply><minus/><cn>1</cn><apply><times/><cn>2</cn><apply><times/><ci>x</ci><apply><ci><msub><mi>root</mi><mrow><cn>0</cn></mrow></msub></ci><cn>1</cn><cn>0</cn><cn>4</cn></apply></apply></apply></apply></apply></apply><apply><times/><apply><ci><msub><mi>root</mi><mrow><cn>1</cn></mrow></msub></ci><cn>1</cn><cn>0</cn><cn>4</cn></apply><apply><ln/><apply><minus/><cn>1</cn><apply><times/><cn>2</cn><apply><times/><ci>x</ci><apply><ci><msub><mi>root</mi><mrow><cn>1</cn></mrow></msub></ci><cn>1</cn><cn>0</cn><cn>4</cn></apply></apply></apply></apply></apply></apply></apply></math>
 
 
-  meditor can also be used for boolean computations, using modulo "2" as fourth parameter of the "groebner" operation. 0 represents "false", 1 "true", the addition an "exclusive or" and the product an "and". The statement "a implies b", equivalent to "not a or b", or "not (a and not b)", is written : a*(1+b) ("= 0" implied).
+  meditor can also be used for boolean computations, using modulo <math><cn>2</cn></math> as fourth parameter of the "groebner" operation. <math><cn>0</cn></math> represents "false", <math><cn>1</cn></math> "true", the addition an "exclusive or" and the product an "and". The statement <math><apply><implies/><ci>a</ci><ci>b</ci></apply></math>, equivalent to <math><apply><or/><apply><not/><ci>a</ci></apply><ci>b</ci></apply></math>, or <math><apply><not/><apply><and/><ci>a</ci><apply><not/><ci>b</ci></apply></apply></apply></math>, is written : <math><apply><times/><ci>a</ci><apply><plus/><cn>1</cn><ci>b</ci></apply></apply></math> ("= <math><cn>0</cn></math>" implied).
 
-"sokrates is a man" is written sokrates*(1+man)
-"a man is mortal" is written man*(1+mortal)
+"sokrates is a man" is written <math><apply><times/><ci>sokrates</ci><apply><plus/><cn>1</cn><ci>man</ci></apply></apply></math>
+"a man is mortal" is written <math><apply><times/><ci>man</ci><apply><plus/><cn>1</cn><ci>mortal</ci></apply></apply></math>
 
 We put the system:
 
-groebner({sokrates*(1+man),
-man*(1+mortal)},
-{man, mortal, sokrates},lex,2)
+<math><apply><ci>groebner</ci><vector><apply><times/><ci>sokrates</ci><apply><plus/><cn>1</cn><ci>man</ci></apply></apply><apply><times/><ci>man</ci><apply><plus/><cn>1</cn><ci>mortal</ci></apply></apply></vector><vector><ci>man</ci><ci>mortal</ci><ci>sokrates</ci></vector><ci>lex</ci><cn>2</cn></apply></math>
 
 "Evaluate", we get:
 
-{man+man*mortal, sokrates+man*sokrates, sokrates+mortal*sokrates}
+<math><vector><apply><plus/><ci>man</ci><apply><times/><ci>man</ci><ci>mortal</ci></apply></apply><apply><plus/><ci>sokrates</ci><apply><times/><ci>man</ci><ci>sokrates</ci></apply></apply><apply><plus/><ci>sokrates</ci><apply><times/><ci>mortal</ci><ci>sokrates</ci></apply></apply></vector></math>
 
 The last equation can be factorized as follows:
 
-factorize(sokrates+mortal*sokrates)
+<math><apply><ci>factorize</ci><apply><plus/><ci>sokrates</ci><apply><times/><ci>mortal</ci><ci>sokrates</ci></apply></apply></apply></math>
 =
-sokrates*(1+mortal), which reads : "sokrates implies mortal".
+<math><apply><times/><ci>sokrates</ci><apply><plus/><cn>1</cn><ci>mortal</ci></apply></apply></math>, which reads : <math><apply><implies/><ci>sokrates</ci><ci>mortal</ci></apply></math>.
 
 Other modulos are also possible.
 
 
   Lastly, meditor can produce and render MathML expressions, and convert them back to text via XSLT:
 
-quote(integral(1/(1+x^2),x))
+<math><apply><ci>quote</ci><apply><int/><bvar><ci>x</ci></bvar><apply><divide/><cn>1</cn><apply><plus/><cn>1</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply></apply></apply></math>
 =
-<math><mrow><mo>∫</mo><apply><divide/><cn>1</cn><apply><plus/><cn>1</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply><mo>d</mo><ci>x</ci></mrow></math>
+<math><apply><int/><bvar><ci>x</ci></bvar><apply><divide/><cn>1</cn><apply><plus/><cn>1</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply></apply></math>
 
 <math><apply><times/><apply><power/><ci>x</ci><cn>2</cn></apply><apply><power/><ci>y</ci><cn>2</cn></apply></apply></math>
 =
-x^2*y^2
+<math><apply><times/><apply><power/><ci>x</ci><cn>2</cn></apply><apply><power/><ci>y</ci><cn>2</cn></apply></apply></math>
 
 It can also produce SVG graphs with the "graph" operator:
 
-graph(sin(x),x)
+<math><apply><ci>graph</ci><apply><sin/><ci>x</ci></apply><ci>x</ci></apply></math>
 =
 <svg stroke-dasharray="none" shape-rendering="auto" xmlns="http://www.w3.org/2000/svg" font-family="'Dialog'" width="400" text-rendering="auto" fill-opacity="1" contentScriptType="text/ecmascript" color-interpolation="auto" color-rendering="auto" preserveAspectRatio="xMidYMid meet" font-size="12px" fill="black" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="black" image-rendering="auto" stroke-miterlimit="10" zoomAndPan="magnify" version="1.0" stroke-linecap="square" stroke-linejoin="miter" contentStyleType="text/css" font-style="normal" height="400" stroke-width="1" stroke-dashoffset="0" font-weight="normal" stroke-opacity="1"
 ><!--Generated by the Batik Graphics2D SVG Generator--><defs id="genericDefs"

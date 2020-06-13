@@ -2,7 +2,7 @@ This website is meant as a collection of user-created meditor.txt worksheets. Fe
 
 Notice that MathML parts of meditor documents are rendered automatically:
 
-<math><apply><times></times><apply><power></power><ci>x</ci><cn>2</cn></apply><apply><power></power><ci>y</ci><cn>2</cn></apply></apply></math>
+<math><apply><times/><apply><power/><ci>x</ci><cn>2</cn></apply><apply><power/><ci>y</ci><cn>2</cn></apply></apply></math>
 
 meditor documentation
 
