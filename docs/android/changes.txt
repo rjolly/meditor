@@ -1,3 +1,7 @@
+Changes between version 19 and version 20:
+
++ add JSCL as alternate engine
+
 Changes between version 18 and version 19:
 
 + upgade to 2.1.1
