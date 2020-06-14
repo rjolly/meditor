@@ -53,6 +53,7 @@ import javax.swing.undo.UndoManager;
 import linoleum.application.FileChooser;
 import linoleum.application.ScriptSupport;
 import jscl.editor.rendering.MathObject;
+import jscl.editor.rendering.Plot;
 import org.jdesktop.swingx.JXGraph;
 
 public class Editor extends ScriptSupport {
@@ -681,6 +682,12 @@ public class Editor extends ScriptSupport {
 			return SVG.instance.print((Component) obj);
 		default:
 		}
+		if(obj instanceof Plot) {
+			return render(convert((Plot) obj));
+		}
+		if(obj instanceof Plot[]) {
+			return render(convert((Plot[]) obj));
+		}
 		if(obj instanceof JXGraph.Plot) {
 			return render(new Graph((JXGraph.Plot) obj));
 		}
@@ -693,6 +700,22 @@ public class Editor extends ScriptSupport {
 			}
 		}
 		return obj.toString();
+	}
+
+	private JXGraph.Plot[] convert(final Plot plots[]) {
+		final JXGraph.Plot s[] = new JXGraph.Plot[plots.length];
+		for (int i = 0;i < plots.length;i++) {
+			s[i] = convert(plots[i]);
+		}
+		return s;
+	}
+
+	private JXGraph.Plot convert(final Plot plot) {
+		return new JXGraph.Plot() {
+			public double compute(final double value) {
+				return plot.apply(value);
+			}
+		};
 	}
 
 	private String code(final String str) throws IOException {
