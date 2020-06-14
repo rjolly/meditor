@@ -1,6 +1,5 @@
 package jscl.editor;
 
-import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import javax.xml.transform.TransformerConfigurationException;
@@ -12,8 +11,8 @@ public class Content extends Transformer {
 	}
 
 	@Override
-	public String apply(final Reader reader) throws IOException {
-		return super.apply(reader).replaceAll("\u2148", "i");
+	protected String transform(final Reader reader) {
+		return super.transform(reader).replaceAll("\u2148", "i");
 	}
 
 	protected String c2p(final String document) {
