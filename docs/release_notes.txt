@@ -1,15 +1,15 @@
-                meditor version 5.4
+                meditor version 5.4.1
 
 
   In this release:
 
     * New script engine/library:
 
-      net.sourceforge.jscl-meditor#jscl;2.4
+      net.sourceforge.jscl-meditor#jscl;2.4.1
 
     * Script engine output is rendered automatically if implementing jscl.editor.rendering.MathObject from:
 
-      net.sourceforge.jscl-meditor#rendering;1.0
+      net.sourceforge.jscl-meditor#rendering;1.1
 
     * Graphs are rendered automatically if implementing org.jdesktop.swingx.JXGraph.Plot (or array thereof) from:
 
