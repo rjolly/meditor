@@ -1,7 +1,8 @@
-// Required modules : scala, org.twitter4j#twitter4j-core;4.0.6
+// Requires : org.twitter4j#twitter4j-core;4.0.6
 
 import twitter4j.{Status, Paging}
-import scala.collection.convert.WrapAsScala.collectionAsScalaIterable
+import scala.language.{implicitConversions, postfixOps}
+import scala.collection.JavaConverters.collectionAsScalaIterableConverter
 
 val configurationBuilder = new twitter4j.conf.ConfigurationBuilder
 configurationBuilder.setOAuthConsumerKey("6fIZgCQLwztil0mmLc10A")
@@ -22,15 +23,15 @@ twitter.setOAuthAccessToken(new twitter4j.auth.AccessToken(token, secret))
 
 var sinceId = -1l
 
-def < = home.map(s => s.getUser.getName + " (" + s.getCreatedAt + ") " + s.getText).reverse.mkString("\n")
+def < = home.map(s => s.getUser.getName + " (" + s.getCreatedAt + ") " + s.getText).toList.reverse.mkString("\n")
 
-def home: List[Status] = {
-  val l = if (sinceId == -1) twitter.getHomeTimeline.toList else home(List(), 1)
+def home: Iterable[Status] = {
+  val l = if (sinceId == -1) twitter.getHomeTimeline.asScala else home(List(), 1)
   if (l.size > 0) sinceId = l.head.getId
   l
 }
 
-@scala.annotation.tailrec def home(res: List[Status], n: Int): List[Status] = twitter.getHomeTimeline(new Paging(n, sinceId)).toList match {
+@scala.annotation.tailrec def home(res: List[Status], n: Int): List[Status] = twitter.getHomeTimeline(new Paging(n, sinceId)).asScala match {
   case list if (list.size > 0) => home(res ++ list, n + 1)
   case list => res
 }
@@ -38,7 +39,7 @@ def home: List[Status] = {
 class SString(s: String) {
   def >> = twitter.updateStatus(s)
 }
-implicit def s2ss(s: String) = new SString(s)
+implicit def s2ss(s: String): SString = new SString(s)
 
 // to send a status
 

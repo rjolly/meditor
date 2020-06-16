@@ -1,3 +1,5 @@
+// Requires : cc.redberry#groovy;1.1.5
+
 import cc.redberry.groovy.Redberry
 
 import static cc.redberry.core.indices.IndexType.*

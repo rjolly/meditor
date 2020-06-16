@@ -1,3 +1,5 @@
+// Requires : cc.redberry#rings.scaladsl_2.12;2.5.7
+
 import cc.redberry.rings
 
 import rings.poly.PolynomialMethods._

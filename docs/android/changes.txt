@@ -1,3 +1,8 @@
+Changes between version 20 and version 22:
+
++ include newline in selection to not replace input
++ add BeanShell as alternative engine
+
 Changes between version 19 and version 20:
 
 + add JSCL as alternate engine
