@@ -1,3 +1,7 @@
+Changes between version 22 and version 23:
+
++ upgrade to JSCL 2.4.1
+
 Changes between version 20 and version 22:
 
 + include newline in selection to not replace input
