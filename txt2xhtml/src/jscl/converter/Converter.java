@@ -22,7 +22,8 @@ public class Converter {
 	private final String mml = " xmlns=\"http://www.w3.org/1998/Math/MathML\"";
 	private final String svg = " xmlns=\"http://www.w3.org/2000/svg\"";
 
-	private String fromString(final String str, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension) {
+	public String apply(final Reader reader, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension) throws IOException {
+		final String str = stringFromReader(reader); 
 		final Matcher pm = pattern.matcher(str);
 		final StringBuffer b = new StringBuffer(XML);
 		if (stylesheet != null && !stylesheet.isEmpty()) {
@@ -165,9 +166,7 @@ public class Converter {
 	}
 
 	protected String insertNameSpace(final String str) {
-		final String m = str.indexOf(mml) > -1?"":mml;
-		final String s = str.indexOf(svg) > -1?"":svg;
-		return isSvg(str)?str.substring(0, 4) + s + str.substring(4):str.substring(0, 5) + m + str.substring(5);
+		return isSvg(str)?str.indexOf(svg) < 0?str.substring(0, 4) + svg + str.substring(4):str:str.indexOf(mml) < 0?str.substring(0, 5) + mml + str.substring(5):str;
 	}
 
 	protected String stripNameSpace(final String str) {
@@ -177,10 +176,6 @@ public class Converter {
 
 	protected boolean isSvg(final String str) {
 		return str.substring(1, 4).compareTo("svg") == 0;
-	}
-
-	public String apply(final Reader reader, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension) throws IOException {
-		return fromString(stringFromReader(reader), stylesheet, title, feed, icon, url, extension);
 	}
 
 	private String stringFromReader(final Reader reader) throws IOException {

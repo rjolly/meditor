@@ -46,18 +46,8 @@ public class MathML extends Content {
 		return stripNameSpace(TeX.instance.mml(str));
 	}
 
-	public Image createImage(final String str) {
-		return createMathImage(XML + insertNameSpace(str), null);
-	}
-
-	public Image createImage(final String text, final Color color) {
-		final String t = insertNameSpace(text);
-		if (isSvg(text)) {
-			return SVG.instance.createImage(XML + t);
-		} else {
-			final Image c = createMathImage(XML + t, asString(color));
-			return c == null?TeX.instance.createImage(text):c;
-		}
+	public Image createImage(final String str, final Color color) {
+		return isSvg(str)?SVG.instance.createImage(XML + insertNameSpace(str)):createMathImage(XML + insertNameSpace(str), asString(color));
 	}
 
 	private Image createMathImage(final String document, final String color) {
@@ -65,9 +55,15 @@ public class MathML extends Content {
 			final Node node = MathMLParserSupport.parseString(c2p(document));
 			final Node s = node.getFirstChild();
 			final NodeList t = s.getChildNodes();
-			if(t.getLength() == 1 && t.item(0).getNodeName().equals("#text")) return null;
-			((Element) s).setAttribute("color", color);
-			return createImage(node);
+			if(t.getLength() == 1 && t.item(0).getNodeName().equals("#text")) {
+				final Element e = (Element) TeX.instance.toMathML(t.item(0).getNodeValue());
+				e.setAttribute("color", "red");
+				return createImage(e);
+			} else {
+				final Element e = (Element) s;
+				e.setAttribute("color", color);
+				return createImage(e);
+			}
 		} catch (final SAXException e) {
 			e.printStackTrace();
 		} catch (final ParserConfigurationException e) {

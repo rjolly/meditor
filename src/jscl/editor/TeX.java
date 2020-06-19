@@ -1,11 +1,10 @@
 package jscl.editor;
 
-import java.awt.Image;
 import java.io.IOException;
 import uk.ac.ed.ph.snuggletex.SnuggleInput;
 import uk.ac.ed.ph.snuggletex.SnuggleEngine;
 import uk.ac.ed.ph.snuggletex.SnuggleSession;
-import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 public class TeX {
 	public static final TeX instance = new TeX();
@@ -17,7 +16,7 @@ public class TeX {
 	private SnuggleSession session(final String str) {
 		final SnuggleSession session = engine.createSession();
 		try {
-			session.parseInput(new SnuggleInput(stripMath(str)));
+			session.parseInput(new SnuggleInput("$" + str + "$"));
 		} catch (final IOException e) {
 			e.printStackTrace();
 		}
@@ -25,16 +24,14 @@ public class TeX {
 	}
 
 	public String mml(final String str) {
-		return session(str).buildXMLString();
+		return session(stripMath(str)).buildXMLString();
 	}
 
-	public Image createImage(final String str) {
-		final Element e = (Element) session(str).buildDOMSubtree().item(0);
-		e.setAttribute("color", "red");
-		return MathML.instance.createImage(e);
+	public Node toMathML(final String str) {
+		return session(str).buildDOMSubtree().item(0);
 	}
 
 	private String stripMath(final String str) {
-		return "$" + str.substring(0, str.length() - 7).substring(6) + "$";
+		return str.substring(0, str.length() - 7).substring(6);
 	}
 }

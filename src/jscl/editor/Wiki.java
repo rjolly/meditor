@@ -24,7 +24,7 @@ public class Wiki {
 		while (pm.find()) {
 			final int m = pm.start();
 			final String s = pm.group();
-			final String t = MathML.instance.createImage(s) == null?MathML.instance.fromTeX(s):s;
+			final String t = MathML.instance.fromTeX(s);
 			b.append(str.substring(n, m));
 			b.append(t);
 			n = pm.end();
