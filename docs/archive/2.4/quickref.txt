@@ -128,7 +128,7 @@ Number theory
 mod(a,modulo)
 modpow(a,exponent,modulo)
 modinv(a,modulo)
-phi(a)
+eulerphi(a)
 primitiveroots(a)
 
 Groebner basis computation
