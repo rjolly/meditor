@@ -29,7 +29,7 @@ public class Processor extends HttpServlet {
 		} else {
 			resp.setContentType("text/xml; charset=utf-8");
 			try (final BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8")); final PrintWriter writer = resp.getWriter()) {
-				converter.convert(reader, "/mathmlc2p.xsl", title, null, null, source ? url.toString() : null, false, writer);
+				converter.apply(reader, "/mathmlc2p.xsl", title, null, null, source ? url.toString() : null, false, writer);
 			}
 		}
 	}

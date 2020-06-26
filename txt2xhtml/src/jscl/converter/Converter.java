@@ -195,7 +195,7 @@ public class Converter {
 		}
 	}
 
-	public void convert(final Reader reader, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension, final Writer writer) throws IOException {
+	public void apply(final Reader reader, final String stylesheet, final String title, final String feed, final String icon, final String url, final boolean extension, final Writer writer) throws IOException {
 		pipe(new StringReader(apply(reader, stylesheet, title, feed, icon, url, extension)), writer);
 	}
 }
