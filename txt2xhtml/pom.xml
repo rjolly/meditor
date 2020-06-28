@@ -6,7 +6,7 @@
   <groupId>net.sourceforge.jscl-meditor</groupId>
   <artifactId>txt2xhtml</artifactId>
   <packaging>jar</packaging>
-  <version>3.0</version>
+  <version>4.0</version>
   <url>http://jscl-meditor.sourceforge.net/</url>
   <description>java symbolic computing library and mathematical editor</description>
   <licenses>

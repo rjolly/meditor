@@ -10,7 +10,7 @@
         <conf name="runtime-test"/>
     </configurations>
     <dependencies>
-        <dependency org="net.sourceforge.jscl-meditor" name="txt2xhtml" rev="2.1" conf="compile->master;runtime->default"/>
+        <dependency org="net.sourceforge.jscl-meditor" name="txt2xhtml" rev="4.0" conf="compile->master;runtime->default"/>
         <dependency org="javax.servlet" name="servlet-api" rev="2.2" conf="compile->master;runtime->default"/>
     </dependencies>
 </ivy-module>

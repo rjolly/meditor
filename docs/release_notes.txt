@@ -1,11 +1,11 @@
-                meditor version 5.4.1
+                meditor version 5.4.2
 
 
   In this release:
 
     * New script engine/library:
 
-      net.sourceforge.jscl-meditor#jscl;2.4.1
+      net.sourceforge.jscl-meditor#jscl;2.4.2
 
     * Script engine output is rendered automatically if implementing jscl.editor.rendering.MathObject from:
 
@@ -15,7 +15,7 @@
 
       org.swinglabs#swingx-core;1.6.2-2
 
-    * Upgraded to txt2xhthml 3.0
+    * Upgraded to txt2xhthml 4.0
 
 
   In version 5.3.3:
