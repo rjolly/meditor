@@ -1,3 +1,7 @@
+Changes between 2.4.1 and 2.4.2:
+
++ fix euler phi
+
 Changes between 2.4 and 2.4.1:
 
 + fixed bugs in XSL stylesheets
