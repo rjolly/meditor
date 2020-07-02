@@ -212,6 +212,7 @@ http://beanshell.org/ 2.0b5
 
 Papers
 
+meditor, the mathemagical editor (software demonstration, 2020) http://jscl-meditor.sourceforge.net/magical.pdf
 Computer algebra in Scala : what's new with Dotty ? (ScalaUA 2020) https://drive.google.com/file/d/1MixKt_OXD719SgomXx81VrtW8jvAV78_/view?usp=sharing presentation https://www.youtube.com/watch?v=L-NTXZZPV4A
 Categories as type classes in the Scala Algebra System (CASC 2013) http://jscl-meditor.sourceforge.net/catc-slides.pdf
 Parallelizing Stream with Future (2013) http://arxiv.org/abs/1305.4367
@@ -246,4 +247,4 @@ Copyright
 http://www.gnu.org/licenses/gpl.html The GNU General Public License
 
 --
-last updated on Sun Jun 28 2020
+last updated on Thu Jul  2 2020
