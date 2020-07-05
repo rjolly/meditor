@@ -47,7 +47,11 @@ Exponent:
 	Minus_opt UnsignedExponent
 
 UnsignedExponent:
-	PrimaryExpression Factorial_opt
+	PrimaryExpression Factorials_opt
+
+Factorials:
+	Factorial
+	Factorials Factorial
 
 Factorial:
 	!

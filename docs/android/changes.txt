@@ -1,3 +1,7 @@
+Changes between version 26 and version 27:
+
++ upgrade to JSCL 2.4.5
+
 Changes between version 24 and version 26:
 
 + upgrade to JSCL 2.4.4
