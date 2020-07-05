@@ -93,19 +93,8 @@
     </dependency>
     <dependency>
       <groupId>cc.redberry</groupId>
-      <artifactId>rings</artifactId>
-      <version>2.5.7</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>commons-math3</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-math3</artifactId>
-      <version>3.6.1</version>
+      <artifactId>groovy</artifactId>
+      <version>1.1.5</version>
     </dependency>
     <dependency>
       <groupId>org.frege-lang</groupId>
