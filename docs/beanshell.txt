@@ -56,7 +56,7 @@ f_0_0_1 = function("f", new int[] {0,0,1});
 assert(eval("curl(grad(f(x,y,z),{x,y,z}),{x,y,z})")
 .equals(<math><vector><cn>0</cn><cn>0</cn><cn>0</cn></vector></math>));
 
-assert(eval("sum(d(exp(x),x,0,i)/i!*(x-0)^i,i,0,4)")
+assert(eval("taylor(exp(x),x,0,4)")
 .equals(<math><apply><plus/><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><ci>x</ci></apply><apply><times/><apply><divide/><cn>1</cn><cn>2</cn></apply><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply><apply><times/><apply><divide/><cn>1</cn><cn>6</cn></apply><apply><power/><ci>x</ci><cn>3</cn></apply></apply></apply><apply><times/><apply><divide/><cn>1</cn><cn>24</cn></apply><apply><power/><ci>x</ci><cn>4</cn></apply></apply></apply></math>));
 
 assert(eval("integral(1/(1+x^2),x)")

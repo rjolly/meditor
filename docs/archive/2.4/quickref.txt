@@ -41,8 +41,12 @@ f[i1]...[in](x)
 Derivation
 d(f(x),x,value_opt,order_opt)
 
+Taylor series
+taylor(f(x),x,value,order)
+
 Integration
-integral(f(x),x,a,b), integral(f(x),x)
+integral(f(x),x,a,b)
+integral(f(x),x)
 
 Vector algebra
 grad(f(x1,...,xn),{x1,...,xn})

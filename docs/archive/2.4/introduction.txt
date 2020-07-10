@@ -79,7 +79,7 @@ To compute numerical values, one can use the "numeric" operator:
 =
 <math><vector><cn>0</cn><cn>0</cn><cn>0</cn></vector></math>
 
-<math><apply><sum/><lowlimit><cn>0</cn></lowlimit><uplimit><cn>4</cn></uplimit><bvar><ci>i</ci></bvar><apply><times/><apply><divide/><apply><apply><diff/><bvar><degree><ci>i</ci></degree><ci>x</ci></bvar><apply><exp/><ci>x</ci></apply></apply><cn>0</cn></apply><apply><factorial/><ci>i</ci></apply></apply><apply><power/><ci>x</ci><ci>i</ci></apply></apply></apply></math>
+<math><apply><ci>taylor</ci><apply><exp/><ci>x</ci></apply><ci>x</ci><cn>0</cn><cn>4</cn></apply></math>
 =
 <math><apply><plus/><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><ci>x</ci></apply><apply><times/><apply><divide/><cn>1</cn><cn>2</cn></apply><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply><apply><times/><apply><divide/><cn>1</cn><cn>6</cn></apply><apply><power/><ci>x</ci><cn>3</cn></apply></apply></apply><apply><times/><apply><divide/><cn>1</cn><cn>24</cn></apply><apply><power/><ci>x</ci><cn>4</cn></apply></apply></apply></math>
 
