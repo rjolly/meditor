@@ -18,7 +18,7 @@
         <dependency org="net.java.linoleum" name="complete" rev="1.6" conf="runtime->default"/>
         <dependency org="net.sourceforge.jscl-meditor" name="meditor" rev="5.4.2" conf="runtime->default"/>
         <dependency org="net.sourceforge.jscl-meditor" name="contents" rev="1.0" conf="runtime->default"/>
-        <dependency org="net.sourceforge.jscl-meditor" name="jscl" rev="2.4.5" conf="runtime->default"/>
+        <dependency org="net.sourceforge.jscl-meditor" name="jscl" rev="2.4.6" conf="runtime->default"/>
         <dependency org="org.beanshell" name="bsh" rev="2.0b5" conf="runtime->default"/>
     </dependencies>
 </ivy-module>

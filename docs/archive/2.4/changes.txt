@@ -1,8 +1,10 @@
-Changes between 2.4.4 and 2.4.5:
+Changes between 2.4.4 and 2.4.6:
 
++ implement taylor series
 + implement multiple factorials
 + fix XSL transformation for compound indices
 + fix XSL transformation for some exotic characters
++ fix XSL transformation for unary minus
 
 Changes between 2.4.2 and 2.4.4:
 
