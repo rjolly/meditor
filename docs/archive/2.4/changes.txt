@@ -1,3 +1,7 @@
+Changes between 2.4.6 and 2.4.7:
+
++ fix function add and multiply
+
 Changes between 2.4.4 and 2.4.6:
 
 + implement taylor series
