@@ -32,19 +32,9 @@
   </developers>
   <dependencies>
     <dependency>
-      <groupId>net.java.linoleum</groupId>
-      <artifactId>complete</artifactId>
-      <version>1.6</version>
-    </dependency>
-    <dependency>
       <groupId>net.sourceforge.jscl-meditor</groupId>
-      <artifactId>meditor</artifactId>
+      <artifactId>base</artifactId>
       <version>5.4.2</version>
-    </dependency>
-    <dependency>
-      <groupId>net.sourceforge.jscl-meditor</groupId>
-      <artifactId>contents</artifactId>
-      <version>1.0</version>
     </dependency>
     <dependency>
       <groupId>com.github.rjolly</groupId>
@@ -110,11 +100,6 @@
       <groupId>org.jruby</groupId>
       <artifactId>jruby-complete</artifactId>
       <version>9.1.17.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.beanshell</groupId>
-      <artifactId>bsh</artifactId>
-      <version>2.0b5</version>
     </dependency>
   </dependencies>
 </project>
