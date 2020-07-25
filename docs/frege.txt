@@ -1,3 +1,5 @@
+// Requires : org.frege-lang#frege-interpreter-core;1.2
+
 import frege.prelude.Math (cos)
 
 cosines = iterate cos 1.0

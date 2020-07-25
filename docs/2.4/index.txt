@@ -1,8 +1,9 @@
 index
 
+changes.txt
 conversions.txt
 grammar.txt
-math_background.txt
 introduction.txt
+math_background.txt
 quickref.txt
 timings.txt

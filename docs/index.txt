@@ -8,7 +8,7 @@ meditor documentation
 
 - tutorial.txt
 - release_notes.txt
-- http://jscl-meditor.sourceforge.net/viewlet1_viewlet_swf.html How to use meditor - by Dmitri Pissarenko (applies to version 1.0)
+- jscl version 2.4/index.txt
 - archive/index.txt
 
 exercises and solutions

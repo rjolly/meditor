@@ -12,7 +12,7 @@ jscl-meditor - java symbolic computing library and mathematical editor
 # Contact
 # Copyright
 
-release_notes.txt Version 5.4.2
+release_notes.txt Version 5.4.3
 
 Project description
 
@@ -31,7 +31,7 @@ Regarding readability, the goal is to produce code that is as nice and short as 
 
 It entails a dedicated development effort. This choice of clear coding, enabled by Java, may have consequences in terms of performance compared to other languages. But it could be worth the effort, in the sense that understanding an algorithm just by looking at the code is made possible. Object-orientation allows to hide unsightly optimizations behind a clean, easy to use interface.
 
-Some may doubt however that Java will ever be as clear as C++, because it does not have operator overloading, which means that a + b is written a.add(b), and will remain so. The interested reader can look at the on-going discussion on the matter at Sun http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4905919 
+Some may doubt however that Java will ever be as clear as C++, because it does not have operator overloading, which means that a + b is written a.add(b), and will remain so. The interested reader can look at the on-going discussion on the matter at Sun http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4905919
 
 As for portability, it means that many platforms are available at no cost, from powerful unix workstations or servers to handheld devices. To make it possible, the project is split in two parts : the engine (jscl) and the mathematical editor front-end (meditor). The engine is usable interactively or in batch mode from a Java shell interpreter (like BeanShell for instance), or as a Java library in any third-party application.
 
@@ -155,7 +155,7 @@ AElFTkSuQmCC
   </g>
 </svg>
 
-There was a special effort to make the palm front-end powerful enough to be used at school, by compiling the software into native code with http://jump.sourceforge.net/ 
+There was a special effort to make the palm front-end powerful enough to be used at school, by compiling the software into native code with http://jump.sourceforge.net/
 
 Symbolic capabilities
 
@@ -174,7 +174,7 @@ The symbolic capabilities are currently:
 
 Download
 
-Go to the Project summary page http://sourceforge.net/projects/jscl-meditor/ 
+Go to the Project summary page http://sourceforge.net/projects/jscl-meditor/
 
 Installation
 
@@ -227,7 +227,7 @@ How to turn a scripting language into a domain specific language for computer al
 
 Acknowledgements
 
-Thanks to Yves Noyer, Jeffry Madura, Eric Smith, Sergio Melas, Andrea Boright, Ross Green, Nicolas Rosillo, Marten van Wezel, Toyin Akin, Philippe d'Oreye, Sione Palu, Michael Braginsky, Mike Thomas, David Schneider, Oleg Volkov, Markus Hohenwarter, Dimitri Pissarenko, Eckhard Hitzer, Daniel Fontijne, Alfredo Vianna, Oliver Pretzel, Axel Kramer, Bob Orchard.
+Thanks to Heinz Kredel, Yves Noyer, Jeffry Madura, Eric Smith, Sergio Melas, Andrea Boright, Ross Green, Nicolas Rosillo, Marten van Wezel, Toyin Akin, Philippe d'Oreye, Sione Palu, Michael Braginsky, Mike Thomas, David Schneider, Oleg Volkov, Markus Hohenwarter, Dimitri Pissarenko, Eckhard Hitzer, Daniel Fontijne, Alfredo Vianna, Oliver Pretzel, Axel Kramer, Bob Orchard.
 
 Related projects
 
@@ -240,11 +240,11 @@ http://mtac.sourceforge.net/ - More than a Calculator
 
 Contact
 
-You can send your reactions to raphael.jolly@free.fr . For bug reports and support requests, you have tools on the Project summary page http://sourceforge.net/projects/jscl-meditor/ 
+You can send your reactions to raphael.jolly@free.fr . For bug reports and support requests, you have tools on the Project summary page http://sourceforge.net/projects/jscl-meditor/
 
 Copyright
 
 http://www.gnu.org/licenses/gpl.html The GNU General Public License
 
 --
-last updated on Thu Jul  2 2020
+last updated on Sat Jul 25 2020

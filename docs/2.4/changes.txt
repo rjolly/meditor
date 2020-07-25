@@ -1,3 +1,8 @@
+Changes between 2.4.7 and 2.4.8:
+
++ fix string representation of constants and functions with both primes and indices
++ expand parameters of graph and substitute
+
 Changes between 2.4.6 and 2.4.7:
 
 + fix function add and multiply

@@ -9,7 +9,7 @@ meditor is a text editor with symbolic computation capabilities. It uses a scrip
 
 Running definitions/evaluating expressions
 
-By default, meditor comes with the Rhino scripting engine, and no symbolic computing library. The scripting features of meditor are grouped in the Math menu. To run a code fragment, first select it (newline included):
+By default, meditor comes with the Rhino/Nashorn scripting engine, and no symbolic computing library. The scripting features of meditor are grouped in the Math menu. To run a code fragment, first select it (newline included):
 
 a = 1;
 
@@ -21,33 +21,31 @@ a = 1;
 
 2.0
 
-. To reset the scripting engine, click on Math->Reset engine.
+. To reset the scripting engine, re-run meditor.
 
 Installing custom scripting engines and symbolic libraries
 
-To do symbolic computation as such, some modules must be installed, through the Tools->Plugins menu item. Various scripting engine and symbolic library combinations are possible, for instance:
+To do symbolic computation as such, some modules must be installed. Various scripting engine and symbolic library combinations are possible, for instance:
 
 - beanshell + jscl
 - jython + jas
 
-Once installed, the engine must be enabled in the Math panel (Tools->Options, Math tab)'s Engine item. Examples of meditor worksheets can be found on http://meditorworld.appspot.com/
+Once installed, the engine must be enabled in the settings (Math->Preferences, Engine tab)'s Language item. Examples of meditor worksheets can be found on https://meditorworld.appspot.com/
 
 Rendering MathML and SVG
 
-If the Math panel's Render MathML checkbox is selected, then if evaluating an expression yields an object of a type with a toMathML() method, then this method is called and its return value is pasted instead of the object itself (as a string). The resulting expression is then rendered as MathML in the editor's textpane.
+If the Engine panel's Rendering checkbox is selected, then if evaluating an expression yields an object of type jscl.editor.rendering.MathObject, then its toMathML() method is called and its return value is pasted instead of the object itself. The resulting expression is then rendered as MathML in the editor's textpane.
 
 Similarly, if evaluating an expression yields an object of type java.awt.Component, then a window opens, allowing to interact with the component. Then, when the window is closed, the component is rendered as a SVG fragment in the editor's texpane.
 
 Evaluating (or running code with) MathML expressions
 
-If one evaluates (or runs code with) MathML expressions, these are first translated to the used scripting language, through an xsl stylesheet, which is specified in the Math panel's Stylesheet item.
-
-Note : as of 2011/09/14, these stylesheets are in construction and not yet operational.
+If one evaluates (or runs code with) MathML expressions, these are first translated to the used scripting language, through an xsl stylesheet, which is specified in the Engine panel's Stylesheet item.
 
 Sharing meditor worksheets
 
-Through the Math->Connect to web folder menu item, a shared repository can be mounted. It is mirrored in the website mentioned above. This feature uses the WebDAV protocol. The repository location can be changed (Math panel's Web Folder item).
+The docs folder of the meditor repository on GitHub is intended for user contributions. It is mirrored in the website mentioned above.
 
-Expressions can be copy/pasted to/from http://en.wikipedia.org/ through the Math->Copy to Wiki and Math->Paste from Wiki menu items. The MathML fragments will be translated to/from TeX in the process.
+Expressions can be copy/pasted to/from http://en.wikipedia.org/ through the Math->Copy to wiki and Math->Paste from wiki menu items. The MathML fragments will be translated to/from TeX in the process.
 
-The documents can be exported to pdf (Math->Export to PDF), with their MathML/SVG content rendered, and eventually printed.
+The documents can be exported to pdf (File->Export, "PDF Files"), with their MathML/SVG content rendered, and eventually printed.
