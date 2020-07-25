@@ -137,7 +137,7 @@ public class Converter {
 			final int m = pm.start();
 			final String s = pm.group();
 			final String t = spaces(str.substring(n, m));
-			buffer.append(t.matches("-+")?"<hr/>":(m == 0?" ":t) + "<br/>").append("\n");
+			buffer.append(t.matches("-+")?"<hr/>":t + "<br/>").append("\n");
 			n = pm.end();
 		}
 		buffer.append(spaces(str.substring(n)));
