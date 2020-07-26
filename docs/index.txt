@@ -30,7 +30,10 @@ misc
 beanshell scripts
 
 - beanshell.txt
+- cyclic.txt
 - editorgraph_bsh.txt
+- fateman.txt
+- meyer.txt
 
 scas2/examples/index.txt
 

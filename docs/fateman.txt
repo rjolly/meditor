@@ -1,0 +1,14 @@
+//http://www.beanshell.org/
+
+// Add jscl.jar to the classpath
+
+// Reference : Richard Fateman, update on fast mult benchmark ( http://groups.google.com/group/sci.math.symbolic/browse_thread/thread/63d2a000ac527be4/ )
+
+import jscl.math.*;
+import jscl.math.polynomial.*;
+
+p=Polynomial.factory(Variable.valueOf(new String[] {"x","y","z"})).valueof(Expression.valueOf("1+x+y+z")).pow(20);
+t=System.currentTimeMillis();
+p=p.multiply(p);
+t=System.currentTimeMillis()-t;
+print(t);
