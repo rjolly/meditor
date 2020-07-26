@@ -6,7 +6,7 @@
   <groupId>net.sourceforge.jscl-meditor</groupId>
   <artifactId>scas</artifactId>
   <packaging>pom</packaging>
-  <version>5.4.2</version>
+  <version>5.4.3</version>
   <url>http://jscl-meditor.sourceforge.net/</url>
   <description>java symbolic computing library and mathematical editor</description>
   <licenses>
@@ -34,17 +34,17 @@
     <dependency>
       <groupId>net.sourceforge.jscl-meditor</groupId>
       <artifactId>base</artifactId>
-      <version>5.4.2</version>
+      <version>5.4.3</version>
     </dependency>
     <dependency>
       <groupId>com.github.rjolly</groupId>
-      <artifactId>scas_0.24</artifactId>
+      <artifactId>scas_0.25</artifactId>
       <version>3.0</version>
     </dependency>
     <dependency>
       <groupId>ch.epfl.lamp</groupId>
-      <artifactId>dotty-compiler_0.24</artifactId>
-      <version>0.24.0-RC1</version>
+      <artifactId>dotty-compiler_0.25</artifactId>
+      <version>0.25.0-RC2</version>
     </dependency>
     <dependency>
       <groupId>de.uni-mannheim.rz.krum</groupId>
