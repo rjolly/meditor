@@ -1,39 +1,40 @@
-//http://www.beanshell.org/
-
-// Add jscl.jar to the classpath
-
 // Reference : Henning Meyer, my boolean problem ( http://groups.google.com/group/sci.math.symbolic/browse_frm/thread/318369ef90df4358/ )
 
-import jscl.math.*;
-import jscl.math.polynomial.*;
+import jscl.math.Debug;
+import jscl.math.Generic;
+import jscl.math.Variable;
+import jscl.math.polynomial.Basis;
+import jscl.math.polynomial.Monomial;
+static import jscl.math.Predef.*;
 
 Debug.setOutputStream(System.out);
 
 nlen=2;
-len=1<<(nlen-1);
+int len=1<<(nlen-1);
+n=vector("n",nlen);
+a_=vector("a",1,len);
+b_=vector("b",1,len);
+m=vector("m",len);
+a=vector("a",len);
+b=vector("b",len);
+t=vector("t",len);
 v=new Vector();
-for(i=0;i<nlen;i++) v.addElement(Variable.valueOf("n["+i+"]"));
-for(i=0;i<len;i++) v.addElement(Variable.valueOf("a["+i+"]'"));
-for(i=0;i<len;i++) v.addElement(Variable.valueOf("b["+i+"]'"));
-for(i=0;i<len;i++) v.addElement(Variable.valueOf("m["+i+"]"));
-for(i=0;i<len;i++) v.addElement(Variable.valueOf("a["+i+"]"));
-for(i=0;i<len;i++) v.addElement(Variable.valueOf("b["+i+"]"));
-for(i=0;i<len;i++) v.addElement(Variable.valueOf("t["+i+"]"));
+for(i=0;i<nlen;i++) v.addElement(n[i].variableValue());
+for(i=0;i<len;i++) v.addElement(a_[i].variableValue());
+for(i=0;i<len;i++) v.addElement(b_[i].variableValue());
+for(i=0;i<len;i++) v.addElement(m[i].variableValue());
+for(i=0;i<len;i++) v.addElement(a[i].variableValue());
+for(i=0;i<len;i++) v.addElement(b[i].variableValue());
+for(i=0;i<len;i++) v.addElement(t[i].variableValue());
 vars=new Variable[v.size()];
 v.copyInto(vars);
 
-array(s) {
-	Generic[] a=new Generic[len];
-	for(int i=0;i<a.length;i++) a[i]=Expression.valueOf(s.substring(0,1)+"["+i+"]"+s.substring(1));
-	return a;
-}
-
 nconstraint(n) {
-	Generic[] n_=array("n");
-	Generic nc=JSCLInteger.valueOf(1);
+	n_=vector("n",len);
+	nc=integer("1");
 	for(int i=0;i<nlen;i++) {
 		int c=1-((n&(1<<i))>>i);
-		nc=nc.multiply(n_[i].add(JSCLInteger.valueOf(c)));
+		nc=nc.multiply(n_[i].add(integer(String.valueOf(c))));
 	}
 	return nc;
 }
@@ -42,7 +43,7 @@ ni=new Generic[len];
 for(n=0;n<len;n++) ni[n]=nconstraint(n);
 
 rightShift(a,i) {
-	Generic s=JSCLInteger.valueOf(0);
+	s=integer("0");
 	for(int n=0;n<len;n++) {
 		if(i<a.length-n) s=s.add(a[i+n].multiply(ni[n]));
 	}
@@ -50,19 +51,13 @@ rightShift(a,i) {
 }
 
 leftShift(a,i) {
-	Generic s=JSCLInteger.valueOf(0);
+	s=integer("0");
 	for(int n=0;n<len;n++) {
 		if(i>=n) s=s.add(a[i-n].multiply(ni[n]));
 	}
 	return s;
 }
 
-t=array("t");
-a=array("a");
-b=array("b");
-a_=array("a'");
-b_=array("b'");
-m=array("m");
 v=new Vector();
 for(i=0;i<len;i++) v.addElement(t[i].add(rightShift(a,i).add(b[i]).multiply(m[i])));
 for(i=0;i<len;i++) v.addElement(a_[i].add(a[i].add(leftShift(t,i))));

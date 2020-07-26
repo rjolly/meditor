@@ -1,25 +1,26 @@
-//http://www.beanshell.org/
-
 // This is to demonstrate the use of the JSCL API from a java shell interpreter
-// Add jscl.jar to the classpath
 
-import jscl.math.*;
-import jscl.math.polynomial.*;
+import jscl.math.Debug;
+import jscl.math.Generic;
+import jscl.math.Variable;
+import jscl.math.polynomial.Basis;
+import jscl.math.polynomial.Monomial;
+static import jscl.math.Predef.*;
 
 Debug.setOutputStream(System.out);
 
-n=4;
+int n=4;
 v=new Variable[n];
 a=new Generic[n];
-for(i=0;i<n;i++) v[i]=Variable.valueOf(new Character((char)('a'+i)).toString());
+for(i=0;i<n;i++) v[i]=variable(new Character((char)('a'+i)).toString()).variableValue();
 for(i=0;i<n;i++) {
-	a[i]=JSCLInteger.valueOf(0);
+	a[i]=integer("0");
 	for(j=0;j<(i<n-1?n:1);j++) {
-		s=JSCLInteger.valueOf(1);
+		s=integer("1");
 		for(k=0;k<=i;k++) s=s.multiply(v[(j+k)%n].expressionValue());
 		a[i]=a[i].add(s);
 	}
-	if(i==n-1) a[i]=a[i].subtract(Variable.valueOf("t").expressionValue().pow(0));
+	if(i==n-1) a[i]=a[i].subtract(variable("t").pow(0));
 }
 t=System.currentTimeMillis();
 b=Basis.compute(a,Basis.augmentUnknown(v,a),Monomial.degreeReverseLexicographic,0);
