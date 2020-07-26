@@ -5,36 +5,36 @@ scalar: all but composite
 numeric: double complex
 
 arithmetic:
-+-*/=  |integer	ratio	expr	numeric	compos
++-*/=  |integer ratio   expr    numeric compos
 -------+--------------------------------------
-integer|integer	ratio	expr	expr	compos
-ratio  |	ratio	expr	expr	compos
-expr   |		expr	expr	compos
-numeric|			numeric	compos
-compos |				compos
+integer|integer ratio   expr    expr    compos
+ratio  |        ratio   expr    expr    compos
+expr   |                expr    expr    compos
+numeric|                        numeric compos
+compos |                                compos
 
 numeric:
-+-*/=  |double	complex	compos
++-*/=  |double  complex compos
 -------+----------------------
-double |double	complex	compos
-complex|	complex	compos
-compos |		compos
+double |double  complex compos
+complex|        complex compos
+compos |                compos
 
 composite:
-+-=    |scalar	vector	matrix
++-=    |scalar  vector  matrix
 -------+----------------------
-scalar |scalar	vector	matrix
-vector |	vector	n/a
-matrix |		matrix
+scalar |scalar  vector  matrix
+vector |        vector  n/a
+matrix |                matrix
 
-*      |scalar	vector	matrix
+*      |scalar  vector  matrix
 -------+----------------------
-scalar |scalar	vector	matrix
-vector |	scalar	vector
-matrix |		matrix
+scalar |scalar  vector  matrix
+vector |        scalar  vector
+matrix |                matrix
 
-/      |scalar	vector	matrix
+/      |scalar  vector  matrix
 -------+----------------------
-scalar |scalar	n/a	matrix
-vector |vector	n/a	vector
-matrix |matrix	n/a	matrix
+scalar |scalar  n/a     matrix
+vector |vector  n/a     vector
+matrix |matrix  n/a     matrix

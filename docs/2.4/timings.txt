@@ -4,10 +4,10 @@ All computations were made on a Athlon XP-M 1.8GHz with 768MB. The java virtual 
 
 The software versions are:
 
-Singular-2-0-3-ix86-Linux	(2002/02)
-j2sdk-1_4_2_03-linux-i586      	(2005/11/27)
-meditor1.0			(2004/02/22)
-meditor2.2			(2007/06/30)
+Singular-2-0-3-ix86-Linux       (2002/02)
+j2sdk-1_4_2_03-linux-i586       (2005/11/27)
+meditor1.0                      (2004/02/22)
+meditor2.2                      (2007/06/30)
 
 All times are given in seconds unless otherwise noted.
 
