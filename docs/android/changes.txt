@@ -1,51 +1,51 @@
-Changes between version 22 and version 30:
+Changes in version 30:
 
 + upgrade to 2.1.3
 + upgrade to JSCL 2.4.8
 
-Changes between version 20 and version 22:
+Changes in version 22:
 
 + include newline in selection to not replace input
 + add BeanShell as alternative engine
 
-Changes between version 19 and version 20:
+Changes in version 20:
 
 + add JSCL as alternative engine
 
-Changes between version 18 and version 19:
+Changes in version 19:
 
 + upgrade to 2.1.1
 + fix import from the web
 
-Changes between version 16 and version 18:
+Changes in version 18:
 
 + can import from the web
 
-Changes between version 10 and version 16:
+Changes in version 16:
 
 + removed conduit
 + instead, added export/import function
 
-Changes between version 9 and version 10:
+Changes in version 10:
 
 + engine update
 
-Changes between version 8 and version 9:
+Changes in version 9:
 
 + error dialog
 
-Changes between version 7 and version 8:
+Changes in version 8:
 
 + graphing
 
-Changes between version 5 and version 7:
+Changes in version 7:
 
 + real, imag, conjugate
 + comparison operators
 + boolean algebra
 + fling to scroll
 
-Changes between version 4 and version 5:
+Changes in version 5:
 
 + evaluate menu item moved to top
 + conduit
