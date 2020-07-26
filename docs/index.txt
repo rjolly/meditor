@@ -29,7 +29,7 @@ misc
 
 beanshell scripts
 
-- beanshell.txt
+- overview.txt
 - cyclic.txt
 - editorgraph_bsh.txt
 - fateman.txt
