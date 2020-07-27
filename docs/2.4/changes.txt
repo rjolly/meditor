@@ -1,3 +1,7 @@
+Changes in 2.4.9:
+
++ fix MathML representation of nested polynomials
+
 Changes in 2.4.8:
 
 + fix string representation of constants and functions with both primes and indices
