@@ -131,7 +131,7 @@ Operator:
 	OperatorName ParameterList
 
 OperatorName: one of
-	d grad divergence curl jacobian laplacian dalembertian del vector complex quaternion geometric matrix tensor transpose trace determinant C coef solve subst graph elementary factorize simplify numeric quote limit taylor sum product integral groebner quotient rem factorof mod modpow modinv eulerphi primitiveroots
+	d grad divergence curl jacobian laplacian dalembertian del vector complex quaternion geometric matrix tensor transpose trace determinant C coef solve subst graph expand factorize elementary simplify numeric quote limit taylor sum product integral groebner quotient rem factorof mod modpow modinv eulerphi primitiveroots
 
 ParameterList:
 	( Expression CommasAndExpressions_opt )
