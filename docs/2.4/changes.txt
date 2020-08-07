@@ -1,3 +1,10 @@
+Changes in 2.4.12:
+
++ add expand operator
++ do not evaluate exp(-x) to 1/exp(x) ; use simplify instead
++ do not simplify log(a*x) to log(a)+log(x) ; use elementary instead
++ fix simplification of comparison
+
 Changes in 2.4.9:
 
 + fix MathML representation of nested polynomials

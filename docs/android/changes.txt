@@ -1,7 +1,7 @@
-Changes in version 31:
+Changes in version 34:
 
 + upgrade to 2.1.3
-+ upgrade to JSCL 2.4.9
++ upgrade to JSCL 2.4.12
 
 Changes in version 22:
 
