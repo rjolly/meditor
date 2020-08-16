@@ -17,6 +17,6 @@
         <artifact name="contents" type="pom" ext="pom" conf="pom"/>
     </publications>
     <dependencies>
-        <dependency org="com.github.rjolly" name="flying-saucer" rev="9.1.23" conf="runtime->default"/>
+        <dependency org="com.github.rjolly" name="flying-saucer" rev="9.1.24" conf="runtime->default"/>
     </dependencies>
 </ivy-module>
