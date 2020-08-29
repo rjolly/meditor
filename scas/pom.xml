@@ -38,13 +38,13 @@
     </dependency>
     <dependency>
       <groupId>com.github.rjolly</groupId>
-      <artifactId>scas.application_0.25</artifactId>
+      <artifactId>scas.application_0.26</artifactId>
       <version>3.0</version>
     </dependency>
     <dependency>
       <groupId>ch.epfl.lamp</groupId>
-      <artifactId>dotty-compiler_0.25</artifactId>
-      <version>0.25.0-RC2</version>
+      <artifactId>dotty-compiler_0.26</artifactId>
+      <version>0.26.0-RC1</version>
     </dependency>
   </dependencies>
 </project>
