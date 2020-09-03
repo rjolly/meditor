@@ -20,7 +20,23 @@
 
 <xsl:template match="xhtml:tt">
 <fo:block font-size="11pt" font-family="monospace" linefeed-treatment="preserve">
-<xsl:apply-templates/>
+<xsl:for-each select="*|text()">
+	<xsl:choose>
+		<xsl:when test="self::text()">
+			<xsl:choose>
+				<xsl:when test="starts-with(., '&#xA;')">
+					<xsl:value-of select="substring-after(., '&#xA;')"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="."/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:apply-templates select="."/>
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:for-each>
 </fo:block>
 </xsl:template>
 
@@ -38,6 +54,10 @@
 <fo:instream-foreign-object>
 <xsl:copy-of select="."/>
 </fo:instream-foreign-object>
+</xsl:template>
+
+<xsl:template match="xhtml:br">
+<xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
 </xsl:stylesheet>
