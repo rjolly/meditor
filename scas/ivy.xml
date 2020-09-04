@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0">
-    <info module="scas" organisation="net.sourceforge.jscl-meditor" revision="5.4.3">
+    <info module="scas" organisation="net.sourceforge.jscl-meditor" revision="5.4.4">
         <description homepage="http://jscl-meditor.sourceforge.net/"/>
     </info>
     <configurations>
@@ -15,7 +15,7 @@
         <artifact name="scas" type="pom" ext="pom" conf="pom"/>
     </publications>
     <dependencies>
-        <dependency org="net.sourceforge.jscl-meditor" name="base" rev="5.4.3" conf="runtime->default"/>
+        <dependency org="net.sourceforge.jscl-meditor" name="base" rev="5.4.4" conf="runtime->default"/>
         <dependency org="com.github.rjolly" name="scas.application_0.27" rev="3.0" conf="runtime->default"/>
         <dependency org="ch.epfl.lamp" name="dotty-compiler_0.27" rev="0.27.0-RC1" conf="runtime->default"/>
     </dependencies>

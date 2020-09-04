@@ -9,6 +9,7 @@ meditor documentation
 - tutorial.txt
 - release_notes.txt
 - jscl version 2.4/index.txt
+- matrix of engine+library compatibility.txt
 - archive/index.txt
 
 exercises and solutions
