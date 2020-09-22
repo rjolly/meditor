@@ -212,6 +212,7 @@ http://beanshell.org/ 2.0b5
 
 Papers
 
+Progress report on the Scala Algebra System (CASC 2020) http://jscl-meditor.sourceforge.net/interface-slides.pdf presentation https://www.dk-compmath.jku.at/conferences/casc-2020/day-5/05-Jolly.mp4
 meditor, the mathemagical editor (software demonstration, 2020) http://jscl-meditor.sourceforge.net/magical.pdf
 Computer algebra in Scala : what's new with Dotty ? (ScalaUA 2020) https://drive.google.com/file/d/1MixKt_OXD719SgomXx81VrtW8jvAV78_/view?usp=sharing presentation https://www.youtube.com/watch?v=L-NTXZZPV4A
 Categories as type classes in the Scala Algebra System (CASC 2013) http://jscl-meditor.sourceforge.net/catc-slides.pdf
