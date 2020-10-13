@@ -5,7 +5,7 @@
 
     * New script engine/library:
 
-      net.sourceforge.jscl-meditor#jscl;2.4.13
+      net.sourceforge.jscl-meditor#jscl;2.4.14
 
     * Script engine output is rendered automatically if implementing jscl.editor.rendering.MathObject from:
 

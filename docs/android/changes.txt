@@ -1,3 +1,7 @@
+Changes in version 40:
+
++ upgrade to JSCL 2.4.14
+
 Changes in version 38:
 
 + fix eval action in android 11+

@@ -1,3 +1,7 @@
+Changes in 2.4.14:
+
++ fix simplification of Vector/MatrixVariable
+
 Changes in 2.4.13:
 
 + fix XSL transformation for unary minus (again)
