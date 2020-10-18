@@ -4,7 +4,7 @@ Changes in version 40:
 
 Changes in version 38:
 
-+ fix eval action in android 11+
++ fix eval action in android API 11+
 + upgrade to JSCL 2.4.13
 
 Changes in version 34:
