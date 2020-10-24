@@ -180,7 +180,7 @@ Installation
 
 Linoleum version (from v5.0 on)
 
-Create a "meditor" directory on your hard drive. Extract the meditor-linoleum.zip archive in it.
+Create a "meditor" directory on your hard drive. Extract the meditor.zip archive in it.
 
 To run meditor, add the bin directory to your path, give bin/linoleum execution privilege (unix), then : linoleum
 
