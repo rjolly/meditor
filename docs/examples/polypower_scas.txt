@@ -1,13 +1,12 @@
 import scala.language.implicitConversions
-import scas.{<math><integers/></math>, int2bigInt, long2bigInt}
+import scas.{int2bigInt, long2bigInt}
 import scas.power.Lexicographic
 import scas.polynomial.TreePolynomial
 import TreePolynomial.coef2poly
 
-given r as TreePolynomial[<math><integers/></math>, Array[Int]](using <math><integers/></math>, Lexicographic("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
-// given r as TreePolynomial[<math><integers/></math>, Array[Long]](using <math><integers/></math>, Lexicographic("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
+given r as TreePolynomial[scas.<math><integers/></math>, Array[Int]](using scas.<math><integers/></math>, Lexicographic("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
+// given r as TreePolynomial[scas.<math><integers/></math>, Array[Long]](using scas.<math><integers/></math>, Lexicographic("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
 val <math><list><ci>x</ci><ci>y</ci><ci>z</ci></list></math> = r.generators.toList
-import r.{+, *}
 
 val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><ci>x</ci></apply><ci>y</ci></apply><ci>z</ci></apply></math>
 // val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><apply><power/><ci>x</ci><cn>2147483647</cn></apply></apply><apply><power/><ci>y</ci><cn>2147483647</cn></apply></apply><apply><power/><ci>z</ci><cn>2147483647</cn></apply></apply></math>

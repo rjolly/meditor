@@ -2,7 +2,6 @@ import scala.language.implicitConversions
 import scas.{ModInteger, int2bigInt}
 
 given r as <math><msub><integers/><cn>7</cn></msub></math>
-import r.+
 
 assert (r(4) + <math><cn>4</cn></math> >< <math><cn>4</cn></math> + r(4))
 assert (r(4) + <math><cn>4</cn></math> >< <math><cn>1</cn></math>)
