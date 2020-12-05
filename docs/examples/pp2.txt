@@ -1,7 +1,7 @@
 import scas.power.Lexicographic
 import scas.variable.Variable
 
-given m: Lexicographic[Int]((for (i <- 0 until 4; j <- 0 until 2) yield Variable("a", Array(i, j): _*)): _*) with {}
+given m: Lexicographic[Int] = new Lexicographic((for (i <- 0 until 4; j <- 0 until 2) yield Variable("a", Array(i, j): _*)): _*)
 val a = m.generators.toList.grouped(2).toList
 val s = (for (i <- 0 until 4; j <- 0 until 2) yield a(i)(j)).toList
 assert(s.show == <math><list><ci><msub><mi>a</mi><mrow><mn>0</mn><mn>0</mn></mrow></msub></ci><ci><msub><mi>a</mi><mrow><mn>0</mn><mn>1</mn></mrow></msub></ci><ci><msub><mi>a</mi><mrow><mn>1</mn><mn>0</mn></mrow></msub></ci><ci><msub><mi>a</mi><mrow><mn>1</mn><mn>1</mn></mrow></msub></ci><ci><msub><mi>a</mi><mrow><mn>2</mn><mn>0</mn></mrow></msub></ci><ci><msub><mi>a</mi><mrow><mn>2</mn><mn>1</mn></mrow></msub></ci><ci><msub><mi>a</mi><mrow><mn>3</mn><mn>0</mn></mrow></msub></ci><ci><msub><mi>a</mi><mrow><mn>3</mn><mn>1</mn></mrow></msub></ci></list></math>.show)
