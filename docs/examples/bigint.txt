@@ -1,7 +1,7 @@
 import scala.language.experimental.genericNumberLiterals
 import scala.language.implicitConversions
 import scas.{<math><integers/></math>, \:, int2bigInt}
-import <math><integers/></math>.{abs, unary_-}
+import <math><integers/></math>.{abs, unary_-, given}
 
 assert(BigInteger(1) + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + BigInteger(1))
 assert(BigInteger(1) - BigInteger(1) >< <math><cn>0</cn></math>)
