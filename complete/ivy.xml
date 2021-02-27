@@ -21,12 +21,7 @@
             <exclude org="org.scala-lang.modules" module="scala-xml_2.11.0-M5" name="*" type="*" ext="*" conf="" matcher="exact"/>
             <exclude org="org.scala-lang.modules" module="scala-parser-combinators_2.11.0-M5" name="*" type="*" ext="*" conf="" matcher="exact"/>
         </dependency>
-        <dependency org="de.uni-mannheim.rz.krum" name="jas" rev="2.7.10" conf="runtime->default">
-            <exclude org="org.apache.logging.log4j" module="log4j-core" name="*" type="*" ext="*" conf="" matcher="exact"/>
-            <exclude org="org.apache.logging.log4j" module="log4j-api" name="*" type="*" ext="*" conf="" matcher="exact"/>
-        </dependency>
-        <dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.14.0" conf="runtime->default"/>
-        <dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.14.0" conf="runtime->default"/>
+        <dependency org="de.uni-mannheim.rz.krum" name="jas" rev="2.7.20" conf="runtime->default"/>
         <dependency org="cc.redberry" name="groovy" rev="1.1.5" conf="runtime->default"/>
         <dependency org="org.frege-lang" name="frege-interpreter-core" rev="1.2" conf="runtime->default"/>
         <dependency org="org.python" name="jython-standalone" rev="2.7.2b3" conf="runtime->default"/>
