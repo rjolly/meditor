@@ -1,4 +1,3 @@
-import scala.language.implicitConversions
 import scas.{int2bigInt, int2powerProduct}
 import scas.power.Lexicographic
 
