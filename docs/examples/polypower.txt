@@ -1,13 +1,11 @@
 // Requires : de.uni-mannheim.rz.krum#jas;2.6.5988
 
-import scala.language.implicitConversions
 import edu.jas.poly.TermOrderByName
 import edu.jas.poly.GenPolynomialRing
 import jas.{ZZ, poly2scas, coef2poly, int2bigInt, long2bigInt, bigInt2scas}
 
 val r = new poly2scas(using GenPolynomialRing(ZZ, Array("x", "y", "z"), TermOrderByName.INVLEX))
 val Array(one, x, y, z) = r.gens
-import r.implicits.given
 import r.given
 
 val p = 1 + x + y + z

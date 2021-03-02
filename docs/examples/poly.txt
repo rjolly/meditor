@@ -1,24 +1,29 @@
-import scala.language.implicitConversions
+import scala.language.experimental.genericNumberLiterals
 import scas.{<math><integers/></math>, int2bigInt}
 import scas.rendering.MathObject
 import scas.power.Lexicographic
 import scas.polynomial.TreePolynomial
 import TreePolynomial.coef2poly
-
-val r = new TreePolynomial(using <math><integers/></math>, Lexicographic[Int]("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
-val <math><list><ci>x</ci><ci>y</ci><ci>z</ci></list></math> = r.generators.toList
-import r.given
-
-val s = new TreePolynomial(using r, Lexicographic[Int]("<math><ci>a</ci></math>"))
-val <math><list><ci>a</ci></list></math> = s.generators.toList
-import s.given
+import BigInteger.given
 
 assert(BigInteger(1) + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + BigInteger(1))
-assert(<math><ci>x</ci></math> + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + <math><ci>x</ci></math>)
-assert(<math><ci>x</ci></math> + BigInteger(1) >< BigInteger(1) + <math><ci>x</ci></math>)
-assert(<math><ci>a</ci></math> + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + <math><ci>a</ci></math>)
-assert(<math><ci>a</ci></math> + BigInteger(1) >< BigInteger(1) + <math><ci>a</ci></math>)
-assert(<math><ci>a</ci></math> + <math><ci>x</ci></math> >< <math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>)
-assert((<math><ci>a</ci></math> + <math><ci>x</ci></math>).show == "<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>")
-assert((<math><ci>a</ci></math> + <math><ci>x</ci></math>).math == s.math(<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>))
-assert(MathObject(<math><ci>a</ci></math> + <math><ci>x</ci></math>).toString == "<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>")
+{
+  val r = new TreePolynomial(using <math><integers/></math>, Lexicographic[Int]("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
+  val <math><list><ci>x</ci><ci>y</ci><ci>z</ci></list></math> = r.generators.toList
+  import r.given
+
+  assert(<math><ci>x</ci></math> + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + <math><ci>x</ci></math>)
+  assert(<math><ci>x</ci></math> + BigInteger(1) >< BigInteger(1) + <math><ci>x</ci></math>)
+  {
+    val s = new TreePolynomial(using r, Lexicographic[Int]("<math><ci>a</ci></math>"))
+    val <math><list><ci>a</ci></list></math> = s.generators.toList
+    import s.given
+
+    assert(<math><ci>a</ci></math> + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + <math><ci>a</ci></math>)
+    assert(<math><ci>a</ci></math> + BigInteger(1) >< BigInteger(1) + <math><ci>a</ci></math>)
+    assert(<math><ci>a</ci></math> + <math><ci>x</ci></math> >< <math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>)
+    assert((<math><ci>a</ci></math> + <math><ci>x</ci></math>).show == "<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>")
+    assert((<math><ci>a</ci></math> + <math><ci>x</ci></math>).math == s.math(<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>))
+    assert(MathObject(<math><ci>a</ci></math> + <math><ci>x</ci></math>).toString == "<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>")
+  }
+}
