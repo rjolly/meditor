@@ -25,6 +25,10 @@ public class Code extends Transformer {
 
 	@Override
 	public String apply(final Reader reader) throws IOException {
-		return super.apply(reader).replaceAll("\r", "").replaceAll("\u00a0", " ").replaceAll(" +\n", "\n").trim();
+		return trim(super.apply(reader).replaceAll("\r", "").replaceAll("\u00a0", " ").replaceAll(" +\n", "\n"));
+	}
+
+	private String trim(String str) {
+		return str.substring(5, str.length() - 2);
 	}
 }

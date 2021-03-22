@@ -48,7 +48,6 @@ public class Files extends Transformer {
 			System.out.println(name);
 			try (final Reader reader = new InputStreamReader(file.openStream()); final Writer writer = new FileWriter(new File(dir, name))) {
 				code.apply(reader, writer);
-				writer.write("\n");
 			} catch (final FileNotFoundException e) {
 				e.printStackTrace();
 			}
