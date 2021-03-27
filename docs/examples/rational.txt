@@ -1,5 +1,5 @@
 import scala.language.experimental.genericNumberLiterals
-import scas.{<math><integers/></math>, int2bigInt, <math><rationals/></math>, bigInt2rational, %%}
+import scas.{<math><integers/></math>, <math><rationals/></math>, bigInt2rational}
 import <math><integers/></math>.given
 {
   import <math><rationals/></math>.given

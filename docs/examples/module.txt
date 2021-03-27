@@ -1,0 +1,29 @@
+import scas.{<math><integers/></math>, <math><rationals/></math>, bigInt2rational}
+import scas.power.Lexicographic
+import scas.module.{Array, ArrayModule}
+import scas.polynomial.TreePolynomial
+import TreePolynomial.coef2poly
+import <math><integers/></math>.given
+import <math><rationals/></math>.given
+{
+  val r = new TreePolynomial(using <math><rationals/></math>, Lexicographic[Int]("<math><ci>x</ci></math>"))
+  val <math><list><ci>x</ci></list></math> = r.generators.toList
+  import r.given
+
+  val v = new ArrayModule(using r)(2)
+  val e = v.generators
+  import v.given
+
+  assert (Array(<math><cn>1</cn></math>, <math><cn type="rational">1<sep/>2</cn></math>) >< e(0) + <math><cn type="rational">1<sep/>2</cn></math> *%e(1))
+  assert (Array(<math><cn>1</cn></math>, <math><ci>x</ci></math>) >< e(0) + <math><ci>x</ci></math> *%e(1))
+  assert (<math><cn>2</cn></math> *%e(0) >< e(0)%* <math><cn>2</cn></math>)
+  assert (<math><cn type="rational">1<sep/>2</cn></math> *%e(0) >< e(0)%* (<math><cn type="rational">1<sep/>2</cn></math>))
+  assert (<math><ci>x</ci></math> *%e(0) >< e(0)%* <math><ci>x</ci></math>)
+  assert (<math><cn>2</cn></math> * <math><ci>x</ci></math> *%e(0) >< e(0)%* (<math><cn>2</cn></math> * <math><ci>x</ci></math>))
+  assert (<math><cn type="rational">1<sep/>2</cn></math> * <math><ci>x</ci></math> *%e(0) >< e(0)%* (<math><cn type="rational">1<sep/>2</cn></math> * <math><ci>x</ci></math>))
+  assert (e(0) + e(1) >< e(0) + e(1))
+  assert ((<math><cn>2</cn></math> *%e(0) + e(1)).show == "Array(<math><cn>2</cn></math>, <math><cn>1</cn></math>)")
+  assert ((<math><cn type="rational">1<sep/>2</cn></math> *%e(0) + e(1)).show == "Array(<math><cn type="rational">1<sep/>2</cn></math>, <math><cn>1</cn></math>)")
+  //assert (v.toString == (<math><apply><power/><apply><rationals/><list><ci>x</ci></list></apply><cn>2</cn></apply></math>).toString)
+  //assert (v.math == (<math><apply><power/><apply><rationals/><list><ci>x</ci></list></apply><cn>2</cn></apply></math>).math)
+}
