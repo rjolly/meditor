@@ -1,4 +1,4 @@
-import scas.<math><integers/></math>
+import scas.base.<math><integers/></math>
 import scas.power.Lexicographic
 import scas.polynomial.TreePolynomial
 import <math><integers/></math>.given

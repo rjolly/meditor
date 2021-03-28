@@ -1,5 +1,4 @@
-import scala.language.experimental.genericNumberLiterals
-import scas.<math><integers/></math>
+import scas.base.<math><integers/></math>
 import scas.rendering.MathObject
 import scas.power.Lexicographic
 import scas.polynomial.TreePolynomial

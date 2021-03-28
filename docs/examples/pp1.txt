@@ -1,4 +1,4 @@
-import scas.<math><integers/></math>
+import scas.base.<math><integers/></math>
 import scas.power.Lexicographic
 import <math><integers/></math>.int2bigInt
 
