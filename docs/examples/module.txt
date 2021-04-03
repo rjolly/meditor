@@ -13,16 +13,16 @@ import <math><rationals/></math>.given
   val e = v.generators
   import v.given
 
-  assert (Array(<math><cn>1</cn></math>, <math><cn type="rational">1<sep/>2</cn></math>) >< e(0) + <math><cn type="rational">1<sep/>2</cn></math> *%e(1))
-  assert (Array(<math><cn>1</cn></math>, <math><ci>x</ci></math>) >< e(0) + <math><ci>x</ci></math> *%e(1))
+  assert (<math><vector><cn>1</cn><cn type="rational">1<sep/>2</cn></vector></math> >< e(0) + <math><cn type="rational">1<sep/>2</cn></math> *%e(1))
+  assert (<math><vector><cn>1</cn><ci>x</ci></vector></math> >< e(0) + <math><ci>x</ci></math> *%e(1))
   assert (<math><cn>2</cn></math> *%e(0) >< e(0)%* <math><cn>2</cn></math>)
   assert (<math><cn type="rational">1<sep/>2</cn></math> *%e(0) >< e(0)%* (<math><cn type="rational">1<sep/>2</cn></math>))
   assert (<math><ci>x</ci></math> *%e(0) >< e(0)%* <math><ci>x</ci></math>)
   assert (<math><cn>2</cn></math> * <math><ci>x</ci></math> *%e(0) >< e(0)%* (<math><cn>2</cn></math> * <math><ci>x</ci></math>))
   assert (<math><cn type="rational">1<sep/>2</cn></math> * <math><ci>x</ci></math> *%e(0) >< e(0)%* (<math><cn type="rational">1<sep/>2</cn></math> * <math><ci>x</ci></math>))
   assert (e(0) + e(1) >< e(0) + e(1))
-  assert ((<math><cn>2</cn></math> *%e(0) + e(1)).show == "Array(<math><cn>2</cn></math>, <math><cn>1</cn></math>)")
-  assert ((<math><cn type="rational">1<sep/>2</cn></math> *%e(0) + e(1)).show == "Array(<math><cn type="rational">1<sep/>2</cn></math>, <math><cn>1</cn></math>)")
+  assert ((<math><cn>2</cn></math> *%e(0) + e(1)).show == "<math><vector><cn>2</cn><cn>1</cn></vector></math>")
+  assert ((<math><cn type="rational">1<sep/>2</cn></math> *%e(0) + e(1)).show == "<math><vector><cn type="rational">1<sep/>2</cn><cn>1</cn></vector></math>")
   //assert (v.toString == (<math><apply><power/><apply><rationals/><list><ci>x</ci></list></apply><cn>2</cn></apply></math>).toString)
   //assert (v.math == (<math><apply><power/><apply><rationals/><list><ci>x</ci></list></apply><cn>2</cn></apply></math>).math)
 }
