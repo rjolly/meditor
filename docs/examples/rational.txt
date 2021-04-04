@@ -1,4 +1,4 @@
-import scas.base.{<math><integers/></math>, <math><rationals/></math>}
+import scas.base.conversion.{<math><integers/></math>, <math><rationals/></math>}
 import <math><integers/></math>.given
 {
   import <math><rationals/></math>.given

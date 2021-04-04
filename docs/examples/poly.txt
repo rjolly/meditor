@@ -1,4 +1,4 @@
-import scas.base.<math><integers/></math>
+import scas.base.conversion.<math><integers/></math>
 import scas.rendering.MathObject
 import scas.power.conversion.Lexicographic
 import scas.polynomial.conversion.TreePolynomial
@@ -12,16 +12,15 @@ assert(BigInteger(1) + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + BigI
 
   assert(<math><ci>x</ci></math> + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + <math><ci>x</ci></math>)
   assert(<math><ci>x</ci></math> + BigInteger(1) >< BigInteger(1) + <math><ci>x</ci></math>)
-  {
-    val s = new TreePolynomial(using r, Lexicographic[Int]("<math><ci>a</ci></math>"))
-    val <math><list><ci>a</ci></list></math> = s.generators.toList
-    import s.given
 
-    assert(<math><ci>a</ci></math> + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + <math><ci>a</ci></math>)
-    assert(<math><ci>a</ci></math> + BigInteger(1) >< BigInteger(1) + <math><ci>a</ci></math>)
-    assert(<math><ci>a</ci></math> + <math><ci>x</ci></math> >< <math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>)
-    assert((<math><ci>a</ci></math> + <math><ci>x</ci></math>).show == "<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>")
-    assert((<math><ci>a</ci></math> + <math><ci>x</ci></math>).math == s.math(<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>))
-    assert(MathObject(<math><ci>a</ci></math> + <math><ci>x</ci></math>).toString == "<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>")
-  }
+  val s = new TreePolynomial(using r, Lexicographic[Int]("<math><ci>a</ci></math>"))
+  val <math><list><ci>a</ci></list></math> = s.generators.toList
+  import s.given
+
+  assert(<math><ci>a</ci></math> + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + <math><ci>a</ci></math>)
+  assert(<math><ci>a</ci></math> + BigInteger(1) >< BigInteger(1) + <math><ci>a</ci></math>)
+  assert(<math><ci>a</ci></math> + <math><ci>x</ci></math> >< <math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>)
+  assert((<math><ci>a</ci></math> + <math><ci>x</ci></math>).show == "<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>")
+  assert((<math><ci>a</ci></math> + <math><ci>x</ci></math>).math == s.math(<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>))
+  assert(MathObject(<math><ci>a</ci></math> + <math><ci>x</ci></math>).toString == "<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>")
 }

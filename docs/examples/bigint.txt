@@ -1,4 +1,4 @@
-import scas.base.<math><integers/></math>
+import scas.base.conversion.<math><integers/></math>
 import <math><integers/></math>.{abs, unary_-, given}
 
 assert(BigInteger(1) + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + BigInteger(1))

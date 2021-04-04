@@ -1,6 +1,6 @@
-import scas.base.{<math><integers/></math>, <math><rationals/></math>}
+import scas.base.conversion.{<math><integers/></math>, <math><rationals/></math>}
 import scas.power.conversion.Lexicographic
-import scas.module.{Array, ArrayModule}
+import scas.module.conversion.{Array, ArrayModule}
 import scas.polynomial.conversion.TreePolynomial
 import <math><integers/></math>.given
 import <math><rationals/></math>.given
