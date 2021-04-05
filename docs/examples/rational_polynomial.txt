@@ -1,16 +1,13 @@
-import scas.base.conversion.{<math><integers/></math>, <math><rationals/></math>}
+import scas.base.conversion.{BigInteger, Rational}
 import scas.power.conversion.Lexicographic
 import scas.polynomial.conversion.TreePolynomial
-import <math><integers/></math>.given
-import <math><rationals/></math>.given
+import BigInteger.int2bigInt
+import Rational.{ring2quotient, %%}
+import scas.base.<math><rationals/></math>
 
-assert (Rational(<math><cn>1</cn></math>) >< <math><cn>1</cn></math>)
-assert (Rational("<math><cn>1</cn></math>", "<math><cn>2</cn></math>") >< <math><cn type="rational">1<sep/>2</cn></math>)
-{
-  val r = new TreePolynomial(using <math><rationals/></math>, Lexicographic[Int]("<math><ci>x</ci></math>"))
-  val <math><list><ci>x</ci></list></math> = r.generators.toList
-  import r.given
+val r = new TreePolynomial(using <math><rationals/></math>, Lexicographic[Int]("<math><ci>x</ci></math>"))
+val <math><list><ci>x</ci></list></math> = r.generators.toList
+import r.given
 
-  assert (<math><ci>x</ci></math> + <math><cn type="rational">1<sep/>2</cn></math> >< <math><cn type="rational">1<sep/>2</cn></math> + <math><ci>x</ci></math>)
-  assert (<math><ci>x</ci></math> + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + <math><ci>x</ci></math>)
-}
+assert (<math><ci>x</ci></math> + <math><cn type="rational">1<sep/>2</cn></math> >< <math><cn type="rational">1<sep/>2</cn></math> + <math><ci>x</ci></math>)
+assert (<math><ci>x</ci></math> + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + <math><ci>x</ci></math>)

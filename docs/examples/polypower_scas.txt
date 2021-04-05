@@ -1,24 +1,24 @@
-import scas.base.conversion.<math><integers/></math>
+import scas.base.conversion.BigInteger
 import scas.power.Lexicographic
 import scas.polynomial.conversion.TreePolynomial
-import <math><integers/></math>.given
-{
-  val r = new TreePolynomial(using <math><integers/></math>, Lexicographic[Int]("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
-  // val r = new TreePolynomial(using <math><integers/></math>, Lexicographic[Long]("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
-  val <math><list><ci>x</ci><ci>y</ci><ci>z</ci></list></math> = r.generators.toList
-  import r.given
+import BigInteger.{int2bigInt, long2bigInt}
+import scas.base.<math><integers/></math>
 
-  val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><ci>x</ci></apply><ci>y</ci></apply><ci>z</ci></apply></math>
-  // val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><apply><power/><ci>x</ci><cn>2147483647</cn></apply></apply><apply><power/><ci>y</ci><cn>2147483647</cn></apply></apply><apply><power/><ci>z</ci><cn>2147483647</cn></apply></apply></math>
-  // val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>10000000001</cn><apply><times/><cn>10000000001</cn><ci>x</ci></apply></apply><apply><times/><cn>10000000001</cn><ci>y</ci></apply></apply><apply><times/><cn>10000000001</cn><ci>z</ci></apply></apply></math>
-  println("p: " + p.show)
-  val q = p \ 20
-  println("q: " + q.size)
-  val q1 = q + <math><cn>1</cn></math>
-  println("q1: " + q1.size)
-  var t = System.currentTimeMillis();
-  val q2 = q * q1
-  t = System.currentTimeMillis() - t;
-  println("q2: " + q2.size)
-  println("t: " + t)
-}
+val r = new TreePolynomial(using <math><integers/></math>, Lexicographic[Int]("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
+// val r = new TreePolynomial(using <math><integers/></math>, Lexicographic[Long]("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
+val <math><list><ci>x</ci><ci>y</ci><ci>z</ci></list></math> = r.generators.toList
+import r.given
+
+val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><ci>x</ci></apply><ci>y</ci></apply><ci>z</ci></apply></math>
+// val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><apply><power/><ci>x</ci><cn>2147483647</cn></apply></apply><apply><power/><ci>y</ci><cn>2147483647</cn></apply></apply><apply><power/><ci>z</ci><cn>2147483647</cn></apply></apply></math>
+// val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>10000000001</cn><apply><times/><cn>10000000001</cn><ci>x</ci></apply></apply><apply><times/><cn>10000000001</cn><ci>y</ci></apply></apply><apply><times/><cn>10000000001</cn><ci>z</ci></apply></apply></math>
+println("p: " + p.show)
+val q = p \ 20
+println("q: " + q.size)
+val q1 = q + <math><cn>1</cn></math>
+println("q1: " + q1.size)
+var t = System.currentTimeMillis();
+val q2 = q * q1
+t = System.currentTimeMillis() - t;
+println("q2: " + q2.size)
+println("t: " + t)

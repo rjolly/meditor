@@ -1,7 +1,7 @@
-import scas.base.conversion.{<math><integers/></math>, ModInteger}
-import <math><integers/></math>.int2bigInt
+import scas.base.conversion.{BigInteger, ModInteger}
+import BigInteger.int2bigInt
 
-val r = <math><msub><integers/><cn>7</cn></msub></math>
+val r = ModInteger(7)
 import r.given
 
 assert (BigInteger(4) + <math><cn>4</cn></math> >< <math><cn>4</cn></math> + BigInteger(4))
