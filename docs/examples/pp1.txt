@@ -1,5 +1,6 @@
 import scas.power.conversion.Lexicographic
-import scas.base.conversion.<math><integers/></math>.int2bigInt
+import scas.base.conversion.<math><integers/></math>
+import <math><integers/></math>.int2bigInt
 
 val m = Lexicographic(0)("<math><ci>x</ci></math>")
 val <math><list><ci>x</ci></list></math> = m.generators.toList
