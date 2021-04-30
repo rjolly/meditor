@@ -1,6 +1,6 @@
-import scas.base.ModInteger
+import scas.base.conversion.{<math><integers/></math>, ModInteger}
 import scas.structure.conversion.Product
-import scas.base.conversion.BigInteger.given
+import <math><integers/></math>.given
 
 val r = new Product(using ModInteger("3"), ModInteger("5"))
 import r.given
