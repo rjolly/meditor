@@ -1,4 +1,5 @@
 import scas.base.conversion.{<math><integers/></math>, ModInteger}
+import scas.module.conversion.{Array, ArrayModule}
 import scas.structure.conversion.Product
 import <math><integers/></math>.given
 
@@ -9,3 +10,13 @@ assert (<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> + <m
 assert (r.toString == <math><apply><cartesianproduct/><msub><integers/><cn>3</cn></msub><msub><integers/><cn>5</cn></msub></apply></math>.toString)
 assert (r.math == <math><apply><cartesianproduct/><msub><integers/><cn>3</cn></msub><msub><integers/><cn>5</cn></msub></apply></math>.math)
 assert (r.characteristic >< <math><cn>15</cn></math>)
+
+val s = new ArrayModule(using Product(ModInteger("3"), ModInteger("5")))(2)
+val e = s.generators
+import s.given
+
+assert (Array(<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math>, <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math>) >< <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(0) + <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(1))
+assert (<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(0) >< e(0)%* <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math>)
+assert ((<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(0) + <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(1)).show == "<math><vector><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></vector></math>")
+assert (s.toString == <math><msup><apply><cartesianproduct/><msub><integers/><cn>3</cn></msub><msub><integers/><cn>5</cn></msub></apply><cn>2</cn></msup></math>.toString)
+assert (s.math == <math><msup><apply><cartesianproduct/><msub><integers/><cn>3</cn></msub><msub><integers/><cn>5</cn></msub></apply><cn>2</cn></msup></math>.math)
