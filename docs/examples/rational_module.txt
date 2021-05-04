@@ -1,0 +1,17 @@
+import scas.base.conversion.{<math><integers/></math>, <math><rationals/></math>}
+import scas.module.conversion.{Array, ArrayModule}
+import <math><integers/></math>.int2bigInt
+import <math><rationals/></math>.{ring2quotient, %%}
+
+val s = new ArrayModule(using <math><rationals/></math>)(2)
+val e = s.generators
+import s.given
+
+assert (<math><vector><cn>1</cn><cn type="rational">1<sep/>2</cn></vector></math> >< e(0) + <math><cn type="rational">1<sep/>2</cn></math> *%e(1))
+assert (<math><cn>2</cn></math> *%e(0) >< e(0)%* <math><cn>2</cn></math>)
+assert (<math><cn type="rational">1<sep/>2</cn></math> *%e(0) >< e(0)%* (<math><cn type="rational">1<sep/>2</cn></math>))
+assert (e(0) + e(1) >< e(0) + e(1))
+assert ((<math><cn>2</cn></math> *%e(0) + e(1)).show == <math><vector><cn>2</cn><cn>1</cn></vector></math>.show)
+assert ((1%%2 *%e(0) + e(1)).show == <math><vector><cn type="rational">1<sep/>2</cn><cn>1</cn></vector></math>.show)
+assert (s.toString == <math><msup><rationals/><cn>2</cn></msup></math>.toString)
+assert (s.math == <math><msup><rationals/><cn>2</cn></msup></math>.math)
