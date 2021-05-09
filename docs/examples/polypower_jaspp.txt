@@ -2,7 +2,7 @@
 
 import edu.jas.poly.TermOrderByName
 import scas.base.conversion.<math><integers/></math>
-import scas.polynomial.tree.Polynomial
+import scas.polynomial.tree.mutable.Polynomial
 import jas.PowerProduct
 import <math><integers/></math>.{int2bigInt, long2bigInt}
 
