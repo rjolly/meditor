@@ -1,7 +1,7 @@
 import scas.base.conversion.{<math><integers/></math>, ModInteger}
 import scas.module.conversion.{Array, ArrayModule}
 import scas.structure.conversion.Product
-import <math><integers/></math>.given
+import <math><integers/></math>.int2bigInt
 
 val r = new Product(using ModInteger("3"), ModInteger("5"))
 import r.given
@@ -11,7 +11,7 @@ assert (<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> \ Bi
 assert (<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> \ 2 >< <math><apply><cartesianproduct/><cn>1</cn><cn>4</cn></apply></math>)
 assert (r.toString == <math><apply><cartesianproduct/><msub><integers/><cn>3</cn></msub><msub><integers/><cn>5</cn></msub></apply></math>.toString)
 assert (r.math == <math><apply><cartesianproduct/><msub><integers/><cn>3</cn></msub><msub><integers/><cn>5</cn></msub></apply></math>.math)
-assert (r.characteristic >< <math><cn>15</cn></math>)
+assert (r.characteristic.intValue == <math><cn>15</cn></math>)
 
 val s = new ArrayModule(using Product(ModInteger("3"), ModInteger("5")))(2)
 val e = s.generators
