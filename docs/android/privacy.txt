@@ -1,0 +1,1 @@
+meditor does not access any personal and sensitive user data.

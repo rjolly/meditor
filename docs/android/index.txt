@@ -25,4 +25,6 @@ Boolean algebra
 
 test.txt
 changes.txt
+privacy.txt
+
 https://play.google.com/store/apps/details?id=scas.editor.android
