@@ -1,4 +1,4 @@
-import scas.base.conversion.{<math><integers/></math>, ModInteger}
+import scas.base.{<math><integers/></math>, ModInteger}
 import <math><integers/></math>.int2bigInt
 
 val r = ModInteger("7")
@@ -7,4 +7,4 @@ import r.given
 assert (BigInteger("4") + <math><cn>4</cn></math> >< <math><cn>4</cn></math> + BigInteger("4"))
 assert (BigInteger("4") + <math><cn>4</cn></math> >< <math><cn>1</cn></math>)
 assert (BigInteger("4") * <math><cn>2</cn></math> >< <math><cn>1</cn></math>)
-assert (BigInteger("4") \ 2 >< <math><cn>2</cn></math>)
+assert (BigInteger("4") \ <math><cn>2</cn></math> >< <math><cn>2</cn></math>)

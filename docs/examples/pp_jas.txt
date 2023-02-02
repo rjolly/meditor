@@ -1,8 +1,8 @@
 // Requires : de.uni-mannheim.rz.krum#jas;2.7.10
 
 import edu.jas.poly.TermOrderByName
-import jas.conversion.PowerProduct
-import scas.base.conversion.BigInteger
+import jas.PowerProduct
+import scas.base.BigInteger
 import BigInteger.int2bigInt
 
 val m = PowerProduct("x")(TermOrderByName.LEX)
