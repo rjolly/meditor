@@ -1,7 +1,7 @@
 import scas.base.<math><integers/></math>
 import scas.power.Lexicographic
 import scas.polynomial.tree.WeylAlgebra
-import <math><integers/></math>.int2bigInt
+import <math><integers/></math>.given
 
 val r = WeylAlgebra(using <math><integers/></math>, Lexicographic[Int]("<math><ci>a</ci></math>", "<math><ci>x</ci></math>", "<math><ci>b</ci></math>", "<math><ci>y</ci></math>"))
 val <math><list><ci>a</ci><ci>x</ci><ci>b</ci><ci>y</ci></list></math> = r.generators.toList

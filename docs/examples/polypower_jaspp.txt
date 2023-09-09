@@ -4,7 +4,7 @@ import edu.jas.poly.TermOrderByName
 import scas.base.<math><integers/></math>
 import scas.polynomial.tree.mutable.Polynomial
 import jas.PowerProduct
-import <math><integers/></math>.{int2bigInt, long2bigInt}
+import <math><integers/></math>.given
 
 val r = Polynomial(using BigInteger, PowerProduct("x", "y", "z")(TermOrderByName.INVLEX))
 val Array(x, y, z) = r.generators

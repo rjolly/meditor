@@ -1,7 +1,7 @@
 import scas.base.<math><integers/></math>
 import scas.power.Lexicographic
 import scas.polynomial.tree.mutable.Polynomial
-import <math><integers/></math>.{int2bigInt, long2bigInt}
+import <math><integers/></math>.given
 
 val r = Polynomial(using <math><integers/></math>, Lexicographic[Int]("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
 // val r = Polynomial(using <math><integers/></math>, Lexicographic[Long]("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))

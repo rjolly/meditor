@@ -1,5 +1,5 @@
 import scas.base.{<math><integers/></math>, <math><rationals/></math>}
-import <math><integers/></math>.int2bigInt
+import <math><integers/></math>.given
 import <math><rationals/></math>.given
 
 assert (Rational("<math><cn>1</cn></math>") >< <math><cn>1</cn></math>)

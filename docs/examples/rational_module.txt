@@ -1,7 +1,7 @@
 import scas.base.{<math><integers/></math>, <math><rationals/></math>}
 import scas.module.{Array, ArrayModule}
-import <math><integers/></math>.int2bigInt
-import <math><rationals/></math>.{ring2quotient, %%}
+import <math><integers/></math>.given
+import <math><rationals/></math>.given
 
 val s = new ArrayModule(using <math><rationals/></math>)(2)
 val e = s.generators
