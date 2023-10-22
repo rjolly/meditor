@@ -1,0 +1,13 @@
+import scas.base.{<math><integers/></math>, <math><rationals/></math>}
+import scas.residue.tree.AlgebraicNumber
+import scas.variable.Variable
+import <math><integers/></math>.given
+import <math><rationals/></math>.given
+
+val r = AlgebraicNumber(<math><rationals/></math>)(Variable.sqrt(BigInteger("2")))
+val <math><list><ci>x</ci></list></math> = r.generators
+import r.{sqrt, given}
+r.update(<math><apply><minus/><cn>2</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></math>)
+
+assert (<math><cn>2</cn></math> >< <math><apply><power/><ci>x</ci><cn>2</cn></apply></math>)
+assert (<math><ci>x</ci></math> >< <math><apply><root/><cn>2</cn></apply></math>)

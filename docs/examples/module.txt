@@ -6,7 +6,7 @@ import <math><integers/></math>.given
 import <math><rationals/></math>.given
 
 val r = Polynomial(using <math><rationals/></math>, Lexicographic[Int]("<math><ci>x</ci></math>"))
-val <math><list><ci>x</ci></list></math> = r.generators.toList
+val <math><list><ci>x</ci></list></math> = r.generators
 import r.given
 
 val s = new ArrayModule(using <math><apply><rationals/><list><ci>x</ci></list></apply></math>)(2)

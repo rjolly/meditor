@@ -1,12 +1,11 @@
 import scas.base.<math><integers/></math>
-import scas.power.Lexicographic
-import scas.polynomial.tree.WeylAlgebra
+import scas.polynomial.tree.SolvablePolynomial
 import <math><integers/></math>.given
 
-val r = WeylAlgebra(using <math><integers/></math>, Lexicographic[Int]("<math><ci>a</ci></math>", "<math><ci>x</ci></math>", "<math><ci>b</ci></math>", "<math><ci>y</ci></math>"))
-val <math><list><ci>a</ci><ci>x</ci><ci>b</ci><ci>y</ci></list></math> = r.generators.toList
+val r = SolvablePolynomial.weylAlgebra(<math><integers/></math>)("<math><ci>a</ci></math>", "<math><ci>x</ci></math>", "<math><ci>b</ci></math>", "<math><ci>y</ci></math>")
+val <math><list><ci>a</ci><ci>x</ci><ci>b</ci><ci>y</ci></list></math> = r.generators
 import r.given
 
 assert (<math><ci>b</ci></math> * <math><ci>a</ci></math> + <math><ci>y</ci></math> * <math><ci>x</ci></math> >< <math><apply><plus/><apply><plus/><cn>2</cn><apply><times/><ci>a</ci><ci>b</ci></apply></apply><apply><times/><ci>x</ci><ci>y</ci></apply></apply></math>)
-assert (r.toString == <math><apply><apply><integers/><list><ci>a</ci><ci>x</ci><ci>b</ci><ci>y</ci></list></apply><list><apply><minus/><apply><plus/><cn>1</cn><apply><times/><ci>a</ci><ci>b</ci></apply></apply><apply><times/><ci>b</ci><ci>a</ci></apply></apply><apply><minus/><apply><plus/><cn>1</cn><apply><times/><ci>x</ci><ci>y</ci></apply></apply><apply><times/><ci>y</ci><ci>x</ci></apply></apply></list></apply></math>.toString)
-assert (r.math == <math><apply><apply><integers/><list><ci>a</ci><ci>x</ci><ci>b</ci><ci>y</ci></list></apply><list><apply><minus/><apply><plus/><cn>1</cn><apply><times/><ci>a</ci><ci>b</ci></apply></apply><apply><times/><ci>b</ci><ci>a</ci></apply></apply><apply><minus/><apply><plus/><cn>1</cn><apply><times/><ci>x</ci><ci>y</ci></apply></apply><apply><times/><ci>y</ci><ci>x</ci></apply></apply></list></apply></math>.math)
+assert (r.toString == <math><msub><apply><integers/><list><ci>a</ci><ci>x</ci><ci>b</ci><ci>y</ci></list></apply><list><apply><minus/><apply><plus/><cn>1</cn><apply><times/><ci>a</ci><ci>b</ci></apply></apply><apply><times/><ci>b</ci><ci>a</ci></apply></apply><apply><minus/><apply><plus/><cn>1</cn><apply><times/><ci>x</ci><ci>y</ci></apply></apply><apply><times/><ci>y</ci><ci>x</ci></apply></apply></list></msub></math>.toString)
+assert (r.math == <math><msub><apply><integers/><list><ci>a</ci><ci>x</ci><ci>b</ci><ci>y</ci></list></apply><list><apply><minus/><apply><plus/><cn>1</cn><apply><times/><ci>a</ci><ci>b</ci></apply></apply><apply><times/><ci>b</ci><ci>a</ci></apply></apply><apply><minus/><apply><plus/><cn>1</cn><apply><times/><ci>x</ci><ci>y</ci></apply></apply><apply><times/><ci>y</ci><ci>x</ci></apply></apply></list></msub></math>.math)

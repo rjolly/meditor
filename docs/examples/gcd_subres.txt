@@ -1,0 +1,12 @@
+import scas.base.<math><integers/></math>
+import scas.polynomial.tree.MultivariatePolynomial
+import <math><integers/></math>.given
+
+val r = MultivariatePolynomial.withSubresGCD(<math><integers/></math>)("x")
+val <math><list><ci>x</ci></list></math> = r.generators
+import r.{gcd, given}
+
+assert (gcd(<math><cn>0</cn></math>, <math><cn>0</cn></math>) >< <math><cn>0</cn></math>)
+assert (gcd(<math><ci>x</ci></math>, <math><cn>0</cn></math>) >< <math><ci>x</ci></math>)
+assert (gcd(<math><cn>1</cn></math>, <math><ci>x</ci></math>) >< <math><cn>1</cn></math>)
+assert (gcd((<math><apply><plus/><cn>1</cn><ci>x</ci></apply></math>)*(<math><apply><plus/><cn>1</cn><ci>x</ci></apply></math>), (<math><apply><plus/><cn>1</cn><ci>x</ci></apply></math>)*(<math><apply><minus/><cn>1</cn><ci>x</ci></apply></math>)) >< <math><apply><plus/><cn>1</cn><ci>x</ci></apply></math>)

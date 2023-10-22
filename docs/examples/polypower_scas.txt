@@ -5,7 +5,7 @@ import <math><integers/></math>.given
 
 val r = Polynomial(using <math><integers/></math>, Lexicographic[Int]("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
 // val r = Polynomial(using <math><integers/></math>, Lexicographic[Long]("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
-val <math><list><ci>x</ci><ci>y</ci><ci>z</ci></list></math> = r.generators.toList
+val <math><list><ci>x</ci><ci>y</ci><ci>z</ci></list></math> = r.generators
 import r.given
 
 val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><ci>x</ci></apply><ci>y</ci></apply><ci>z</ci></apply></math>
