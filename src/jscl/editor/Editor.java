@@ -864,6 +864,8 @@ public class Editor extends ScriptSupport {
                 jTextArea1 = new javax.swing.JTextArea();
                 jLabel6 = new javax.swing.JLabel();
                 jTextField3 = new javax.swing.JTextField();
+                jLabel11 = new javax.swing.JLabel();
+                jTextField8 = new javax.swing.JTextField();
                 jCheckBox1 = new javax.swing.JCheckBox();
                 jPanel5 = new javax.swing.JPanel();
                 jLabel7 = new javax.swing.JLabel();
@@ -1015,6 +1017,8 @@ public class Editor extends ScriptSupport {
 
                 jLabel6.setText("Stylesheet :");
 
+                jLabel11.setText("Renderer :");
+
                 jCheckBox1.setText("Rendering");
                 jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1032,15 +1036,17 @@ public class Editor extends ScriptSupport {
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel6)
                                                 .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addComponent(jLabel5))
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel11))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                                        .addComponent(jTextField3)
+                                        .addComponent(jComboBox1, 0, 279, Short.MAX_VALUE)
                                         .addGroup(jPanel4Layout.createSequentialGroup()
                                                 .addComponent(jCheckBox1)
                                                 .addGap(0, 0, Short.MAX_VALUE))
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                                        .addComponent(jTextField3)
-                                        .addComponent(jComboBox1, 0, 279, Short.MAX_VALUE))
+                                        .addComponent(jTextField8))
                                 .addContainerGap())
                 );
                 jPanel4Layout.setVerticalGroup(
@@ -1061,8 +1067,11 @@ public class Editor extends ScriptSupport {
                                         .addComponent(jLabel6)
                                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox1)
-                                .addContainerGap())
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel11))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox1))
                 );
 
                 jTabbedPane1.addTab("Engine", jPanel4);
@@ -1390,6 +1399,7 @@ public class Editor extends ScriptSupport {
         private javax.swing.JComboBox jComboBox1;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel10;
+        private javax.swing.JLabel jLabel11;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JLabel jLabel3;
         private javax.swing.JLabel jLabel4;
@@ -1446,6 +1456,7 @@ public class Editor extends ScriptSupport {
         private javax.swing.JTextField jTextField5;
         private javax.swing.JTextField jTextField6;
         private javax.swing.JTextField jTextField7;
+        private javax.swing.JTextField jTextField8;
         private javax.swing.JToolBar jToolBar1;
         private jscl.editor.MathTextPane mathTextPane1;
         private linoleum.application.OptionPanel optionPanel1;
