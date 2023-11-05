@@ -637,7 +637,7 @@ public class Editor extends ScriptSupport {
 
 		EvalWorker(final boolean eval) {
 			mathTextPane1.setCursor(waitCursor);
-			data = selected == null?eval?"":mathTextPane1.getText():selected;
+			data = selected == null?mathTextPane1.getText():selected;
 			final int n = data.length();
 			newline = n > 0 && "\n".equals(data.substring(n - 1));
 			this.eval = eval;
@@ -645,7 +645,7 @@ public class Editor extends ScriptSupport {
 
 		@Override
 		public Object doInBackground() throws ScriptException, IOException  {
-			return getEngine().eval(code(data));
+			return getEngine().eval(code(eval?insertRenderer(data):data));
 		}
 
 		@Override
@@ -720,6 +720,27 @@ public class Editor extends ScriptSupport {
 				return plot.apply(value);
 			}
 		};
+	}
+
+	private String insertRenderer(final String str) {
+		final String name = getEngine().getFactory().getNames().get(0);
+		final boolean rendering = getBooleanPref(getKey(name, "rendering"));
+		final String renderer = getPref(getKey(name, "renderer"));
+		if (rendering && !renderer.isEmpty()) {
+			return insertAfterNewline(str, renderer);
+		}
+		return str;
+	}
+
+	private String insertAfterNewline(final String str, final String renderer) {
+		int n = str.trim().lastIndexOf("\n") + 1;
+		return str.substring(0, n) + insertAfterSpace(str.substring(n), renderer);
+	}
+
+	private String insertAfterSpace(final String str, final String renderer) {
+		final String s = str.trim();
+		int n = str.indexOf(s);
+		return str.substring(0, n) + renderer + "(" + s + ")" + str.substring(n + s.length());
 	}
 
 	private String code(final String str) throws IOException {
@@ -820,6 +841,7 @@ public class Editor extends ScriptSupport {
 		name = getSelectedLanguage();
 		jTextArea1.setText(getPref(getKey(name, "init")));
 		jTextField3.setText(getPref(getKey(name, "stylesheet")));
+		jTextField8.setText(getPref(getKey(name, "renderer")));
 		jCheckBox1.setSelected(getBooleanPref(getKey(name, "rendering")));
 	}
 
@@ -837,6 +859,7 @@ public class Editor extends ScriptSupport {
 		if (name != null) {
 			putPref(getKey(name, "init"), jTextArea1.getText());
 			putPref(getKey(name, "stylesheet"), jTextField3.getText());
+			putPref(getKey(name, "renderer"), jTextField8.getText());
 			putBooleanPref(getKey(name, "rendering"), jCheckBox1.isSelected());
 		}
 	}
