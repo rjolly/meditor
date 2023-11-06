@@ -1,0 +1,10 @@
+import scas.residue.GaloisField
+import scas.base.<math><integers/></math>
+import <math><integers/></math>.given
+
+val r = GaloisField("<math><cn>2</cn></math>")("<math><ci>&#x003B1;</ci></math>")
+val List(<math><ci>&#x003B1;</ci></math>) = r.generators
+import r.given
+r.update(<math><apply><plus/><apply><plus/><cn>1</cn><ci>&#x003B1;</ci></apply><apply><power/><ci>&#x003B1;</ci><cn>2</cn></apply></apply></math>)
+
+assert (<math><ci>&#x003B1;</ci></math>\<math><cn>2</cn></math> >< <math><apply><plus/><cn>1</cn><ci>&#x003B1;</ci></apply></math>)

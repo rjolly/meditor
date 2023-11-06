@@ -1,7 +1,7 @@
 import scas.base.{<math><integers/></math>, ModInteger}
 import <math><integers/></math>.given
 
-val r = ModInteger("7")
+val r = <math><msub><integers/><cn>7</cn></msub></math>
 import r.given
 
 assert (BigInteger("4") + <math><cn>4</cn></math> >< <math><cn>4</cn></math> + BigInteger("4"))

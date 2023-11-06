@@ -1,5 +1,5 @@
 import scas.base.{<math><integers/></math>, <math><rationals/></math>}
-import scas.residue.tree.AlgebraicNumber
+import scas.residue.AlgebraicNumber
 import scas.variable.Variable
 import <math><integers/></math>.given
 import <math><rationals/></math>.given

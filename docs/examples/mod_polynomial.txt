@@ -9,4 +9,3 @@ import r.given
 
 assert(<math><cn>1</cn></math> + <math><ci>x</ci></math> + <math><cn>1</cn></math> >< <math><ci>x</ci></math>)
 assert(r.toString == <math><apply><msub><integers/><cn>2</cn></msub><list><ci>x</ci></list></apply></math>.toString)
-assert(r.math == <math><apply><msub><integers/><cn>2</cn></msub><list><ci>x</ci></list></apply></math>.math)

@@ -1,0 +1,10 @@
+import scas.structure.Group
+import scas.base.<math><integers/></math>
+import <math><integers/></math>.given
+
+val a = BigInteger("<math><cn>1</cn></math>")
+val r = Group(<math><integers/></math>)
+import r.given
+
+assert (a * a >< <math><cn>2</cn></math>)
+assert (a \ <math><cn>-1</cn></math> >< <math><cn>-1</cn></math>)
