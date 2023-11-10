@@ -10,4 +10,4 @@ import r.given
 
 assert (<math><ci>x</ci></math> + <math><cn type="rational">1<sep/>2</cn></math> >< <math><cn type="rational">1<sep/>2</cn></math> + <math><ci>x</ci></math>)
 assert (<math><ci>x</ci></math> + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + <math><ci>x</ci></math>)
-assert (r.toString == <math><apply><rationals/><list><ci>x</ci></list></apply></math>.toString)
+assert (r == <math><apply><rationals/><list><ci>x</ci></list></apply></math>)

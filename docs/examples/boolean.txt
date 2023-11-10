@@ -1,0 +1,4 @@
+import scas.base.<math><ci>Boolean</ci></math>
+import <math><ci>Boolean</ci></math>.given
+
+assert (<math><true/></math> ^ <math><true/></math> >< <math><false/></math>)

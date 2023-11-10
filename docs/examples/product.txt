@@ -18,5 +18,5 @@ import s.given
 
 assert (Array(<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math>, <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math>) >< <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(0) + <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(1))
 assert (<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(0) >< e(0)%* <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math>)
-assert ((<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(0) + <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(1)).show == "<math><vector><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></vector></math>")
-assert (s.toString == <math><msup><apply><cartesianproduct/><msub><integers/><cn>3</cn></msub><msub><integers/><cn>5</cn></msub></apply><cn>2</cn></msup></math>.toString)
+assert ((<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(0) + <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(1)).toList == <math><vector><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></vector></math>.toList)
+assert (s == <math><msup><apply><cartesianproduct/><msub><integers/><cn>3</cn></msub><msub><integers/><cn>5</cn></msub></apply><cn>2</cn></msup></math>)

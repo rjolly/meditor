@@ -11,5 +11,5 @@ import r.given
 val s = Quotient(<math><apply><rationals/><list><ci>x</ci></list></apply></math>)
 import s.given
 
-assert ((<math><ci>x</ci></math>/(<math><apply><times/><cn>2</cn><ci>x</ci></apply></math>)).show == "<math><cn type="rational">1<sep/>2</cn></math>")
-assert (s.toString == <math><apply><rationals/><mfenced><ci>x</ci></mfenced></apply></math>.toString)
+assert (<math><ci>x</ci></math>/(<math><apply><times/><cn>2</cn><ci>x</ci></apply></math>) >< <math><cn type="rational">1<sep/>2</cn></math>)
+assert (s == <math><apply><rationals/><mfenced><ci>x</ci></mfenced></apply></math>)

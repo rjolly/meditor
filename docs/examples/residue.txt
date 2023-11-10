@@ -13,4 +13,4 @@ import s.given
 
 assert (<math><cn>2</cn></math> >< <math><apply><power/><ci>x</ci><cn>2</cn></apply></math>)
 assert (Rational("<math><cn>2</cn></math>") - <math><apply><power/><ci>x</ci><cn>2</cn></apply></math> >< 0)
-assert (s.toString == <math><msub><apply><rationals/><list><ci>x</ci></list></apply><list><apply><minus/><cn>2</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></list></msub></math>.toString)
+assert (s == <math><msub><apply><rationals/><list><ci>x</ci></list></apply><list><apply><minus/><cn>2</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></list></msub></math>)

@@ -4,7 +4,8 @@ import <math><integers/></math>.given
 val r = <math><msub><integers/><cn>7</cn></msub></math>
 import r.given
 
-assert (BigInteger("4") + <math><cn>4</cn></math> >< <math><cn>4</cn></math> + BigInteger("4"))
-assert (BigInteger("4") + <math><cn>4</cn></math> >< <math><cn>1</cn></math>)
-assert (BigInteger("4") * <math><cn>2</cn></math> >< <math><cn>1</cn></math>)
-assert (BigInteger("4") \ <math><cn>2</cn></math> >< <math><cn>2</cn></math>)
+assert (<math><cn>4</cn></math> + <math><cn>4</cn></math> >< <math><cn>1</cn></math>)
+assert (<math><cn>4</cn></math> * <math><cn>2</cn></math> >< <math><cn>1</cn></math>)
+assert (<math><cn>4</cn></math> \ <math><cn>2</cn></math> >< <math><cn>2</cn></math>)
+assert (r.toString == <math><msub><integers/><cn>7</cn></msub></math>.toString)
+assert (r == BigInteger(BigInteger("7")))
