@@ -8,4 +8,4 @@ val <math><list><ci>x</ci></list></math> = r.generators
 import r.given
 
 assert ((<math><ci>x</ci></math> ^ <math><true/></math> >< <math><true/></math> ^ <math><ci>x</ci></math>).isUnit)
-assert (r == <math><apply><ci>Boolean</ci><list><ci>x</ci></list></apply></math>)
+assert (r == <math><mrow><ci>Boolean</ci><mfenced open="[" close="]"><ci>x</ci></mfenced></mrow></math>)
