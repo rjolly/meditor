@@ -3,6 +3,6 @@ import <math><integers/></math>.given
 import <math><rationals/></math>.given
 import <math><complexes/></math>.{sqrt, conjugate, magnitude2, given}
 
-assert ((<math><apply><plus/><cn>1</cn><apply><root/><cn>-1</cn></apply></apply></math>)/(<math><apply><minus/><cn>1</cn><apply><root/><cn>-1</cn></apply></apply></math>) >< <math><apply><root/><cn>-1</cn></apply></math>)
+assert ((<math><apply><minus/><apply><root/><cn>-1</cn></apply><cn>1</cn></apply></math>)/(<math><apply><plus/><apply><root/><cn>-1</cn></apply><cn>1</cn></apply></math>) >< <math><apply><root/><cn>-1</cn></apply></math>)
 assert (conjugate(<math><apply><root/><cn>-1</cn></apply></math>) >< <math><apply><minus/><apply><root/><cn>-1</cn></apply></apply></math>)
 assert (magnitude2(<math><apply><root/><cn>-1</cn></apply></math>) >< <math><cn>1</cn></math>)

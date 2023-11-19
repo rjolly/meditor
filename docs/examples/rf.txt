@@ -9,6 +9,6 @@ import q.given
 
 assert (<math><ci>x</ci></math> + <math><cn type="rational">1<sep/>2</cn></math> >< <math><cn type="rational">1<sep/>2</cn></math> + <math><ci>x</ci></math>)
 assert (<math><ci>x</ci></math> + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + <math><ci>x</ci></math>)
-assert ((<math><apply><power/><ci>x</ci><cn>2</cn></apply></math>-<math><cn>1</cn></math>)/(<math><ci>x</ci></math>-<math><cn>1</cn></math>) >< <math><ci>x</ci></math>+<math><cn>1</cn></math>)
-assert ((<math><apply><minus/><cn>1</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></math>)/(<math><apply><minus/><cn>1</cn><ci>x</ci></apply></math>) >< <math><apply><plus/><cn>1</cn><ci>x</ci></apply></math>)
+assert ((<math><apply><power/><ci>x</ci><cn>2</cn></apply></math>-<math><cn>1</cn></math>)/(<math><ci>x</ci></math>-<math><cn>1</cn></math>) >< <math><apply><plus/><ci>x</ci><cn>1</cn></apply></math>)
+assert ((<math><apply><minus/><cn>1</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></math>)/(<math><apply><minus/><cn>1</cn><ci>x</ci></apply></math>) >< <math><cn>1</cn></math>+<math><ci>x</ci></math>)
 assert (<math><ci>x</ci></math> / <math><cn>2</cn></math> >< <math><apply><times/><cn type="rational">1<sep/>2</cn><ci>x</ci></apply></math>)

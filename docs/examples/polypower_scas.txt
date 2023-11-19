@@ -8,9 +8,9 @@ val r = Polynomial(using <math><integers/></math>, Lexicographic[Int]("<math><ci
 val <math><list><ci>x</ci><ci>y</ci><ci>z</ci></list></math> = r.generators
 import r.given
 
-val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><ci>x</ci></apply><ci>y</ci></apply><ci>z</ci></apply></math>
-// val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>1</cn><apply><power/><ci>x</ci><cn>2147483647</cn></apply></apply><apply><power/><ci>y</ci><cn>2147483647</cn></apply></apply><apply><power/><ci>z</ci><cn>2147483647</cn></apply></apply></math>
-// val p = <math><apply><plus/><apply><plus/><apply><plus/><cn>10000000001</cn><apply><times/><cn>10000000001</cn><ci>x</ci></apply></apply><apply><times/><cn>10000000001</cn><ci>y</ci></apply></apply><apply><times/><cn>10000000001</cn><ci>z</ci></apply></apply></math>
+val p = <math><apply><plus/><apply><plus/><apply><plus/><ci>x</ci><ci>y</ci></apply><ci>z</ci></apply><cn>1</cn></apply></math>
+// val p = <math><apply><plus/><apply><plus/><apply><plus/><apply><power/><ci>x</ci><cn>2147483647</cn></apply><apply><power/><ci>y</ci><cn>2147483647</cn></apply></apply><apply><power/><ci>z</ci><cn>2147483647</cn></apply></apply><cn>1</cn></apply></math>
+// val p = <math><apply><plus/><apply><plus/><apply><plus/><apply><times/><cn>10000000001</cn><ci>x</ci></apply><apply><times/><cn>10000000001</cn><ci>y</ci></apply></apply><apply><times/><cn>10000000001</cn><ci>z</ci></apply></apply><cn>10000000001</cn></apply></math>
 println("p: " + p.show)
 val q = p \ 20
 println("q: " + q.size)

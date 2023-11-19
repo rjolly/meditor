@@ -17,4 +17,4 @@ import s.given
 assert(<math><ci>a</ci></math> + <math><cn>1</cn></math> >< <math><cn>1</cn></math> + <math><ci>a</ci></math>)
 assert(<math><ci>a</ci></math> + BigInteger("1") >< BigInteger("1") + <math><ci>a</ci></math>)
 assert(<math><ci>a</ci></math> + <math><ci>x</ci></math> >< <math><ci>x</ci></math> + <math><ci>a</ci></math>)
-assert((<math><ci>a</ci></math> + <math><ci>x</ci></math>).show == "<math><apply><plus/><ci>x</ci><ci>a</ci></apply></math>")
+assert((<math><ci>a</ci></math> + <math><ci>x</ci></math>).show == "<math><apply><plus/><ci>a</ci><ci>x</ci></apply></math>")

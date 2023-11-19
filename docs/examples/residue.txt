@@ -8,9 +8,9 @@ val r = UnivariatePolynomial(<math><rationals/></math>)("<math><ci>x</ci></math>
 val <math><list><ci>x</ci></list></math> = r.generators
 import r.given
 
-val s = Residue(<math><mrow><rationals/><mfenced open="[" close="]"><ci>x</ci></mfenced></mrow></math>)(<math><apply><minus/><cn>2</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></math>)
+val s = Residue(<math><mrow><rationals/><mfenced open="[" close="]"><ci>x</ci></mfenced></mrow></math>)(<math><apply><minus/><apply><power/><ci>x</ci><cn>2</cn></apply><cn>2</cn></apply></math>)
 import s.given
 
-assert (<math><cn>2</cn></math> >< <math><apply><power/><ci>x</ci><cn>2</cn></apply></math>)
-assert (Rational("<math><cn>2</cn></math>") >< <math><apply><power/><ci>x</ci><cn>2</cn></apply></math>)
-assert (s == <math><msub><mrow><rationals/><mfenced open="[" close="]"><ci>x</ci></mfenced></mrow><mfenced><apply><minus/><cn>2</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></mfenced></msub></math>)
+assert (<math><apply><power/><ci>x</ci><cn>2</cn></apply></math> >< <math><cn>2</cn></math>)
+assert (<math><apply><power/><ci>x</ci><cn>2</cn></apply></math> >< Rational("<math><cn>2</cn></math>"))
+assert (s == <math><msub><mrow><rationals/><mfenced open="[" close="]"><ci>x</ci></mfenced></mrow><mfenced><apply><minus/><apply><power/><ci>x</ci><cn>2</cn></apply><cn>2</cn></apply></mfenced></msub></math>)
