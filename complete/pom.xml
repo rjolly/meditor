@@ -6,7 +6,7 @@
   <groupId>net.sourceforge.jscl-meditor</groupId>
   <artifactId>complete</artifactId>
   <packaging>pom</packaging>
-  <version>5.4.4</version>
+  <version>1.0</version>
   <url>http://jscl-meditor.sourceforge.net/</url>
   <description>java symbolic computing library and mathematical editor</description>
   <licenses>
@@ -34,7 +34,7 @@
     <dependency>
       <groupId>net.sourceforge.jscl-meditor</groupId>
       <artifactId>base</artifactId>
-      <version>5.4.4</version>
+      <version>1.0</version>
     </dependency>
     <dependency>
       <groupId>com.github.rjolly</groupId>
@@ -59,7 +59,7 @@
     <dependency>
       <groupId>de.uni-mannheim.rz.krum</groupId>
       <artifactId>jas</artifactId>
-      <version>2.7.20</version>
+      <version>2.7.200</version>
     </dependency>
     <dependency>
       <groupId>cc.redberry</groupId>

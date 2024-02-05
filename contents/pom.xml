@@ -34,7 +34,7 @@
     <dependency>
       <groupId>com.github.rjolly</groupId>
       <artifactId>flying-saucer</artifactId>
-      <version>9.1.24</version>
+      <version>9.1.25</version>
     </dependency>
   </dependencies>
 </project>

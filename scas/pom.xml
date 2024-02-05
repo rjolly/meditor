@@ -6,7 +6,7 @@
   <groupId>net.sourceforge.jscl-meditor</groupId>
   <artifactId>scas</artifactId>
   <packaging>pom</packaging>
-  <version>5.4.4</version>
+  <version>1.0</version>
   <url>http://jscl-meditor.sourceforge.net/</url>
   <description>java symbolic computing library and mathematical editor</description>
   <licenses>
@@ -34,17 +34,28 @@
     <dependency>
       <groupId>net.sourceforge.jscl-meditor</groupId>
       <artifactId>base</artifactId>
-      <version>5.4.4</version>
+      <version>1.0</version>
     </dependency>
     <dependency>
       <groupId>com.github.rjolly</groupId>
-      <artifactId>scas.application_3.0.0-RC1</artifactId>
+      <artifactId>scas.application_3</artifactId>
       <version>3.0</version>
+      <exclusions>
+        <exclusion>
+          <groupId>de.uni-mannheim.rz.krum</groupId>
+          <artifactId>jas</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.scala-lang</groupId>
-      <artifactId>scala3-compiler_3.0.0-RC1</artifactId>
-      <version>3.0.0-RC1</version>
+      <artifactId>scala3-compiler_3</artifactId>
+      <version>3.3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>de.uni-mannheim.rz.krum</groupId>
+      <artifactId>jas</artifactId>
+      <version>2.7.200</version>
     </dependency>
   </dependencies>
 </project>
