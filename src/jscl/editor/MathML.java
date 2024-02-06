@@ -75,7 +75,7 @@ public class MathML extends Content {
 	}
 
 	public Image createImage(final Node node) {
-		((MutableLayoutContext) LayoutContextImpl.getDefaultLayoutContext()).setParameter(Parameter.SCRIPTMINSIZE, new Float(10f));
+		((MutableLayoutContext) LayoutContextImpl.getDefaultLayoutContext()).setParameter(Parameter.SCRIPTMINSIZE, 10f);
 		final JEuclidView view = DOMBuilder.getInstance().createJeuclidDom(node).getDefaultView();
 		final int width = (int) Math.ceil(view.getWidth());
 		final int height = (int) (Math.ceil(view.getAscentHeight()) + Math.ceil(view.getDescentHeight()));
