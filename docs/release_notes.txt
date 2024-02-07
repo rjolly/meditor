@@ -1,11 +1,11 @@
-                meditor version 5.4.5
+                meditor version 5.4.6
 
 
   In this release:
 
     * A new Renderer parameter to accomodate for type class style programming
 
-    * Upgrade to Fop 2.9 and Batik 1.17 (requires Java 8)
+    * Upgrade to Fop 2.9, Batik 1.17 and Xalan 2.7.3 (require Java 8)
 
     * Tested script engines:
 

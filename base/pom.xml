@@ -39,7 +39,7 @@
     <dependency>
       <groupId>net.sourceforge.jscl-meditor</groupId>
       <artifactId>meditor</artifactId>
-      <version>5.4.5</version>
+      <version>5.4.6</version>
     </dependency>
     <dependency>
       <groupId>net.sourceforge.jscl-meditor</groupId>
