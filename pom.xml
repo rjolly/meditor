@@ -50,72 +50,16 @@
       <groupId>de.rototor.jeuclid</groupId>
       <artifactId>jeuclid-core</artifactId>
       <version>3.1.14</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.ant</groupId>
-          <artifactId>ant</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>de.rototor.jeuclid</groupId>
       <artifactId>jeuclid-fop</artifactId>
       <version>3.1.14</version>
-      <exclusions>
-        <exclusion>
-          <groupId>de.rototor.jeuclid</groupId>
-          <artifactId>jeuclid-core</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.xmlgraphics</groupId>
-          <artifactId>fop</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.apache.xmlgraphics</groupId>
       <artifactId>fop</artifactId>
       <version>2.9</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.xmlgraphics</groupId>
-          <artifactId>fop-core</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.xmlgraphics</groupId>
-          <artifactId>fop-events</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.xmlgraphics</groupId>
-      <artifactId>fop-core</artifactId>
-      <version>2.9</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.xmlgraphics</groupId>
-          <artifactId>fop-events</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>javax.servlet</groupId>
-          <artifactId>servlet-api</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.ant</groupId>
-          <artifactId>ant</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.xmlgraphics</groupId>
-      <artifactId>fop-events</artifactId>
-      <version>2.9</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.ant</groupId>
-          <artifactId>ant</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.apache.xmlgraphics</groupId>
