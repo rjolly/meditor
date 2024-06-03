@@ -1,3 +1,7 @@
+Changes in version 49:
+
++ Upgrade to API 34
+
 Changes in version 44:
 
 + fix import from web
