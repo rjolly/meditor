@@ -1,9 +1,10 @@
 import scas.polynomial.tree.PolynomialWithGB
+import scas.power.Lexicographic
 import scas.base.<math><integers/></math>
 import <math><integers/></math>.given
 
-val r = PolynomialWithGB(<math><integers/></math>)("<math><ci>x</ci></math>", "<math><ci>y</ci></math>")
+val r = PolynomialWithGB(using <math><integers/></math>, Lexicographic.inlined(0)("<math><ci>x</ci></math>", "<math><ci>y</ci></math>"))
 val <math><list><ci>x</ci><ci>y</ci></list></math> = r.generators
-import r.given
+import r.Implicits.given
 
 scas.prettyprint.println(r.gb(<math><cn>4</cn></math> - (<math><apply><power/><ci>x</ci><cn>2</cn></apply></math> + <math><apply><power/><ci>y</ci><cn>2</cn></apply></math>), <math><cn>1</cn></math> - <math><apply><times/><ci>x</ci><ci>y</ci></apply></math>))
