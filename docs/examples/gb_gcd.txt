@@ -1,0 +1,11 @@
+import scas.polynomial.tree.PolynomialWithGB
+import scas.power.DegreeReverseLexicographic
+import scas.base.<math><integers/></math>
+import <math><integers/></math>.given
+
+val r = PolynomialWithGB(using <math><integers/></math>, DegreeReverseLexicographic(0)("<math><ci>x</ci></math>", "<math><ci>y</ci></math>", "<math><ci>z</ci></math>"))
+val <math><list><ci>x</ci><ci>y</ci><ci>z</ci></list></math> = r.generators
+import r.Implicits.given
+import r.gcd
+
+assert (gcd(<math><apply><times/><ci>x</ci><ci>y</ci></apply></math>, <math><apply><times/><ci>x</ci><ci>z</ci></apply></math>) >< <math><ci>x</ci></math>)
