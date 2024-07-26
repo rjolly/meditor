@@ -4,7 +4,7 @@ import scas.structure.Product
 import <math><integers/></math>.given
 
 val r = Product(<math><msub><integers/><cn>3</cn></msub></math>, <math><msub><integers/><cn>5</cn></msub></math>)
-import r.given
+import r.instance
 
 assert (<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> + <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> >< <math><apply><cartesianproduct/><cn>2</cn><cn>1</cn></apply></math>)
 assert (<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> \ BigInteger("<math><cn>2</cn></math>") >< <math><apply><cartesianproduct/><cn>1</cn><cn>4</cn></apply></math>)
@@ -14,7 +14,7 @@ assert (r.characteristic.intValue == <math><cn>15</cn></math>)
 
 val s = ArrayModule(<math><apply><cartesianproduct/><msub><integers/><cn>3</cn></msub><msub><integers/><cn>5</cn></msub></apply></math>)(<math><cn>2</cn></math>)
 val e = s.generators
-import s.given
+import s.instance
 
 assert (Array(<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math>, <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math>) >< <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(0) + <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(1))
 assert (<math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math> *%e(0) >< e(0)%* <math><apply><cartesianproduct/><cn>1</cn><cn>3</cn></apply></math>)
