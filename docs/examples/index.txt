@@ -13,7 +13,6 @@ polypower.txt
 polypower_scas.txt
 polypower_jaspp.txt
 polypower_rings.txt
-boolean_polynomial.txt
 boolean.txt
 group.txt
 an.txt
@@ -27,6 +26,7 @@ gcd_subres.txt
 gcd_multivariate.txt
 gb_gcd.txt
 gb.txt
+interface.txt
 univariate_polynomial.txt
 solvable_polynomial.txt
 rational_polynomial.txt

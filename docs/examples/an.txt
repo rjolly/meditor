@@ -5,9 +5,14 @@ import <math><integers/></math>.given
 import <math><rationals/></math>.Implicits.given
 
 val r = AlgebraicNumber(<math><rationals/></math>)(Variable.sqrt(BigInteger("<math><cn>2</cn></math>")))
-val <math><list><ci>x</ci></list></math> = r.generators
 import r.{sqrt, instance, coef2poly}
-r.update(<math><apply><minus/><cn>2</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></math>)
+r.update(<math><apply><minus/><cn>2</cn><apply><power/><apply><root/><cn>2</cn></apply><cn>2</cn></apply></apply></math>)
 
-assert (<math><cn>2</cn></math> >< <math><apply><power/><ci>x</ci><cn>2</cn></apply></math>)
-assert (<math><ci>x</ci></math> >< <math><apply><root/><cn>2</cn></apply></math>)
+assert (<math><cn>2</cn></math> >< <math><apply><power/><apply><root/><cn>2</cn></apply><cn>2</cn></apply></math>)
+assert(<math><cn>1</cn></math>/(<math><apply><minus/><cn>1</cn><apply><root/><cn>2</cn></apply></apply></math>) >< -(<math><apply><plus/><cn>1</cn><apply><root/><cn>2</cn></apply></apply></math>))
+
+r.extend(Variable.sqrt(<math><apply><minus/><cn>1</cn><apply><root/><cn>2</cn></apply></apply></math>))
+r.update(<math><apply><minus/><apply><minus/><cn>1</cn><apply><root/><cn>2</cn></apply></apply><apply><power/><apply><root/><apply><minus/><cn>1</cn><apply><root/><cn>2</cn></apply></apply></apply><cn>2</cn></apply></apply></math>)
+
+assert (<math><apply><minus/><cn>1</cn><apply><root/><cn>2</cn></apply></apply></math> >< <math><apply><power/><apply><root/><apply><minus/><cn>1</cn><apply><root/><cn>2</cn></apply></apply></apply><cn>2</cn></apply></math>)
+assert (<math><cn>1</cn></math>/(<math><apply><minus/><cn>1</cn><apply><root/><apply><minus/><cn>1</cn><apply><root/><cn>2</cn></apply></apply></apply></apply></math>) >< <math><apply><times/><cn type="rational">1<sep/>2</cn><apply><root/><cn>2</cn></apply></apply></math>*(<math><apply><plus/><cn>1</cn><apply><root/><apply><minus/><cn>1</cn><apply><root/><cn>2</cn></apply></apply></apply></apply></math>))

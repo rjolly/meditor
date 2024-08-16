@@ -1,0 +1,7 @@
+val manager = new javax.script.ScriptEngineManager
+val engine = manager.getEngineByName("scas")
+import engine.eval
+assert(eval("<math><ci>x</ci></math>+<math><ci>x</ci></math>").toString == "<math><apply><times/><cn>2</cn><ci>x</ci></apply></math>")
+assert(eval("<math><cn>1</cn></math>").toString == "<math><cn>1</cn></math>")
+assert(eval("<math><cn>1</cn></math>+<math><ci>x</ci></math>").toString == "<math><apply><plus/><cn>1</cn><ci>x</ci></apply></math>")
+assert(eval("<math><cn>1</cn></math>/<math><cn>4</cn></math>").toString == "<math><cn type="rational">1<sep/>4</cn></math>")

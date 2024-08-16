@@ -1,4 +1,14 @@
-import scas.base.<math><ci>Boolean</ci></math>
+import scas.base.{<math><integers/></math>, <math><ci>Boolean</ci></math>}
+import scas.residue.BooleanAlgebra
+import <math><integers/></math>.given
 import <math><ci>Boolean</ci></math>.given
 
-assert (<math><true/></math> ^ <math><true/></math> >< <math><false/></math>)
+assert ((<math><true/></math> ^ <math><true/></math>) >< <math><false/></math>)
+
+val r = BooleanAlgebra("<math><ci>x</ci></math>", "<math><ci>y</ci></math>")
+val <math><list><ci>x</ci><ci>y</ci></list></math> = r.generators
+import r.{instance, coef2poly, ring}
+
+assert ((<math><ci>x</ci></math> ^ <math><true/></math>) >< (<math><true/></math> ^ <math><ci>x</ci></math>))
+assert ((<math><ci>x</ci></math> ^ <math><ci>y</ci></math>) >< ((<math><ci>x</ci></math> || <math><ci>y</ci></math>) ^ (<math><ci>x</ci></math> && <math><ci>y</ci></math>)))
+assert (r == <math><msub><mrow><ci>Boolean</ci><mfenced open="[" close="]"><ci>x</ci><ci>y</ci></mfenced></mrow><mfenced><apply><plus/><ci>x</ci><apply><power/><ci>x</ci><cn>2</cn></apply></apply><apply><plus/><ci>y</ci><apply><power/><ci>y</ci><cn>2</cn></apply></apply></mfenced></msub></math>)
