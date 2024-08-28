@@ -1,3 +1,7 @@
+Changes in version 54:
+
++ upgrade to SCAS 3.0
+
 Changes in version 49:
 
 + Upgrade to API 34
