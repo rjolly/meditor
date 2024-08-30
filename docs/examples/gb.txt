@@ -7,4 +7,4 @@ val r = PolynomialWithGB(using <math><integers/></math>, Lexicographic.inlined(0
 val <math><list><ci>x</ci><ci>y</ci></list></math> = r.generators
 import r.Implicits.given
 
-scas.prettyprint.println(r.gb(<math><cn>4</cn></math> - (<math><apply><power/><ci>x</ci><cn>2</cn></apply></math> + <math><apply><power/><ci>y</ci><cn>2</cn></apply></math>), <math><cn>1</cn></math> - <math><apply><times/><ci>x</ci><ci>y</ci></apply></math>))
+assert(r.gb(<math><cn>4</cn></math> - (<math><apply><power/><ci>x</ci><cn>2</cn></apply></math> + <math><apply><power/><ci>y</ci><cn>2</cn></apply></math>), <math><cn>1</cn></math> - <math><apply><times/><ci>x</ci><ci>y</ci></apply></math>) == <math><list><apply><minus/><apply><minus/><apply><times/><cn>4</cn><ci>x</ci></apply><apply><power/><ci>x</ci><cn>3</cn></apply></apply><ci>y</ci></apply><apply><plus/><apply><minus/><cn>1</cn><apply><times/><cn>4</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></apply><apply><power/><ci>x</ci><cn>4</cn></apply></apply></list></math>)
