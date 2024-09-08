@@ -35,7 +35,7 @@ Some may doubt however that Java will ever be as clear as C++, because it does n
 
 As for portability, it means that many platforms are available at no cost, from powerful unix workstations or servers to handheld devices. To make it possible, the project is split in two parts : the engine (jscl) and the mathematical editor front-end (meditor). The engine is usable interactively or in batch mode from a Java shell interpreter (like BeanShell for instance), or as a Java library in any third-party application.
 
-The front-end has currently three implementations (see below). Among others, it is intended for taking course notes. With it, a student can do the calculations asked by their teacher fast and reliably. The plain text format should make the exchange of notes easy. The produced worksheets can be exported to XHTML and published on-line, see http://meditorworld.appspot.com/ for an illustration.
+The front-end has currently three implementations (see below). Among others, it is intended for taking course notes. With it, a student can do the calculations asked by their teacher fast and reliably. The plain text format should make the exchange of notes easy. The produced worksheets can be exported to XHTML and published on-line, see https://meditorworld.appspot.com/ for an illustration.
 
 Implementations
 
@@ -155,7 +155,7 @@ AElFTkSuQmCC
   </g>
 </svg>
 
-There was a special effort to make the palm front-end powerful enough to be used at school, by compiling the software into native code with http://jump.sourceforge.net/
+There was a special effort to make the palm front-end powerful enough to be used at school, by compiling the software into native code with https://jump.sourceforge.net/
 
 Symbolic capabilities
 
@@ -174,7 +174,7 @@ The symbolic capabilities are currently:
 
 Download
 
-Go to the Project summary page http://sourceforge.net/projects/jscl-meditor/
+Go to the Project summary page https://sourceforge.net/projects/jscl-meditor/
 
 Installation
 
@@ -202,27 +202,28 @@ To have the data persisted, create an entry in the memopad with the word "medito
 
 Dependencies
 
-http://jeuclid.sourceforge.net/ 3.1.14
+https://jeuclid.sourceforge.net/ 3.1.14
 http://xmlgraphics.apache.org/fop/ 2.4
 http://xml.apache.org/batik/ 1.12
-http://xsltml.sourceforge.net/ 2.1.2
+https://xsltml.sourceforge.net/ 2.1.2
 http://www2.ph.ed.ac.uk/snuggletex/ 1.3.0
 https://java.net/projects/swingx/ 1.6.2-2
 http://beanshell.org/ 2.0b5
 
 Papers
 
-Progress report on the Scala Algebra System (CASC 2020) http://jscl-meditor.sourceforge.net/interface-slides.pdf presentation https://www.dk-compmath.jku.at/conferences/casc-2020/day-5/05-Jolly.mp4
-meditor, the mathemagical editor (software demonstration, 2020) http://jscl-meditor.sourceforge.net/magical.pdf
+Implicit conversions in the Scala Algebra System (CASC 2024) https://jscl-meditor.sourceforge.net/tcic-slides.pdf extended abstract https://jscl-meditor.sourceforge.net/tcic_ea.pdf
+Progress report on the Scala Algebra System (CASC 2020) https://jscl-meditor.sourceforge.net/interface-slides.pdf presentation https://www.dk-compmath.jku.at/conferences/casc-2020/day-5/05-Jolly.mp4
+meditor, the mathemagical editor (software demonstration, 2020) https://jscl-meditor.sourceforge.net/magical.pdf
 Computer algebra in Scala : what's new with Dotty ? (ScalaUA 2020) https://drive.google.com/file/d/1MixKt_OXD719SgomXx81VrtW8jvAV78_/view presentation https://www.youtube.com/watch?v=L-NTXZZPV4A
-Categories as type classes in the Scala Algebra System (CASC 2013) http://jscl-meditor.sourceforge.net/catc-slides.pdf
+Categories as type classes in the Scala Algebra System (CASC 2013) https://jscl-meditor.sourceforge.net/catc-slides.pdf
 Parallelizing Stream with Future (2013) http://arxiv.org/abs/1305.4367
-Straightforward parallelization of polynomial multiplication using parallel collections in Scala (EOOPS 2013) http://jscl-meditor.sourceforge.net/parallel-slides.pdf
+Straightforward parallelization of polynomial multiplication using parallel collections in Scala (EOOPS 2013) https://jscl-meditor.sourceforge.net/parallel-slides.pdf
 Categories as classes and mixin composition (CASC 2012, with H. Kredel) http://krum.rz.uni-mannheim.de/kredel/com-casc2012-poster.pdf
 Algebraic structures as typed objects (CASC 2011, with H. Kredel) http://krum.rz.uni-mannheim.de/kredel/to-cas-casc2011-slides.pdf
-Object Scala Found - a JSR223-compliant version of the scala interpreter (Scala Days 2011) http://jscl-meditor.sourceforge.net/scalaint.pdf presentation http://days2011.scala-lang.org/node/138/319
+Object Scala Found - a JSR223-compliant version of the scala interpreter (Scala Days 2011) https://jscl-meditor.sourceforge.net/scalaint.pdf presentation http://days2011.scala-lang.org/node/138/319
 Generic, Type-safe and Object Oriented Computer Algebra Software (CASC 2010, with H. Kredel) http://krum.rz.uni-mannheim.de/kredel/oocas-casc2010-slides.pdf
-A real world use of higher kinds in the domain of computer algebra (2010) http://jscl-meditor.sourceforge.net/hk-ca.pdf
+A real world use of higher kinds in the domain of computer algebra (2010) https://jscl-meditor.sourceforge.net/hk-ca.pdf
 Symbolic script programming for Java (2009, with H. Kredel) http://arxiv.org/abs/0906.2315
 How to turn a scripting language into a domain specific language for computer algebra (2008, with H. Kredel) http://arxiv.org/abs/0811.1061
 
@@ -234,18 +235,18 @@ Related projects
 
 http://jscience.org/ Java Tools and Libraries for the Advancement of Sciences
 http://www.geogebra.at/ dynamic mathematics software that connects geometry, algebra and calculus
-http://mvt.sourceforge.net/ Mathematical Visualization Toolkit
+https://mvt.sourceforge.net/ Mathematical Visualization Toolkit
 http://gcalc.net/ mathematical graphing system in Java
 http://mathdragn.squarespace.com/ Symbolic Equation Manipulator
-http://mtac.sourceforge.net/ - More than a Calculator
+https://mtac.sourceforge.net/ - More than a Calculator
 
 Contact
 
-You can send your reactions to raphael.jolly@free.fr . For bug reports and support requests, you have tools on the Project summary page http://sourceforge.net/projects/jscl-meditor/
+You can send your reactions to raphael.jolly@free.fr . For bug reports and support requests, you have tools on the Project summary page https://sourceforge.net/projects/jscl-meditor/
 
 Copyright
 
 http://www.gnu.org/licenses/gpl.html The GNU General Public License
 
 --
-last updated on Sat Jul 25 2020
+last updated on Tue Sep 10 2024
