@@ -1,4 +1,4 @@
-Changes in version 54:
+Changes in version 58:
 
 + upgrade to SCAS 3.0
 
