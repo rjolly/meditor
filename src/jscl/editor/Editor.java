@@ -35,13 +35,14 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.Box;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.SwingWorker;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -195,8 +196,8 @@ public class Editor extends ScriptSupport {
 		public void actionPerformed(final ActionEvent e) {
 			toggleDialog();
 			jTextField2.setEnabled(false);
-			jButton2.setEnabled(false);
-			jButton3.setEnabled(false);
+			jTextField1.requestFocusInWindow();
+			jTextField1.setText(mathTextPane1.getSelectedText());
 		}
 	}
 
@@ -210,8 +211,8 @@ public class Editor extends ScriptSupport {
 		public void actionPerformed(final ActionEvent e) {
 			toggleDialog();
 			jTextField2.setEnabled(true);
-			jButton2.setEnabled(true);
-			jButton3.setEnabled(true);
+			jTextField1.requestFocusInWindow();
+			jTextField1.setText(mathTextPane1.getSelectedText());
 		}
 	}
 
@@ -222,6 +223,13 @@ public class Editor extends ScriptSupport {
 			jPanel1.remove(jPanel2);
 		}
 		revalidate();
+	}
+
+	private void changed() {
+                boolean empty = jTextField1.getText().isEmpty();
+		jButton1.setEnabled(!empty);
+		jButton2.setEnabled(!empty && jTextField2.isEnabled());
+		jButton3.setEnabled(!empty && jTextField2.isEnabled());
 	}
 
 	private class RunAction extends AbstractAction {
@@ -800,6 +808,22 @@ public class Editor extends ScriptSupport {
 		exportChooser.removeChoosableFileFilter(exportChooser.getAcceptAllFileFilter());
 		exportChooser.addChoosableFileFilter(new MathFileFilter("pdf"));
 		exportChooser.addChoosableFileFilter(new MathFileFilter("xhtml"));
+		jTextField1.getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void insertUpdate(final DocumentEvent e) {
+				changed();
+			}
+
+			@Override
+			public void removeUpdate(final DocumentEvent e) {
+				changed();
+			}
+
+			@Override
+			public void changedUpdate(final DocumentEvent e) {
+				changed();
+			}
+		});
 	}
 
 	@Override
@@ -953,6 +977,7 @@ public class Editor extends ScriptSupport {
                 jLabel2.setText("Replace with :");
 
                 jButton1.setText("Next");
+                jButton1.setEnabled(false);
                 jButton1.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 jButton1ActionPerformed(evt);
@@ -960,6 +985,7 @@ public class Editor extends ScriptSupport {
                 });
 
                 jButton2.setText("Replace");
+                jButton2.setEnabled(false);
                 jButton2.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 jButton2ActionPerformed(evt);
@@ -967,6 +993,7 @@ public class Editor extends ScriptSupport {
                 });
 
                 jButton3.setText("Replace all");
+                jButton3.setEnabled(false);
                 jButton3.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 jButton3ActionPerformed(evt);
@@ -1375,6 +1402,8 @@ public class Editor extends ScriptSupport {
 
         private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 		toggleDialog();
+		jTextField1.setText(null);
+		jTextField2.setText(null);
 		mathTextPane1.requestFocus();
         }//GEN-LAST:event_jButton4ActionPerformed
 
