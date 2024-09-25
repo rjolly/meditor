@@ -1,7 +1,17 @@
-                meditor version 5.4.6
+                meditor version 5.4.7
 
 
   In this release:
+
+    * Improve search/replace dialog
+
+    * Upgrades:
+
+      org.scala-lang#scala-compiler_3;3.5.1
+      net.sourceforge.jscl-meditor#jscl;2.4.17
+
+
+  In version 5.4.6:
 
     * A new Renderer parameter to accomodate for type class style programming
 

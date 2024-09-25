@@ -50,7 +50,7 @@
     <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala3-compiler_3</artifactId>
-      <version>3.3.1</version>
+      <version>3.5.1</version>
     </dependency>
     <dependency>
       <groupId>de.uni-mannheim.rz.krum</groupId>

@@ -1,3 +1,7 @@
+Changes in 2.4.17:
+
++ add xsl templates for boolean expressions
+
 Changes in 2.4.15:
 
 + fix evaluation of fraction with numeric denominator
