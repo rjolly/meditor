@@ -36,8 +36,6 @@ beanshell scripts
 - fateman.txt
 - meyer.txt
 
-scas2/examples/index.txt
-
 scas examples/index.txt
 
 other scala examples
