@@ -5,3 +5,5 @@ assert(eval("<math><ci>x</ci></math>+<math><ci>x</ci></math>").toString == "<mat
 assert(eval("<math><cn>1</cn></math>").toString == "<math><cn>1</cn></math>")
 assert(eval("<math><cn>1</cn></math>+<math><ci>x</ci></math>").toString == "<math><apply><plus/><cn>1</cn><ci>x</ci></apply></math>")
 assert(eval("<math><cn>1</cn></math>/<math><cn>4</cn></math>").toString == "<math><cn type="rational">1<sep/>4</cn></math>")
+assert(eval("mod(<math><ci>s</ci></math>=><math><ci>m</ci></math>,<math><ci>s</ci></math>=><math><ci>h</ci></math>,<math><ci>h</ci></math>=><math><ci>m</ci></math>)").toString == "<math><true/></math>")
+assert(eval("<math><ci>s</ci></math>=><math><ci>h</ci></math>&<math><ci>h</ci></math>=><math><ci>m</ci></math>").toString == "<math><apply><and/><apply><and/><apply><implies/><ci>h</ci><ci>m</ci></apply><apply><implies/><ci>s</ci><ci>h</ci></apply></apply><apply><implies/><ci>s</ci><ci>m</ci></apply></apply></math>")
