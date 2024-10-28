@@ -1,7 +1,7 @@
 import scas.base.{<math><integers/></math>, <math><rationals/></math>}
 import scas.module.{Array, ArrayModule}
 import <math><integers/></math>.given
-import <math><rationals/></math>.Implicits.given
+import <math><rationals/></math>.given
 
 val s = ArrayModule(<math><rationals/></math>)(<math><cn>2</cn></math>)
 val e = s.generators

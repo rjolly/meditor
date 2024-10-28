@@ -1,8 +1,7 @@
 import scas.base.{<math><integers/></math>, <math><rationals/></math>, <math><complexes/></math>}
 import <math><integers/></math>.given
-import <math><rationals/></math>.Implicits.given
-import <math><complexes/></math>.Implicits.given
-import <math><complexes/></math>.{sqrt, conjugate, magnitude2}
+import <math><rationals/></math>.given
+import <math><complexes/></math>.{sqrt, conjugate, magnitude2, given}
 
 assert ((<math><apply><plus/><cn>1</cn><apply><root/><cn>-1</cn></apply></apply></math>)/(<math><apply><minus/><cn>1</cn><apply><root/><cn>-1</cn></apply></apply></math>) >< <math><apply><root/><cn>-1</cn></apply></math>)
 assert (conjugate(<math><apply><root/><cn>-1</cn></apply></math>) >< <math><apply><minus/><apply><root/><cn>-1</cn></apply></apply></math>)
