@@ -7,7 +7,7 @@ assert ((<math><true/></math> ^ <math><true/></math>) >< <math><false/></math>)
 
 val r = BooleanAlgebra("<math><ci>x</ci></math>", "<math><ci>y</ci></math>")
 val <math><list><ci>x</ci><ci>y</ci></list></math> = r.generators
-import r.{instance, coef2poly, ring}
+import r.given
 
 assert ((<math><ci>x</ci></math> ^ <math><true/></math>) >< (<math><true/></math> ^ <math><ci>x</ci></math>))
 assert ((<math><ci>x</ci></math> ^ <math><ci>y</ci></math>) >< ((<math><ci>x</ci></math> || <math><ci>y</ci></math>) ^ (<math><ci>x</ci></math> && <math><ci>y</ci></math>)))
