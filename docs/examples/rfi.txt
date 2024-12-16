@@ -4,7 +4,7 @@ import <math><integers/></math>.given
 
 val q = RationalFunction.integral("<math><ci>a</ci></math>", "<math><ci>b</ci></math>")
 val <math><list><ci>a</ci><ci>b</ci></list></math> = q.generators
-import q.{instance, coef2poly, ring2quotient}
+import q.given
 
 assert ((<math><apply><plus/><ci>a</ci><ci>b</ci></apply></math>)\<math><cn>2</cn></math> / (<math><apply><minus/><apply><power/><ci>a</ci><cn>2</cn></apply><apply><power/><ci>b</ci><cn>2</cn></apply></apply></math>) >< <math><apply><divide/><apply><plus/><ci>a</ci><ci>b</ci></apply><apply><minus/><ci>a</ci><ci>b</ci></apply></apply></math>)
 assert (<math><ci>a</ci></math> / (<math><apply><times/><cn>2</cn><ci>a</ci></apply></math>) >< <math><cn type="rational">1<sep/>2</cn></math>)
