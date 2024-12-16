@@ -5,7 +5,7 @@ import <math><integers/></math>.given
 import <math><rationals/></math>.given
 
 val r = AlgebraicNumber(<math><rationals/></math>)(Variable.sqrt(BigInteger("<math><cn>2</cn></math>")))
-import r.{sqrt, instance, coef2poly}
+import r.{sqrt, given}
 r.update(<math><apply><minus/><cn>2</cn><apply><power/><apply><root/><cn>2</cn></apply><cn>2</cn></apply></apply></math>)
 
 assert (<math><cn>2</cn></math> >< <math><apply><power/><apply><root/><cn>2</cn></apply><cn>2</cn></apply></math>)

@@ -5,7 +5,7 @@ import <math><rationals/></math>.given
 
 val s = ArrayModule(<math><rationals/></math>)(<math><cn>2</cn></math>)
 val e = s.generators
-import s.instance
+import s.given
 
 assert (<math><vector><cn>1</cn><cn type="rational">1<sep/>2</cn></vector></math> >< e(0) + <math><cn type="rational">1<sep/>2</cn></math> *%e(1))
 assert (<math><cn>2</cn></math> *%e(0) >< e(0)%* <math><cn>2</cn></math>)

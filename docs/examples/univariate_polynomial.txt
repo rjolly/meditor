@@ -5,7 +5,7 @@ import <math><rationals/></math>.given
 
 val r = UnivariatePolynomial(<math><rationals/></math>)("x")
 val <math><list><ci>x</ci></list></math> = r.generators
-import r.{gcd, modInverse, instance, coef2poly}
+import r.{gcd, modInverse, given}
 
 assert (gcd((<math><apply><plus/><cn>1</cn><ci>x</ci></apply></math>) * (<math><apply><plus/><cn>1</cn><apply><times/><cn type="rational">1<sep/>2</cn><ci>x</ci></apply></apply></math>), (<math><apply><plus/><cn>1</cn><apply><times/><cn type="rational">1<sep/>2</cn><ci>x</ci></apply></apply></math>) * (<math><apply><minus/><cn>1</cn><ci>x</ci></apply></math>)) >< <math><apply><plus/><cn>2</cn><ci>x</ci></apply></math>)
 assert ((<math><apply><minus/><cn>1</cn><ci>x</ci></apply></math>).modInverse((<math><apply><plus/><cn>1</cn><ci>x</ci></apply></math>) \ <math><cn>2</cn></math>) >< <math><apply><plus/><cn type="rational">3<sep/>4</cn><apply><times/><cn type="rational">1<sep/>4</cn><ci>x</ci></apply></apply></math>)

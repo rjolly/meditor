@@ -7,10 +7,10 @@ import <math><rationals/></math>.given
 
 val r = PolynomialOverFieldWithGB(using <math><rationals/></math>, DegreeReverseLexicographic(0)("<math><ci>x</ci></math>", "<math><ci>y</ci></math>"))
 val <math><list><ci>x</ci><ci>y</ci></list></math> = r.generators
-import r.{instance, coef2poly}
+import r.given
 
 val s = Residue(<math><mrow><rationals/><mfenced open="[" close="]"><ci>x</ci><ci>y</ci></mfenced></mrow></math>)(<math><apply><minus/><cn>2</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></math>, <math><apply><minus/><apply><minus/><cn>1</cn><ci>x</ci></apply><apply><power/><ci>y</ci><cn>2</cn></apply></apply></math>)
-import s.instance
+import s.given
 
 assert (<math><cn>2</cn></math> >< <math><apply><power/><ci>x</ci><cn>2</cn></apply></math>)
 assert (<math><cn>1</cn></math> >< <math><apply><plus/><ci>x</ci><apply><power/><ci>y</ci><cn>2</cn></apply></apply></math>)
