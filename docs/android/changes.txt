@@ -1,4 +1,4 @@
-Changes in version 58:
+Changes in version 60:
 
 + upgrade to SCAS 3.0
 
