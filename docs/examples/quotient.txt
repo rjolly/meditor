@@ -9,7 +9,7 @@ val <math><list><ci>x</ci></list></math> = r.generators
 import r.given
 
 val s = Quotient(<math><mrow><rationals/><mfenced open="[" close="]"><ci>x</ci></mfenced></mrow></math>)
-import s.given
+import s.{ring => _, given}
 
 assert (<math><ci>x</ci></math>/(<math><apply><times/><cn>2</cn><ci>x</ci></apply></math>) >< <math><cn type="rational">1<sep/>2</cn></math>)
 assert (s == <math><mrow><rationals/><mfenced><ci>x</ci></mfenced></mrow></math>)
