@@ -1,6 +1,6 @@
-Changes in version 60:
+Changes in version 62:
 
-+ upgrade to SCAS 3.0
++ upgrade to SCAS 3.1
 
 Changes in version 49:
 
