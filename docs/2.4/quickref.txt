@@ -94,9 +94,11 @@ Variable substitution
 subst(f(x),x,value)
 subst(f(x1,...,xn),{x1,...,xn},{a1,...,an})
 
-Graphing and various transforms
+Graphing
 graph(f(x),x)
 graph({f1(x),...,fn(x)},x)
+
+Transformations
 expand(a)
 factorize(a)
 elementary(a)
