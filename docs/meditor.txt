@@ -212,10 +212,10 @@ http://beanshell.org/ 2.0b5
 
 Papers / presentations
 
+meditor, the mathemagical editor (ISSAC 2025) (software demonstration) https://jscl-meditor.sourceforge.net/magical.pdf
 Computer algebra in Scala (ScalaIO 2024) https://www.youtube.com/watch?v=ukwWKsrYwBU slides https://jscl-meditor.sourceforge.net/slides_io.pdf
 Implicit conversions in the Scala Algebra System (CASC 2024) (extended abstract) https://jscl-meditor.sourceforge.net/tcic_ea.pdf slides https://jscl-meditor.sourceforge.net/tcic-slides.pdf
 Progress report on the Scala Algebra System (CASC 2020) https://jscl-meditor.sourceforge.net/interface-slides.pdf presentation https://www.dk-compmath.jku.at/conferences/casc-2020/day-5/05-Jolly.mp4
-meditor, the mathemagical editor (software demonstration, 2020) https://jscl-meditor.sourceforge.net/magical.pdf
 Computer algebra in Scala : what's new with Dotty ? (ScalaUA 2020) https://drive.google.com/file/d/1MixKt_OXD719SgomXx81VrtW8jvAV78_/view presentation https://www.youtube.com/watch?v=L-NTXZZPV4A
 Categories as type classes in the Scala Algebra System (CASC 2013) https://jscl-meditor.sourceforge.net/catc-slides.pdf
 Parallelizing Stream with Future (2013) http://arxiv.org/abs/1305.4367
@@ -250,4 +250,4 @@ Copyright
 http://www.gnu.org/licenses/gpl.html The GNU General Public License
 
 --
-last updated on Tue Dec 10 2024
+last updated on Fri Aug  1 2025
