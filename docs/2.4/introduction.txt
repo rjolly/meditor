@@ -73,7 +73,7 @@ To compute numerical values, one can use the "numeric" operator:
 
 <math><apply><diff/><bvar><degree><cn>1</cn></degree><ci>x</ci></bvar><apply><cos/><apply><ci>f</ci><ci>x</ci></apply></apply></apply></math>
 =
-<math><apply><minus/><apply><times/><apply><ci>f′</ci><ci>x</ci></apply><apply><sin/><apply><ci>f</ci><ci>x</ci></apply></apply></apply></apply></math>
+<math><apply><minus/><apply><times/><apply><ci><msup><mi>f</mi><mrow><mo>&#x02032;</mo></mrow></msup></ci><ci>x</ci></apply><apply><sin/><apply><ci>f</ci><ci>x</ci></apply></apply></apply></apply></math>
 
 <math><apply><curl/><apply><grad/><apply><ci>f</ci><ci>x</ci><ci>y</ci><ci>z</ci></apply><vector><ci>x</ci><ci>y</ci><ci>z</ci></vector></apply><vector><ci>x</ci><ci>y</ci><ci>z</ci></vector></apply></math>
 =

@@ -45,7 +45,7 @@ f = function("f", 0);
 f_ = function("f", 1);
 
 assert(eval("d(cos(f(x)),x)")
-.equals(<math><apply><minus/><apply><times/><apply><ci>f′</ci><ci>x</ci></apply><apply><sin/><apply><ci>f</ci><ci>x</ci></apply></apply></apply></apply></math>));
+.equals(<math><apply><minus/><apply><times/><apply><ci><msup><mi>f</mi><mrow><mo>&#x02032;</mo></mrow></msup></ci><ci>x</ci></apply><apply><sin/><apply><ci>f</ci><ci>x</ci></apply></apply></apply></apply></math>));
 
 z = variable("z");
 f = function("f", new int[] {0,0,0});
