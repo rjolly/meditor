@@ -383,6 +383,7 @@ public class Editor extends ScriptSupport {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
 			setFile(null);
+			engine = null;
 			open();
 		}
 	}
