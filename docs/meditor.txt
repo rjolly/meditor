@@ -212,7 +212,7 @@ http://beanshell.org/ 2.0b5
 
 Papers / presentations
 
-meditor, the mathemagical editor (ISSAC 2025) (software demonstration) https://jscl-meditor.sourceforge.net/magical.pdf
+meditor, the mathemagical editor (ISSAC 2025) (software demonstration) https://dl.acm.org/doi/pdf/10.1145/3787957.3787962
 Computer algebra in Scala (ScalaIO 2024) https://www.youtube.com/watch?v=ukwWKsrYwBU slides https://jscl-meditor.sourceforge.net/slides_io.pdf
 Implicit conversions in the Scala Algebra System (CASC 2024) (extended abstract) https://jscl-meditor.sourceforge.net/tcic_ea.pdf slides https://jscl-meditor.sourceforge.net/tcic-slides.pdf
 Progress report on the Scala Algebra System (CASC 2020) https://jscl-meditor.sourceforge.net/interface-slides.pdf presentation https://www.dk-compmath.jku.at/conferences/casc-2020/day-5/05-Jolly.mp4
