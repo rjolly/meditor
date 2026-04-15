@@ -1,3 +1,7 @@
+Changes in version 68:
+
++ Upgrade to API 36
+
 Changes in version 65:
 
 + upgrade to SCAS 3.1
