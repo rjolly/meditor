@@ -2,7 +2,7 @@ import scas.quotient.RationalFunction
 import scas.base.<math><integers/></math>
 import <math><integers/></math>.given
 
-val q = RationalFunction.integral("<math><ci>a</ci></math>", "<math><ci>b</ci></math>")
+val q = RationalFunction.integral(<math><cn>0</cn></math>)("<math><ci>a</ci></math>", "<math><ci>b</ci></math>")
 val <math><list><ci>a</ci><ci>b</ci></list></math> = q.generators
 import q.given
 

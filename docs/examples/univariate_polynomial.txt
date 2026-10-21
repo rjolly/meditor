@@ -3,7 +3,7 @@ import scas.polynomial.tree.UnivariatePolynomial
 import <math><integers/></math>.given
 import <math><rationals/></math>.given
 
-val r = UnivariatePolynomial(<math><rationals/></math>)("x")
+val r = UnivariatePolynomial(<math><cn>0</cn></math>)(<math><rationals/></math>)("x")
 val <math><list><ci>x</ci></list></math> = r.generators
 import r.{gcd, modInverse, given}
 
