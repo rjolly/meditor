@@ -7,3 +7,4 @@ assert ((<math><apply><plus/><cn>1</cn><apply><root/><cn>-1</cn></apply></apply>
 assert (conjugate(<math><apply><root/><cn>-1</cn></apply></math>) >< <math><apply><minus/><apply><root/><cn>-1</cn></apply></apply></math>)
 assert (magnitude2(<math><apply><root/><cn>-1</cn></apply></math>) >< <math><cn>1</cn></math>)
 assert (<math><apply><root/><cn>-1</cn></apply></math>.isImag)
+assert (sqrt(<math><cn>-4</cn></math>) >< <math><apply><times/><cn>2</cn><apply><root/><apply><minus/><cn>1</cn></apply></apply></apply></math>)
