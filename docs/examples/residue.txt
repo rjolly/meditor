@@ -1,7 +1,7 @@
 import scas.base.{<math><integers/></math>, <math><rationals/></math>}
 import scas.polynomial.tree.PolynomialOverFieldWithGB
 import scas.power.DegreeReverseLexicographic
-import scas.residue.Residue
+import scas.residue.AlgebraicNumber
 import <math><integers/></math>.given
 import <math><rationals/></math>.given
 
@@ -9,8 +9,8 @@ val r = PolynomialOverFieldWithGB(using <math><rationals/></math>, DegreeReverse
 val <math><list><ci>x</ci><ci>y</ci></list></math> = r.generators
 import r.given
 
-val s = Residue(<math><mrow><rationals/><mfenced open="[" close="]"><ci>x</ci><ci>y</ci></mfenced></mrow></math>)(<math><apply><minus/><cn>2</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></math>, <math><apply><minus/><apply><minus/><cn>1</cn><ci>x</ci></apply><apply><power/><ci>y</ci><cn>2</cn></apply></apply></math>)
-import s.{ring => _, given}
+val s = AlgebraicNumber(<math><mrow><rationals/><mfenced open="[" close="]"><ci>x</ci><ci>y</ci></mfenced></mrow></math>)(<math><apply><minus/><cn>2</cn><apply><power/><ci>x</ci><cn>2</cn></apply></apply></math>, <math><apply><minus/><apply><minus/><cn>1</cn><ci>x</ci></apply><apply><power/><ci>y</ci><cn>2</cn></apply></apply></math>)
+import s.given
 
 assert (<math><cn>2</cn></math> >< <math><apply><power/><ci>x</ci><cn>2</cn></apply></math>)
 assert (<math><cn>1</cn></math> >< <math><apply><plus/><ci>x</ci><apply><power/><ci>y</ci><cn>2</cn></apply></apply></math>)
