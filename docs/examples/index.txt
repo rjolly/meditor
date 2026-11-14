@@ -26,7 +26,9 @@ gcd_multivariate.txt
 gb_gcd.txt
 gb.txt
 meyer.txt
+facto.txt
 cyclic.txt
+kaufmann.txt
 interface.txt
 univariate_polynomial.txt
 solvable_polynomial.txt
